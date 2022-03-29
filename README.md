@@ -1,2 +1,2 @@
 # dataset-explorer
-A dataset explorer UI for Filecoin
+A dataset explorer UI for Slingshot
