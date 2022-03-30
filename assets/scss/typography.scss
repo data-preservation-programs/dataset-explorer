@@ -8,21 +8,21 @@ $font_Secondary: 'Space Mono';
 // 12px / 16 = 0.75rem
 // 0.75rem * 16 = 12px
 
-// fontSize_Tiny | 6pt
-// fontSize_Mini | 10.5pt
-// fontSize_Regular | 12pt
-// fontSize_Medium | 13.5pt
-// fontSize_Large | 18pt
+// fontSize_Tiny | 8pt
+// fontSize_Mini | 14pt
+// fontSize_Regular | 18pt
+// fontSize_Medium | 20pt
 // fontSize_Huge | 105pt
 
-$fontSize_Tiny: 0.512rem;
+$fontSize_Tiny: 0.5rem;
 $fontSize_Mini: 0.875rem;
-$fontSize_Regular: 1rem;
-$fontSize_Medium: 1.125rem;
+$fontSize_Regular: 1.125rem;
+$fontSize_Medium: 1.25rem;
 $fontSize_Huge: 8.75rem;
 
 @mixin fontSize_Tiny { font-size: $fontSize_Tiny; }
 @mixin fontSize_Mini { font-size: $fontSize_Mini; }
+@mixin fontSize_Regular { font-size: $fontSize_Regular; }
 @mixin fontSize_Medium { font-size: $fontSize_Medium; }
 @mixin fontSize_Huge { font-size: $fontSize_Huge; }
 
@@ -59,9 +59,9 @@ $leading_Huge: 8.438rem;
 @mixin leading_Huge { line-height: $leading_Huge; }
 
 // -------------------------------------------------------------- Letter Spacing
-$letterSpacing_ExtraSmall: -0.125em;
-$letterSpacing_Regular: 0.026em;
-$letterSpacing_Large: 0.063em;
+$letterSpacing_ExtraSmall: -0.125rem;
+$letterSpacing_Regular: 0.026rem;
+$letterSpacing_Large: 0.063rem;
 
 // ////////////////////////////////////////////////////////////////////// Groups
 // =============================================================================
