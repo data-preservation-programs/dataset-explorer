@@ -7,36 +7,35 @@ $fontAssetPath: '~assets/fonts';
 
 // ------------------------------------------------------------------ Metropolis
 @font-face {
-  font-family: 'Metropolis';
-  src: url('#{$fontAssetPath}/metropolis/Metropolis-Regular.otf') format('opentype');
+  font-family: 'Urbanist';
+  src: url('#{$fontAssetPath}/urbanist/Urbanist-VariableFont_wght.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
 }
 
 // ----------------------------------------------------------------- Inconsolata
 @font-face {
-  font-family: 'Inconsolata';
-  src: url('#{$fontAssetPath}/inconsolata/Inconsolata-Variable.ttf') format('truetype');
-  font-weight: 200 900;
+  font-family: 'Space Mono';
+  src: url('#{$fontAssetPath}/space_mono/SpaceMono-Regular.ttf') format('truetype');
+  font-weight: 400;
 }
 
 // ///////////////////////////////////////////////////////////////////// General
 // -----------------------------------------------------------------------------
 html, body {
   font-family: $font_Primary;
-  font-size: 16px;
-  font-weight: $fontWeight_Regular;
+  font-size: $fontSize_Mini;
+  font-weight: $fontWeight_Semibold;
   line-height: $leading_Regular;
-  letter-spacing: $letterSpacing_Large;
-  color: white;
-  background-color: $logCabin;
+  letter-spacing: $letterSpacing_Regular;
+  color: $classicBlue;
+  background-color: $silver;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   scroll-behavior: smooth;
   ::-moz-selection { background: white; color: black; }
   ::selection { background: white; color: black; }
   @include mini {
-    @include fontSize_Mini;
     line-height: 1.875rem; // 30pt
   }
   &.no-scroll {
@@ -203,8 +202,8 @@ h3, .h3 {
     top: calc(100% - 2px);
     width: 0px;
     height: 2px;
-    background-color: $aquamarine;
-    filter: drop-shadow(0px 0px 8px $aquamarine);
+    background-color: $classicBlue;
+    filter: drop-shadow(0px 0px 8px $classicBlue);
     transition: 250ms ease-out;
   }
   &:before {
@@ -249,8 +248,8 @@ h3, .h3 {
     }
   }
   p, div, li {
-    @include fontSize_Medium;
-    @include leading_ExtraLarge;
+    @include fontSize_Mini;
+    @include leading_Large;
   }
   p {
     @include textShadow;
@@ -269,7 +268,7 @@ h3, .h3 {
     }
   }
   a {
-    color: $aquamarine;
+    color: $classicBlue;
     &:hover {
       text-decoration: underline;
     }
@@ -296,12 +295,12 @@ h3, .h3 {
         height: 7px;
         margin-left: -9px;
         border-radius: 50%;
-        background-color: $aquamarine;
+        background-color: $classicBlue;
       }
       li {
         &:before {
           background-color: transparent;
-          border: 1px solid $aquamarine;
+          border: 1px solid $classicBlue;
         }
       }
     }

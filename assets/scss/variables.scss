@@ -14,6 +14,7 @@ $borderRadius_Large: 0.625rem;
 $borderRadius_ExtraLarge: 0.875rem;
 
 // --------------------------------------------------------------------- Colours
+$white: #FFFFFF;
 $gray50: #FAFAFA;
 $gray100: #F5F5F5;
 $gray200: #EEEEEE;
@@ -25,11 +26,11 @@ $gray700: #616161;
 $gray800: #424242;
 $gray900: #212121;
 
-$logCabin: #121813; // dark green
-$racingGreen: #12241B; // dark green but slightly less than $logCabin
-$eucalyptus: #218D65; // medium green
-$mountainMeadow: #11A36E; // bright medium green
-$aquamarine: #88FFD3; // bright turquoise
+$silver: #BDBDBD; // silver grey
+$classicBlue: #0628F6; // classic bright blue
+$mischka: #D6DADF; // pale blue-grey - used for shadow
+$aquaHaze: #F7F9FA; // pale blue almost white - used in gradient background for table boxes/ marble fill
+$mystic: #E2E8EF; // pale blue slightly darker than aquaHaze - used in gradient background for table boxes/marble fill
 
 // ----------------------------------------------------------------- Breakpoints
 $breakpoint_Tiny: 25.9375rem; // 415px
@@ -41,32 +42,38 @@ $breakpoint_Xlarge: 90rem; // 1440px
 $breakpoint_UltraLarge: 140.625rem; // 2250px
 
 // ------------------------------------------------------------------- Gradients
-// $gradient_PurpleGreen: linear-gradient(to right, $perfume, $greenYellow);
-// $gradient_GreenPurple: linear-gradient(to right, $greenYellow, $perfume);
-// $gradient_RedPurple: linear-gradient(to right, $coralRed, $perfume);
-// $gradient_PurpleRed: linear-gradient(to right, $perfume, $coralRed);
-// $gradient_RedGreen: linear-gradient(to right, $coralRed, $greenYellow);
-// $gradient_GreenRed: linear-gradient(to right, $greenYellow, $coralRed);
+$gradient-SilverGrey: linear-gradient(131.13deg, $aquaHaze 8.78%, $mystic 94.22%);
 
 // ////////////////////////////////////////////////////////////////////// Mixins
 // =============================================================================
 // --------------------------------------------------------------------- Styling
-@mixin shadow1 {
-	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05), 0 4px 20px rgba(0, 0, 0, 0.05);
+@mixin shadow {
+  box-shadow: -3px -3px 0px $white, 0px 3px 0px $mischka, inset 0px -20px 20px rgba(255, 255, 255, 0.2);
 }
 
-@mixin focus_BoxShadow_Small {
-  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+@mixin marbleShadow {
+  box-shadow: 0px 70px 60px rgba(169, 180, 203, 0.3), -3px -3px 0px $white, 0px 3px 0px $mischka, inset 0px -20px 20px rgba(255, 255, 255, 0.2);
 }
 
-@mixin focus_BoxShadow_Regular {
-  box-shadow: 0 0 0 5px rgba(0, 123, 255, 0.5);
+@mixin marbleFill {
+  background: url(henry-co--odUkx8C2gg-unsplash.jpg), linear-gradient(131.13deg, $aquaHaze 8.78%, $mystic 94.22%);
 }
+// @mixin shadow1 {
+// 	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05), 0 4px 20px rgba(0, 0, 0, 0.05);
+// }
 
-@mixin focus_BoxShadow_Link {
-  box-shadow: 0 0 0 5px rgba(0, 123, 255, 0.5);
-  border-radius: 0.125rem;
-}
+// @mixin focus_BoxShadow_Small {
+//   box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+// }
+
+// @mixin focus_BoxShadow_Regular {
+//   box-shadow: 0 0 0 5px rgba(0, 123, 255, 0.5);
+// }
+
+// @mixin focus_BoxShadow_Link {
+//   box-shadow: 0 0 0 5px rgba(0, 123, 255, 0.5);
+//   border-radius: 0.125rem;
+// }
 
 @mixin selection_Dark {
   ::-moz-selection { background: white; color: black; }

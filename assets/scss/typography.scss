@@ -1,39 +1,38 @@
 // ////////////////////////////////////////////////////////////////// Typography
 // =============================================================================
 // -------------------------------------------------------------------- Families
-$font_Primary: 'Metropolis';
-$font_Secondary: 'Inconsolata';
+$font_Primary: 'Urbanist';
+$font_Secondary: 'Space Mono';
 
 // ------------------------------------------------------------------- Font Size
-// fontSize_Tiny | 13pt
-// fontSize_Mini | 14pt
-// fontSize_Regular | 16pt
-// fontSize_Medium | 18pt
-// fontSize_Large | 26pt
-// fontSize_MediumLarge | 35pt
+// fontSize_Tiny | 6pt
+// fontSize_Mini | 10.5pt
+// fontSize_Regular | 12pt
+// fontSize_Medium | 13.5pt
+// fontSize_Large | 18pt
+// fontSize_Huge | 105pt
 
-$fontSize_Tiny: 0.8125rem;
+$fontSize_Tiny: 0.512rem;
 $fontSize_Mini: 0.875rem;
 $fontSize_Regular: 1rem;
 $fontSize_Medium: 1.125rem;
-$fontSize_Large: 1.625rem;
-$fontSize_MediumLarge: 2.1875rem;
+$fontSize_Huge: 8.75rem;
 
 @mixin fontSize_Tiny { font-size: $fontSize_Tiny; }
 @mixin fontSize_Mini { font-size: $fontSize_Mini; }
-@mixin fontSize_Regular { font-size: $fontSize_Regular; }
 @mixin fontSize_Medium { font-size: $fontSize_Medium; }
-@mixin fontSize_Large { font-size: $fontSize_Large; }
-@mixin fontSize_MediumLarge { font-size: $fontSize_MediumLarge; }
+@mixin fontSize_Huge { font-size: $fontSize_Huge; }
 
 // ----------------------------------------------------------------- Font Weight
 $fontWeight_Regular: 400;
+$fontWeight_Medium: 500;
 $fontWeight_Semibold: 600;
-$fontWeight_Bold: 700;
+$fontWeight_Extrabold: 800;
 
 @mixin fontWeight_Regular { font-weight: $fontWeight_Regular; }
+@mixin fontWeight_Medium { font-weight: $fontWeight_Medium; }
 @mixin fontWeight_Semibold { font-weight: $fontWeight_Semibold; }
-@mixin fontWeight_Bold { font-weight: $fontWeight_Bold; }
+@mixin fontWeight_Extrabold { font-weight: $fontWeight_Extrabold; }
 
 // --------------------------------------------------------------------- Leading
 // leading_Small | 13pt
@@ -44,41 +43,52 @@ $fontWeight_Bold: 700;
 // leading_ExtraLarge | 30pt
 // leading_Huge | 45pt
 
-$leading_Small: 0.8125rem;
-$leading_Regular: 0.875rem;
-$leading_Medium: 0.9375rem;
-$leading_Large: 1.25rem;
-$leading_MediumLarge: 1.625rem;
-$leading_ExtraLarge: 1.875rem;
-$leading_Huge: 2.8125rem;
+$leading_Small: 0.813rem;
+$leading_Medium: 0.875rem;
+$leading_Regular: 1.25rem;
+$leading_Large: 2.5rem;
+$leading_Huge: 8.438rem;
 
 @mixin leading_Small { line-height: $leading_Small; }
 @mixin leading_Regular { line-height: $leading_Regular; }
 @mixin leading_Medium { line-height: $leading_Medium; }
 @mixin leading_Large { line-height: $leading_Large; }
-@mixin leading_MediumLarge { line-height: $leading_MediumLarge; }
-@mixin leading_ExtraLarge { line-height: $leading_ExtraLarge; }
 @mixin leading_Huge { line-height: $leading_Huge; }
 
 // -------------------------------------------------------------- Letter Spacing
-$letterSpacing_Regular: 0.02em;
-$letterSpacing_Large: 0.03em;
+$letterSpacing_ExtraSmall: -0.125em;
+$letterSpacing_Regular: 0.026em;
+$letterSpacing_Large: 0.063em;
 
 // ////////////////////////////////////////////////////////////////////// Groups
 // =============================================================================
+@mixin header {
+  @include fontSize_Huge;
+  @include leading_Huge;
+  @include fontWeight_Extrabold;
+  letter-spacing: $letterSpacing_ExtraSmall;
+}
+
+@mixin subheading {
+  @include fontSize_Large;
+  @include leading_Large;
+  @include fontWeight_Semibold;
+  letter-spacing: $letterSpacing_Large;
+}
+
 @mixin h1 {
-  @include fontSize_MediumLarge;
+  @include fontSize_Huge;
   @include leading_Huge;
 }
 
 @mixin h2 {
-  @include fontSize_Large;
-  @include leading_ExtraLarge;
+  @include fontSize_Mini;
+  @include leading_Large;
   @include fontWeight_Semibold;
 }
 
 @mixin h3 {
-  @include leading_ExtraLarge;
+  @include leading_Large;
   font-size: 1.25rem;
 }
 
