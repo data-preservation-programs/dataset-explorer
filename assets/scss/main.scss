@@ -24,12 +24,12 @@ $fontAssetPath: '~assets/fonts';
 // -----------------------------------------------------------------------------
 html, body {
   font-family: $font_Primary;
-  font-size: $fontSize_Mini;
+  font-size: 16px;
   font-weight: $fontWeight_Semibold;
   line-height: $leading_Regular;
   letter-spacing: $letterSpacing_Regular;
   color: $classicBlue;
-  background-color: $silver;
+  background-color: $mystic;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   scroll-behavior: smooth;

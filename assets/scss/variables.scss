@@ -26,7 +26,7 @@ $gray700: #616161;
 $gray800: #424242;
 $gray900: #212121;
 
-$silver: #BDBDBD; // silver grey
+$silver: #E1E6ED; // silver grey
 $classicBlue: #0628F6; // classic bright blue
 $mischka: #D6DADF; // pale blue-grey - used for shadow
 $aquaHaze: #F7F9FA; // pale blue almost white - used in gradient background for table boxes/ marble fill
@@ -42,7 +42,7 @@ $breakpoint_Xlarge: 90rem; // 1440px
 $breakpoint_UltraLarge: 140.625rem; // 2250px
 
 // ------------------------------------------------------------------- Gradients
-$gradient-SilverGrey: linear-gradient(131.13deg, $aquaHaze 8.78%, $mystic 94.22%);
+$gradient_SilverGrey: linear-gradient(131.13deg, $aquaHaze 8.78%, $mystic 94.22%);
 
 // ////////////////////////////////////////////////////////////////////// Mixins
 // =============================================================================
@@ -56,8 +56,9 @@ $gradient-SilverGrey: linear-gradient(131.13deg, $aquaHaze 8.78%, $mystic 94.22%
 }
 
 @mixin marbleFill {
-  background: url(henry-co--odUkx8C2gg-unsplash.jpg), linear-gradient(131.13deg, $aquaHaze 8.78%, $mystic 94.22%);
+  background: url('henry-co--odUkx8C2gg-unsplash.jpg'), linear-gradient(131.13deg, $aquaHaze 8.78%, $mystic 94.22%);
 }
+
 // @mixin shadow1 {
 // 	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05), 0 4px 20px rgba(0, 0, 0, 0.05);
 // }
