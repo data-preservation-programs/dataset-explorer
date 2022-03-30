@@ -138,8 +138,6 @@ export default {
   font-size: 1.25rem;
   margin-right: 3rem;
   @include tiny {
-    @include fontSize_Regular;
-    @include leading_Regular;
     margin-right: 0;
     &:first-child {
       margin-right: 3rem;
@@ -159,8 +157,6 @@ export default {
   filter: drop-shadow(0px 0px 34px black);
   transition: 250ms ease-out;
   @include tiny {
-    @include fontSize_Regular;
-    @include leading_Regular;
   }
   &:hover {
     transition: 250ms ease-in;

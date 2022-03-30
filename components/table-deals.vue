@@ -187,7 +187,7 @@ export default {
 
 .external-link {
   @include fontWeight_Bold;
-  color: $aquamarine;
+  color: $classicBlue;
   &:hover {
     text-decoration: underline;
   }
@@ -365,7 +365,7 @@ tbody:not(.divider) {
 .cell-parent:nth-child(4) {
   // Code command copy HOVER overlay
   &:before {
-    @include fontSize_Mini;
+    @include fontSize_Tiny;
     @include leading_Large;
     content: attr(data-hovering);
     display: flex;
@@ -545,7 +545,7 @@ tr.divider {
     .icon.code {
       path {
         transition: 250ms ease-in;
-        fill: $aquamarine;
+        fill: $classicBlue;
       }
     }
   }

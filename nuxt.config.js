@@ -23,7 +23,7 @@ export default {
   // /////////////////////////////////////////////////////////// Server & Render
   // ---------------------------------------------------------------------------
   server: {
-    port: 27000,
+    port: 28000,
     host: process.env.NODE_ENV !== 'development' ? '0.0.0.0' : 'localhost'
   },
   render: {

@@ -144,7 +144,6 @@ export default {
   @include fontSize_Tiny;
   @include leading_Large;
   @include tiny {
-    @include fontSize_Regular;
   }
 }
 

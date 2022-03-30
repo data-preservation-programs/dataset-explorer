@@ -235,8 +235,6 @@ $iconOffset: calc((#{$barHeight} - #{$iconHeight}) / 2);
 // }
 
 .input {
-  @include fontSize_Mini;
-  @include leading_Regular;
   flex: 1;
   position: relative;
   height: 100%;

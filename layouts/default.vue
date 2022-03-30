@@ -18,7 +18,7 @@ export default {
   },
 
   created () {
-    //this.$store.dispatch('global/getBaseData', 'general')
+    // this.$store.dispatch('global/getBaseData', 'general')
   }
 }
 </script>

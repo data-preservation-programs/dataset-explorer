@@ -89,7 +89,6 @@ export default {
 }
 
 .link-home {
-  @include fontSize_Medium;
   @include leading_Large;
 }
 </style>

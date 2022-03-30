@@ -1,13 +1,13 @@
 ////////////////////////////////////////////////////////////////////// Normalize
 //------------------------------------------------------------------------------
 // Colors
-$yellow: #ff0;
-$black: #000;
-$silver: #c0c0c0;
+$yellow_normalize: #ff0;
+$black_normalize: #000;
+$silver_normalize: #c0c0c0;
 
 // Fonts
-$font_0: sans-serif;
-$font_1: monospace;
+$font_0_normalize: sans-serif;
+$font_1_normalize: monospace;
 
 // @extend-elements / original selectors / sub, sup
 %extend_1 {
@@ -25,7 +25,7 @@ $font_1: monospace;
 }
 
 html {
-	font-family: $font_0;
+	font-family: $font_0_normalize;
 	input[type="button"] {
 		cursor: pointer;
 	}
@@ -129,7 +129,7 @@ h1 {
 }
 mark {
 	background: yellow;
-	color: $black;
+	color: $black_normalize;
 }
 small {
 	font-size: 80%;
@@ -152,19 +152,19 @@ hr {
 }
 pre {
 	overflow: auto;
-	font-family: $font_1, $font_1;
+	font-family: $font_1_normalize, $font_1_normalize;
 	font-size: 1em;
 }
 code {
-	font-family: $font_1, $font_1;
+	font-family: $font_1_normalize, $font_1_normalize;
 	font-size: 1em;
 }
 kbd {
-	font-family: $font_1, $font_1;
+	font-family: $font_1_normalize, $font_1_normalize;
 	font-size: 1em;
 }
 samp {
-	font-family: $font_1, $font_1;
+	font-family: $font_1_normalize, $font_1_normalize;
 	font-size: 1em;
 }
 button {
@@ -231,7 +231,7 @@ input[type="search"]::-webkit-search-cancel-button {
 input[type="search"]::-webkit-search-decoration {
 }
 fieldset {
-	border: 1px solid $silver;
+	border: 1px solid $silver_normalize;
 	margin: 0 2px;
 	padding: 0.35em 0.625em 0.75em;
 }
