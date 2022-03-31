@@ -3,6 +3,8 @@
 
     INDEX
 
+    <HeaderIndex />
+
   </div>
 </template>
 
@@ -10,11 +12,16 @@
 // ===================================================================== Imports
 import { mapGetters, mapActions } from 'vuex'
 
+import HeaderIndex from '@/components/header-index'
+
+import IndexPageData from '@/content/pages/index.yaml'
+
 // ====================================================================== Export
 export default {
   name: 'IndexPage',
 
   components: {
+    HeaderIndex
   },
 
   data () {
@@ -24,6 +31,7 @@ export default {
   },
 
   async fetch ({ store, route }) {
+    await store.dispatch('global/getBaseData', { key: 'index', data: IndexPageData })
   },
 
   head () {
@@ -32,7 +40,20 @@ export default {
 
   computed: {
     ...mapGetters({
-    })
+      siteContent: 'global/siteContent'
+    }),
+    pageData () {
+      return this.siteContent[this.tag]
+    },
+    pageContent () {
+      return this.pageData.page_content
+    },
+    heading () {
+      return this.pageContent.heading
+    },
+    subheading () {
+      return this.pageContent.subheading
+    }
   },
 
   watch: {
