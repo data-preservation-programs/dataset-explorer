@@ -19,6 +19,7 @@ import { mapGetters, mapActions } from 'vuex'
 
 import TableDeals from '@/components/table-deals'
 import page from '@/content/pages/index.json'
+import fileNames from '@/content/data/dataset-explorer-manifest.json'
 
 // ====================================================================== Export
 export default {
@@ -36,6 +37,7 @@ export default {
 
   async fetch ({ store, route, $content }) {
     await store.dispatch('global/getBaseData', { key: 'index', data: page })
+    await store.dispatch('explorer/setDatasetNames', fileNames)
     await store.dispatch('explorer/getExplorerData', { tag: 'index', file: 'dataset_list.json' })
   },
 

@@ -2,6 +2,7 @@
 // -----------------------------------------------------------------------------
 const state = () => ({
   datasetList: false,
+  datasetNames: false,
   datasetSingular: false
 })
 
@@ -9,6 +10,7 @@ const state = () => ({
 // -----------------------------------------------------------------------------
 const getters = {
   datasetList: state => state.datasetList,
+  datasetNames: state => state.datasetNames,
   datasetSingular: state => state.datasetSingular
 }
 
@@ -36,6 +38,9 @@ const actions = {
       console.log(e)
       return false
     }
+  },
+  setDatasetNames ({ commit }, payload) {
+    commit('SET_DATASET_NAMES', payload)
   }
 }
 
@@ -48,6 +53,9 @@ const mutations = {
   },
   SET_DATASET_LIST (state, list) {
     state.datasetList = list
+  },
+  SET_DATASET_NAMES (state, data) {
+    state.datasetNames = data
   },
   SET_DATASET_SINGULAR (state, singular) {
     state.datasetSingular = singular

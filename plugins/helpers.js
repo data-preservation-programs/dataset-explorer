@@ -20,7 +20,7 @@ const CreateAxiosAuthTransport = (baseURL) => {
 
 // ////////////////////////////////////// Convert bytes to human-readable format
 // ----------------------------- Ex: 257831078666960800 bytes outputs as 229 PiB
-const FormatBytes = (bytes, format = '') => {
+const FormatBytes = (bytes, format = 'string') => {
   const size = Filesize(bytes, { standard: 'iec', base: 2 })
   if (format === 'string') { return size }
   const split = size.split(' ')

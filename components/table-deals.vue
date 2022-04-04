@@ -29,22 +29,31 @@
               <div :class="['cell cell-body', cell.slug]">
 
                 <template v-if="cell.slug === 'icon'">
-                  <img :src="icon" />
+                  <DataIcon :icon="deal.slug" />
                 </template>
 
                 <template v-if="cell.slug === 'locations'">
-                  <!-- {{ Array.from(deal.locations_stored).forEach($GetFlagIcon) }} -->
-                  {{ $GetFlagIcon(deal.locations_stored) }}
+                  <div class="location-flags">
+                    <span
+                      v-for="(location, index) in deal.locations_stored"
+                      :key="index">
+                      {{ $GetFlagIcon(location) }}
+                    </span>
+                  </div>
                 </template>
 
                 <template v-if="cell.slug === 'dataset_name'">
-                  {{ deal.slug }}
+                  {{ getProjectLabels(deal.slug) }}
                 </template>
 
-                <div v-if="cell.slug === 'data_stored'" v-html="htmlFormatBytes(deal.eligible_data_size)">
+                <div v-if="cell.slug === 'data_stored'">
+                  <span>{{ $FormatBytes(deal.eligible_data_size, '').value }}</span>
+                  <span class="data-unit">{{ $FormatBytes(deal.eligible_data_size, '').unit }}</span>
                 </div>
 
-                <div v-if="cell.slug === 'all_data_stored'" v-html="htmlFormatBytes(deal.elegible_deal_count)">
+                <div v-if="cell.slug === 'all_data_stored'">
+                  <span>{{ $FormatBytes(deal.elegible_deal_count, '').value }}</span>
+                  <span class="data-unit">{{ $FormatBytes(deal.elegible_deal_count, '').unit }}</span>
                 </div>
 
                 <template v-if="cell.slug === 'storage_providers'">
@@ -72,12 +81,14 @@
 <script>
 // ===================================================================== Imports
 import { mapGetters } from 'vuex'
+import DataIcon from '@/components/icons/dataset-icon'
 
 // ====================================================================== Export
 export default {
   name: 'TableDeals',
 
   components: {
+    DataIcon
   },
 
   props: {
@@ -95,11 +106,13 @@ export default {
 
   computed: {
     ...mapGetters({
-      deals: 'explorer/datasetList'
+      deals: 'explorer/datasetList',
+      datasetNames: 'explorer/datasetNames'
       // loading: 'deals/loading'
     }),
     filtered () {
       const deals = this.deals
+      // console.log(this.deals)
       return deals.length > 0 ? deals : false
     },
     icon () {
@@ -126,6 +139,14 @@ export default {
     htmlFormatBytes (deal) {
       const data = this.$FormatBytes(deal)
       return data.value + '<span class="data-unit">' + data.unit + '</span>'
+    },
+    getProjectLabels (slug) {
+      const labels = this.datasetNames.manifest
+      if (labels[slug]) {
+        return labels[slug].label
+      } else {
+        return slug
+      }
     }
   }
 }
@@ -258,22 +279,6 @@ tbody:not(.divider) {
   }
 }
 
-// .cell-parent:nth-child(2) {
-//   // Overlay gradient
-//   &:before {
-//     content: '';
-//     position: absolute;
-//     top: 1px;
-//     left: 1px;
-//     width: calc(100% - 2px);
-//     height: calc(100% - 2px);
-//     //background: $gradient_SilverGrey;
-//     border-radius: 5px;
-//     opacity: 0.5;
-//     z-index: 10;
-//   }
-// }
-
 .cell-parent:nth-child(3) {
   // HOVER Overlay gradient
   &:before {
@@ -309,48 +314,6 @@ tbody:not(.divider) {
     }
   }
 }
-
-// .cell-parent:nth-child(4) {
-//   // Code command copy HOVER overlay
-//   &:before {
-//     @include fontSize_Tiny;
-//     @include leading_Large;
-//     content: attr(data-hovering);
-//     display: flex;
-//     flex-direction: row;
-//     align-items: center;
-//     position: absolute;
-//     top: 0px;
-//     left: 0px;
-//     width: 100%;
-//     height: 100%;
-//     background: $classicBlue;
-//     font-family: $font_Secondary;
-//     border-radius: 5px;
-//     padding: 2rem;
-//     padding-right: 4rem;
-//     opacity: 0;
-//     pointer-events: none;
-//     z-index: 20;
-//     transition: 100ms ease-out;
-//   }
-// }
-
-// .cell-head:first-child,
-// .cell-parent:last-child {
-//   &:before {
-//     content: '';
-//     position: absolute;
-//     top: 0;
-//     left: 0;
-//     width: 100%;
-//     height: 100%;
-//     background-repeat: repeat;
-//     //background-image: url('~assets/patterns/grain.png');
-//     opacity: 0.02;
-//     z-index: 10;
-//   }
-// }
 
 .cell-body {
   padding: 1.25rem;
@@ -415,33 +378,6 @@ tr.divider {
 }
 
 // ////////////////////////////////////////////////////////////////////// Common
-// .copyable {
-//   display: flex;
-//   flex-direction: row;
-//   align-items: center;
-//   &:hover {
-//     .copy-button {
-//       opacity: 1;
-//       transform: translateX(0);
-//     }
-//   }
-//   .copy-button {
-//     margin-left: 0.5rem;
-//     opacity: 0;
-//     transform: translateX(0.25rem);
-//     transition: 250ms ease-in-out;
-//   }
-// }
-
-// .piece_cid,
-// .payload_cid,
-// .deal_id,
-// .sp,
-// .end-epoch {
-//   @include fontSize_Tiny;
-//   @include leading_Medium;
-//   font-family: $font_Secondary;
-// }
 
 // //////////////////////////////////////////////////////////////////// Specific
 .filename,
@@ -455,78 +391,37 @@ tr.divider {
   margin-bottom: 0.75rem;
 }
 
-.data_stored, .all_data_stored, .storage_providers {
-  font-family: $font_Secondary;
-  .unit {
-    font-size: $fontSize_Tiny;
+.icon {
+  div {
+    width: 4rem;
   }
 }
 
-// .piece_cid,
-// .payload_cid {
-//   &:before {
-//     font-family: $font_Primary;
-//     opacity: 0.5;
-//     margin-right: 1rem;
-//   }
-// }
+.data_stored, .all_data_stored, .storage_providers {
+  font-family: $font_Secondary;
+  div {
+    display: flex;
+    .data-unit {
+      padding-top: 0.125rem;
+    }
+  }
 
-// .piece_cid {
-//   margin-bottom: 0.25rem;
-//   &:before {
-//     content: 'Piece';
-//     width: 3.375rem;
-//   }
-// }
-
-// .payload_cid {
-//   &:before {
-//     content: 'Payload';
-//   }
-// }
+}
 
 .dataset {
   @include fontSize_Tiny;
   @include leading_Large;
 }
 
-// .sp-id {
-//   @include fontWeight_Semibold;
-// }
-
 .location {
   font-size: 1.375rem;
 }
 
-// .renew-by-date {
-//   margin-bottom: 0.25rem;
-//   white-space: nowrap;
-// }
-
-// ::v-deep .code_copy {
-//   &:hover {
-//     .icon.code {
-//       path {
-//         transition: 250ms ease-in;
-//         fill: $classicBlue;
-//       }
-//     }
-//   }
-//   .copy-button,
-//   .icon.code {
-//     transition: 250ms ease-out;
-//   }
-//   .copy-button {
-//     position: absolute;
-//     top: 1.25rem;
-//     left: 1.25rem;
-//     width: 1.125rem;
-//     opacity: 0;
-//   }
-// }
-
-// .icon.code {
-//   cursor: pointer;
-//   width: 1.375rem;
-// }
+.location-flags {
+  display: flex;
+  flex-wrap: wrap;
+  width: 5rem;
+  transform: scale(1.5);
+  padding-left: 0.75rem;
+}
 </style>
