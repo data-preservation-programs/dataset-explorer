@@ -13,98 +13,56 @@
             v-html="column.label">
           </th>
 
-          <th class="cell cell-head">
-            <IconCode class="icon code" />
-          </th>
-
         </tr>
       </thead>
       <!-- ============================================================ Body -->
       <tbody class="divider" />
       <tbody class="table-body">
         <template v-for="deal in filtered">
-          <tr :key="deal.deal_id" class="row row-body">
+          <tr :key="deal.rank" class="row row-body">
 
             <td
               v-for="cell in columns"
               :key="cell.slug"
               :data-hovering="getCopyCommand(deal)"
-              :class="['cell-parent', { hovering: deal.deal_id === hovering }]">
+              :class="['cell-parent', { hovering: deal.rank === hovering }]">
               <div :class="['cell cell-body', cell.slug]">
 
-                <template v-if="cell.slug === 'file'">
-                  <span v-if="deal.filename" class="filename">
-                    <span>{{ $TruncateString(deal.filename, 15, '...', 'double') }}</span>
-                  </span>
-                  <div class="piece_cid copyable">
-                    <span>{{ $TruncateString(deal.piece_cid, 8, '...', 'double') }}</span>
-                    <CopyButton :value="deal.piece_cid" />
-                  </div>
-                  <div class="payload_cid copyable">
-                    <span>{{ $TruncateString(deal.payload_cid, 8, '...', 'double') }}</span>
-                    <CopyButton :value="deal.payload_cid" />
-                  </div>
+                <template v-if="cell.slug === 'icon'">
+                  <img :src="icon" />
                 </template>
 
-                <template v-if="cell.slug === 'location'">
-                  {{ $GetFlagIcon(deal.location) }}
+                <template v-if="cell.slug === 'locations'">
+                  <!-- {{ Array.from(deal.locations_stored).forEach($GetFlagIcon) }} -->
+                  {{ $GetFlagIcon(deal.locations_stored) }}
                 </template>
 
-                <template v-if="cell.slug === 'dataset'">
-                  {{ deal.dataset_name }}
+                <template v-if="cell.slug === 'dataset_name'">
+                  {{ deal.slug }}
                 </template>
 
-                <template v-if="cell.slug === 'deal_id'">
-                  <div class="copyable">
-                    <a
-                      :href="`https://filecoin.tools/${deal.deal_id}`"
-                      target="_blank"
-                      class="external-link">
-                      {{ deal.deal_id }}
-                    </a>
-                    <CopyButton :value="deal.deal_id" />
-                  </div>
+                <div v-if="cell.slug === 'data_stored'" v-html="htmlFormatBytes(deal.eligible_data_size)">
+                </div>
+
+                <div v-if="cell.slug === 'all_data_stored'" v-html="htmlFormatBytes(deal.elegible_deal_count)">
+                </div>
+
+                <template v-if="cell.slug === 'storage_providers'">
+                  {{ deal.miner_list.length }}
                 </template>
 
-                <template v-if="cell.slug === 'sp'">
-                  <div class="copyable">
-                    <span class="sp-id">{{ deal.provider_id }}</span>
-                    <CopyButton :value="deal.provider_id" />
-                  </div>
-                </template>
-
-                <template v-if="cell.slug === 'renew_by'">
-                  <span class="renew-by-date">
-                    {{ $EpochToDate(deal.end_epoch) }}
-                  </span>
-                  <span class="end-epoch">
-                    {{ deal.end_epoch }}
-                  </span>
-                </template>
-
-              </div>
-            </td>
-
-            <td
-              class="cell-parent">
-              <div
-                class="cell cell-body code_copy"
-                @mouseenter="toggleRowOverlay(true, deal.deal_id)"
-                @mouseleave="toggleRowOverlay(false)">
-                <IconCode class="icon code" />
-                <CopyButton :value="getCopyCommand(deal)" />
               </div>
             </td>
 
           </tr>
           <tr
-            :key="`divider-${deal.deal_id}`"
+            :key="`divider-${deal.rank}`"
             class="divider" />
         </template>
       </tbody>
     </table>
 
-    <div v-if="!filtered && !loading" class="no-results-placeholder">
+    <div v-if="!filtered" class="no-results-placeholder">
       <span>No results found</span>
     </div>
 
@@ -115,17 +73,11 @@
 // ===================================================================== Imports
 import { mapGetters } from 'vuex'
 
-import CopyButton from '@/components/copy-button'
-
-import IconCode from '@/components/icons/code'
-
 // ====================================================================== Export
 export default {
   name: 'TableDeals',
 
   components: {
-    CopyButton,
-    IconCode
   },
 
   props: {
@@ -143,12 +95,20 @@ export default {
 
   computed: {
     ...mapGetters({
-      deals: 'deals/deals',
-      loading: 'deals/loading'
+      deals: 'explorer/datasetList'
+      // loading: 'deals/loading'
     }),
     filtered () {
       const deals = this.deals
       return deals.length > 0 ? deals : false
+    },
+    icon () {
+      const icon = this.deals.icon
+      if (icon) {
+        return icon
+      } else {
+        return '/media/default_icon.png'
+      }
     }
   },
 
@@ -162,6 +122,10 @@ export default {
       } else {
         this.hovering = false
       }
+    },
+    htmlFormatBytes (deal) {
+      const data = this.$FormatBytes(deal)
+      return data.value + '<span class="data-unit">' + data.unit + '</span>'
     }
   }
 }
@@ -171,6 +135,8 @@ export default {
 // ///////////////////////////////////////////////////////////////////// General
 .table-deals {
   margin-bottom: 0.5rem;
+  font-weight: $fontWeight_Semibold;
+  @include fontSize_Mini;
 }
 
 .table-container {
@@ -186,7 +152,7 @@ export default {
 }
 
 .external-link {
-  @include fontWeight_Bold;
+  @include fontWeight_Semibold;
   color: $classicBlue;
   &:hover {
     text-decoration: underline;
@@ -201,14 +167,13 @@ export default {
   &:after {
     content: '';
     position: absolute;
-    border-radius: 10px;
+    border-radius: 5px;
   }
   &:before {
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(350deg, #18583C 25%, rgba(0, 0, 0, 0) 35%);
     z-index: 0;
   }
   &:after {
@@ -216,7 +181,6 @@ export default {
     left: 1px;
     width: calc(100% - 2px);
     height: calc(100% - 2px);
-    background: linear-gradient(350deg, #102F21 10%, rgba(19, 25, 20, 0.9) 45%);
     z-index: 5;
   }
 }
@@ -227,9 +191,8 @@ export default {
 }
 
 .cell-head {
-  @include fontSize_Tiny;
-  @include leading_Large;
-  padding: 1.25rem;
+  @include fontSize_Mini;
+  padding: 0rem 1.25rem;
   text-align: left;
 }
 
@@ -248,9 +211,9 @@ tbody:not(.divider) {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(270.02deg, #00CB80 0.01%, #000000 60.1%);
+    width: calc(100% - 10px);
+    height: calc(100% - 4px);
+    background: $gray400;
     opacity: 0.6;
     filter: blur(20px);
   }
@@ -273,15 +236,15 @@ tbody:not(.divider) {
   &:after {
     content: '';
     position: absolute;
-    border-radius: 10px;
+    border-radius: 5px;
   }
   // Border gradient
   &:before {
-    top: 0;
-    left: 0;
+    top: -2px;
+    left: -2px;
     width: 100%;
     height: 100%;
-    background: linear-gradient(270deg, #27FFAF, rgba(22, 33, 26, 0) 72%);
+    background: $white;
     z-index: 0;
   }
   // Background color
@@ -290,26 +253,26 @@ tbody:not(.divider) {
     left: 1px;
     width: calc(100% - 2px);
     height: calc(100% - 2px);
-    background-color: $logCabin;
+    background: $gradient_SilverGrey;
     z-index: 5;
   }
 }
 
-.cell-parent:nth-child(2) {
-  // Overlay gradient
-  &:before {
-    content: '';
-    position: absolute;
-    top: 1px;
-    left: 1px;
-    width: calc(100% - 2px);
-    height: calc(100% - 2px);
-    background: linear-gradient(270deg, #00CA80 -5.5%, rgba(60, 150, 117, 0.7) 12%, rgba(5, 101, 65, 0.6) 35%, rgba(19, 25, 20, 0) 75%);
-    border-radius: 10px;
-    opacity: 0.5;
-    z-index: 10;
-  }
-}
+// .cell-parent:nth-child(2) {
+//   // Overlay gradient
+//   &:before {
+//     content: '';
+//     position: absolute;
+//     top: 1px;
+//     left: 1px;
+//     width: calc(100% - 2px);
+//     height: calc(100% - 2px);
+//     //background: $gradient_SilverGrey;
+//     border-radius: 5px;
+//     opacity: 0.5;
+//     z-index: 10;
+//   }
+// }
 
 .cell-parent:nth-child(3) {
   // HOVER Overlay gradient
@@ -320,8 +283,7 @@ tbody:not(.divider) {
     left: 1px;
     width: calc(100% - 2px);
     height: calc(100% - 2px);
-    background: linear-gradient(270deg, rgba(0, 202, 128, 0.79) -1.5%, rgba(60, 150, 117, 0.52) 24%, rgba(5, 101, 65, 0.33) 70%, rgba(19, 25, 20, 0) 92%);
-    border-radius: 10px;
+    border-radius: 5px;
     opacity: 0;
     z-index: 15;
     transition: 100ms ease-out;
@@ -345,64 +307,50 @@ tbody:not(.divider) {
         opacity: 0;
       }
     }
-    + .cell-parent {
-      .code_copy {
-        .icon.code,
-        .copy-button {
-          transition: 250ms ease-in;
-        }
-        .icon.code {
-          opacity: 0;
-        }
-        .copy-button {
-          opacity: 1;
-        }
-      }
-    }
   }
 }
 
-.cell-parent:nth-child(4) {
-  // Code command copy HOVER overlay
-  &:before {
-    @include fontSize_Tiny;
-    @include leading_Large;
-    content: attr(data-hovering);
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    height: 100%;
-    background: $racingGreen;
-    font-family: $font_Secondary;
-    border-radius: 10px;
-    padding: 2rem;
-    padding-right: 4rem;
-    opacity: 0;
-    pointer-events: none;
-    z-index: 20;
-    transition: 100ms ease-out;
-  }
-}
+// .cell-parent:nth-child(4) {
+//   // Code command copy HOVER overlay
+//   &:before {
+//     @include fontSize_Tiny;
+//     @include leading_Large;
+//     content: attr(data-hovering);
+//     display: flex;
+//     flex-direction: row;
+//     align-items: center;
+//     position: absolute;
+//     top: 0px;
+//     left: 0px;
+//     width: 100%;
+//     height: 100%;
+//     background: $classicBlue;
+//     font-family: $font_Secondary;
+//     border-radius: 5px;
+//     padding: 2rem;
+//     padding-right: 4rem;
+//     opacity: 0;
+//     pointer-events: none;
+//     z-index: 20;
+//     transition: 100ms ease-out;
+//   }
+// }
 
-.cell-head:first-child,
-.cell-parent:last-child {
-  &:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-repeat: repeat;
-    background-image: url('~assets/patterns/grain.png');
-    opacity: 0.02;
-    z-index: 10;
-  }
-}
+// .cell-head:first-child,
+// .cell-parent:last-child {
+//   &:before {
+//     content: '';
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     width: 100%;
+//     height: 100%;
+//     background-repeat: repeat;
+//     //background-image: url('~assets/patterns/grain.png');
+//     opacity: 0.02;
+//     z-index: 10;
+//   }
+// }
 
 .cell-body {
   padding: 1.25rem;
@@ -417,7 +365,7 @@ tr.divider {
 .no-results-placeholder {
   margin-bottom: -3rem;
   padding: 1rem;
-  filter: drop-shadow(0px 0px 20px rgba(0, 0, 0, 0.9));
+  filter: drop-shadow(0px 5px 3px rgba(0, 0, 0, 0.3));
   @include medium {
     margin: 0 calc(7% + 0.5rem);
     margin-bottom: -3rem;
@@ -426,22 +374,22 @@ tr.divider {
   &:after {
     content: '';
     position: absolute;
-    border-radius: 10px;
+    border-radius: 5px;
   }
   &:before {
-    top: 0;
-    left: 0;
+    top: -2px;
+    left: -2px;
     width: 100%;
     height: 100%;
-    background: linear-gradient(350deg, #18583C 25%, rgba(0, 0, 0, 0) 35%);
+    background: $white;
     z-index: 0;
   }
   &:after {
     top: 1px;
     left: 1px;
-    width: calc(100% - 2px);
-    height: calc(100% - 2px);
-    background: linear-gradient(350deg, #102F21 10%, rgba(19, 25, 20, 0.9) 45%);
+    width: calc(100% - 1px);
+    height: calc(100% - 1px);
+    background: $gradient_SilverGrey;
     z-index: 5;
   }
   span {
@@ -459,34 +407,41 @@ tr.divider {
   }
 }
 
-// ////////////////////////////////////////////////////////////////////// Common
-.copyable {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  &:hover {
-    .copy-button {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-  .copy-button {
-    margin-left: 0.5rem;
-    opacity: 0;
-    transform: translateX(0.25rem);
-    transition: 250ms ease-in-out;
+.icon {
+  img {
+    width: 2.8125rem;
+    height: auto;
   }
 }
 
-.piece_cid,
-.payload_cid,
-.deal_id,
-.sp,
-.end-epoch {
-  @include fontSize_Tiny;
-  @include leading_Medium;
-  font-family: $font_Secondary;
-}
+// ////////////////////////////////////////////////////////////////////// Common
+// .copyable {
+//   display: flex;
+//   flex-direction: row;
+//   align-items: center;
+//   &:hover {
+//     .copy-button {
+//       opacity: 1;
+//       transform: translateX(0);
+//     }
+//   }
+//   .copy-button {
+//     margin-left: 0.5rem;
+//     opacity: 0;
+//     transform: translateX(0.25rem);
+//     transition: 250ms ease-in-out;
+//   }
+// }
+
+// .piece_cid,
+// .payload_cid,
+// .deal_id,
+// .sp,
+// .end-epoch {
+//   @include fontSize_Tiny;
+//   @include leading_Medium;
+//   font-family: $font_Secondary;
+// }
 
 // //////////////////////////////////////////////////////////////////// Specific
 .filename,
@@ -495,75 +450,83 @@ tr.divider {
   @include leading_Small;
 }
 
-.filename {
+.dataset_name {
+  width: 15rem;
   margin-bottom: 0.75rem;
 }
 
-.piece_cid,
-.payload_cid {
-  &:before {
-    font-family: $font_Primary;
-    opacity: 0.5;
-    margin-right: 1rem;
+.data_stored, .all_data_stored, .storage_providers {
+  font-family: $font_Secondary;
+  .unit {
+    font-size: $fontSize_Tiny;
   }
 }
 
-.piece_cid {
-  margin-bottom: 0.25rem;
-  &:before {
-    content: 'Piece';
-    width: 3.375rem;
-  }
-}
+// .piece_cid,
+// .payload_cid {
+//   &:before {
+//     font-family: $font_Primary;
+//     opacity: 0.5;
+//     margin-right: 1rem;
+//   }
+// }
 
-.payload_cid {
-  &:before {
-    content: 'Payload';
-  }
-}
+// .piece_cid {
+//   margin-bottom: 0.25rem;
+//   &:before {
+//     content: 'Piece';
+//     width: 3.375rem;
+//   }
+// }
+
+// .payload_cid {
+//   &:before {
+//     content: 'Payload';
+//   }
+// }
 
 .dataset {
   @include fontSize_Tiny;
   @include leading_Large;
 }
 
-.sp-id {
-  @include fontWeight_Bold;
-}
+// .sp-id {
+//   @include fontWeight_Semibold;
+// }
 
 .location {
   font-size: 1.375rem;
 }
 
-.renew-by-date {
-  margin-bottom: 0.25rem;
-  white-space: nowrap;
-}
+// .renew-by-date {
+//   margin-bottom: 0.25rem;
+//   white-space: nowrap;
+// }
 
-::v-deep .code_copy {
-  &:hover {
-    .icon.code {
-      path {
-        transition: 250ms ease-in;
-        fill: $classicBlue;
-      }
-    }
-  }
-  .copy-button,
-  .icon.code {
-    transition: 250ms ease-out;
-  }
-  .copy-button {
-    position: absolute;
-    top: 1.25rem;
-    left: 1.25rem;
-    width: 1.125rem;
-    opacity: 0;
-  }
-}
+// ::v-deep .code_copy {
+//   &:hover {
+//     .icon.code {
+//       path {
+//         transition: 250ms ease-in;
+//         fill: $classicBlue;
+//       }
+//     }
+//   }
+//   .copy-button,
+//   .icon.code {
+//     transition: 250ms ease-out;
+//   }
+//   .copy-button {
+//     position: absolute;
+//     top: 1.25rem;
+//     left: 1.25rem;
+//     width: 1.125rem;
+//     opacity: 0;
+//   }
+// }
 
-.icon.code {
-  cursor: pointer;
-  width: 1.375rem;
-}
+// .icon.code {
+//   cursor: pointer;
+//   width: 1.375rem;
+// }
 </style>

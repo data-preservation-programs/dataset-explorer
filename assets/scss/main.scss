@@ -82,7 +82,7 @@ img {
 }
 
 #__layout {
-  overflow: hidden;
+  //overflow: hidden;
   .main-container {
     position: relative;
   }
@@ -239,6 +239,11 @@ h3, .h3 {
   background-color: rgba(255, 255, 255, 0.3);
   mix-blend-mode: overlay;
   opacity: 0.25;
+}
+
+.data-unit {
+  font-size: $fontSize_Tiny;
+  padding-left: 0.5rem;
 }
 
 .markdown {
