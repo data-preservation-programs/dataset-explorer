@@ -3,18 +3,22 @@
 
     INDEX
 
+    <SiteFooter />
+
   </div>
 </template>
 
 <script>
 // ===================================================================== Imports
 import { mapGetters, mapActions } from 'vuex'
+import SiteFooter from '@/components/site-footer'
 
 // ====================================================================== Export
 export default {
   name: 'IndexPage',
 
   components: {
+    SiteFooter
   },
 
   data () {
