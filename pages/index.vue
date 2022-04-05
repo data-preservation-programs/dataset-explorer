@@ -12,7 +12,7 @@ import { mapGetters, mapActions } from 'vuex'
 
 import HeaderIndex from '@/components/header-index'
 
-// import IndexPageData from '@/content/pages/index.yaml'
+import IndexPageData from '@/content/pages/index.yml'
 
 // ====================================================================== Export
 export default {
@@ -46,6 +46,7 @@ export default {
   },
 
   mounted () {
+    console.log(IndexPageData)
   },
 
   beforeDestroy () {
