@@ -47,13 +47,13 @@
                 </template>
 
                 <div v-if="cell.slug === 'data_stored'">
-                  <span>{{ $FormatBytes(deal.eligible_data_size, '').value }}</span>
-                  <span class="data-unit">{{ $FormatBytes(deal.eligible_data_size, '').unit }}</span>
+                  <span>{{ $FormatBytes(deal.elegible_deal_count, '').value }}</span>
+                  <span class="data-unit">{{ $FormatBytes(deal.elegible_deal_count, '').unit }}</span>
                 </div>
 
                 <div v-if="cell.slug === 'all_data_stored'">
-                  <span>{{ $FormatBytes(deal.elegible_deal_count, '').value }}</span>
-                  <span class="data-unit">{{ $FormatBytes(deal.elegible_deal_count, '').unit }}</span>
+                  <span>{{ $FormatBytes(deal.eligible_data_size, '').value }}</span>
+                  <span class="data-unit">{{ $FormatBytes(deal.eligible_data_size, '').unit }}</span>
                 </div>
 
                 <template v-if="cell.slug === 'storage_providers'">
