@@ -40,6 +40,7 @@ export default {
   },
 
   async fetch ({ store, route, $content }) {
+    await store.dispatch('global/getBaseData', 'general')
     await store.dispatch('global/getBaseData', { key: 'index', data: Page })
     await store.dispatch('explorer/setDatasetNames', FileNames)
     await store.dispatch('explorer/getExplorerData', { tag: 'index', file: 'dataset_list.json' })

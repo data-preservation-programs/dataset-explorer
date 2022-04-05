@@ -24,14 +24,31 @@
     }
   },
   "footer": {
-    "logo": {
-      "to": "/"
-    },
-    "links": [
-      { "type": "a", "url": "https://slingshot.filecoin.io/", "text": "Slingshot", "target": "_blank" },
-      { "type": "a", "url": "https://slingshot.filecoin.io/explore", "text": "Data Explorer", "target": "_blank" },
-      { "type": "a", "url": "https://filecoinproject.slack.com/archives/C0377FJCG1L", "text": "Slingshot Dataset Explorer Slack Channel", "target": "_blank" }
-    ]
+    "right_column": {
+      "nav_links": [
+        {
+          "type": "nuxt-link",
+          "text": "Home",
+          "link": "/"
+        },
+        {
+          "type": "nuxt-link",
+          "text": "About",
+          "link": "/"
+        },
+        {
+          "type": "nuxt-link",
+          "text": "FAQ",
+          "link": "/"
+        },
+        {
+          "type": "nuxt-link",
+          "text": "Resources",
+          "link": "/"
+        }
+      ],
+      "info_text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore"
+    }
   },
   "page_404": {
     "code": "404",
