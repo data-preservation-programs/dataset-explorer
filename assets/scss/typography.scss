@@ -69,6 +69,7 @@ $letterSpacing_Large: 0.063rem;
   @include fontSize_Huge;
   @include leading_Huge;
   @include fontWeight_Extrabold;
+  text-transform: uppercase;
   letter-spacing: $letterSpacing_ExtraSmall;
 }
 
@@ -76,6 +77,7 @@ $letterSpacing_Large: 0.063rem;
   @include fontSize_Medium;
   @include leading_Large;
   @include fontWeight_Semibold;
+  text-transform: uppercase;
   letter-spacing: $letterSpacing_Large;
 }
 
