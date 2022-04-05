@@ -39,9 +39,9 @@ export default {
     pageContent () {
       return this.siteContent.general
     },
-    content () {
-      return this.siteContent.general.page_404
-    },
+    // content () {
+    //   return this.siteContent.general.page_404
+    // },
     code () {
       return this.content.code
     },
