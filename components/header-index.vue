@@ -5,12 +5,11 @@
         
         <div class="dotted-border">
           <div class="heading">
-            DATASET EXPLORER
+            {{ heading }}
           </div>
 
           <div class="subheading">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-            tempor incididunt ut labore
+            {{ subheading }}
           </div>
         </div>
 
@@ -23,7 +22,14 @@
 <script>
 export default {
   props: {
-
+    heading: {
+      type: String,
+      required: true
+    },
+    subheading: {
+      type: String,
+      required: true
+    }
   }
 }
 </script>
@@ -47,13 +53,14 @@ export default {
 
 .dotted-border::after {
   content: '';
-  border-image: url("data:image/svg+xml,%3Csvg width='8' height='8' xmlns='http://www.w3.org/2000/svg'%3E%3Cellipse ry='4' rx='4' cy='4' cx='4' fill='blue'/%3E%3C/svg%3E") 8 round;
   position: absolute;
+  border-image: url("data:image/svg+xml,%3Csvg width='8' height='8' xmlns='http://www.w3.org/2000/svg'%3E%3Cellipse ry='4' rx='4' cy='4' cx='4' fill='blue'/%3E%3C/svg%3E") 8 round;
   top: 50%;
 }
 
 .heading {
   @include header;
+  text-transform: uppercase;
   margin: 1rem;
   padding-left: 2.1rem;
 }

@@ -1,7 +1,9 @@
 <template>
   <div :class="`page page-${tag}`">
 
-    <HeaderIndex />
+    <HeaderIndex
+      :heading="heading"
+      :subheading="subheading" />
 
   </div>
 </template>
@@ -29,7 +31,7 @@ export default {
   },
 
   async fetch ({ store, route }) {
-    // await store.dispatch('global/getBaseData', { key: 'index', data: IndexPageData })
+    await store.dispatch('global/getBaseData', { key: 'index', data: IndexPageData })
   },
 
   head () {
@@ -39,14 +41,26 @@ export default {
   computed: {
     ...mapGetters({
       siteContent: 'global/siteContent'
-    })
+    }),
+    pageData () {
+      return this.siteContent[this.tag]
+    },
+    pageContent () {
+      return this.pageData.page_content
+    },
+    heading () {
+      return this.pageContent.fold.heading
+    },
+    subheading () {
+      return this.pageContent.fold.subheading
+    }
   },
 
   watch: {
   },
 
   mounted () {
-    console.log(IndexPageData)
+    console.log('this is the page data page content', this.pageData.page_content)
   },
 
   beforeDestroy () {
