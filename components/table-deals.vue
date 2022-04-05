@@ -391,6 +391,10 @@ tr.divider {
   margin-bottom: 0.75rem;
 }
 
+::v-deep svg {
+  fill: $classicBlue;
+}
+
 .icon {
   div {
     width: 2.8125rem;
