@@ -5,6 +5,14 @@
       :heading="heading"
       :subheading="subheading" />
 
+    <section id="deals-table">
+      <div class="grid">
+        <div class="col">
+          <TableDatasetIndex :columns="tableColumns" />
+        </div>
+      </div>
+    </section>
+
   </div>
 </template>
 
@@ -13,7 +21,9 @@
 import { mapGetters, mapActions } from 'vuex'
 
 import HeaderIndex from '@/components/header-index'
+import TableDatasetIndex from '@/components/table-dataset-index'
 
+import FileNames from '@/content/data/dataset-explorer-manifest.json'
 import IndexPageData from '@/content/pages/index.yml'
 
 // ====================================================================== Export
@@ -21,7 +31,8 @@ export default {
   name: 'IndexPage',
 
   components: {
-    HeaderIndex
+    HeaderIndex,
+    TableDatasetIndex
   },
 
   data () {
@@ -32,15 +43,18 @@ export default {
 
   async fetch ({ store, route }) {
     await store.dispatch('global/getBaseData', { key: 'index', data: IndexPageData })
+    await store.dispatch('explorer/setDatasetNames', FileNames)
+    await store.dispatch('explorer/getExplorerData', { tag: 'index', file: 'dataset_list.json' })
   },
 
   head () {
-    // return this.$CompileSeo(this.$GetSeo(this.tag))
+    return this.$CompileSeo(this.$GetSeo(this.tag))
   },
 
   computed: {
     ...mapGetters({
-      siteContent: 'global/siteContent'
+      siteContent: 'global/siteContent',
+      datasetList: 'explorer/datasetList'
     }),
     pageData () {
       return this.siteContent[this.tag]
@@ -53,6 +67,9 @@ export default {
     },
     subheading () {
       return this.pageContent.fold.subheading
+    },
+    tableColumns () {
+      return this.pageContent.table.columns
     }
   },
 

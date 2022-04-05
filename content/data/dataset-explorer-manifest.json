@@ -1,0 +1,376 @@
+{
+  "manifest": {
+    "covid-19-open-research-dataset": {
+      "label": "COVID-19 Open Research Dataset",
+      "description": "An AI challenge with AI2, CZI, MSR, Georgetown, NIH & The White House",
+      "icon": "icon-covid.svg"
+    },
+    "chest-xray-images-pneumonia": {
+      "label": "Chest X-Ray Images (Pneumonia)",
+      "description": "5,863 images, 2 categories",
+      "resources": [
+        {
+          "label": "Pneumonia Chest X-Ray Images on Kaggle",
+          "link": "https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia"
+        },
+        {
+          "label": "Identifying Medical Diagnoses and Treatable Diseases by Image-Based Deep Learning",
+          "link": "https://www.cell.com/cell/fulltext/S0092-8674(18)30154-5"
+        }
+      ],
+      "size": 2290000000,
+      "format": "jpeg",
+      "icon": "icon-chest-xray-images.svg",
+      "schema": {}
+    },
+    "huge-stock-market-dataset": {
+      "label": "Huge Stock Market Dataset",
+      "description": "Historical daily prices and volumes of all U.S. stocks and ETFs"
+    },
+    "condensed-movies": {
+      "label": "Condensed Movies",
+      "description": "A large-scale video dataset, featuring clips from movies with detailed captions."
+    },
+    "usenet-2005-2011": {
+      "label": "USENET (2005-2011)",
+      "description": "Compressed USENET posts"
+    },
+    "sloan-digital-sky-survey": {
+      "label": "Sloan Digital Sky Survey",
+      "description": "Three dimensional view of the universe",
+      "icon": "icon-sloan-sky-survey.svg"
+    },
+    "ghtorrent-project": {
+      "label": "GHTorrent Project",
+      "description": "A scalable, queriable, offline mirror of data offered through the Github REST API.",
+      "icon": "icon-torrent.svg"
+    },
+    "free-music-archive": {
+      "label": "Free Music Archive",
+      "description": "106,574 tracks from 16,341 artists and 14,854 albums, arranged in a hierarchical taxonomy of 161 genres"
+    },
+    "open-images-dataset": {
+      "label": "Open Images Dataset",
+      "description": "9 million URLs to images that have been annotated with labels spanning over 6000 categories"
+    },
+    "noisy-speech-database": {
+      "label": "Noisy speech database",
+      "description": "Used for training speech enhancement algorithms and TTS models"
+    },
+    "nfl-play-by-play": {
+      "label": "NFL play-by-play",
+      "description": "The data has three tables: teams, players, and plays."
+    },
+    "nyc-trip-record-data": {
+      "label": "NYC Trip Record Data",
+      "description": "Include fields capturing pick-up and drop-off dates/times, pick-up and drop-off locations, trip distances, itemized fares, rate types, payment types, and driver-reported passenger counts."
+    },
+    "national-cancer-institute": {
+      "label": "National Cancer Institute",
+      "description": "Cancer data for analysis",
+      "icon": "icon-cancer.svg"
+    },
+    "public-blockchain-datasets": {
+      "label": "Public Blockchain Datasets",
+      "description": "Blockchain data from cryptocurrencies Bitcoin, Ethereum, Dodgecoin, ZCash, Litecoin, Dash, Bitcoin Cash, Ethereum Classic, Tezos, Hedera Hashgraph, IoTex."
+    },
+    "docker-images": {
+      "label": "Docker Images",
+      "description": "Docker container images that are published on Docker Hub",
+      "icon": "icon-docker.svg"
+    },
+    "filecoin-proofs": {
+      "label": "Filecoin Proofs",
+      "description": "",
+      "icon": "icon-filecoin.svg"
+    },
+    "filecoin-trusted-setup": {
+      "label": "Filecoin Trusted Setup",
+      "description": "",
+      "icon": "icon-filecoin.svg"
+    },
+    "flickr-commons": {
+      "label": "Flickr Commons",
+      "description": "The key goal of The Commons is to share hidden treasures from the world's public photography archives.",
+      "icon": "icon-flickr.svg"
+    },
+    "arxiv": {
+      "label": "Arxiv",
+      "description": "Scholarly articles in the fields of physics, mathematics, computer science, quantitative biology, and more."
+    },
+    "blackbird-dataset": {
+      "label": "Blackbird Dataset",
+      "description": "A large-scale dataset for UAV perception in aggressive flight"
+    },
+    "archlinux": {
+      "label": "ArchLinux",
+      "description": "ArchLinux packages repository",
+      "icon": "icon-arch.svg"
+    },
+    "centos": {
+      "label": "CentOS",
+      "description": "CentOS packages repository"
+    },
+    "tencent-corpus-for-chinese-words-and-phrases": {
+      "label": "Tencent Corpus for Chinese Words and Phrases",
+      "description": "Meant for AI purposes"
+    },
+    "r-fmri-maps-project": {
+      "label": "R-fMRI Maps Project",
+      "description": "Medical data from neurological imaging"
+    },
+    "national-palace-museum-taiwan": {
+      "label": "National Palace Museum (Taiwan)",
+      "description": "A variety of museum artifacts"
+    },
+    "project-gutenberg": {
+      "label": "Project Gutenberg",
+      "description": "Online library of free eBooks, in English"
+    },
+    "imagenet": {
+      "label": "ImageNet",
+      "description": "An image database organized according to the WordNet hierarchy",
+      "icon": "icon-image-net.svg"
+    },
+    "ipums": {
+      "label": "IPUMS",
+      "description": "Global census data"
+    },
+    "udacity-self-driving-car-data": {
+      "label": "Udacity Self-Driving Car data",
+      "description": "Data used for training self-driving machine learning models"
+    },
+    "trackingnet": {
+      "label": "TrackingNet",
+      "description": "A Large-Scale Dataset and Benchmark for Object Tracking in the Wild."
+    },
+    "a2d2": {
+      "label": "A2D2",
+      "description": "The Audi Autonomous Driving Dataset (A2D2) to support startups and academic researchers working on autonomous driving.",
+      "icon": "icon-audi.svg"
+    },
+    "kitti-raw-data": {
+      "label": "KITTI-raw data",
+      "description": "Autonomous Driving"
+    },
+    "near-vi-dataset": {
+      "label": "NEAR-VI-Dataset",
+      "description": "The NetEase AR Oriented Visual Inertial Dataset"
+    },
+    "top-100-crypto-investor-dataset": {
+      "label": "Top 100 Crypto Investor Dataset",
+      "description": "Crypto price and project analytics"
+    },
+    "common-voice": {
+      "label": "Common Voice",
+      "description": "Common Voice is Mozilla's initiative to help teach machines how real people speak."
+    },
+    "tao": {
+      "label": "TAO",
+      "description": "TAO is a federated dataset for Tracking Any Object, containing 2,907 high resolution videos, captured in diverse environments, which are half a minute long on average."
+    },
+    "otw": {
+      "label": "OTW",
+      "description": "The Out the Window (OTW) dataset is a crowdsourced activity dataset containing 5,668 instances of 17 activities from the NIST Activities in Extended Video (ActEV) challenge."
+    },
+    "waymo": {
+      "label": "Waymo",
+      "description": "The Waymo Open Dataset is comprised of high resolution sensor data collected by Waymo self-driving cars in a wide variety of conditions. We are releasing this dataset publicly to aid the research community in making advancements in machine perception and self-driving technology.",
+      "icon": "icon-waymo.svg"
+    },
+    "imdb-wiki": {
+      "label": "IMDB-WIKI",
+      "description": "IMDB-WIKI – 500k+ face images with age and gender labels"
+    },
+    "genomic-data-commons": {
+      "label": "Genomic Data Commons",
+      "description": "Genomic, epigenomic, transcriptomic, and proteomic data from the National Genome Atlas Program"
+    },
+    "openstreetmap": {
+      "label": "OpenStreetMap",
+      "description": "A collaborative project to create a free editable map of the world"
+    },
+    "openfda": {
+      "label": "openFDA",
+      "description": "Open datasets from the US Food and Drug Administration"
+    },
+    "avspeech-large-scale-audio-visual-speech-dataset": {
+      "label": "AVSpeech: Large-scale Audio-Visual Speech Dataset",
+      "description": "large-scale audio-visual dataset comprising speech video clips with no interfering background noises"
+    },
+    "google-open-images": {
+      "label": "Google Open Images",
+      "description": "9 million URLs to images that have been annotated with labels spanning over 6000 categories"
+    },
+    "uc-berkeley-computer-science-courses": {
+      "label": "UC Berkeley Computer Science Courses",
+      "description": "An archive of UC Berkeley Computer Science Courses"
+    },
+    "smartcity-dataset": {
+      "label": "Smart City Sensor Based Network",
+      "description": "Noise data collected by fiber optic sensing equipment for research. Collected by The University of Electronic Science and Technology of China, most of this data was observed in Sichuan, China and is available in .wav format"
+    },
+    "coco": {
+      "label": "COCO",
+      "description": "COCO is a large-scale object detection, segmentation, and captioning dataset.",
+      "icon": "icon-coco.svg"
+    },
+    "163-source-dataset": {
+      "label": "163 source Dataset",
+      "description": "NetEase Open Source Mirror Station"
+    },
+    "3000-rice-genomes-project": {
+      "label": "3000 Rice Genomes Project",
+      "description": "An international effort to sequence the genomes of 3,024 rice varieties from 89 countries.",
+      "icon": "icon-cgiar-rice.svg"
+    },
+    "audius": {
+      "label": "Audius",
+      "description": "An American decentralized music platform developing the first community-owned and artist-controlled Music sharing protocol.",
+      "icon": "icon-audius.svg"
+    },
+    "genome-aggregation-database": {
+      "label": "Genome Aggregation Database",
+      "description": "The Genome Aggregation Database (gnomAD) is a resource developed by an international coalition of investigators that aggregates and harmonizes both exome and genome data from a wide range of large-scale human sequencing projects.",
+      "icon": "icon-gnomad.svg"
+    },
+    "genome-in-a-bottle": {
+      "label": "Genome in a Bottle",
+      "description": "Several reference genomes to enable translation of whole human genome sequencing to clinical practice.",
+      "icon": "icon-genome-bottle.svg"
+    },
+    "million-song-dataset": {
+      "label": "Million Song Dataset",
+      "description": "NSF-funded public music dataset for research"
+    },
+    "prelinger-archives": {
+      "label": "Prelinger archives",
+      "description": "Rick Prelinger and The Internet Archive hereby offer public domain films from Prelinger Archives to all for free downloading and reuse.",
+      "icon": "icon-prelinger.svg"
+    },
+    "public-domain-movies": {
+      "label": "Public domain movies",
+      "description": "A collection of public domain movies"
+    },
+    "the-boxy-vehicles-dataset": {
+      "label": "The Boxy Vehicles Dataset",
+      "description": "A large vehicle detection dataset with almost two million annotated vehicles for training and evaluating object detection methods for self-driving cars on freeways."
+    },
+    "the-librivox-free-audiobook-collection": {
+      "label": "The LibriVox Free Audiobook Collection",
+      "description": "LibriVox - founded in 2005 - is a community of volunteers from all over the world who record public domain texts: poetry, short stories, whole books, even dramatic works, in many different language",
+      "icon": "icon-librivox.svg"
+    },
+    "the-massively-multilingual-image-dataset-mmid": {
+      "label": "The Massively Multilingual Image Dataset (MMID)",
+      "description": "MMID is a large-scale, massively multilingual dataset of images paired with the words they represent collected at the University of Pennsylvania"
+    },
+    "uk-biobank-pan-ancestry-summary-statistic": {
+      "label": "UK Biobank Pan-Ancestry Summary Statistics",
+      "description": "A multi-ancestry analysis of 7,221 phenotypes using a generalized mixed model association testing framework, spanning 16,119 genome-wide association studies.",
+      "icon": "icon-bio-bank.svg"
+    },
+    "free-rainbow-tables": {
+      "label": "Free Rainbow Tables",
+      "description": "The goal of FreeRainbowTables.com is to prove the insecurity of using simple hash routines to protect valuable passwords, and force developers to use more secure methods.",
+      "icon": "icon-rainbow-tables.svg"
+    },
+    "cancer-cell-line-encyclopedia-ccle": {
+      "label": "Cancer Cell Line Encyclopedia (CCLE)",
+      "description": "The Cancer Cell Line Encyclopedia (CCLE) project is an effort to conduct a detailed genetic characterization of a large panel of human cancer cell lines. This dataset contains RNA-Seq Aligned Reads, WXS Aligned Reads, and WGS Aligned Reads data."
+    },
+    "ccafs-climate-data": {
+      "label": "CCAFS-Climate Data",
+      "description": "High resolution climate data to help assess the impacts of climate change primarily on agriculture. These open access datasets of climate projections will help researchers make climate change impact assessments."
+    },
+    "ecmwf-era5-reanalysis": {
+      "label": "ECMWF ERA5 Reanalysis",
+      "description": "ERA5 is the fifth generation of ECMWF atmospheric reanalyses of the global climate, and the first reanalysis produced as an operational service."
+    },
+    "musicnet": {
+      "label": "MusicNet",
+      "description": "A curated collection of labeled classical music.",
+      "icon": "icon-musicnet.svg"
+    },
+    "clevr": {
+      "label": "CLEVR",
+      "description": "A Diagnostic Dataset for Compositional Language and Elementary Visual Reasoning (CLEVR)."
+    },
+    "pandaset": {
+      "label": "PandaSet Dataset",
+      "description": "Public large-scale dataset for autonomous driving."
+    },
+    "glove-reddit-comments": {
+      "label": "GloVe Reddit Comments",
+      "description": "Global Vectors for Word Representation based on Reddit comments."
+    },
+    "open-library-data-dump": {
+      "label": "Open Library Data Dump",
+      "description": "Records of over 22 million works, 30 million editions and 8 million authors, curated by the Open Library project."
+    },
+    "landsat-8": {
+      "label": "Landsat 8",
+      "description": "Multispectral time series satellite imagery of all land on Earth since 2013",
+      "icon": "icon-landsat-8.svg"
+    },
+    "common-crawl": {
+      "label": "Common Crawl",
+      "description": "An open repository of web crawl data",
+      "icon": "icon-common-crawl.svg"
+    },
+    "linux-iso": {
+      "label": "Linux ISO",
+      "description": "Linux ISO Images",
+      "icon": "icon-linux-iso.svg"
+    },
+    "genome-ark": {
+      "label": "Genome Ark",
+      "description": "The Genome Ark hosts genomic information for the Vertebrate Genomes Project (VGP) and other related projects.",
+      "icon": "icon-genome-ark.svg"
+    },
+    "encyclopedia-of-dna-elements": {
+      "label": "Encyclopedia of DNA Elements",
+      "description": "The Encyclopedia of DNA Elements (ENCODE) Consortium is an international collaboration of research groups funded by the National Human Genome Research Institute (NHGRI).",
+      "icon": "icon-encode-dna-elements.svg"
+    },
+    "fly-brain-anatomy": {
+      "label": "Fly Brain Anatomy",
+      "description": "Fluorescence images of Drosophila melanogaster driver lines for neuroscience research purposes, stored in formats suitable for rapid searching in the cloud.",
+      "icon": "icon-flylight.svg"
+    },
+    "folding-at-home-covid": {
+      "label": "Folding@home COVID-19",
+      "description": "Folding@home is a massively distributed computing project that uses biomolecular simulations to investigate the molecular origins of disease and accelerate the discovery of new therapies.",
+      "icon": "icon-molecule.svg"
+    },
+    "snpeff": {
+      "label": "SnpEff",
+      "description": "Genomic variant annotations and functional effect prediction toolbox. It annotates and predicts the effects of genetic variants on genes and proteins (such as amino acid changes).",
+      "icon": "icon-molecule.svg"
+    },
+    "russian-open-speech-to-text": {
+      "label": "Russian Open Speech to Text",
+      "description": "A collection of speech samples derived from various audio sources. The dataset contains short audio clips in Russian. The main purpose of the dataset is to train speech-to-text models."
+    },
+    "tartanair": {
+      "label": "TartanAir",
+      "description": "AirSim simulation dataset for simultaneous localization and mapping (SLAM). Simultaneous Localization and Mapping (SLAM) is one of the most fundamental capabilities necessary for robots. Due to the ubiquitous availability of images, Visual SLAM (V-SLAM) has become an important component of many autonomous systems. Impressive progress has been made with both geometric-based methods and learning-based methods. However, developing robust and reliable SLAM methods for real-world applications is still a challenging problem. Real-life environments are full of difficult cases such as light changes or lack of illumination, dynamic objects, and texture-less scenes. This dataset takes advantages of the advancing computer graphics technology, and aims to cover diverse scenarios with challenging features in simulation."
+    },
+    "nexrad": {
+      "label": "NEXRAD",
+      "description": "Next Generation Weather Radar is a network of 160 high-resolution S-band Doppler weather radars that detect precipitation and wind patterns and movemement."
+    },
+    "nasa-nex": {
+      "label": "NASA NEX",
+      "description": "A collection of Earth science datasets maintained by NASA, including climate change projections and satellite images of the Earth's surface."
+    },
+    "terra-fusion-data-sampler": {
+      "label": "Terra Fusion Data Sampler",
+      "description": "Data from Terra, the flagship of NASA's Earth Observing System (EOS). Each Level 1 Terra Basic Fusion file contains one full Terra orbit of data."
+    },
+    "brazil-data-cube": {
+      "label": "Brazil Data Cube",
+      "description": "A research, development and technological innovation project of the National Institute for Space Research (INPE), Brazil, producing datasets from big volumes of medium-resolution remote sensing images."
+    }
+  }
+}
