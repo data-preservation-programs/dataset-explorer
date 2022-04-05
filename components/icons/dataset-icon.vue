@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!--ArchLinux-->
+
     <svg
       v-if="icon === 'archlinux'"
       version="1.1"
@@ -18,7 +18,7 @@
         <polygon points="99.9,12.6 99.9,12.6 99.9,12.6" />
       </g>
     </svg>
-    <!--A2D2-->
+
     <svg
       v-else-if="icon === 'a2d2'"
       version="1.1"
@@ -500,7 +500,7 @@
         </g>
       </g>
     </svg>
-    
+
     <svg
       v-else-if="icon === 'filecoin-proofs'"
       version="1.1"
