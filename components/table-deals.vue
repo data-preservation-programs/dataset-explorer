@@ -393,7 +393,7 @@ tr.divider {
 
 .icon {
   div {
-    width: 4rem;
+    width: 2.8125rem;
   }
 }
 

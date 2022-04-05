@@ -3,6 +3,7 @@
     <!--ArchLinux-->
     <svg
       v-if="icon === 'archlinux'"
+      fill="#0628F6"
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 200 200">
@@ -20,7 +21,8 @@
     </svg>
     <!--A2D2-->
     <svg
-      v-if="icon === 'a2d2'"
+      v-else-if="icon === 'a2d2'"
+      fill="#0628F6"
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 200 200">
@@ -44,7 +46,8 @@
     </svg>
 
     <svg
-      v-if="icon === 'audius'"
+      v-else-if="icon === 'audius'"
+      fill="#0628F6"
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 200 200">
@@ -56,7 +59,8 @@
     </svg>
 
     <svg
-      v-if="icon === 'uk-biobank-pan-ancestry-summary-statistic'"
+      v-else-if="icon === 'uk-biobank-pan-ancestry-summary-statistic'"
+      fill="#0628F6"
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 200 200">
@@ -205,7 +209,8 @@
     </svg>
 
     <svg
-      v-if="icon === 'national-cancer-institute'"
+      v-else-if="icon === 'national-cancer-institute'"
+      fill="#0628F6"
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 200 200">
@@ -230,7 +235,8 @@
     </svg>
 
     <svg
-      v-if="icon === 'national-cancer-institute'"
+      v-else-if="icon === '3000-rice-genomes-project'"
+      fill="#0628F6"
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 200 200">
@@ -290,7 +296,8 @@
     </svg>
 
     <svg
-      v-if="icon === 'chest-xray-images-pneumonia'"
+      v-else-if="icon === 'chest-xray-images-pneumonia'"
+      fill="#0628F6"
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 200 200">
@@ -315,7 +322,8 @@
     </svg>
 
     <svg
-      v-if="icon === 'coco'"
+      v-else-if="icon === 'coco'"
+      fill="#0628F6"
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 200 200">
@@ -336,7 +344,8 @@
     </svg>
 
     <svg
-      v-if="icon === 'common-crawl'"
+      v-else-if="icon === 'common-crawl'"
+      fill="#0628F6"
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 200 200">
@@ -364,8 +373,8 @@
     </svg>
 
     <svg
-      v-if="icon === 'covid-19-open-research-dataset'"
-      id="Layer_1"
+      v-else-if="icon === 'covid-19-open-research-dataset'"
+      fill="#0628F6"
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
       xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -397,7 +406,8 @@
     </svg>
 
     <svg
-      v-if="icon === 'docker-images'"
+      v-else-if="icon === 'docker-images'"
+      fill="#0628F6"
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 200 200">
@@ -439,7 +449,8 @@
     </svg>
 
     <svg
-      v-if="icon === 'encyclopedia-of-dna-elements'"
+      v-else-if="icon === 'encyclopedia-of-dna-elements'"
+      fill="#0628F6"
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 200 200">
@@ -503,7 +514,8 @@
     </svg>
     
     <svg
-      v-if="icon === 'filecoin-proofs'"
+      v-else-if="icon === 'filecoin-proofs'"
+      fill="#0628F6"
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 200 200">
@@ -519,7 +531,8 @@
     </svg>
 
     <svg
-      v-if="icon === 'filecoin-trusted-setup'"
+      v-else-if="icon === 'filecoin-trusted-setup'"
+      fill="#0628F6"
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 200 200">
@@ -535,7 +548,8 @@
     </svg>
 
     <svg
-      v-if="icon === 'flickr-commons'"
+      v-else-if="icon === 'flickr-commons'"
+      fill="#0628F6"
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 200 200">
@@ -550,7 +564,8 @@
     </svg>
 
     <svg
-      v-if="icon === 'fly-brain-anatomy'"
+      v-else-if="icon === 'fly-brain-anatomy'"
+      fill="#0628F6"
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 70 70">
@@ -648,7 +663,8 @@
     </svg>
 
     <svg
-      v-if="icon === 'genome-ark'"
+      v-else-if="icon === 'genome-ark'"
+      fill="#0628F6"
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 200 200">
@@ -698,7 +714,8 @@
     </svg>
 
     <svg
-      v-if="icon === 'genome-in-a-bottle'"
+      v-else-if="icon === 'genome-in-a-bottle'"
+      fill="#0628F6"
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 200 200">
@@ -753,7 +770,8 @@
     </svg>
 
     <svg
-      v-if="icon === 'genome-aggregation-database'"
+      v-else-if="icon === 'genome-aggregation-database'"
+      fill="#0628F6"
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 200 200">
@@ -780,7 +798,8 @@
     </svg>
 
     <svg
-      v-if="icon === 'imagenet'"
+      v-else-if="icon === 'imagenet'"
+      fill="#0628F6"
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 200 200">
@@ -792,7 +811,8 @@
     </svg>
 
     <svg
-      v-if="icon === 'landsat-8'"
+      v-else-if="icon === 'landsat-8'"
+      fill="#0628F6"
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 200 200">
@@ -826,7 +846,8 @@
     </svg>
 
     <svg
-      v-if="icon === 'the-librivox-free-audiobook-collection'"
+      v-else-if="icon === 'the-librivox-free-audiobook-collection'"
+      fill="#0628F6"
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 200 200">
@@ -850,7 +871,8 @@
     </svg>
 
     <svg
-      v-if="icon === 'linux-iso'"
+      v-else-if="icon === 'linux-iso'"
+      fill="#0628F6"
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 200 200">
@@ -962,7 +984,8 @@
     </svg>
 
     <svg
-      v-if="icon === 'snpeff'"
+      v-else-if="icon === 'snpeff'"
+      fill="#0628F6"
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 120 120">
@@ -1003,7 +1026,8 @@
     </svg>
 
     <svg
-      v-if="icon === 'folding-at-home-covid'"
+      v-else-if="icon === 'folding-at-home-covid'"
+      fill="#0628F6"
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 120 120">
@@ -1044,7 +1068,8 @@
     </svg>
 
     <svg
-      v-if="icon === 'musicnet'"
+      v-else-if="icon === 'musicnet'"
+      fill="#0628F6"
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 100 100">
@@ -1061,7 +1086,8 @@
     </svg>
 
     <svg
-      v-if="icon === 'prelinger-archives'"
+      v-else-if="icon === 'prelinger-archives'"
+      fill="#0628F6"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 200 200">
       <path
@@ -1083,7 +1109,8 @@
     </svg>
 
     <svg
-      v-if="icon === 'free-rainbow-tables'"
+      v-else-if="icon === 'free-rainbow-tables'"
+      fill="#0628F6"
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 200 200">
@@ -1105,7 +1132,8 @@
     </svg>
 
     <svg
-      v-if="icon === 'sloan-digital-sky-survey'"
+      v-else-if="icon === 'sloan-digital-sky-survey'"
+      fill="#0628F6"
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 200 200">
@@ -1142,7 +1170,8 @@
     </svg>
 
     <svg
-      v-if="icon === 'ghtorrent-project'"
+      v-else-if="icon === 'ghtorrent-project'"
+      fill="#0628F6"
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 200 200">
@@ -1167,7 +1196,8 @@
     </svg>
 
     <svg
-      v-if="icon === 'waymo'"
+      v-else-if="icon === 'waymo'"
+      fill="#0628F6"
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 200 200">
@@ -1184,6 +1214,7 @@
 
     <svg
       v-else
+      fill="#0628F6"
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 200 200">
