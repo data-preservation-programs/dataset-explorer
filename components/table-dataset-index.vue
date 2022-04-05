@@ -84,7 +84,7 @@ import DatasetIcon from '@/components/icons/dataset-icon'
 
 // ====================================================================== Export
 export default {
-  name: 'TableDatasetList',
+  name: 'TableDatasetIndex',
 
   components: {
     DatasetIcon

@@ -1199,7 +1199,7 @@
 <script>
 // ====================================================================== Export
 export default {
-  name: 'DataIcon',
+  name: 'DatasetIcon',
 
   props: {
     icon: {

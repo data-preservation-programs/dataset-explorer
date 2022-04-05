@@ -5,7 +5,7 @@
     <section id="deals-table">
       <div class="grid">
         <div class="col">
-          <TableDatasetList :columns="tableColumns" />
+          <TableDatasetIndex :columns="tableColumns" />
         </div>
       </div>
     </section>
@@ -17,16 +17,16 @@
 // ===================================================================== Imports
 import { mapGetters, mapActions } from 'vuex'
 
-import TableDatasetList from '@/components/table-dataset-list'
-import page from '@/content/pages/index.json'
-import fileNames from '@/content/data/dataset-explorer-manifest.json'
+import TableDatasetIndex from '@/components/table-dataset-index'
+import Page from '@/content/pages/index.json'
+import FileNames from '@/content/data/dataset-explorer-manifest.json'
 
 // ====================================================================== Export
 export default {
   name: 'IndexPage',
 
   components: {
-    TableDatasetList
+    TableDatasetIndex
   },
 
   data () {
@@ -36,8 +36,8 @@ export default {
   },
 
   async fetch ({ store, route, $content }) {
-    await store.dispatch('global/getBaseData', { key: 'index', data: page })
-    await store.dispatch('explorer/setDatasetNames', fileNames)
+    await store.dispatch('global/getBaseData', { key: 'index', data: Page })
+    await store.dispatch('explorer/setDatasetNames', FileNames)
     await store.dispatch('explorer/getExplorerData', { tag: 'index', file: 'dataset_list.json' })
   },
 
