@@ -5,7 +5,7 @@
     <section id="deals-table">
       <div class="grid">
         <div class="col">
-          <TableDeals :columns="tableColumns" />
+          <TableDatasetList :columns="tableColumns" />
         </div>
       </div>
     </section>
@@ -17,7 +17,7 @@
 // ===================================================================== Imports
 import { mapGetters, mapActions } from 'vuex'
 
-import TableDeals from '@/components/table-deals'
+import TableDatasetList from '@/components/table-dataset-list'
 import page from '@/content/pages/index.json'
 import fileNames from '@/content/data/dataset-explorer-manifest.json'
 
@@ -26,7 +26,7 @@ export default {
   name: 'IndexPage',
 
   components: {
-    TableDeals
+    TableDatasetList
   },
 
   data () {
@@ -56,7 +56,6 @@ export default {
     tableColumns () {
       return this.pageContent.page_content.table.columns
     }
-    
   },
 
   watch: {
