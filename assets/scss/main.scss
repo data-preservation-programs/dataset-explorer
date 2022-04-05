@@ -16,7 +16,7 @@ $fontAssetPath: '~assets/fonts';
 // ----------------------------------------------------------------- Inconsolata
 @font-face {
   font-family: 'Space Mono';
-  src: url('#{$fontAssetPath}/space_mono/SpaceMono-Regular.ttf') format('truetype');
+  src: url('#{$fontAssetPath}/space-mono/SpaceMono-Regular.ttf') format('truetype');
   font-weight: 400;
 }
 
@@ -82,7 +82,7 @@ img {
 }
 
 #__layout {
-  //overflow: hidden;
+  overflow: hidden;
   .main-container {
     position: relative;
   }
@@ -157,88 +157,6 @@ h3, .h3 {
     height: 100%;
     border: 0;
   }
-}
-
-.button-row {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-top: 1rem;
-  @include tiny {
-    margin-top: 1.25rem;
-  }
-  .button {
-    &:not(:last-child) {
-      margin-right: 1rem;
-    }
-  }
-}
-
-.link-hover {
-  position: relative;
-  padding-bottom: 0.75rem;
-  &:hover,
-  &.nuxt-link-exact-active {
-    &:before,
-    &:after {
-      transition: 250ms ease-in;
-    }
-    &.center {
-      &:before,
-      &:after {
-        width: calc(50% - 0.5rem);
-      }
-    }
-    &.left {
-      &:before {
-        width: 100%;
-      }
-    }
-  }
-  &:before,
-  &:after {
-    content: '';
-    position: absolute;
-    top: calc(100% - 2px);
-    width: 0px;
-    height: 2px;
-    background-color: $classicBlue;
-    filter: drop-shadow(0px 0px 8px $classicBlue);
-    transition: 250ms ease-out;
-  }
-  &:before {
-    border-top-right-radius: 1px;
-    border-bottom-right-radius: 1px;
-  }
-  &:after {
-    border-top-left-radius: 1px;
-    border-bottom-left-radius: 1px;
-  }
-  &.left {
-    &:before {
-      left: 0;
-      border-radius: 1px;
-    }
-    &:after {
-      display: none;
-    }
-  }
-  &.center {
-    &:before {
-      left: 50%;
-    }
-    &:after {
-      right: 50%;
-    }
-  }
-}
-
-.divider {
-  width: 100%;
-  height: 2px;
-  background-color: rgba(255, 255, 255, 0.3);
-  mix-blend-mode: overlay;
-  opacity: 0.25;
 }
 
 .data-unit {

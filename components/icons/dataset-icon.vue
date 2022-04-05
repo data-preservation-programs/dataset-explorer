@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!--ArchLinux-->
+
     <svg
       v-if="icon === 'archlinux'"
       version="1.1"
@@ -18,7 +18,7 @@
         <polygon points="99.9,12.6 99.9,12.6 99.9,12.6" />
       </g>
     </svg>
-    <!--A2D2-->
+
     <svg
       v-else-if="icon === 'a2d2'"
       version="1.1"
@@ -500,7 +500,7 @@
         </g>
       </g>
     </svg>
-    
+
     <svg
       v-else-if="icon === 'filecoin-proofs'"
       version="1.1"
@@ -1061,7 +1061,7 @@
 
     <svg
       v-else-if="icon === 'prelinger-archives'"
-            xmlns="http://www.w3.org/2000/svg"
+      xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 200 200">
       <path
         d="M99.9,14.4c-47.1,0-85.5,38.4-85.5,85.5s38.4,85.6,85.6,85.6c6.9,0,13.5-0.8,19.8-2.3c-1.7-4-3.6-7.7-5.8-11.5

@@ -34,7 +34,7 @@ const actions = {
       }
       return file
     } catch (e) {
-      console.log('====== [Store Action: explorer/getExplorerData] ERROR')
+      console.log('============ [Store Action: explorer/getExplorerData] ERROR')
       console.log(e)
       return false
     }

@@ -24,7 +24,6 @@
             <td
               v-for="cell in columns"
               :key="cell.slug"
-              :data-hovering="getCopyCommand(deal)"
               :class="['cell-parent', { hovering: deal.rank === hovering }]">
               <div :class="['cell cell-body', cell.slug]">
 
@@ -108,11 +107,9 @@ export default {
     ...mapGetters({
       deals: 'explorer/datasetList',
       datasetNames: 'explorer/datasetNames'
-      // loading: 'deals/loading'
     }),
     filtered () {
       const deals = this.deals
-      // console.log(this.deals)
       return deals.length > 0 ? deals : false
     },
     icon () {
@@ -126,9 +123,6 @@ export default {
   },
 
   methods: {
-    getCopyCommand (deal) {
-      return `lotus client retrieve --provider ${deal.provider_id} --maxPrice 0 --allow-local ${deal.payload_cid} output_${deal.payload_cid}.car`
-    },
     toggleRowOverlay (status, dealId) {
       if (status) {
         this.hovering = dealId
