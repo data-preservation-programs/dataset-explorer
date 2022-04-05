@@ -41,7 +41,7 @@ $breakpoint_Xlarge: 90rem; // 1440px
 $breakpoint_UltraLarge: 140.625rem; // 2250px
 
 // ------------------------------------------------------------------- Gradients
-$gradient_SilverGrey: linear-gradient(131.13deg, $aquaHaze 8.78%, $mystic 94.22%);
+$gradient_SilverGrey: linear-gradient(131deg, $aquaHaze, $mystic);
 
 // ////////////////////////////////////////////////////////////////////// Mixins
 // =============================================================================

@@ -37,12 +37,12 @@
         "prioritize_file_name": "Prioritize File Name"
       },
       "columns": [
-        { "slug": "file", "label": "File" },
-        { "slug": "dataset", "label": "Dataset" },
-        { "slug": "deal_id", "label": "Deal ID" },
-        { "slug": "sp", "label": "Service<br />Provider" },
-        { "slug": "location", "label": "Location" },
-        { "slug": "renew_by", "label": "Renew By" }
+        { "slug": "icon", "label": "Logo" },
+        { "slug": "dataset_name", "label": "Dataset Name" },
+        { "slug": "data_stored", "label": "Current<br />Data Stored" },
+        { "slug": "all_data_stored", "label": "Cumulative<br />Data Stored" },
+        { "slug": "storage_providers", "label": "No. of<br />Storage Providers" },
+        { "slug": "locations", "label": "Locations" }
       ],
       "resulter": {
         "label": {
