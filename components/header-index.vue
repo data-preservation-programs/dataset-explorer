@@ -3,13 +3,15 @@
     <div class="grid">
       <div class="col-9">
         
-        <div class="dotted-border">
-          <div class="heading">
-            {{ heading }}
-          </div>
+        <div class="header-wrapper">
+          <div class="dotted-border">
+            <div class="heading">
+              {{ heading }}
+            </div>
 
-          <div class="subheading">
-            {{ subheading }}
+            <div class="subheading">
+              {{ subheading }}
+            </div>
           </div>
         </div>
 
@@ -67,6 +69,10 @@ export default {
   height: 0.3125rem;
   bottom: 0;
   right: 0;
+}
+
+.header-wrapper {
+  padding-bottom: 5rem;
 }
 
 .heading {
