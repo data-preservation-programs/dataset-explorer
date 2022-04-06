@@ -1,7 +1,8 @@
 <template>
   <div :class="`page page-${tag}`">
 
-    INDEX
+    <SearchBar />
+
     <section id="deals-table">
       <div class="grid">
         <div class="col">
@@ -21,12 +22,15 @@ import TableDatasetIndex from '@/components/table-dataset-index'
 import Page from '@/content/pages/index.json'
 import FileNames from '@/content/data/dataset-explorer-manifest.json'
 
+import SearchBar from '@/components/search-bar'
+
 // ====================================================================== Export
 export default {
   name: 'IndexPage',
 
   components: {
-    TableDatasetIndex
+    TableDatasetIndex,
+    SearchBar
   },
 
   data () {

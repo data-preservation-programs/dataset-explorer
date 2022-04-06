@@ -21,13 +21,7 @@
 
     <div class="fill" />
 
-    <div class="border bright" />
-
-    <div class="border gradient" />
-
-    <div class="border solid" />
-
-    <div class="shadow" />
+    <div class="border" />
 
   </div>
 </template>
@@ -50,7 +44,7 @@ export default {
     placeholder: {
       type: String,
       required: false,
-      default: 'Enter a search term'
+      default: 'Filter by dataset, location'
     },
     loading: {
       type: Boolean,
@@ -112,54 +106,12 @@ $iconOffset: calc((#{$barHeight} - #{$iconHeight}) / 2);
   display: flex;
   flex-direction: row;
   position: relative;
-  width: 28.5rem;
-  height: $barHeight;
+  width: 26.2rem;
+  height: 3.1rem;
   transition: 250ms ease-in-out;
-  // &:not(.empty):hover {
-  //   .clear-button {
-  //     transition: 150ms ease-in;
-  //     transform: translateX(0);
-  //   }
-  // }
-  &:hover {
-    .border {
-      &.solid {
-        opacity: 0;
-      }
-      &.gradient {
-        opacity: 1;
-      }
-    }
-    .fill {
-      opacity: 0.5;
-    }
+  &:active {
+    background-color: red;
   }
-  &.focused,
-  &:not(.empty) {
-    .border {
-      &.solid,
-      &.gradient {
-        opacity: 0;
-      }
-      &.bright {
-        opacity: 1;
-      }
-    }
-    .fill {
-      opacity: 1;
-    }
-  }
-}
-
-.shadow {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: calc(100% - 1.5rem);
-  height: 100%;
-  background-color: black;
-  filter: blur(10px);
-  z-index: 0;
 }
 
 .fill {
@@ -168,7 +120,7 @@ $iconOffset: calc((#{$barHeight} - #{$iconHeight}) / 2);
   left: 2px;
   width: calc(100% - 4px);
   height: calc(100% - 4px);
-  background-color: black;
+  background-color: $mystic;
   border-radius: 8px;
   z-index: 10;
   transition: 250ms ease-in-out;
@@ -183,17 +135,11 @@ $iconOffset: calc((#{$barHeight} - #{$iconHeight}) / 2);
   border-radius: 10px;
   z-index: 5;
   transition: 250ms ease-in-out;
-  &.solid {
-    background-color: $logCabin;
-  }
-  &.gradient {
-    background: linear-gradient(90deg, rgba(19, 25, 20, 1) 0%, rgba(33, 141, 101, 1) 99%);
-    opacity: 0;
-  }
-  &.bright {
-    background-color: $eucalyptus;
-    opacity: 0;
-  }
+  position: relative;
+  border: 0 0 1rem 1rem;
+  background-repeat: no-repeat;
+  overflow: visible;
+  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect x='6' y='-5' width='102.5%25' height='100.5%25' fill='none' stroke='blue' stroke-width='2' stroke-dasharray='1.5%2c 10' stroke-dashoffset='2 0' stroke-linecap='round'/%3e%3c/svg%3e");
 }
 
 .search-button {
@@ -202,7 +148,7 @@ $iconOffset: calc((#{$barHeight} - #{$iconHeight}) / 2);
   right: $iconOffset;
   width: $iconHeight;
   height: $iconHeight;
-  background-color: $logCabin;
+  background-color: $mystic;
   border-radius: 0.25rem;
   z-index: 15;
   .icon-search {
@@ -246,7 +192,7 @@ $iconOffset: calc((#{$barHeight} - #{$iconHeight}) / 2);
   appearance: none;
   z-index: 15;
   @include placeholder {
-    color: white;
+    color: $classicBlue;
   }
 }
 </style>
