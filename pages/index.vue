@@ -1,7 +1,9 @@
 <template>
   <div :class="`page page-${tag}`">
 
-    INDEX
+    <Stats
+      :stats="stats"
+      :statData="statData" />
     <section id="deals-table">
       <div class="grid">
         <div class="col">
@@ -17,6 +19,7 @@
 // ===================================================================== Imports
 import { mapGetters, mapActions } from 'vuex'
 
+import Stats from '@/components/stats'
 import TableDatasetIndex from '@/components/table-dataset-index'
 import Page from '@/content/pages/index.json'
 import FileNames from '@/content/data/dataset-explorer-manifest.json'
@@ -26,6 +29,7 @@ export default {
   name: 'IndexPage',
 
   components: {
+    Stats,
     TableDatasetIndex
   },
 
@@ -55,6 +59,26 @@ export default {
     },
     tableColumns () {
       return this.pageContent.page_content.table.columns
+    },
+    stats () {
+      return [
+        {
+          label: 'Dataset Size',
+          type: 'byte',
+          key: 'size'
+        },
+        {
+          label: 'Amount stored on Slingshot',
+          type: 'byte',
+          key: 'cumulative_size'
+        }
+      ]
+    },
+    statData () {
+      return {
+        size: 2308974418329.6,
+        cumulative_size: 2089072092774.4
+      }
     }
   },
 
