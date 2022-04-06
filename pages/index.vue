@@ -1,7 +1,8 @@
 <template>
   <div :class="`page page-${tag}`">
 
-    INDEX
+    <Navigation />
+
     <section id="deals-table">
       <div class="grid">
         <div class="col">
@@ -17,6 +18,7 @@
 // ===================================================================== Imports
 import { mapGetters, mapActions } from 'vuex'
 
+import Navigation from '@/components/navigation'
 import TableDatasetIndex from '@/components/table-dataset-index'
 import Page from '@/content/pages/index.json'
 import FileNames from '@/content/data/dataset-explorer-manifest.json'
@@ -26,6 +28,7 @@ export default {
   name: 'IndexPage',
 
   components: {
+    Navigation,
     TableDatasetIndex
   },
 
@@ -36,6 +39,7 @@ export default {
   },
 
   async fetch ({ store, route, $content }) {
+    await store.dispatch('global/getBaseData', 'general')
     await store.dispatch('global/getBaseData', { key: 'index', data: Page })
     await store.dispatch('explorer/setDatasetNames', FileNames)
     await store.dispatch('explorer/getExplorerData', { tag: 'index', file: 'dataset_list.json' })

@@ -14,9 +14,10 @@
       "to": "/"
     },
     "links": [
-      { "type": "nuxt-link", "url": "/", "text": "Home", "class_names": "nav-link link-hover center" },
-      { "type": "nuxt-link", "url": "/program-details", "text": "Program Details", "class_names": "nav-link link-hover center" },
-      { "type": "a", "url": "https://docs.google.com/forms/d/e/1FAIpQLSe5bpkD5RJeHGMNx3CpkV3a6UA2i7aroNE5DlGUdQF0mQU8DQ/viewform", "text": "Register", "target": "_blank", "class_names": "register-link" }
+      { "type": "nuxt-link", "url": "/", "text": "Home", "class_names": "nav-link center" },
+      { "type": "nuxt-link", "url": "/", "text": "About", "class_names": "nav-link center" },
+      { "type": "nuxt-link", "url": "/", "text": "FAQ", "class_names": "nav-link center" },
+      { "type": "nuxt-link", "url": "/", "text": "Resources", "class_names": "nav-link center" }
     ],
     "program_details": {
       "to": "/program-details",
