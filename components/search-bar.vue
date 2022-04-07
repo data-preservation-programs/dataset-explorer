@@ -1,28 +1,28 @@
 <template>
-  <div :class="['searchbar', { focused, empty }]">
+  <div class="grid">
+    <div class="col-5">
 
-    <button class="search-button">
-      <IconSearch :loading="loading" />
-    </button>
+      <div class="filter-wrapper">
+        <div :class="['searchbar', { focused, empty }]">
+          <div class="border">
+            
+            <button class="search-button">
+              <IconSearch :loading="loading" />
+            </button>
+            
+            <input
+              v-model="value"
+              :placeholder="placeholder"
+              type="text"
+              class="input"
+              @focus="focused = true"
+              @blur="focused = false">
 
-    <!-- <div
-      class="clear-button"
-      @click="clearValue()">
-      Clear
-    </div> -->
+          </div>
+        </div>
+      </div>
 
-    <input
-      v-model="value"
-      :placeholder="placeholder"
-      type="text"
-      class="input"
-      @focus="focused = true"
-      @blur="focused = false">
-
-    <div class="fill" />
-
-    <div class="border" />
-
+    </div>
   </div>
 </template>
 
@@ -114,32 +114,12 @@ $iconOffset: calc((#{$barHeight} - #{$iconHeight}) / 2);
   }
 }
 
-.fill {
-  position: absolute;
-  top: 2px;
-  left: 2px;
-  width: calc(100% - 4px);
-  height: calc(100% - 4px);
-  background-color: $mystic;
-  border-radius: 8px;
-  z-index: 10;
-  transition: 250ms ease-in-out;
-}
-
 .border {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 10px;
-  z-index: 5;
-  transition: 250ms ease-in-out;
+  display: inline-block;
   position: relative;
-  border: 0 0 1rem 1rem;
   background-repeat: no-repeat;
-  overflow: visible;
-  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect x='6' y='-5' width='102.5%25' height='100.5%25' fill='none' stroke='blue' stroke-width='2' stroke-dasharray='1.5%2c 10' stroke-dashoffset='2 0' stroke-linecap='round'/%3e%3c/svg%3e");
+  overflow: hidden;
+  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect x='2' y='2' width='105%25' height='95%25' rx='5' fill='none' stroke='blue' stroke-width='2' stroke-dasharray='1.5%2c 10' stroke-dashoffset='10' stroke-linecap='round'/%3e%3c/svg%3e");
 }
 
 .search-button {
@@ -151,41 +131,13 @@ $iconOffset: calc((#{$barHeight} - #{$iconHeight}) / 2);
   background-color: $mystic;
   border-radius: 0.25rem;
   z-index: 15;
-  .icon-search {
-    width: 100%;
-    height: 100%;
-  }
 }
-
-// .clear-button {
-//   display: flex;
-//   flex-direction: row;
-//   align-items: center;
-//   position: absolute;
-//   top: 0;
-//   right: 0;
-//   height: 100%;
-//   font-size: 0.75rem;
-//   font-weight: 600;
-//   text-transform: uppercase;
-//   // background-color: $charadeDark;
-//   // border-left: 1px solid $shark;
-//   transform: translateX(100%);
-//   padding: 0 0.75rem;
-//   cursor: pointer;
-//   z-index: 10;
-//   transition: 150ms ease-out;
-//   &:hover {
-//     text-decoration: underline;
-//   }
-// }
 
 .input {
   flex: 1;
   position: relative;
   height: 100%;
-  padding-left: 0.75rem;
-  padding-right: calc(#{$iconHeight} + #{$iconOffset} * 2);
+  padding: 0.875rem 13.7rem 1rem 1.9rem;
   background-color: transparent;
   outline: 0;
   border: 0;
@@ -194,5 +146,9 @@ $iconOffset: calc((#{$barHeight} - #{$iconHeight}) / 2);
   @include placeholder {
     color: $classicBlue;
   }
+}
+
+.filter-wrapper {
+  padding-bottom: 5rem;
 }
 </style>
