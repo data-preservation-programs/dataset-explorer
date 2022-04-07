@@ -119,7 +119,31 @@ $iconOffset: calc((#{$barHeight} - #{$iconHeight}) / 2);
   position: relative;
   background-repeat: no-repeat;
   overflow: hidden;
-  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect x='2' y='2' width='105%25' height='95%25' rx='5' fill='none' stroke='blue' stroke-width='2' stroke-dasharray='1.5%2c 10' stroke-dashoffset='10' stroke-linecap='round'/%3e%3c/svg%3e");
+  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect x='2' y='2' width='105%25' height='93%25' rx='5' fill='none' stroke='blue' stroke-width='2' stroke-dasharray='1.5%2c 10' stroke-dashoffset='10' stroke-linecap='round'/%3e%3c/svg%3e");
+}
+
+.border::before {
+  content: '';
+  position: absolute;
+  background-image: url("data:image/svg+xml,%3Csvg width='8' height='8' xmlns='http://www.w3.org/2000/svg'%3E%3Cellipse ry='4' rx='4' cy='4' cx='4' fill='blue'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  transform: translateX(-50%);
+  width: 0.3125rem;
+  height: 0.3125rem;
+  left: 26.2rem;
+}
+.border::after {
+  content: '';
+  position: absolute;
+  background-image: url("data:image/svg+xml,%3Csvg width='8' height='8' xmlns='http://www.w3.org/2000/svg'%3E%3Cellipse ry='4' rx='4' cy='4' cx='4' fill='blue'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  transform: translateX(50%);
+  width: 0.3125rem;
+  height: 0.3125rem;
+  bottom: 0;
+  right: 0;
 }
 
 .search-button {
@@ -149,6 +173,7 @@ $iconOffset: calc((#{$barHeight} - #{$iconHeight}) / 2);
 }
 
 .filter-wrapper {
+  padding-top: 1rem;
   padding-bottom: 5rem;
 }
 </style>
