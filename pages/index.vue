@@ -77,7 +77,6 @@ export default {
   },
 
   mounted () {
-    console.log('this is the page data page content', this.pageData.page_content)
   },
 
   beforeDestroy () {
