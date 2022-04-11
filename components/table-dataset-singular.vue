@@ -1,6 +1,7 @@
 <template>
   <section class="table-deals">
-
+    <div>
+    </div>
     <table v-if="filtered" class="table-container">
       <!-- ============================================================ Head -->
       <thead class="table-head">
@@ -18,8 +19,8 @@
       <!-- ============================================================ Body -->
       <tbody class="divider" />
       <tbody class="table-body">
-        <template v-for="deal in filtered">
-          <tr :key="deal.rank" class="row row-body">
+        <template v-for="(deal, index) in filtered">
+          <tr :key="index" class="row row-body">
 
             <td
               v-for="cell in columns"
@@ -27,39 +28,51 @@
               :class="['cell-parent', { hovering: deal.rank === hovering }]">
               <div :class="['cell cell-body', cell.slug]">
 
-                <template v-if="cell.slug === 'icon'">
-                  <DatasetIcon :icon="deal.slug" />
-                </template>
-
-                <template v-if="cell.slug === 'locations'">
-                  <div class="location-flags">
-                    <span
-                      v-for="(location, index) in deal.locations_stored"
-                      :key="index">
-                      {{ $GetFlagIcon(location) }}
-                    </span>
+                <template v-if="cell.slug === 'curated_dataset'">
+                  <div class="file_name">
+                    {{ deal[0].curated_dataset }}
+                  </div>
+                  <div class="cid">
+                    {{ deal[0].payload_cid }}
                   </div>
                 </template>
 
-                <template v-if="cell.slug === 'dataset_name'">
-                  <nuxt-link 
-                    :to="'/' + deal.slug">
-                    {{ getProjectLabels(deal.slug) }}
-                  </nuxt-link>
-                </template>
-
-                <div v-if="cell.slug === 'data_stored'">
-                  <span>{{ $FormatBytes(deal.elegible_deal_count, '').value }}</span>
-                  <span class="data-unit">{{ $FormatBytes(deal.elegible_deal_count, '').unit }}</span>
+                <div v-if="cell.slug === 'file_format'">
+                  {{ deal[0].file_format }}
                 </div>
 
-                <div v-if="cell.slug === 'all_data_stored'">
-                  <span>{{ $FormatBytes(deal.eligible_data_size, '').value }}</span>
-                  <span class="data-unit">{{ $FormatBytes(deal.eligible_data_size, '').unit }}</span>
+                <div v-if="cell.slug === 'data_size'">
+                  <span>{{ $FormatBytes(deal[0].data_size, '').value }}</span>
+                  <span class="data-unit">{{ $FormatBytes(deal[0].data_size, '').unit }}</span>
                 </div>
 
-                <template v-if="cell.slug === 'storage_providers'">
-                  {{ deal.miner_list.length }}
+                <div v-if="cell.slug === 'deal_id'">
+                  <template v-for="dataset in deal">
+                    <div
+                      :key="dataset.rank">
+                      {{ dataset.deal_id }}
+                    </div>
+                  </template>
+                </div>
+
+                <div v-if="cell.slug === 'miner_id'">
+                  <template v-for="dataset in deal">
+                    <div
+                      :key="dataset.rank">
+                      <span class="miner">{{ dataset.miner_id }}</span><span class="flag">{{ $GetFlagIcon(dataset.location) }}</span>
+                    </div>
+                  </template>
+                </div>
+
+                <div v-if="cell.slug === 'rank'">
+                  {{ deal[0].rank }}
+                </div>
+
+                <template v-if="cell.slug === 'deal_start_epoch'">
+                  {{ $EpochToDate(deal[0].deal_start_epoch) }}
+                  <div class="date_epoch">
+                    {{ deal[0].deal_start_epoch }}
+                  </div>
                 </template>
 
               </div>
@@ -83,14 +96,12 @@
 <script>
 // ===================================================================== Imports
 import { mapGetters } from 'vuex'
-import DatasetIcon from '@/components/icons/dataset-icon'
 
 // ====================================================================== Export
 export default {
-  name: 'TableDatasetIndex',
+  name: 'TableDatasetSingular',
 
   components: {
-    DatasetIcon
   },
 
   props: {
@@ -109,11 +120,12 @@ export default {
   computed: {
     ...mapGetters({
       deals: 'explorer/datasetList',
-      datasetNames: 'explorer/datasetNames'
+      datasetNames: 'explorer/datasetNames',
+      cids: 'explorer/datasetSingular'
     }),
     filtered () {
-      const deals = this.deals
-      return deals.length > 0 ? deals : false
+      const deals = this.cids
+      return Object.keys(deals).length > 0 ? deals : false
     }
   },
 
@@ -355,62 +367,53 @@ tr.divider {
   }
 }
 
-.icon {
-  img {
-    width: 2.8125rem;
-    height: auto;
-  }
-}
-
 // ////////////////////////////////////////////////////////////////////// Common
 
 // //////////////////////////////////////////////////////////////////// Specific
-.filename,
-.renew-by-date {
-  @include fontSize_Tiny;
-  @include leading_Small;
+.file_name {
+  @include fontWeight_Semibold;
 }
 
-.dataset_name {
-  width: 15rem;
-  margin-bottom: 0.75rem;
+.cid {
+  padding-top: 0.5rem;
 }
 
-::v-deep svg {
-  fill: $classicBlue;
+.curated_dataset {
+  width: 10rem;
 }
 
-.icon {
-  div {
-    width: 2.8125rem;
+.miner_id>div>div {
+  display: flex;
+  flex-direction: row;
+  .miner {
+    width: 6rem;
   }
 }
 
-.data_stored, .all_data_stored, .storage_providers {
+.cid {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.data_size, .cid, .deal_id, .miner_id, .date_epoch {
   font-family: $font_Secondary;
-  div {
-    display: flex;
-    .data-unit {
-      padding-top: 0.125rem;
-    }
-  }
+}
 
+.date_epoch {
+  padding-top: 0.5rem;
+}
+
+.data-unit {
+  padding-top: 0.125rem;
+}
+
+.data_size>div {
+  display: flex;
 }
 
 .dataset {
   @include fontSize_Tiny;
   @include leading_Large;
-}
-
-.location {
-  font-size: 1.375rem;
-}
-
-.location-flags {
-  display: flex;
-  flex-wrap: wrap;
-  width: 5rem;
-  transform: scale(1.5);
-  padding-left: 0.75rem;
 }
 </style>

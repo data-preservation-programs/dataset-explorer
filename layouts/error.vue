@@ -26,7 +26,7 @@
 
 <script>
 // ===================================================================== Imports
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters } from 'vuex'
 
 // ====================================================================== Export
 export default {
@@ -39,9 +39,9 @@ export default {
     pageContent () {
       return this.siteContent.general
     },
-    // content () {
-    //   return this.siteContent.general.page_404
-    // },
+    content () {
+      return this.siteContent.general.page_404
+    },
     code () {
       return this.content.code
     },
@@ -51,17 +51,17 @@ export default {
     link () {
       return this.content.link
     }
-  },
-
-  mounted () {
-    this.setLoadingStatus(false)
-  },
-
-  methods: {
-    ...mapActions({
-      setLoadingStatus: 'deals/setLoadingStatus'
-    })
   }
+
+  // mounted () {
+  //   this.setLoadingStatus(false)
+  // },
+
+  // methods: {
+  //   ...mapActions({
+  //     setLoadingStatus: 'deals/setLoadingStatus'
+  //   })
+  // }
 }
 </script>
 

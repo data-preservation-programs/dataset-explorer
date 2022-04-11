@@ -10,7 +10,6 @@
     "image": ""
   },
   "page_content": {
-    "heading": "Dataset Explorer is an initiative to guarantee permanence of data onboarded through the Slingshot program.",
     "stats": [
       { "key": "total_deal_sum_data", "label": "Total data stored through Dataset Explorer", "type": "byte" },
       { "key": "total_deal_count", "label": "Total deals made through Dataset Explorer", "type": "number" },

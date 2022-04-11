@@ -3,8 +3,8 @@
     <div class="grid-center">
       <div class="col-12_md-11_sm-10_mi-12 stat-box">
         <div class="project-heading">
-          <DatasetIcon :icon="''" />
-          <h2>{{ projectHeading }}</h2>
+          <DatasetIcon :icon="$route.params.id" />
+          <h2>{{ datasetName }}</h2>
         </div>
         <div class="grid-center">
           <div class="col-7">
@@ -50,8 +50,10 @@
 
 <script>
 // ====================================================================== Imports
+import { mapGetters } from 'vuex'
+
 import DatasetIcon from '@/components/icons/dataset-icon'
- 
+
 // ====================================================================== Export
 export default {
   name: 'Stats',
@@ -61,8 +63,12 @@ export default {
   },
 
   props: {
+    datasetName: {
+      type: String,
+      required: true
+    },
     statData: {
-      type: Object,
+      type: Array,
       required: true
     },
     stats: {
@@ -72,37 +78,23 @@ export default {
   },
 
   computed: {
-    projectHeading () {
-      return 'COVID-19 Open Research Dataset'
+    ...mapGetters({
+      siteContent: 'global/siteContent'
+    }),
+    blockContent () {
+      return this.siteContent.explorer.stats_block
     },
     infoblockHeading () {
-      return 'About'
+      return this.blockContent.infoblockHeading
     },
     infoblockText () {
       return 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
     },
     resourcesHeading () {
-      return 'Resources'
+      return this.blockContent.resourcesHeading
     },
     linkList () {
-      return [
-        {
-          text: 'Useful Link or external resource one',
-          url: '/'
-        },
-        {
-          text: 'Useful Link or external resource one',
-          url: '/'
-        },
-        {
-          text: 'Useful Link or external resource one',
-          url: '/'
-        },
-        {
-          text: 'Useful Link or external resource one',
-          url: '/'
-        }
-      ]
+      return this.blockContent.link_list
     }
 
   },

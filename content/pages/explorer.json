@@ -1,0 +1,75 @@
+{
+  "seo": {
+    "title": "Program Details — Dataset Explorer",
+    "description": ""
+  },
+  "og": {
+    "site_name": "Program Details — Dataset Explorer",
+    "url": "",
+    "type": "website",
+    "image": ""
+  },
+  "stats_block": {
+    "infoblockHeading": "About",
+    "resourcesHeading": "Resources",
+    "link_list": [{
+        "text": "Useful Link or external resource one",
+        "url": "/"
+      },
+      {
+        "text": "Useful Link or external resource one",
+        "url": "/"
+      },
+      {
+        "text": "Useful Link or external resource one",
+        "url": "/"
+      },
+      {
+        "text": "Useful Link or external resource one",
+        "url": "/"
+      }
+    ]
+  },
+  "stats": [
+    {"label": "Dataset Size", "type": "byte", "key": "elegible_deal_count"},
+    {"label": "Amount stored on Slingshot", "type": "byte", "key": "eligible_data_size"}
+  ],
+  "table": {
+    "searchbar": {
+      "placeholder": "Search for a piece or payload CID, deal or SP"
+    },
+    "loading_placeholder_text": "Loading data",
+    "sorter": {
+      "label": "Sort by",
+      "options": [
+        { "key": "date_added_desc", "label": "Date Added - Newest" },
+        { "key": "date_added_asc", "label": "Date Added - Oldest" }
+      ]
+    },
+    "filter": {
+      "prioritize_file_name": "Prioritize File Name"
+    },
+    "columns": [
+      { "slug": "curated_dataset", "label": "File" },
+      { "slug": "file_format", "label": "Type" },
+      { "slug": "data_size", "label": "Size" },
+      { "slug": "deal_id", "label": "Deal ID" },
+      { "slug": "miner_id", "label": "Storage Providers" },
+      { "slug": "rank", "label": "Status" },
+      { "slug": "deal_start_epoch", "label": "Available Until"}
+    ],
+    "resulter": {
+      "label": {
+        "before": "View",
+        "after": "Results"
+      },
+      "options": [
+        10,
+        20,
+        30,
+        50,
+        100
+      ]
+    }
+  }
+}
