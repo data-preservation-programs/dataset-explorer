@@ -9,13 +9,13 @@
         cx="6.5"
         cy="6.5"
         r="5.5"
-        stroke="blue"
+        stroke="%23001FE6"
         stroke-width="2"
         stroke-linecap="round" />
 
       <path
         d="M10 12L13 16"
-        stroke="blue"
+        stroke="%23001FE6"
         stroke-width="2"
         stroke-linecap="round" />
 
