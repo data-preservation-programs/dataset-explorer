@@ -1,7 +1,8 @@
 <template>
   <div :class="`page page-${tag}`">
 
-    INDEX
+    <SortButton />
+
     <section id="deals-table">
       <div class="grid">
         <div class="col">
@@ -20,13 +21,15 @@ import { mapGetters, mapActions } from 'vuex'
 import TableDatasetIndex from '@/components/table-dataset-index'
 import Page from '@/content/pages/index.json'
 import FileNames from '@/content/data/dataset-explorer-manifest.json'
+import SortButton from '@/components/sort-button'
 
 // ====================================================================== Export
 export default {
   name: 'IndexPage',
 
   components: {
-    TableDatasetIndex
+    TableDatasetIndex,
+    SortButton
   },
 
   data () {
