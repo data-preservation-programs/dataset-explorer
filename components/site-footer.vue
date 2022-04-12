@@ -1,25 +1,24 @@
 <template>
   <section id="site-footer">
     <div class="dotted-border">
-      <div class="grid-center footer-content">
-        <div class="col-6 footer-logo-block">
-          <FullMark />
+      <div class="grid-center">
+        <div class="col-5">
+          <LogoDatasetExplorer
+            class="logo-block" />
         </div>
-        <div class="col-6 footer-info-block">
-          <div class="grid-right footer-nav-links">
+        <div class="col-5" data-push-left="off-2">
+          <div class="nav-links">
             <template v-for="(link, index) in navLinks">
               <nuxt-link
-                :key="'link' + index"
-                :to="link.link"
-                :class="'col-3'">
+                :key="index"
+                :to="link.url"
+                :class="'link'">
                 {{ link.text }}
               </nuxt-link>
             </template>
           </div>
-          <div class="grid-right footer-info-text">
-            <div class="col-12">
-              <p>{{ content.info_text }}</p>
-            </div>
+          <div class="info-text">
+            <p>{{ content.info_text }}</p>
           </div>
         </div>
       </div>
@@ -30,14 +29,14 @@
 <script>
 // ===================================================================== Imports
 import { mapGetters } from 'vuex'
-import FullMark from '@/components/full-mark'
+import LogoDatasetExplorer from '@/components/logo-dataset-explorer'
 
 // ====================================================================== Export
 export default {
   name: 'SiteFooter',
 
   components: {
-    FullMark
+    LogoDatasetExplorer
   },
 
   computed: {
@@ -94,27 +93,28 @@ export default {
   }
 }
 
-.footer-content {
-  margin-left: 4.875rem;
+.dotted-border>div {
+  margin-left: 4.75rem;
   padding-top: 4rem;
 }
 // ///////////////////////////////////////////////////////////////////// Sections
-.footer-info-block {
-  padding-left: 4.75rem;
-  padding-right: 1.25rem;
-}
-
-.footer-nav-links {
+.nav-links {
   @include fontWeight_Semibold;
   @include fontSize_Regular;
   text-transform: uppercase;
+  display: flex;
+  flex-direction: row;
+  .link {
+    padding: 0 1rem;
+  }
 }
 
-.footer-info-text {
+.info-text {
   @include fontWeight_Medium;
   @include fontSize_Medium;
   line-height: 2.1875rem;
   padding-top: 1.25rem;
+  padding-left: 1rem;
 }
 
 </style>

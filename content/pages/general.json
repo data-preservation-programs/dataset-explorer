@@ -29,22 +29,22 @@
         {
           "type": "nuxt-link",
           "text": "Home",
-          "link": "/"
+          "url": "/"
         },
         {
           "type": "nuxt-link",
           "text": "About",
-          "link": "/"
+          "url": "/"
         },
         {
           "type": "nuxt-link",
           "text": "FAQ",
-          "link": "/"
+          "url": "/"
         },
         {
           "type": "nuxt-link",
           "text": "Resources",
-          "link": "/"
+          "url": "/"
         }
       ],
       "info_text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore"
