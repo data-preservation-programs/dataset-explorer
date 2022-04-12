@@ -1,7 +1,5 @@
 <template>
   <section class="table-deals">
-    <div>
-    </div>
     <table v-if="filtered" class="table-container">
       <!-- ============================================================ Head -->
       <thead class="table-head">
