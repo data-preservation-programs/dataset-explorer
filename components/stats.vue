@@ -30,17 +30,19 @@
             </div>
           </div>
           <div class="col-5 resources-block">
-            <h3>{{ resourcesHeading }}</h3>
-            <ul>
-              <li
-                v-for="(link, index) in linkList"
-                :key="'link' + index">
-                <a
-                  :href="link.url">
-                  {{ link.text }}
-                </a>
-              </li>
-            </ul>
+            <template v-if="linkList">
+              <h3>{{ resourcesHeading }}</h3>
+              <ul>
+                <li
+                  v-for="(resource, index) in linkList"
+                  :key="'link' + index">
+                  <a
+                    :href="resource.link">
+                    {{ resource.label }}
+                  </a>
+                </li>
+              </ul>
+            </template>
           </div>
         </div>
       </div>
@@ -68,7 +70,7 @@ export default {
       required: true
     },
     statData: {
-      type: Array,
+      type: Object,
       required: true
     },
     stats: {
@@ -79,22 +81,30 @@ export default {
 
   computed: {
     ...mapGetters({
-      siteContent: 'global/siteContent'
+      siteContent: 'global/siteContent',
+      datasetList: 'explorer/datasetNames'
     }),
+    slug () {
+      return this.$route.params.id
+    },
     blockContent () {
       return this.siteContent.explorer.stats_block
+    },
+    dataSet () {
+      return this.datasetList.manifest[this.slug]
     },
     infoblockHeading () {
       return this.blockContent.infoblockHeading
     },
     infoblockText () {
-      return 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+      return this.dataSet.description
     },
     resourcesHeading () {
       return this.blockContent.resourcesHeading
     },
     linkList () {
-      return this.blockContent.link_list
+      console.log(this.dataSet.resources)
+      return this.dataSet.resources
     }
 
   },

@@ -61,8 +61,11 @@ export default {
       datasetList: 'explorer/datasetList',
       cids: 'explorer/datasetSingular'
     }),
-    data () {
-      return this.cids
+    dataNames () {
+      return this.datasetNames
+    },
+    dataset () {
+      return this.datasetList
     },
     pageData () {
       return this.siteContent[this.tag]
