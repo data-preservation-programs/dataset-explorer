@@ -42,15 +42,15 @@
                 </template>
 
                 <template v-if="cell.slug === 'dataset_name'">
-                  <nuxt-link 
+                  <nuxt-link
                     :to="'/' + deal.slug">
                     {{ getProjectLabels(deal.slug) }}
                   </nuxt-link>
                 </template>
 
                 <div v-if="cell.slug === 'data_stored'">
-                  <span>{{ $FormatBytes(deal.elegible_deal_count, '').value }}</span>
-                  <span class="data-unit">{{ $FormatBytes(deal.elegible_deal_count, '').unit }}</span>
+                  <span>{{ $FormatBytes(deal.eligible_data_size, '').value }}</span>
+                  <span class="data-unit">{{ $FormatBytes(deal.eligible_data_size, '').unit }}</span>
                 </div>
 
                 <div v-if="cell.slug === 'all_data_stored'">

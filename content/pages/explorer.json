@@ -31,7 +31,7 @@
     ]
   },
   "stats": [
-    {"label": "Dataset Size", "type": "byte", "key": "elegible_deal_count"},
+    {"label": "Dataset Size", "type": "byte", "key": "eligible_data_size"},
     {"label": "Amount stored on Slingshot", "type": "byte", "key": "eligible_data_size"}
   ],
   "table": {
@@ -55,7 +55,7 @@
       { "slug": "data_size", "label": "Size" },
       { "slug": "deal_id", "label": "Deal ID" },
       { "slug": "miner_id", "label": "Storage Providers" },
-      { "slug": "rank", "label": "Status" },
+      { "slug": "status", "label": "Status" },
       { "slug": "deal_start_epoch", "label": "Available Until"}
     ],
     "resulter": {

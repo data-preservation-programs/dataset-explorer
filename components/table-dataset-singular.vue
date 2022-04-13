@@ -62,8 +62,8 @@
                   </template>
                 </div>
 
-                <div v-if="cell.slug === 'rank'">
-                  {{ deal[0].rank }}
+                <div v-if="cell.slug === 'status'">
+                  Active
                 </div>
 
                 <template v-if="cell.slug === 'deal_start_epoch'">
