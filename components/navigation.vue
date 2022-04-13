@@ -1,5 +1,5 @@
 <template>
-  <section id="navigation">
+  <section id="nav">
     <div class="grid">
       <div class="col">
         <nav class="navigation">
@@ -8,7 +8,6 @@
             :to="linkLogo.to"
             class="logo-link">
             <Logo class="logo" />
-            <!-- <Spinner v-if="loading" /> -->
           </nuxt-link>
 
           <div class="links">
@@ -48,7 +47,6 @@ export default {
   computed: {
     ...mapGetters({
       siteContent: 'global/siteContent'
-      // loading: 'deals/loading'
     }),
     navigation () {
       return this.siteContent.general.navigation
@@ -65,7 +63,7 @@ export default {
 
 <style lang="scss" scoped>
 // ///////////////////////////////////////////////////////////////////// General
-#navigation {
+#nav {
   padding-top: 2.5rem;
   margin-bottom: 7.5rem;
 }
