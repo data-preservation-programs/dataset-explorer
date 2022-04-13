@@ -46,15 +46,13 @@ $fontWeight_Extrabold: 800;
 // leading_ExtraLarge | 30pt
 // leading_Huge | 45pt
 
-$leading_Small: 0.813rem;
-$leading_Medium: 0.875rem;
-$leading_Regular: 1.25rem;
-$leading_Large: 2.5rem;
-$leading_Huge: 8.438rem;
+$leading_Small: 1;
+$leading_Regular: 1.2;
+$leading_Large: 2.2;
+$leading_Huge: 8;
 
 @mixin leading_Small { line-height: $leading_Small; }
 @mixin leading_Regular { line-height: $leading_Regular; }
-@mixin leading_Medium { line-height: $leading_Medium; }
 @mixin leading_Large { line-height: $leading_Large; }
 @mixin leading_Huge { line-height: $leading_Huge; }
 
