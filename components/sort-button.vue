@@ -2,17 +2,19 @@
 
   <div class="col-10">
     <div class="dotted-border">
-      <button class="dropdownButton">
+      <button class="dropdown-button">
         <span>Sort by</span>
       </button>
-      <select class="dropdown">
-        <option value="latest">
+      <div ref="dropdownContent" class="dropdown-content">
+        
+        <div class="dropdown-item">
           Renew By - Latest
-        </option>
-        <option value="soonest">
+        </div>
+        <div class="dropdown-item">
           Renew By - Soonest
-        </option>
-      </select>
+        </div>
+      </div>
+
     </div>
   </div>
 
@@ -20,20 +22,23 @@
 
 <script>
 // ===================================================================== Imports
-
 // ====================================================================== Export
 export default {
-  name: 'SortButton'
-  
+  name: 'SortButton',
+
+  mounted () {
+    console.log('THIS IS refs', this.$refs)
+  }
 }
 </script>
 
 <style lang="scss" scoped>
 // ///////////////////////////////////////////////////////////////////// General
 .dotted-border {
+  height: 3.1rem;
+  width:  12.7rem;
   padding: 1.5rem;
   margin: 1rem;
-  width: auto;
   display: inline-block;
   position: relative;
   background-repeat: no-repeat;
@@ -64,29 +69,39 @@ export default {
   }
 }
 
-select {
-  position: relative;
-  font-size: 1rem;
-  border: none;
-  visibility: hidden;
+// select {
+//   position: relative;
+//   font-size: 1rem;
+//   border: none;
+//   visibility: hidden;
+//   &:hover {
+//     visibility: visible;
+//   }
+// }
+span {
+  font-size: $fontSize_Mini;
+  font-weight: $fontWeight_Semibold;
+  &:after {
+    content: "❯";
+    display: inline-block;
+    color: #001FE6;
+    margin-left: 1rem;
+    transform: rotate(90deg);
+    transition: transform .3s;
+  }
 }
 
-select:hover{
-  visibility: visible;
-}
-
-span::after {
-  content: "❯";
-  color: #001FE6;
-  margin-left: 1rem;
-  transform: rotate(190deg);
-  transition: transform .3s;
-}
-
-.dropdownButton {
+.dropdown-button {
   cursor: pointer;
   border: none;
   background: transparent;
+  width: 100%;
+  height: 100%;
+}
+
+.dropdown-content {
+  // position: absolute;
+  height: 0;
 }
 
 </style>
