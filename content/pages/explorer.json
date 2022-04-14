@@ -13,20 +13,20 @@
     "infoblockHeading": "About",
     "resourcesHeading": "Resources",
     "link_list": [{
-        "text": "Useful Link or external resource one",
+        "label": "Useful Link or external resource one",
+        "link": "/"
+      },
+      {
+        "label": "Useful Link or external resource one",
         "url": "/"
       },
       {
-        "text": "Useful Link or external resource one",
-        "url": "/"
+        "label": "Useful Link or external resource one",
+        "link": "/"
       },
       {
-        "text": "Useful Link or external resource one",
-        "url": "/"
-      },
-      {
-        "text": "Useful Link or external resource one",
-        "url": "/"
+        "label": "Useful Link or external resource one",
+        "link": "/"
       }
     ]
   },

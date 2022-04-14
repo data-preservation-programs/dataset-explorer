@@ -1,23 +1,22 @@
 <template>
   <section id="stats">
     <div class="grid-center">
-      <div class="col-12_md-11_sm-10_mi-12 stat-box">
+      <div class="col-12_md-11_sm-10_mi-12">
         <div class="project-heading">
           <DatasetIcon :icon="$route.params.id" />
           <h2>{{ datasetName }}</h2>
         </div>
-        <div class="grid-center">
-          <div class="col-7">
+        <div class="content">
+          <div class="about-stats">
             <div class="info-block">
               <h3>{{ infoblockHeading }}</h3>
               <p>{{ infoblockText }}</p>
             </div>
-            <div class="grid stat-list">
+            <div class="grid-equalHeight stat-list">
               <div
                 v-for="stat in stats"
                 :key="stat.key"
-                class="stat col-4">
-
+                class="col-5">
                 <div class="inner-content">
                   <span class="value">
                     {{ getStat(stat, 'value') }}
@@ -29,7 +28,7 @@
               </div>
             </div>
           </div>
-          <div class="col-5 resources-block">
+          <div class="resources-block">
             <template v-if="linkList">
               <h3>{{ resourcesHeading }}</h3>
               <ul>
@@ -100,11 +99,12 @@ export default {
       return this.dataSet.description
     },
     resourcesHeading () {
-      return this.blockContent.resourcesHeading
+      return 'Resources'
+      // return this.blockContent.resourcesHeading
     },
     linkList () {
-      console.log(this.dataSet.resources)
-      return this.dataSet.resources
+      return this.blockContent.link_list
+      // return this.dataSet.resources
     }
 
   },
@@ -123,10 +123,15 @@ export default {
 
 <style lang="scss" scoped>
 // ///////////////////////////////////////////////////////////////////// General
+#stats {
+  padding-bottom: 2rem;
+}
+
 #stats>div {
   padding: 0 0.5rem;
 }
-.stat-box {
+
+#stats>div>div {
   margin-top: 2rem;
   margin-bottom: 2rem;
   padding: 3.4375rem 4.125rem;
@@ -162,6 +167,11 @@ export default {
   fill: $classicBlue;
 }
 
+.content {
+  display: flex;
+  flex-direction: row;
+}
+
 .info-block {
   padding-right: 3rem;
   padding-bottom: 5.625rem;
@@ -171,6 +181,7 @@ export default {
 }
 
 .resources-block {
+  @include fontWeight_Semibold;
   padding-left: 4.25rem;
   line-height: 1.75;
   ul {
@@ -197,40 +208,14 @@ export default {
   }
 }
 
-.stat {
-  position: relative;
-  padding-top: calc(25% - 0.75rem);
-  padding-bottom: calc(25% - 5rem);
-  margin-right: 1rem;
-  margin-bottom: 1rem;
-  border-radius: 0.3125rem; // 10px
-  background-color: $white;
-  @include small {
-    width: calc(33.333% - 1rem * 2 / 3);
-    padding-top: calc(33.333% - 1rem * 2 / 3);
-  }
-  @include tiny {
-    width: calc(50% - 0.25rem);
-    padding-top: calc(50% - 0.25rem);
-    margin-right: 0.5rem;
-    margin-bottom: 0.5rem;
-  }
-}
-
 .inner-content {
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  padding: 2rem 1rem;
-  z-index: 10;
-  @include tiny {
-    justify-content: center;
-  }
+  background-color: $white;
+  border-radius: 0.3125rem; // 10px
+  padding-top: calc(25% - 0.5rem);
+  padding-bottom: calc(25% - 1rem);
 }
 
 .value,
