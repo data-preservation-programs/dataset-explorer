@@ -82,7 +82,7 @@ export default {
 .subheading {
   @include subheading;
   margin: 1rem;
-  padding-left: 2.7rem;
+  padding-left: 2.625rem;
   padding-bottom: 2.3rem;
 }
 
