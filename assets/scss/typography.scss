@@ -1,8 +1,8 @@
 // ////////////////////////////////////////////////////////////////// Typography
 // =============================================================================
 // -------------------------------------------------------------------- Families
-$font_Primary: 'Urbanist';
-$font_Secondary: 'Space Mono';
+$font_Primary: 'Urbanist', helvetica, sans-serif;
+$font_Secondary: 'Space Mono', courier, monospace;
 
 // ------------------------------------------------------------------- Font Size
 // 12px / 16 = 0.75rem
@@ -30,7 +30,7 @@ $fontSize_Huge: 8.75rem;
 $fontWeight_Regular: 400;
 $fontWeight_Medium: 500;
 $fontWeight_Semibold: 600;
-$fontWeight_Extrabold: 800;
+$fontWeight_Extrabold: 900;
 
 @mixin fontWeight_Regular { font-weight: $fontWeight_Regular; }
 @mixin fontWeight_Medium { font-weight: $fontWeight_Medium; }
@@ -67,13 +67,15 @@ $letterSpacing_Large: 0.063rem;
   @include fontSize_Huge;
   @include leading_Huge;
   @include fontWeight_Extrabold;
+  text-transform: uppercase;
   letter-spacing: $letterSpacing_ExtraSmall;
 }
 
 @mixin subheading {
-  @include fontSize_Large;
+  @include fontSize_Medium;
   @include leading_Large;
   @include fontWeight_Semibold;
+  text-transform: uppercase;
   letter-spacing: $letterSpacing_Large;
 }
 

@@ -136,6 +136,11 @@ export default {
         test: /\.md$/,
         use: 'raw-loader'
       })
+      config.module.rules.push({
+        test: /\.ya?ml$/,
+        type: 'json',
+        use: 'yaml-loader'
+      })
     }
   }
 }

@@ -405,7 +405,7 @@ tr.divider {
 .location-flags {
   display: flex;
   flex-wrap: wrap;
-  width: 5rem;
+  width: 6.5rem;
   transform: scale(1.5);
   padding-left: 0.75rem;
 }
