@@ -113,7 +113,7 @@ span {
   height: 0;
   background: linear-gradient(131.13deg, #F7F9FA 8.78%, #E2E8EF 94.22%);
   border-radius: 0.3rem;
-  box-shadow: 0px 20px 70px rgba(169, 180, 203, 0.3), -3px -3px 0px #FFFFFF, 0px 3px 0px #D6DADF, inset 0px -20px 20px rgba(255, 255, 255, 0.2);
+  box-shadow: 0px 20px 70px rgba(169, 180, 203, 0.3), 0px -3px 0px #FFFFFF, 0px 3px 0px #D6DADF, inset 0px -20px 20px rgba(255, 255, 255, 0.2);
   padding: 0;
   &.show {
     height: auto;
