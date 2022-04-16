@@ -4,7 +4,7 @@
     <!-- <div :class="[show ? 'dropdown-wrapper dotted-border show' : 'dropdown-wrapper dotted-border']"> -->
     <div :class="['dropdown-wrapper dotted-border', { show: showDropdown }]">
       <button ref="dropdownButton" @click="toggleDropdown">
-        <i>Sort by</i>
+        Sort by <i class="chevron" />
       </button>
       <div ref="dropdownContent" class="dropdown-content">
         <div class="dropdown-item">
@@ -87,23 +87,22 @@ export default {
 
   button {
     position: relative;
+    font-size: $fontSize_Mini;
+    font-weight: $fontWeight_Semibold;
     cursor: pointer;
     text-align: right;
     width: 100%;
     height: 100%;
     padding-right: 1rem;
+
   }
 
-  i {
-    font-size: $fontSize_Mini;
-    font-weight: $fontWeight_Semibold;
-    font-style: normal;
-    &:after {
-      content: "❯";
-      display: inline-block;
-      color: #001FE6;
-      margin-left: 1rem;
-      transform: rotate(90deg);
+  i.chevron {
+    display: inline-block;
+    transition: all $transitionDuration linear;
+    margin: 0 -0.625rem -0.625rem 0.625rem;
+    &:before, &:after {
+      background-color: $classicBlue;
       transition: all $transitionDuration linear;
     }
   }
@@ -121,6 +120,7 @@ export default {
   }
 
   .dropdown-item {
+    cursor: pointer;
     font-size: $fontSize_Mini;
     font-weight: $fontWeight_Semibold;
     line-height: 1.875rem;
@@ -132,9 +132,12 @@ export default {
   }
 
   &.show {
-    i {
+    i.chevron {
+      &:before {
+        transform: rotate(-45deg);
+      }
       &:after {
-        transform: rotate(-90deg);
+        transform: rotate(45deg);
       }
     }
     .dropdown-content {
