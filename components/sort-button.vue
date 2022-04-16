@@ -1,7 +1,8 @@
 <template>
 
   <div class="col-10">
-    <div :class="[show ? 'dropdown-wrapper dotted-border show' : 'dropdown-wrapper dotted-border']" >
+    <!-- <div :class="[show ? 'dropdown-wrapper dotted-border show' : 'dropdown-wrapper dotted-border']"> -->
+    <div :class="['dropdown-wrapper dotted-border', { show: showDropdown }]">
       <button ref="dropdownButton" @click="toggleDropdown">
         <i>Sort by</i>
       </button>
@@ -27,17 +28,18 @@ export default {
 
   data () {
     return {
-      show: ''
+      showDropdown: false
     }
   },
 
   methods: {
     toggleDropdown () {
-      if (this.show === 'show') {
-        this.show = ''
-      } else {
-        this.show = 'show'
-      }
+      this.showDropdown = !this.showDropdown
+      // if (this.show === 'show') {
+      //   this.show = ''
+      // } else {
+      //   this.show = 'show'
+      // }
     }
   }
 }
