@@ -1,7 +1,10 @@
 <template>
   <div :class="`page page-${tag}`">
 
-    INDEX
+    <HeaderIndex
+      :heading="heading"
+      :subheading="subheading" />
+
     <section id="deals-table">
       <div class="grid">
         <div class="col">
@@ -20,9 +23,11 @@
 import { mapGetters, mapActions } from 'vuex'
 import SiteFooter from '@/components/site-footer'
 
+import HeaderIndex from '@/components/header-index'
 import TableDatasetIndex from '@/components/table-dataset-index'
-import Page from '@/content/pages/index.json'
+
 import FileNames from '@/content/data/dataset-explorer-manifest.json'
+import IndexPageData from '@/content/pages/index.json'
 
 // ====================================================================== Export
 export default {
@@ -30,6 +35,7 @@ export default {
 
   components: {
     SiteFooter,
+    HeaderIndex,
     TableDatasetIndex
   },
 
@@ -39,9 +45,9 @@ export default {
     }
   },
 
-  async fetch ({ store, route, $content }) {
+  async fetch ({ store, route }) {
     await store.dispatch('global/getBaseData', 'general')
-    await store.dispatch('global/getBaseData', { key: 'index', data: Page })
+    await store.dispatch('global/getBaseData', { key: 'index', data: IndexPageData })
     await store.dispatch('explorer/setDatasetNames', FileNames)
     await store.dispatch('explorer/getExplorerData', { tag: 'index', file: 'dataset_list.json' })
   },
@@ -55,11 +61,20 @@ export default {
       siteContent: 'global/siteContent',
       datasetList: 'explorer/datasetList'
     }),
+    pageData () {
+      return this.siteContent[this.tag]
+    },
     pageContent () {
-      return this.siteContent.index
+      return this.pageData.page_content
+    },
+    heading () {
+      return this.pageContent.fold.heading
+    },
+    subheading () {
+      return this.pageContent.fold.subheading
     },
     tableColumns () {
-      return this.pageContent.page_content.table.columns
+      return this.pageContent.table.columns
     }
   },
 

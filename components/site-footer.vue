@@ -1,29 +1,30 @@
 <template>
-  <section id="site-footer">
+  <footer id="site-footer">
     <div class="dotted-border">
-      <div class="grid-center">
-        <div class="col-5">
-          <LogoDatasetExplorer
-            class="logo-block" />
-        </div>
-        <div class="col-5" data-push-left="off-2">
-          <div class="nav-links">
-            <template v-for="(link, index) in navLinks">
+      <div class="inner-content">
+        <div class="grid-center">
+          <div class="col-5_sm-12">
+            <LogoDatasetExplorer
+              class="logo-block" />
+          </div>
+          <div class="col-5_sm-12" data-push-left="off-2_sm-0">
+            <nav>
               <nuxt-link
+                v-for="(link, index) in navLinks"
                 :key="index"
                 :to="link.url"
                 :class="'link'">
                 {{ link.text }}
               </nuxt-link>
-            </template>
-          </div>
-          <div class="info-text">
-            <p>{{ content.info_text }}</p>
+            </nav>
+            <div class="info-text">
+              <p>{{ content.info_text }}</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </footer>
 </template>
 
 <script>
@@ -56,12 +57,12 @@ export default {
 <style lang="scss" scoped>
 // ///////////////////////////////////////////////////////////////////// General
 #site-footer {
-  margin-top: 3rem;
+  margin-top: 6rem;
 }
 .dotted-border {
   position: relative;
-  margin-left: 11.625rem;
-  margin-right: 18rem;
+  margin-left: 12%;
+  margin-right: 18%;
   margin-bottom: 5rem;
   border: 0 0 1rem 1rem;
   background-repeat: no-repeat;
@@ -91,14 +92,26 @@ export default {
     top: 0.125rem;
     right: -0.625rem;
   }
+  @include medium {
+    margin-left: 8%;
+    margin-right: 8%;
+  }
 }
 
-.dotted-border>div {
-  margin-left: 4.75rem;
+.inner-content {
   padding-top: 4rem;
+  margin-left: 4.5rem;
+  @include medium {
+    margin-left: 0;
+  }
 }
 // ///////////////////////////////////////////////////////////////////// Sections
-.nav-links {
+.logo-block {
+ @include medium {
+
+ }
+}
+nav {
   @include fontWeight_Semibold;
   @include fontSize_Regular;
   text-transform: uppercase;
