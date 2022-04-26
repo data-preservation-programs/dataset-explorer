@@ -26,7 +26,7 @@ import HeaderIndex from '@/components/header-index'
 import TableDatasetIndex from '@/components/table-dataset-index'
 
 import FileNames from '@/content/data/dataset-explorer-manifest.json'
-import IndexPageData from '@/content/pages/index.yml'
+import IndexPageData from '@/content/pages/index.json'
 
 // ====================================================================== Export
 export default {
