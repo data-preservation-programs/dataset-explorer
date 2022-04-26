@@ -4,7 +4,7 @@
       <div class="dotted-border">
         <div class="col-10">
           <h1 class="heading">
-            FAQ
+            {{ heading }}
           </h1>
         </div>
         <div class="col-10">
@@ -51,6 +51,9 @@ export default {
     ...mapGetters({
       siteContent: 'global/siteContent'
     }),
+    heading () {
+      return this.siteContent[this.tag].page_content.heading
+    },
     accordionSections () {
       return this.siteContent[this.tag].page_content.accordion_sections
     }
