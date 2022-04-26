@@ -8,7 +8,7 @@
 // ===================================================================== Imports
 import { mapGetters } from 'vuex'
 
-import AboutPageData from '@content/markdown/about.md'
+import AboutPageData from '@/content/markdown/about.md'
 // ====================================================================== Export
 export default {
   name: 'AboutPage',
