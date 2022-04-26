@@ -1,22 +1,22 @@
 <template>
 
-  <div class="col-10">
-    <!-- <div :class="[show ? 'dropdown-wrapper dotted-border show' : 'dropdown-wrapper dotted-border']"> -->
-    <div :class="['dropdown-wrapper dotted-border', { show: showDropdown }]">
-      <button ref="dropdownButton" @click="toggleDropdown">
-        <i>Sort by</i>
-      </button>
-      <div ref="dropdownContent" class="dropdown-content">
-        <div class="dropdown-item">
-          Renew By - Latest
-        </div>
-        <div class="dropdown-item">
-          Renew By - Soonest
+  <div class="grid-right">
+    <div class="col-3">
+      <div :class="['dropdown-wrapper dotted-border', { show: showDropdown }]">
+        <button ref="dropdownButton" @click="toggleDropdown">
+          <i>Sort by</i>
+        </button>
+        <div ref="dropdownContent" class="dropdown-content">
+          <div class="dropdown-item">
+            Renew By - Latest
+          </div>
+          <div class="dropdown-item">
+            Renew By - Soonest
+          </div>
         </div>
       </div>
     </div>
   </div>
-
 </template>
 
 <script>
@@ -34,12 +34,7 @@ export default {
 
   methods: {
     toggleDropdown () {
-      this.showDropdown = this.showDropdown
-      // if (this.show === 'show') {
-      //   this.show = ''
-      // } else {
-      //   this.show = 'show'
-      // }
+      this.showDropdown = !this.showDropdown
     }
   }
 }
@@ -55,7 +50,7 @@ export default {
   margin: 1rem;
   display: inline-block;
   background-repeat: no-repeat;
-  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cmask id='mask-top-left'%3E%3Crect x='0' y='0' width='100%25' height='100%25' fill='white' /%3E%3Crect x='0' y='0' width='80%25' height='10%25' fill='black' /%3E%3C/mask%3E%3C/defs%3E%3Crect x='-2' y='2' width='98%25' height='95%25' rx='8' fill='none' stroke='blue' stroke-width='2' stroke-dasharray='1.5%2c 10' stroke-dashoffset='17' stroke-linecap='round' mask='url(%23mask-top-left)'/%3E%3C/svg%3e");
+  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cmask id='mask-top-left'%3E%3Crect x='0' y='0' width='100%25' height='100%25' fill='white' /%3E%3Crect x='0' y='0' width='80%25' height='10%25' fill='black' /%3E%3C/mask%3E%3C/defs%3E%3Crect x='-2' y='2' width='98%25' height='95%25' rx='8' fill='none' stroke='blue' stroke-width='2' stroke-dasharray='1.5%2c 9' stroke-dashoffset='17' stroke-linecap='round' mask='url(%23mask-top-left)'/%3E%3C/svg%3e");
   transition: all $transitionDuration linear;
   &:before {
     content: '';
@@ -66,8 +61,8 @@ export default {
     transform: translateX(-50%);
     width: 0.3125rem;
     height: 0.3125rem;
-    right: 2.7rem;
-    bottom: 3.51rem;
+    right: 2.6rem;
+    top: -0.01rem;
   }
   &:after {
     content: '';
@@ -78,13 +73,13 @@ export default {
     transform: translateX(50%);
     width: 0.3125rem;
     height: 0.3125rem;
-    bottom: -0.1rem;
-    left: -0.25rem;
+    bottom: 2%;
+    left: -0.2rem;
   }
 }
 
 .dropdown-wrapper {
-  min-width: 16rem;
+  min-width: 14rem; // made this 14 rem instead 12.8125rem so the dropdown items would stay on one line
 
   button {
     position: relative;
@@ -125,6 +120,7 @@ export default {
     font-size: $fontSize_Mini;
     font-weight: $fontWeight_Semibold;
     line-height: 1.875rem;
+    margin-top: 2%;
     padding: 0.25rem 1.25rem;
     &:hover {
       background: #D5DBE6;
