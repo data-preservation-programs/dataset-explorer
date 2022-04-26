@@ -73,7 +73,7 @@ export default {
     transform: translateX(50%);
     width: 0.3125rem;
     height: 0.3125rem;
-    bottom: 2%;
+    top: calc(100% - .25rem);
     left: -0.2rem;
   }
 }
@@ -113,7 +113,7 @@ export default {
     border-radius: 0.3rem;
     box-shadow: 0px 20px 70px rgba(169, 180, 203, 0.3), 0 -3px 0px #FFFFFF, 0px 3px 0px #D6DADF, inset 0px -20px 20px rgba(255, 255, 255, 0.2);
     padding: 0 0;
-    transition: all $transitionDuration ease;
+    transition: all $transitionDuration linear;
   }
 
   .dropdown-item {
@@ -129,6 +129,9 @@ export default {
   }
 
   &.show {
+    &:after {
+      top: calc(100% - 0.55rem);
+    }
     i {
       &:after {
         transform: rotate(-90deg);
