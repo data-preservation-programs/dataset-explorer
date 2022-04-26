@@ -9,7 +9,7 @@ $fontAssetPath: '~assets/fonts';
 @font-face {
   font-family: 'Urbanist';
   src: url('#{$fontAssetPath}/urbanist/Urbanist-VariableFont_wght.ttf') format('truetype');
-  font-weight: 400;
+  font-weight: 400 900;
   font-style: normal;
 }
 

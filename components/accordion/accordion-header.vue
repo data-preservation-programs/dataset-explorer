@@ -38,3 +38,32 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+// ///////////////////////////////////////////////// General
+.accordion-header {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+  padding-top: 2rem;
+  @include mini {
+    padding-bottom: 2rem;
+  }
+}
+
+.label {
+  font-size: 1.625rem;
+}
+
+.text-snippet {
+  font-family: $font_Secondary;
+  font-size: 1.125rem;
+  padding-top: 0.5rem;
+}
+
+.icon {
+  width: 2rem;
+}
+</style>

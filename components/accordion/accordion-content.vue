@@ -60,5 +60,8 @@ export default {
 // ///////////////////////////////////////////////////////////////////// General
 .accordion-content {
   transition: height 150ms ease-in-out;
+  width: 80%;
+  margin-left: 5rem;
+  font-size: 1.125rem;
 }
 </style>

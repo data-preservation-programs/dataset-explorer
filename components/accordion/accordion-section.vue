@@ -53,5 +53,11 @@ export default {
 .accordion-section {
   position: relative;
   overflow: hidden;
+  &:last-child {
+    margin-bottom: -0.75rem;
+    @include mini {
+      margin-bottom: 0;
+    }
+  }
 }
 </style>
