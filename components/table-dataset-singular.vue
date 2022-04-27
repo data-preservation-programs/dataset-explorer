@@ -18,6 +18,10 @@
       <tbody class="divider" />
       <tbody class="table-body">
         <template v-for="(deal, index) in filtered">
+          <Modal
+            :key="index"
+            :index="index" />
+
           <tr :key="index" class="row row-body">
 
             <td
@@ -95,11 +99,14 @@
 // ===================================================================== Imports
 import { mapGetters } from 'vuex'
 
+import Modal from '@/components/modal'
+
 // ====================================================================== Export
 export default {
   name: 'TableDatasetSingular',
 
   components: {
+    Modal
   },
 
   props: {
