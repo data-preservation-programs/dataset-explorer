@@ -3,8 +3,10 @@
     <div class="grid">
       <div class="dotted-border">
         <div class="col-10">
+          <div class="inner-content">
           <MarkdownParser
             :markdown="markdown" />
+          </div>
         </div>
       </div>
     </div>
@@ -32,11 +34,11 @@ export default {
   },
 
   async fetch ({ store, route }) {
-    await store.dispatch('global/getBaseData', { key: 'about-data', data: AboutPageData })
+    await store.dispatch('global/getBaseData', { key: 'about', data: AboutPageData })
   },
 
   head () {
-    // return this.$CompileSeo(this.$GetSeo(this.tag))
+    return this.$CompileSeo(this.$GetSeo(this.tag))
   },
 
   computed: {
@@ -50,12 +52,12 @@ export default {
 
 <style lang="scss" scoped>
 // ///////////////////////////////////////////////////////////////////// General
-// .heading {
-//   @include header;
-//   padding-bottom: 3.6875rem;
-//   margin-top: 1.5rem;
-//   margin-left: 5.1875rem;
-// }
+h1 {
+  @include header;
+  padding-bottom: 3.6875rem;
+  margin-top: 1.5rem;
+  margin-left: 5.1875rem;
+}
 
 .dotted-border {
   position: relative;
@@ -64,7 +66,7 @@ export default {
   margin-left: -5.1875rem;
   background-repeat: no-repeat;
   overflow: visible;
-  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect x='6' y='-2' width='102.5%25' height='100.5%25' fill='none' stroke='blue' stroke-width='2' stroke-dasharray='1.5%2c 10' stroke-dashoffset='2 0' stroke-linecap='round'/%3e%3c/svg%3e");
+  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect x='6' y='-1.5' width='102.5%25' height='100.5%25' fill='none' stroke='blue' stroke-width='2' stroke-dasharray='1.5%2c 10' stroke-dashoffset='2 0' stroke-linecap='round'/%3e%3c/svg%3e");
 }
 
 .dotted-border::before {
@@ -91,5 +93,10 @@ export default {
   height: 0.3125rem;
   bottom: 0.325rem;
   left: 0.0625rem;
+}
+
+.inner-content {
+  margin-left: 5.34375rem;  
+  margin-right: 5.34375rem;
 }
 </style>
