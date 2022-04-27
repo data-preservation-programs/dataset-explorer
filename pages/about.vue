@@ -1,20 +1,24 @@
 <template>
   <div :class="`page page-${tag}`">
 
-  </div> 
+    <MarkdownParser
+      :markdown="markdown" />
+
+  </div>
 </template>
 
 <script>
 // ===================================================================== Imports
-import { mapGetters } from 'vuex'
+import MarkdownParser from '@/components/markdown-parser'
 
-import AboutPageData from '@/content/markdown/about.md'
+import AboutPageContent from '@/content/markdown/about.md'
+import AboutPageData from '@/content/pages/about.json'
 // ====================================================================== Export
 export default {
   name: 'AboutPage',
 
   components: {
-
+    MarkdownParser
   },
 
   data () {
@@ -24,36 +28,17 @@ export default {
   },
 
   async fetch ({ store, route }) {
-    await store.dispatch('global/getBaseData', { key: 'about', data: AboutPageData })
+    await store.dispatch('global/getBaseData', { key: 'about-data', data: AboutPageData })
   },
 
   head () {
-    return this.$CompileSeo(this.$GetSeo(this.tag))
+    // return this.$CompileSeo(this.$GetSeo(this.tag))
   },
 
   computed: {
-    ...mapGetters({
-      siteContent: 'global/siteContent'
-    }),
-    pageData () {
-      return this.siteContent[this.tag]
-    },
-    pageContent () {
-
+    markdown () {
+      return AboutPageContent
     }
-  },
-
-  watch: {
-  },
-
-  mounted () {
-  },
-
-  beforeDestroy () {
-  },
-
-  methods: {
-   
   }
 
 }
