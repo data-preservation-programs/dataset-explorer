@@ -1,68 +1,67 @@
 <template>
-
   <div class="background-shapes">
-    <div class="ellipse-a">
-      <img :src="EllipseA" />
-    </div>
-
-    <div class="ellipse-b">
-      <img :src="EllipseB" />
-    </div>
-    
-    <div class="ellipse-c">
-      <img :src="EllipseC" />
-    </div>
-
-    <div class="ellipse-d">
-      <img :src="EllipseD" />
-    </div>
-
-    <div class="polygon-a">
+    <div class="polygon a">
       <img :src="PolygonA" />
     </div>
 
-    <div class="polygon-b">
+    <div class="polygon b">
       <img :src="PolygonB" />
     </div>
 
-    <div class="polygon-c">
+    <div class="polygon c">
       <img :src="PolygonC" />
     </div>
 
-    <div class="polygon-d">
+    <div class="polygon d">
       <img :src="PolygonD" />
     </div>
 
-    <div class="polygon-e">
+    <div class="polygon e">
       <img :src="PolygonE" />
     </div>
 
-    <div class="polygon-f">
+    <div class="polygon k">
+      <img :src="PolygonK" />
+    </div>
+
+    <div class="ellipse a">
+      <img :src="EllipseA" />
+    </div>
+
+    <div class="ellipse b">
+      <img :src="EllipseB" />
+    </div>
+
+    <!-- THIS IS WHERE THE TOP ENDS AND BOTTOM BEGINS -->
+
+    <div class="polygon f">
       <img :src="PolygonF" />
     </div>
 
-    <div class="polygon-g">
+    <div class="polygon g">
       <img :src="PolygonG" />
     </div>
 
-    <div class="polygon-h">
+    <div class="polygon h">
       <img :src="PolygonH" />
     </div>
 
-    <div class="polygon-i">
+    <div class="polygon i">
       <img :src="PolygonI" />
     </div>
 
-    <div class="polygon-j">
+    <div class="polygon j">
       <img :src="PolygonJ" />
     </div>
 
-    <div class="polygon-k">
-      <img :src="PolygonK" />
+    <div class="ellipse c">
+      <img :src="EllipseC" />
     </div>
-    
-  </div>
 
+    <div class="ellipse d">
+      <img :src="EllipseD" />
+    </div>
+  </div>
 </template>
 
 <script>
@@ -108,5 +107,61 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+.background-shapes {
+  position: relative;
+}
+
+.polygon, .ellipse {
+  position: absolute;
+}
+
+.polygon.k {
+  top: 2.5%;
+  left: 2.5%;
+}
+
+.polygon.a {
+  left: 35%; 
+  top: 50%;
+}
+
+.polygon.b {
+  left: 80%;
+  top: 26rem;
+}
+
+.polygon.c {
+  left: 76%;
+  top: 34rem;
+}
+
+.polygon.d {
+  left: 90%;
+  top: 59rem;
+}
+
+.ellipse.a {
+  left: 70%;
+  top: 10.5rem;
+}
+
+.ellipse.b {
+  top: 26rem;
+}
+
+.polygon.e {
+  top: 56rem;
+}
+
+.ellipse.c {
+  left: 81%;
+  top: 100rem;
+}
+
+.polygon.g {
+  left: 73%;
+  top: 93rem;
+}
 
 </style>
