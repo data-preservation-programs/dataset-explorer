@@ -1,6 +1,8 @@
 <template>
   <div :class="`page page-${tag}`">
 
+    <BackgroundShapes />
+
     <HeaderIndex
       :heading="heading"
       :subheading="subheading" />
@@ -22,6 +24,7 @@ import { mapGetters, mapActions } from 'vuex'
 
 import HeaderIndex from '@/components/header-index'
 import TableDatasetIndex from '@/components/table-dataset-index'
+import BackgroundShapes from '@/components/background-shapes'
 
 import FileNames from '@/content/data/dataset-explorer-manifest.json'
 import IndexPageData from '@/content/pages/index.yml'
@@ -32,7 +35,8 @@ export default {
 
   components: {
     HeaderIndex,
-    TableDatasetIndex
+    TableDatasetIndex,
+    BackgroundShapes
   },
 
   data () {
