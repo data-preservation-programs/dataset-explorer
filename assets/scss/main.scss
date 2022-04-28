@@ -170,6 +170,7 @@ h3, .h3 {
     font-size: 1.625rem;
     @include fontWeight_Semibold;
     line-height: 2.5rem;
+    letter-spacing: 0.026rem;
   }
   h2, p, ul, ol {
     + h2, + h3 {
@@ -180,6 +181,7 @@ h3, .h3 {
     @include fontWeight_Medium;
     @include fontSize_Regular;
     line-height: 2rem;
+    letter-spacing: 0.026rem;
   }
   div, li {
     @include fontSize_Mini;
@@ -238,10 +240,6 @@ h3, .h3 {
   }
   img {
     width: 100%;
-    background: linear-gradient(131.13deg, #F7F9FA 8.78%, #E2E8EF 94.22%);
-    box-shadow: 0px 100px 70px rgba(169, 180, 203, 0.3), -3px -3px 0px #FFFFFF, 0px 3px 0px #D6DADF, inset 0px -20px 20px rgba(255, 255, 255, 0.2);
-    filter: blur(1px);
-    border-radius: 5px;
   }
   ol {
     padding-left: 1.375rem;
