@@ -1,15 +1,24 @@
 <template>
   <div class="background-shapes">
+
+    <div class="polygon k">
+      <img :src="PolygonK" />
+    </div>
+
+    <div class="ellipse a">
+      <img :src="EllipseA" />
+    </div>
+
     <div class="polygon a">
       <img :src="PolygonA" />
     </div>
 
-    <div class="polygon b">
-      <img :src="PolygonB" />
-    </div>
-
     <div class="polygon c">
       <img :src="PolygonC" />
+    </div>
+
+    <div class="polygon b">
+      <img :src="PolygonB" />
     </div>
 
     <div class="polygon d">
@@ -18,14 +27,6 @@
 
     <div class="polygon e">
       <img :src="PolygonE" />
-    </div>
-
-    <div class="polygon k">
-      <img :src="PolygonK" />
-    </div>
-
-    <div class="ellipse a">
-      <img :src="EllipseA" />
     </div>
 
     <div class="ellipse b">
@@ -38,12 +39,20 @@
       <img :src="PolygonF" />
     </div>
 
+    <div class="ellipse c">
+      <img :src="EllipseC" />
+    </div>
+
     <div class="polygon g">
       <img :src="PolygonG" />
     </div>
 
     <div class="polygon h">
       <img :src="PolygonH" />
+    </div>
+
+    <div class="ellipse d">
+      <img :src="EllipseD" />
     </div>
 
     <div class="polygon i">
@@ -54,13 +63,6 @@
       <img :src="PolygonJ" />
     </div>
 
-    <div class="ellipse c">
-      <img :src="EllipseC" />
-    </div>
-
-    <div class="ellipse d">
-      <img :src="EllipseD" />
-    </div>
   </div>
 </template>
 
@@ -122,7 +124,7 @@ export default {
 }
 
 .polygon.a {
-  left: 35%; 
+  left: 35%;
   top: 50%;
 }
 
@@ -137,7 +139,7 @@ export default {
 }
 
 .polygon.d {
-  left: 90%;
+  left: calc(100vw - 9.625rem);
   top: 59rem;
 }
 
@@ -155,13 +157,37 @@ export default {
 }
 
 .ellipse.c {
-  left: 81%;
+  left: calc(100vw - 14rem);
   top: 100rem;
 }
 
 .polygon.g {
-  left: 73%;
+  left: 80%;
   top: 93rem;
+}
+
+.polygon.f {
+  left: 82%;
+  top: 119rem;
+}
+
+.polygon.h {
+  left: calc(100vw - 37rem);
+  top: calc(100vh + 289rem); // please help, this does not feel right
+}
+
+.ellipse.d {
+  top: 337rem;
+}
+
+.polygon.i {
+  right: calc(100vw - 17rem);
+  top: calc(100vh + 306rem);
+}
+
+.polygon.j {
+  top: 356rem;
+  left: 11rem;
 }
 
 </style>
