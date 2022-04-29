@@ -14,9 +14,10 @@
       "to": "/"
     },
     "links": [
-      { "type": "nuxt-link", "url": "/", "text": "Home", "class_names": "nav-link link-hover center" },
-      { "type": "nuxt-link", "url": "/program-details", "text": "Program Details", "class_names": "nav-link link-hover center" },
-      { "type": "a", "url": "https://docs.google.com/forms/d/e/1FAIpQLSe5bpkD5RJeHGMNx3CpkV3a6UA2i7aroNE5DlGUdQF0mQU8DQ/viewform", "text": "Register", "target": "_blank", "class_names": "register-link" }
+      { "type": "nuxt-link", "url": "/", "text": "Home", "class_names": "nav-link center" },
+      { "type": "nuxt-link", "url": "/", "text": "About", "class_names": "nav-link center" },
+      { "type": "nuxt-link", "url": "/", "text": "FAQ", "class_names": "nav-link center" },
+      { "type": "nuxt-link", "url": "/", "text": "Resources", "class_names": "nav-link center" }
     ],
     "program_details": {
       "to": "/program-details",
@@ -24,14 +25,31 @@
     }
   },
   "footer": {
-    "logo": {
-      "to": "/"
-    },
-    "links": [
-      { "type": "a", "url": "https://slingshot.filecoin.io/", "text": "Slingshot", "target": "_blank" },
-      { "type": "a", "url": "https://slingshot.filecoin.io/explore", "text": "Data Explorer", "target": "_blank" },
-      { "type": "a", "url": "https://filecoinproject.slack.com/archives/C0377FJCG1L", "text": "Slingshot Dataset Explorer Slack Channel", "target": "_blank" }
-    ]
+    "right_column": {
+      "nav_links": [
+        {
+          "type": "nuxt-link",
+          "text": "Home",
+          "url": "/"
+        },
+        {
+          "type": "nuxt-link",
+          "text": "About",
+          "url": "/"
+        },
+        {
+          "type": "nuxt-link",
+          "text": "FAQ",
+          "url": "/"
+        },
+        {
+          "type": "nuxt-link",
+          "text": "Resources",
+          "url": "/"
+        }
+      ],
+      "info_text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore"
+    }
   },
   "page_404": {
     "code": "404",

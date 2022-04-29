@@ -42,9 +42,9 @@ export default {
     // content () {
     //   return this.siteContent.general.page_404
     // },
-    code () {
-      return this.content.code
-    },
+    // code () {
+    //   return this.content.code
+    // },
     message () {
       return this.content.message
     },

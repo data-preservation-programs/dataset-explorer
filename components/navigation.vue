@@ -1,5 +1,5 @@
 <template>
-  <section id="navigation">
+  <section id="nav">
     <div class="grid">
       <div class="col">
         <nav class="navigation">
@@ -8,15 +8,7 @@
             :to="linkLogo.to"
             class="logo-link">
             <Logo class="logo" />
-            <Spinner v-if="loading" />
           </nuxt-link>
-
-          <a
-            href="https://docs.google.com/forms/d/e/1FAIpQLSe5bpkD5RJeHGMNx3CpkV3a6UA2i7aroNE5DlGUdQF0mQU8DQ/viewform"
-            target="_blank"
-            class="register-link mobile-only">
-            Register
-          </a>
 
           <div class="links">
             <component
@@ -28,6 +20,7 @@
               :target="link.target"
               :class="link.class_names">
               {{ link.text }}
+              <div class="dashed-border"></div>
             </component>
           </div>
 
@@ -42,21 +35,18 @@
 import { mapGetters } from 'vuex'
 
 import Logo from '@/components/logo'
-import Spinner from '@/components/spinners/material-circle'
 
 // ====================================================================== Export
 export default {
   name: 'Navigation',
 
   components: {
-    Logo,
-    Spinner
+    Logo
   },
 
   computed: {
     ...mapGetters({
-      siteContent: 'global/siteContent',
-      loading: 'deals/loading'
+      siteContent: 'global/siteContent'
     }),
     navigation () {
       return this.siteContent.general.navigation
@@ -73,9 +63,9 @@ export default {
 
 <style lang="scss" scoped>
 // ///////////////////////////////////////////////////////////////////// General
-#navigation {
-  padding-top: 4.6875rem;
-  margin-bottom: 6.75rem;
+#nav {
+  padding-top: 2.5rem;
+  margin-bottom: 7.5rem;
 }
 
 // ////////////////////////////////////////////////////////////////// Navigation
@@ -112,18 +102,14 @@ export default {
 }
 
 .logo {
-  width: 10.5rem;
-}
-
-.spinner {
-  margin-top: 0.125rem;
-  margin-left: 1rem;
+  width: 5.9375rem;
 }
 
 .links {
   display: flex;
   flex-direction: row;
   align-items: center;
+  padding-top: 1rem;
   @include tiny {
     justify-content: center;
     width: 100%;
@@ -133,46 +119,55 @@ export default {
 
 .nav-link {
   @include leading_Large;
-  @include textShadow;
   @include fontWeight_Semibold;
-  font-size: 1.25rem;
+  @include fontSize_Regular;
+  text-transform: uppercase;
   margin-right: 3rem;
+  .dashed-border {
+    width: 100%;
+    height: 0.25rem;
+    transition: all 0.25s ease-in-out;
+    transform: scale(0);
+    position: relative;
+    background-repeat: no-repeat;
+    overflow: visible;
+    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect x='-1' y='1' width='105.5%25' height='105.5%25' fill='none' stroke='blue' stroke-width='2' stroke-dasharray='1.5%2c 10' stroke-dashoffset='2 0' stroke-linecap='round'/%3e%3c/svg%3e");
+    &::before {
+      content: '';
+      position: absolute;
+      background-image: url("data:image/svg+xml,%3Csvg width='8' height='8' xmlns='http://www.w3.org/2000/svg'%3E%3Cellipse ry='4' rx='4' cy='4' cx='4' fill='blue'/%3E%3C/svg%3E");
+      background-size: contain;
+      background-repeat: no-repeat;
+      transform: translateY(-50%);
+      width: 0.3125rem;
+      height: 0.3125rem;
+      left: -0.1875rem;
+      bottom: -0.125rem;
+    }
+    &::after {
+      content: '';
+      position: absolute;
+      background-image: url("data:image/svg+xml,%3Csvg width='8' height='8' xmlns='http://www.w3.org/2000/svg'%3E%3Cellipse ry='4' rx='4' cy='4' cx='4' fill='blue'/%3E%3C/svg%3E");
+      background-size: contain;
+      background-repeat: no-repeat;
+      transform: translateX(50%);
+      width: 0.3125rem;
+      height: 0.3125rem;
+      bottom: 0;
+      right: -0.25rem;
+    }
+  }
   @include tiny {
     margin-right: 0;
     &:first-child {
       margin-right: 3rem;
     }
   }
+  &:hover {
+    .dashed-border {
+      transform: scale(1);
+    }
+  }
 }
 
-.register-link {
-  @include fontWeight_Semibold;
-  @include leading_Large;
-  @include textShadow;
-  font-size: 1.25rem;
-  margin-bottom: 1rem;
-  padding: 1rem 1.5rem;
-  background-color: $logCabin;
-  border-radius: 10px;
-  filter: drop-shadow(0px 0px 34px black);
-  transition: 250ms ease-out;
-  @include tiny {
-  }
-  &:hover {
-    transition: 250ms ease-in;
-    transform: scale(1.05);
-    text-decoration: underline;
-  }
-  &.mobile-only {
-    display: none;
-    @include tiny {
-      display: block;
-    }
-  }
-  &.desktop-only {
-    @include tiny {
-      display: none;
-    }
-  }
-}
 </style>
