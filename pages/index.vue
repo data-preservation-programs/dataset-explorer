@@ -14,12 +14,15 @@
       </div>
     </section>
 
+    <SiteFooter />
+
   </div>
 </template>
 
 <script>
 // ===================================================================== Imports
 import { mapGetters, mapActions } from 'vuex'
+import SiteFooter from '@/components/site-footer'
 
 import Navigation from '@/components/navigation'
 import HeaderIndex from '@/components/header-index'
@@ -35,7 +38,8 @@ export default {
   components: {
     Navigation,
     HeaderIndex,
-    TableDatasetIndex
+    TableDatasetIndex,
+    SiteFooter,
   },
 
   data () {
