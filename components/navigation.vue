@@ -18,7 +18,7 @@
               :to="link.type === 'nuxt-link' ? link.url : undefined"
               :href="link.type === 'a' ? link.url : undefined"
               :target="link.target"
-              :class="link.class_names ">
+              :class="link.class_names">
               {{ link.text }}
               <div class="dashed-border"></div>
             </component>
