@@ -2,22 +2,16 @@
   <div
     id="modal"
     :class="{ active: modal }"
-    @click="closeModal"
     @keyup.esc="closeModal">
 
     <section id="modal-deal">
-
       <div class="toolbar">
         <button class="close-button" @click="closeModal">
           X
         </button>
       </div>
-      <div class="grid">
-        <div class="col">
-          <Slider
-            :data="dataset" />
-        </div>
-      </div>
+      <Slider
+        :dataset="dataset" />
 
     </section>
 
@@ -39,7 +33,7 @@ export default {
 
   props: {
     index: {
-      type: Number,
+      type: String,
       required: true
     }
   },
@@ -60,6 +54,7 @@ export default {
       return Object.keys(deals).length > 0 ? deals : false
     },
     dataset () {
+      console.log(this.filtered[this.index])
       return this.filtered[this.index]
     },
     action () {
@@ -153,18 +148,5 @@ export default {
   box-shadow: 0px 30px 70px rgba(169, 180, 203, 0.3), -3px -3px 0px #FFFFFF, 0px 3px 0px #D6DADF, inset 0px -20px 20px rgba(255, 255, 255, 0.2);
   border-radius: 0.3125rem;
   width: 50%;
-}
-.cid {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-.storage-deal-id {
-  display: flex;
-  flex-direction: row;
-}
-.storage-provider, .deal-id {
-  display: flex;
-  flex-direction: column;
 }
 </style>

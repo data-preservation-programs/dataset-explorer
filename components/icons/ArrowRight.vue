@@ -29,6 +29,6 @@ export default {
 // ///////////////////////////////////////////////////////////////////// General
 .icon__arrow-right {
   transition: 250ms ease-in-out;
-  fill: black;
+  fill: $classicBlue;
 }
 </style>

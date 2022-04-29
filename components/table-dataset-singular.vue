@@ -19,7 +19,7 @@
       <tbody class="table-body">
         <template v-for="(deal, index) in filtered">
           <Modal
-            :key="index"
+            :key="'deal-' + index"
             :index="index" />
 
           <tr :key="index" class="row row-body">
@@ -31,7 +31,9 @@
               <div :class="['cell cell-body', cell.slug]">
 
                 <template v-if="cell.slug === 'curated_dataset'">
-                  <div class="file_name">
+                  <div
+                    class="file_name"
+                    @click="openModal">
                     {{ deal[0].curated_dataset }}
                   </div>
                   <div class="cid">
@@ -97,7 +99,7 @@
 
 <script>
 // ===================================================================== Imports
-import { mapGetters } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 
 import Modal from '@/components/modal'
 
@@ -118,7 +120,8 @@ export default {
 
   data () {
     return {
-      hovering: false
+      hovering: false,
+      slideIndex: 0
     }
   },
 
@@ -126,7 +129,8 @@ export default {
     ...mapGetters({
       deals: 'explorer/datasetList',
       datasetNames: 'explorer/datasetNames',
-      cids: 'explorer/datasetSingular'
+      cids: 'explorer/datasetSingular',
+      modal: 'global/modal'
     }),
     filtered () {
       const deals = this.cids
@@ -135,6 +139,9 @@ export default {
   },
 
   methods: {
+    ...mapActions({
+      setModal: 'global/setModal'
+    }),
     toggleRowOverlay (status, dealId) {
       if (status) {
         this.hovering = dealId
@@ -149,6 +156,11 @@ export default {
       } else {
         return slug
       }
+    },
+    openModal () {
+      const slides = document.getElementsByClassName('panel')
+      slides[0].style.display = 'block'
+      this.setModal(true)
     }
   }
 }
@@ -377,6 +389,7 @@ tr.divider {
 // //////////////////////////////////////////////////////////////////// Specific
 .file_name {
   @include fontWeight_Semibold;
+  cursor: pointer;
 }
 
 .cid {

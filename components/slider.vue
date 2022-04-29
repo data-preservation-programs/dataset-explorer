@@ -2,64 +2,95 @@
   <div class="modal-slider">
     <!-- =================================================================== -->
     <section
-      :style="{ height: modalHeight }"
-      :class="`panel-${panel}`">
-
-      <section
-        v-for="(deal, index) in dataset"
-        :key="`panel-${index}`"
-        ref="panel"
-        class="panel fade">
-        <div class="inner-content">
-          <div class="name-cid">
-            <div class="name">
-              {{ deal.curated_dataset }}<span> {{ deal.rank }} </span>
+      v-for="(deal, index) in dataset"
+      :key="`panel-${index}`"
+      ref="panel"
+      class="panel fade">
+      <div class="inner-content">
+        <div class="pannel-top">
+          <div class="name">
+            {{ deal.curated_dataset }}<span> {{ deal.rank }} </span>
+          </div>
+          <div class="cid">
+            {{ deal.payload_cid }}
+          </div>
+        </div>
+        <div class="storage-deal-id">
+          <div class="storage-provider">
+            <h5> Storage Provider </h5>
+            <div>
+              {{ deal.miner_id }}
             </div>
+          </div>
+          <div class="deal-id">
+            <h5> Deal ID </h5>
+            <div>
+              {{ deal.deal_id }}
+            </div>
+          </div>
+        </div>
+        <div
+          v-for="(option, optionIndex) in modal_options"
+          :key="'option' + optionIndex"
+          class="option">
+          <div
+            v-if="modal_options.length > 1"
+            class="option-label">
+            {{ option.label }}
+          </div>
+          <div class="helper-text">
+            {{ option.helper_text }}
+          </div>
+          <div class="code-snippet">
+            <span>{{ option.command }}</span><span>{{ deal.miner_id }}</span>
             <div class="cid">
               {{ deal.payload_cid }}
             </div>
+            <div> {{ deal.filename }} </div>
           </div>
-          <div class="storage-deal-id">
-            <div class="storage-provider">
-              <h5> Storage Provider </h5>
-              <div>
-                {{ deal.miner_id }}
-              </div>
-            </div>
-            <div class="deal-id">
-              <h5> Deal ID </h5>
-              <div>
-                {{ deal.deal_id }}
-              </div>
-            </div>
-          </div>
-
         </div>
-      </section>
-
+      </div>
     </section>
 
     <!-- =================================================================== -->
     <section class="toggle-buttons">
-      <div class="grid">
-        <div class="col">
-          <div class="prev">
-            <div
-              v-if="panel != 0"
-              @click="plusSlides(slideIndex += -1)">
-              Previous
-              <ArrowRightIcon class="arrow" />
-            </div>
+      <div
+        class="prev"
+        @click="showSlides(slideIndex += -1)">
+        <ArrowRightIcon class="arrow" /><span> Previous </span>
+        <!-- <div class="button-details">
+          <div>
+            SP
+            <span class="provider">
+              {{ dataset[slideIndex -1].miner_id }}
+            </span>
           </div>
-          <div class="next">
-            <div
-              v-if="panel != dataset.length"
-              @click="plusSlides(slideIndex += 1)">
-              Next
-              <ArrowRightIcon class="arrow" />
-            </div>
+          <div>
+            Deal ID
+            <span class="id">
+              {{ dataset[slideIndex -1].deal_id }}
+            </span>
           </div>
-        </div>
+        </div> -->
+      </div>
+      <div
+        class="next"
+        @click="showSlides(slideIndex += 1)">
+        <span> Next </span><ArrowRightIcon class="arrow" />
+        <!-- <div class="button-details">
+          <div>
+            SP
+            <span class="provider">
+              {{ dataset[slideIndex].miner_id }}
+            </span>
+          </div>
+          <div>
+            Deal ID
+            <span class="id">
+              {{ dataset[slideIndex].deal_id }}
+            </span>
+          </div>
+        </div> -->
       </div>
     </section>
 
@@ -68,6 +99,7 @@
 
 <script>
 // ====================================================================== Import
+import { mapGetters } from 'vuex'
 import ArrowRightIcon from '@/components/icons/ArrowRight'
 
 // ====================================================================== Export
@@ -95,8 +127,14 @@ export default {
   },
 
   computed: {
-    metadata () {
-      return this.schedule[this.panel]
+    ...mapGetters({
+      siteContent: 'global/siteContent'
+    }),
+    pageData () {
+      return this.siteContent.explorer
+    },
+    modal_options () {
+      return this.pageData.modal.options
     }
   },
 
@@ -112,7 +150,7 @@ export default {
 
   mounted () {
     const resize = () => { this.setModalHeight() }; resize()
-    this.resize = this.$throttle(resize, 1)
+    this.resize = this.$Throttle(resize, 1)
     window.addEventListener('resize', this.resize)
   },
 
@@ -125,6 +163,7 @@ export default {
     showSlides (n) {
       let i
       const slides = document.getElementsByClassName('panel')
+      console.log(slides)
       if (n > slides.length) { this.slideIndex = 1 }
       if (n < 1) { this.slideIndex = slides.length }
       for (i = 0; i < slides.length; i++) {
@@ -141,7 +180,6 @@ export default {
 // ///////////////////////////////////////////////////////////////////// General
 .modal-slider {
   position: relative;
-  padding-top: 2rem;
   @include mini {
     padding-top: 3rem;
   }
@@ -153,6 +191,7 @@ export default {
 
 .panel {
   display: none;
+  margin: 0 3.875rem;
 }
 
 .fade {
@@ -165,87 +204,76 @@ export default {
   to {opacity: 1}
 }
 
-// /////////////////////////////////////////////////////////////// Panel Toggler
-.panel-toggler {
+// /////////////////////////////////////////////////////////////// Sections
+.pannel-top {
+  border-bottom: 2px solid white;
+  padding-bottom: 1.9875rem;
+  margin-bottom: 2.125rem;
+}
+.name {
+  @include fontWeight_Semibold;
+  @include fontSize_Regular;
+  padding-bottom: 0.5rem;
+}
+.cid {
+  @include fontWeight_Regular;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-family: $font_Secondary;
+  font-size: 1rem;
+}
+.storage-deal-id {
+  @include fontSize_Regular;
+  font-weight: 800;
+  font-family: $font_Secondary;
   display: flex;
   flex-direction: row;
-  margin-top: 0.5rem;
-  &.panel-0 {
-    .label-0 {
-      &:after {
-        height: 4px;
-        opacity: 1;
-      }
-    }
+  h5 {
+    @include fontWeight_Semibold;
+    font-family: $font_Primary;
+    font-size: 0.9375rem;
+    padding-bottom: 0.5rem;
   }
-  &.panel-1 {
-    .toggle {
-      &:before {
-        transform: translateX(calc(100% + 4px));
-      }
-    }
-    .label-1 {
-      &:after {
-        height: 4px;
-        opacity: 1;
-      }
-    }
-  }
-  &.panel-2 {
-    .toggle {
-      &:before {
-        transform: translateX(calc(100% + 4px));
-      }
-    }
-    .label-2 {
-      &:after {
-        height: 4px;
-        opacity: 1;
-      }
-    }
-  }
-  .label-0, .label-1, .label-2 {
-    display: flex;
-    flex-direction: column;
-    &:not(:last-child) {
-      padding-right: 4.375rem;
-    }
-    .label-text {
-      font-family: $font_Secondary;
-      margin-bottom: 0.8125rem;
-      &:hover {
-        transform: scale(1.025);
-      }
-      @include tiny {
+}
+.storage-provider, .deal-id {
+  display: flex;
+  flex-direction: column;
+}
 
-      }
-    }
-    .sublabel-text {
-      transition: 250ms ease-in-out;
-    }
-    &:after {
-      content: '';
-      position: relative;
-      bottom: 0.5rem;
-      left: 0;
-      width: 100%;
-      height: 0px;
-      background-color: black;
-      opacity: 0;
-      border-radius: 5px;
-      transition: all 0.3s ease-in-out;
-    }
-    &:hover, &:active {
-      &:after {
-        height: 4px;
-        opacity: 1;
-      }
-    }
+.deal-id {
+  padding-left: 3.25rem;
+}
+
+// //////////////////////////////////////////////////////////////// Options
+.option {
+  padding-top: 2.4375rem;
+}
+.option-label {
+  font-size: 1rem;
+  padding-bottom: 0.25rem;
+}
+.helper-text {
+  @include fontWeight_Regular;
+}
+.code-snippet {
+  @include fontSize_Mini;
+  @include fontWeight_Regular;
+  font-family: $font_Secondary;
+  background-color: $fog;
+  border-radius: 0.325rem;
+  padding: 0.5rem 0.75rem;
+  margin-top: 1rem;
+  .cid {
+    @include fontSize_Mini;
   }
 }
 
+// /////////////////////////////////////////////////////////////// Toggle Buttons
 .toggle-buttons {
-  margin-top: -3rem;
+  padding: 0 3.875rem;
+  margin-bottom: 2.4375rem;
+  font-size: 0.9375;
   @include small {
     margin-top: -2rem;
   }
@@ -254,42 +282,35 @@ export default {
   }
 }
 
-.toggle-buttons>div>div {
+.arrow {
+  width: 0.75rem;
+  transition: all 0.25s ease;
+}
+
+.toggle-buttons {
   display: flex;
   flex-direction: row;
   align-content: center;
   justify-content: space-between;
   padding-top: 2rem;
-  font-size: 1.5rem;
-  font-family: $font_Secondary;
+  font-size: 1rem;
   position: relative;
   z-index: 20;
-  .prev>div, .next>div {
+  .prev, .next {
     cursor: pointer;
-    display: flex;
-    .arrow {
-      width: 1.5rem;
-      transition: all 0.25s ease;
-    }
-    @include tiny {
-      font-size: 1rem;
-    }
   }
   .prev {
     @include medium {
       padding-left: 1.75rem;
     }
-    div {
-      flex-direction: row-reverse;
-    }
     .arrow {
       position: relative;
-      left: -1.5rem;
+      left: -0.5rem;
       transform: rotate(180deg);
     }
     &:hover {
       .arrow {
-        left: -2rem;
+        left: -1rem;
       }
     }
   }
@@ -297,19 +318,25 @@ export default {
     @include medium {
       padding-right: 1.75rem;
     }
-    div {
-      flex-direction: row;
-    }
     .arrow {
       position: relative;
-      right: -1.5rem;
+      right: -0.5rem;
     }
     &:hover {
       .arrow {
-        right: -2rem;
+        right: -1rem;
       }
     }
   }
+}
+.provider, .id {
+  @include fontWeight_Regular;
+  font-family: $font_Secondary;
+}
+
+.button-details {
+  @include fontSize_Mini;
+  flex-direction: column !important;
 }
 
 </style>

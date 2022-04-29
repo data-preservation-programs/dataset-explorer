@@ -71,5 +71,14 @@
         100
       ]
     }
+  },
+  "modal": {
+    "options": [
+      {
+        "label": "Option One",
+        "helper_text": "Retrieve from this storage provider using the Filecoin lotus client",
+        "command": "lotus client helper retrieve --miner "
+      }
+    ]
   }
 }
