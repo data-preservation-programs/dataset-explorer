@@ -6,6 +6,7 @@
       :heading="heading"
       :subheading="subheading" />
     <SearchBar />
+    <SortButton />
     <section id="deals-table">
       <div class="grid">
         <div class="col">
@@ -13,6 +14,7 @@
         </div>
       </div>
     </section>
+    <SortButton />
 
     <SiteFooter />
 
@@ -29,6 +31,7 @@ import HeaderIndex from '@/components/header-index'
 import TableDatasetIndex from '@/components/table-dataset-index'
 
 import FileNames from '@/content/data/dataset-explorer-manifest.json'
+import SortButton from '@/components/sort-button'
 import IndexPageData from '@/content/pages/index.json'
 
 import SearchBar from '@/components/search-bar'
@@ -41,7 +44,8 @@ export default {
     Navigation,
     HeaderIndex,
     SearchBar,
-  TableDatasetIndex,
+    SortButton,
+    TableDatasetIndex,
     SiteFooter,
   },
 

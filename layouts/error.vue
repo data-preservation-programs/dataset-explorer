@@ -45,9 +45,9 @@ export default {
     // code () {
     //   return this.content.code
     // },
-    message () {
-      return this.content.message
-    },
+    // message () {
+    //   return this.content.message
+    // },
     link () {
       return this.content.link
     }
