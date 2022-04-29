@@ -65,7 +65,9 @@ export default {
 .polygon {
   position: absolute;
   &.a {
-
+    top: 0;
+    left: 50%;
+    transform: translateX(-43rem);
   }
   &.b {
 

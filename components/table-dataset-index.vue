@@ -164,7 +164,6 @@ export default {
 
 .table-head {
   position: relative;
-  filter: drop-shadow(0px 0px 20px rgba(0, 0, 0, 0.9));
   vertical-align: bottom;
   &:before,
   &:after {

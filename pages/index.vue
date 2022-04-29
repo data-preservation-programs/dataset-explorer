@@ -1,10 +1,12 @@
 <template>
   <div :class="`page page-${tag}`">
 
+    <Navigation />
     <HeaderIndex
       :heading="heading"
       :subheading="subheading" />
-
+    <SearchBar />
+    <SortButton />
     <section id="deals-table">
       <div class="grid">
         <div class="col">
@@ -12,6 +14,9 @@
         </div>
       </div>
     </section>
+    <SortButton />
+
+    <SiteFooter />
 
   </div>
 </template>
@@ -19,20 +24,29 @@
 <script>
 // ===================================================================== Imports
 import { mapGetters, mapActions } from 'vuex'
+import SiteFooter from '@/components/site-footer'
 
+import Navigation from '@/components/navigation'
 import HeaderIndex from '@/components/header-index'
 import TableDatasetIndex from '@/components/table-dataset-index'
 
 import FileNames from '@/content/data/dataset-explorer-manifest.json'
-import IndexPageData from '@/content/pages/index.yml'
+import SortButton from '@/components/sort-button'
+import IndexPageData from '@/content/pages/index.json'
+
+import SearchBar from '@/components/search-bar'
 
 // ====================================================================== Export
 export default {
   name: 'IndexPage',
 
   components: {
+    Navigation,
     HeaderIndex,
-    TableDatasetIndex
+    SearchBar,
+    SortButton,
+    TableDatasetIndex,
+    SiteFooter,
   },
 
   data () {
@@ -41,7 +55,8 @@ export default {
     }
   },
 
-  async fetch ({ store, route }) {
+  async fetch ({ store, route, $content }) {
+    await store.dispatch('global/getBaseData', 'general')
     await store.dispatch('global/getBaseData', { key: 'index', data: IndexPageData })
     await store.dispatch('explorer/setDatasetNames', FileNames)
     await store.dispatch('explorer/getExplorerData', { tag: 'index', file: 'dataset_list.json' })
