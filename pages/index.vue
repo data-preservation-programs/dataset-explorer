@@ -5,7 +5,7 @@
     <HeaderIndex
       :heading="heading"
       :subheading="subheading" />
-
+    <SearchBar />
     <section id="deals-table">
       <div class="grid">
         <div class="col">
@@ -31,6 +31,8 @@ import TableDatasetIndex from '@/components/table-dataset-index'
 import FileNames from '@/content/data/dataset-explorer-manifest.json'
 import IndexPageData from '@/content/pages/index.json'
 
+import SearchBar from '@/components/search-bar'
+
 // ====================================================================== Export
 export default {
   name: 'IndexPage',
@@ -38,7 +40,8 @@ export default {
   components: {
     Navigation,
     HeaderIndex,
-    TableDatasetIndex,
+    SearchBar,
+  TableDatasetIndex,
     SiteFooter,
   },
 
