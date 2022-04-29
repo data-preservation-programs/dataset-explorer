@@ -1,68 +1,20 @@
 <template>
-  <div class="background-shapes">
-
-    <div class="polygon k">
-      <img :src="PolygonK" />
-    </div>
-
-    <div class="ellipse a">
-      <img :src="EllipseA" />
-    </div>
-
-    <div class="polygon a">
-      <img :src="PolygonA" />
-    </div>
-
-    <div class="polygon c">
-      <img :src="PolygonC" />
-    </div>
-
-    <div class="polygon b">
-      <img :src="PolygonB" />
-    </div>
-
-    <div class="polygon d">
-      <img :src="PolygonD" />
-    </div>
-
-    <div class="polygon e">
-      <img :src="PolygonE" />
-    </div>
-
-    <div class="ellipse b">
-      <img :src="EllipseB" />
-    </div>
-
-    <!-- THIS IS WHERE THE TOP ENDS AND BOTTOM BEGINS -->
-
-    <div class="polygon f">
-      <img :src="PolygonF" />
-    </div>
-
-    <div class="ellipse c">
-      <img :src="EllipseC" />
-    </div>
-
-    <div class="polygon g">
-      <img :src="PolygonG" />
-    </div>
-
-    <div class="polygon h">
-      <img :src="PolygonH" />
-    </div>
-
-    <div class="ellipse d">
-      <img :src="EllipseD" />
-    </div>
-
-    <div class="polygon i">
-      <img :src="PolygonI" />
-    </div>
-
-    <div class="polygon j">
-      <img :src="PolygonJ" />
-    </div>
-
+  <div>
+    <img :src="PolygonK" class="polygon k" />
+    <img :src="EllipseA" class="ellipse a" />
+    <img :src="PolygonA" class="polygon a" />
+    <img :src="PolygonC" class="polygon c" />
+    <img :src="PolygonB" class="polygon b" />
+    <img :src="PolygonD" class="polygon d" />
+    <img :src="PolygonE" class="polygon e" />
+    <img :src="EllipseB" class="ellipse b" />
+    <img :src="PolygonF" class="polygon f" />
+    <img :src="EllipseC" class="ellipse c" />
+    <img :src="PolygonG" class="polygon g" />
+    <img :src="PolygonH" class="polygon h" />
+    <img :src="EllipseD" class="ellipse d" />
+    <img :src="PolygonI" class="polygon i" />
+    <img :src="PolygonJ" class="polygon j" />
   </div>
 </template>
 
@@ -110,84 +62,134 @@ export default {
 
 <style lang="scss" scoped>
 
-.background-shapes {
-  position: relative;
-}
-
-.polygon, .ellipse {
+.polygon {
   position: absolute;
+  &.a {
+
+  }
+  &.b {
+
+  }
+  &.b {
+
+  }
+  &.c {
+
+  }
+  &.d {
+
+  }
+  &.e {
+
+  }
+  &.f {
+
+  }
+  &.g {
+
+  }
+  &.h {
+
+  }
+  &.i {
+
+  }
+  &.j {
+
+  }
+  &.k {
+    top: 0;
+    left: 50%;
+    transform: translateX(-43rem);
+  }
 }
 
-.polygon.k {
-  top: 2.5%;
-  left: 2.5%;
+.ellipse {
+  position: absolute;
+  &.a {
+
+  }
+  &.b {
+
+  }
+  &.c {
+
+  }
+  &.d {
+
+  }
 }
 
-.polygon.a {
-  left: 35%;
-  top: 50%;
-}
+// .polygon.k {
+//   top: 2.5%;
+//   left: 2.5%;
+// }
 
-.polygon.b {
-  left: 80%;
-  top: 26rem;
-}
+// .polygon.a {
+//   left: 35%;
+//   top: 50%;
+// }
 
-.polygon.c {
-  left: 76%;
-  top: 34rem;
-}
+// .polygon.b {
+//   left: 80%;
+//   top: 26rem;
+// }
 
-.polygon.d {
-  left: calc(100vw - 9.625rem);
-  top: 59rem;
-}
+// .polygon.c {
+//   left: 76%;
+//   top: 34rem;
+// }
 
-.ellipse.a {
-  left: 70%;
-  top: 10.5rem;
-}
+// .polygon.d {
+//   left: calc(100vw - 9.625rem);
+//   top: 59rem;
+// }
 
-.ellipse.b {
-  top: 26rem;
-}
+// .ellipse.a {
+//   left: 70%;
+//   top: 10.5rem;
+// }
 
-.polygon.e {
-  top: 56rem;
-}
+// .ellipse.b {
+//   top: 26rem;
+// }
 
-.ellipse.c {
-  left: calc(100vw - 14rem);
-  top: 100rem;
-}
+// .polygon.e {
+//   top: 56rem;
+// }
 
-.polygon.g {
-  left: 80%;
-  top: 93rem;
-}
+// .ellipse.c {
+//   left: calc(100vw - 14rem);
+//   top: 100rem;
+// }
 
-.polygon.f {
-  left: 82%;
-  top: 119rem;
-}
+// .polygon.g {
+//   left: 80%;
+//   top: 93rem;
+// }
 
-.polygon.h {
-  left: calc(100vw - 37rem);
-  top: calc(100vh + 289rem); // please help, this does not feel right
-}
+// .polygon.f {
+//   left: 82%;
+//   top: 119rem;
+// }
 
-.ellipse.d {
-  top: 337rem;
-}
+// .polygon.h {
+//   left: calc(100vw - 37rem);
+//   top: calc(100vh + 289rem);
+// }
 
-.polygon.i {
-  right: calc(100vw - 17rem);
-  top: calc(100vh + 306rem);
-}
+// .ellipse.d {
+//   top: 337rem;
+// }
 
-.polygon.j {
-  top: 356rem;
-  left: 11rem;
-}
+// .polygon.i {
+//   right: calc(100vw - 17rem);
+//   top: calc(100vh + 306rem);
+// }
+
+// .polygon.j {
+//   top: 356rem;
+//   left: 11rem;
+// }
 
 </style>
