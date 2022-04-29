@@ -4,7 +4,7 @@
     <div class="col-3">
       <div :class="['dropdown-wrapper dotted-border', { show: showDropdown }]">
         <button ref="dropdownButton" @click="toggleDropdown">
-          <i>Sort by</i>
+          Sort by <i class="chevron" />
         </button>
         <div ref="dropdownContent" class="dropdown-content">
           <div class="dropdown-item">
@@ -79,7 +79,7 @@ export default {
 }
 
 .dropdown-wrapper {
-  min-width: 14rem; // made this 14 rem instead 12.8125rem so the dropdown items would stay on one line
+  min-width: 14rem;
 
   button {
     position: relative;
@@ -90,16 +90,12 @@ export default {
     padding-right: 1rem;
   }
 
-  i {
-    font-size: $fontSize_Mini;
-    font-weight: $fontWeight_Semibold;
-    font-style: normal;
-    &:after {
-      content: "❯";
-      display: inline-block;
-      color: #001FE6;
-      margin-left: 1rem;
-      transform: rotate(90deg);
+  i.chevron {
+    display: inline-block;
+    transition: all $transitionDuration linear;
+    margin: 0 -0.625rem -0.625rem 0.625rem;
+    &:before, &:after {
+      background-color: $classicBlue;
       transition: all $transitionDuration linear;
     }
   }
@@ -132,11 +128,17 @@ export default {
     &:after {
       top: calc(100% - 0.55rem);
     }
-    i {
+
+    i.chevron {
+      &:before {
+        transform: rotate(-45deg);
+      }
       &:after {
         transform: rotate(-90deg);
+        transform: rotate(45deg);
       }
     }
+    
     .dropdown-content {
         max-height: 20rem;
         margin-top: 1rem;
