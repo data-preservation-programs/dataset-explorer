@@ -54,7 +54,6 @@ export default {
       return Object.keys(deals).length > 0 ? deals : false
     },
     dataset () {
-      console.log(this.filtered[this.index])
       return this.filtered[this.index]
     },
     action () {

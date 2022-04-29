@@ -42,6 +42,9 @@
             {{ option.helper_text }}
           </div>
           <div class="code-snippet">
+            <CopyButton 
+              :value="deal.payload_cid"
+              class="copy-button" />
             <span>{{ option.command }}</span><span>{{ deal.miner_id }}</span>
             <div class="cid">
               {{ deal.payload_cid }}
@@ -58,39 +61,39 @@
         class="prev"
         @click="showSlides(slideIndex += -1)">
         <ArrowRightIcon class="arrow" /><span> Previous </span>
-        <!-- <div class="button-details">
+        <div class="button-details">
           <div>
             SP
             <span class="provider">
-              {{ dataset[slideIndex -1].miner_id }}
+              {{ getNextDeal(dataset, (slideIndex -2)).miner_id }}
             </span>
           </div>
           <div>
             Deal ID
             <span class="id">
-              {{ dataset[slideIndex -1].deal_id }}
+              {{ getNextDeal(dataset, (slideIndex -2)).deal_id }}
             </span>
           </div>
-        </div> -->
+        </div>
       </div>
       <div
         class="next"
         @click="showSlides(slideIndex += 1)">
         <span> Next </span><ArrowRightIcon class="arrow" />
-        <!-- <div class="button-details">
+        <div class="button-details">
           <div>
             SP
             <span class="provider">
-              {{ dataset[slideIndex].miner_id }}
+              {{ getNextDeal(dataset, (slideIndex)).miner_id }}
             </span>
           </div>
           <div>
             Deal ID
             <span class="id">
-              {{ dataset[slideIndex].deal_id }}
+              {{ getNextDeal(dataset, (slideIndex)).deal_id }}
             </span>
           </div>
-        </div> -->
+        </div>
       </div>
     </section>
 
@@ -101,13 +104,15 @@
 // ====================================================================== Import
 import { mapGetters } from 'vuex'
 import ArrowRightIcon from '@/components/icons/ArrowRight'
+import CopyButton from '@/components/copy-button'
 
 // ====================================================================== Export
 export default {
   name: 'Slider',
 
   components: {
-    ArrowRightIcon
+    ArrowRightIcon,
+    CopyButton
   },
 
   props: {
@@ -163,13 +168,23 @@ export default {
     showSlides (n) {
       let i
       const slides = document.getElementsByClassName('panel')
-      console.log(slides)
       if (n > slides.length) { this.slideIndex = 1 }
       if (n < 1) { this.slideIndex = slides.length }
       for (i = 0; i < slides.length; i++) {
         slides[i].style.display = 'none'
       }
       slides[this.slideIndex - 1].style.display = 'block'
+    },
+
+    getNextDeal (data, index) {
+      console.log(index)
+      if (index === data.length) {
+        return data[0]
+      }
+      if (index === -1) {
+        return data[data.length - 1]
+      }
+      return data[index]
     }
   }
 }
@@ -267,6 +282,10 @@ export default {
   .cid {
     @include fontSize_Mini;
   }
+}
+
+.copy-button {
+  float: right;
 }
 
 // /////////////////////////////////////////////////////////////// Toggle Buttons
