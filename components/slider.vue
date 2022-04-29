@@ -42,7 +42,7 @@
             {{ option.helper_text }}
           </div>
           <div class="code-snippet">
-            <CopyButton 
+            <CopyButton
               :value="deal.payload_cid"
               class="copy-button" />
             <span>{{ option.command }}</span><span>{{ deal.miner_id }}</span>
