@@ -1,6 +1,7 @@
 <template>
   <div :class="`page page-${tag}`">
 
+    <Navigation />
     <HeaderIndex
       :heading="heading"
       :subheading="subheading" />
@@ -23,6 +24,7 @@
 import { mapGetters, mapActions } from 'vuex'
 import SiteFooter from '@/components/site-footer'
 
+import Navigation from '@/components/navigation'
 import HeaderIndex from '@/components/header-index'
 import TableDatasetIndex from '@/components/table-dataset-index'
 
@@ -34,9 +36,10 @@ export default {
   name: 'IndexPage',
 
   components: {
-    SiteFooter,
+    Navigation,
     HeaderIndex,
-    TableDatasetIndex
+    TableDatasetIndex,
+    SiteFooter,
   },
 
   data () {
@@ -45,7 +48,7 @@ export default {
     }
   },
 
-  async fetch ({ store, route }) {
+  async fetch ({ store, route, $content }) {
     await store.dispatch('global/getBaseData', 'general')
     await store.dispatch('global/getBaseData', { key: 'index', data: IndexPageData })
     await store.dispatch('explorer/setDatasetNames', FileNames)
