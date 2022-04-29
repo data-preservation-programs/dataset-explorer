@@ -28,7 +28,8 @@
     "raw-loader": "^4.0.2",
     "sass": "^1.43.5",
     "sass-loader": "^10.1.1",
-    "webpack": "^4.46.0"
+    "webpack": "^4.46.0",
+    "yaml-loader": "^0.6.0"
   },
   "dependencies": {
     "@agency-undone/au-nuxt-module-zero": "^1.0.18",

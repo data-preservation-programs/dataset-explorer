@@ -8,16 +8,10 @@
       <circle
         cx="6.5"
         cy="6.5"
-        r="5.5"
-        stroke="white"
-        stroke-width="2"
-        stroke-linecap="round" />
+        r="5.5" />
 
       <path
-        d="M10 12L13 16"
-        stroke="white"
-        stroke-width="2"
-        stroke-linecap="round" />
+        d="M10 12L13 16" />
 
     </svg>
 
@@ -67,5 +61,11 @@ export default {
 svg {
   width: 15px;
   height: 18px;
+}
+
+circle, path {
+  stroke: $classicBlue;
+  stroke-width: 2;
+  stroke-linecap: round;
 }
 </style>
