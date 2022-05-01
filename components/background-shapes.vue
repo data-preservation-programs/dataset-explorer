@@ -67,37 +67,52 @@ export default {
   &.a {
     top: 0;
     left: 50%;
-    transform: translateX(-43rem);
+    transform: translateX(-19rem);
   }
   &.b {
-
-  }
-  &.b {
-
+    top: 0;
+    left: 50%;
+    transform: translate(22rem, 25rem);
   }
   &.c {
-
+    top: 0;
+    left: 50%;
+    transform: translate(18rem, 34rem);
   }
   &.d {
-
+    top: 0;
+    right: 50%;
+    transform: translate(44rem, 64rem);
   }
   &.e {
-
+    top: 0;
+    left: 50%;
+    transform: translate(-43rem, 70rem);
   }
   &.f {
-
+    top: 0;
+    right: 50%;
+    transform: translate(43rem, 119rem);
   }
   &.g {
-
+    top: 0;
+    right: 50%;
+    transform: translate(43rem, 95rem);
   }
   &.h {
-
+    bottom: 0;
+    left: 50%;
+    transform: translate(3rem, 8rem);
   }
   &.i {
-
+    bottom: 0;
+    left: 50%;
+    transform: translate(-43rem, 6rem);
   }
   &.j {
-
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-33rem);
   }
   &.k {
     top: 0;
@@ -109,89 +124,25 @@ export default {
 .ellipse {
   position: absolute;
   &.a {
-
+    top: 0;
+    left: 50%;
+    transform: translate(14rem, 9rem);
   }
   &.b {
-
+    top: 0;
+    left: 50%;
+    transform: translate(-41rem, 39rem);
   }
   &.c {
-
+    top: 0;
+    right: 50%;
+    transform: translate(44rem, 100rem);
   }
   &.d {
-
+    bottom: 0;
+    left: 50%;
+    transform: translate(-43rem, -10rem);
   }
 }
-
-// .polygon.k {
-//   top: 2.5%;
-//   left: 2.5%;
-// }
-
-// .polygon.a {
-//   left: 35%;
-//   top: 50%;
-// }
-
-// .polygon.b {
-//   left: 80%;
-//   top: 26rem;
-// }
-
-// .polygon.c {
-//   left: 76%;
-//   top: 34rem;
-// }
-
-// .polygon.d {
-//   left: calc(100vw - 9.625rem);
-//   top: 59rem;
-// }
-
-// .ellipse.a {
-//   left: 70%;
-//   top: 10.5rem;
-// }
-
-// .ellipse.b {
-//   top: 26rem;
-// }
-
-// .polygon.e {
-//   top: 56rem;
-// }
-
-// .ellipse.c {
-//   left: calc(100vw - 14rem);
-//   top: 100rem;
-// }
-
-// .polygon.g {
-//   left: 80%;
-//   top: 93rem;
-// }
-
-// .polygon.f {
-//   left: 82%;
-//   top: 119rem;
-// }
-
-// .polygon.h {
-//   left: calc(100vw - 37rem);
-//   top: calc(100vh + 289rem);
-// }
-
-// .ellipse.d {
-//   top: 337rem;
-// }
-
-// .polygon.i {
-//   right: calc(100vw - 17rem);
-//   top: calc(100vh + 306rem);
-// }
-
-// .polygon.j {
-//   top: 356rem;
-//   left: 11rem;
-// }
 
 </style>

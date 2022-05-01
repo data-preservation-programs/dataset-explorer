@@ -14,7 +14,6 @@
         </div>
       </div>
     </section>
-    <SortButton />
 
     <SiteFooter />
 
@@ -46,7 +45,7 @@ export default {
     SearchBar,
     SortButton,
     TableDatasetIndex,
-    SiteFooter,
+    SiteFooter
   },
 
   data () {
