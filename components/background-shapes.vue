@@ -103,7 +103,7 @@ export default {
   &.h {
     bottom: 0;
     left: 50%;
-    transform: translate(3rem, 21rem);
+    transform: translate(3rem, 16rem);
   }
   &.i {
     bottom: 0;
