@@ -64,7 +64,7 @@ export default {
 
 .polygon {
   position: absolute;
-  z-index: -10;
+  z-index: -1;
   &.a {
     top: 0;
     left: 50%;
@@ -124,7 +124,7 @@ export default {
 
 .ellipse {
   position: absolute;
-  z-index: -10;
+  z-index: -1;
   &.a {
     top: 0;
     left: 50%;
