@@ -63,6 +63,9 @@ export default {
       return this.modal.url
     }
   },
+  created () {
+    console.log(this.index)
+  },
   mounted () {
     window.addEventListener('keydown', (e) => {
       const key = e.key || e.keyCode

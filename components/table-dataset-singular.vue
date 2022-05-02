@@ -17,12 +17,15 @@
       <!-- ============================================================ Body -->
       <tbody class="divider" />
       <tbody class="table-body">
+        <Modal
+          class="deal-modal"
+          :index="projectCID" />
         <template v-for="(deal, index) in filtered">
-          <Modal
-            :key="'deal-' + index"
-            :index="index" />
 
-          <tr :key="index" class="row row-body">
+          <tr
+            :key="index"
+            class="row row-body"
+            @click="openModal(index)">
 
             <td
               v-for="cell in columns"
@@ -32,8 +35,7 @@
 
                 <template v-if="cell.slug === 'curated_dataset'">
                   <div
-                    class="file_name"
-                    @click="openModal">
+                    class="file_name">
                     {{ deal[0].curated_dataset }}
                   </div>
                   <div class="cid">
@@ -121,7 +123,8 @@ export default {
   data () {
     return {
       hovering: false,
-      slideIndex: 0
+      slideIndex: 0,
+      projectCID: ''
     }
   },
 
@@ -157,9 +160,10 @@ export default {
         return slug
       }
     },
-    openModal () {
+    openModal (index) {
       const slides = document.getElementsByClassName('panel')
       slides[0].style.display = 'block'
+      this.projectCID = index
       this.setModal(true)
     }
   }
@@ -256,6 +260,7 @@ tbody:not(.divider) {
 
 .row-body {
   position: relative;
+  cursor: pointer;
   &:hover {
     .cell-parent:nth-child(3) {
       &:before {
@@ -389,7 +394,6 @@ tr.divider {
 // //////////////////////////////////////////////////////////////////// Specific
 .file_name {
   @include fontWeight_Semibold;
-  cursor: pointer;
 }
 
 .cid {

@@ -43,7 +43,7 @@
           </div>
           <div class="code-snippet">
             <CopyButton
-              :value="deal.payload_cid"
+              :value="option.command + deal.miner_id + ' ' + deal.payload_cid + ' ' + deal.filename"
               class="copy-button" />
             <span>{{ option.command }}</span><span>{{ deal.miner_id }}</span>
             <div class="cid">
