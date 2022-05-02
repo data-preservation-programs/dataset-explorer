@@ -68,7 +68,7 @@ export default {
   &.a {
     top: 0;
     left: 50%;
-    transform: translateX(-19rem);
+    transform: translate(-19rem, -18rem);
   }
   &.b {
     top: 0;
@@ -83,7 +83,7 @@ export default {
   &.d {
     top: 0;
     right: 50%;
-    transform: translate(44rem, 64rem);
+    transform: translate(52rem, 70rem);
   }
   &.e {
     top: 0;
@@ -93,27 +93,27 @@ export default {
   &.f {
     top: 0;
     right: 50%;
-    transform: translate(43rem, 119rem);
+    transform: translate(43rem, 115rem);
   }
   &.g {
     top: 0;
     right: 50%;
-    transform: translate(43rem, 95rem);
+    transform: translate(43rem, 90rem);
   }
   &.h {
     bottom: 0;
     left: 50%;
-    transform: translate(3rem, 8rem);
+    transform: translate(3rem, 21rem);
   }
   &.i {
     bottom: 0;
     left: 50%;
-    transform: translate(-43rem, 6rem);
+    transform: translate(-55rem, 15rem);
   }
   &.j {
     bottom: 0;
     left: 50%;
-    transform: translateX(-33rem);
+    transform: translateX(-32rem);
   }
   &.k {
     top: 0;
@@ -133,17 +133,17 @@ export default {
   &.b {
     top: 0;
     left: 50%;
-    transform: translate(-41rem, 39rem);
+    transform: translate(-62rem, 40rem);
   }
   &.c {
     top: 0;
     right: 50%;
-    transform: translate(44rem, 100rem);
+    transform: translate(54rem, 96rem);
   }
   &.d {
     bottom: 0;
     left: 50%;
-    transform: translate(-43rem, -10rem);
+    transform: translate(-50rem, -8rem);
   }
 }
 
