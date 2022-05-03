@@ -65,7 +65,7 @@
       <div class="grid">
         <div class="col-4">
           <div
-            v-if="index != 0"
+            v-if="sliderIndex != 0"
             class="prev"
             @click="showDeal('prev')">
             <div><ArrowRightIcon class="arrow" /><span> Previous </span></div>
@@ -93,13 +93,13 @@
           <div
             v-if="dataset.length > 1"
             class="panel-numbers">
-            {{ index + 1 }} of {{ dataset.length }}
+            {{ sliderIndex + 1 }} of {{ dataset.length }}
           </div>
         </div>
 
         <div class="col-4">
           <div
-            v-if="index != (dataset.length - 1)"
+            v-if="sliderIndex != (dataset.length - 1)"
             class="next"
             @click="showDeal('next')">
             <div><span> Next </span><ArrowRightIcon class="arrow" /></div>
@@ -131,7 +131,7 @@
 
 <script>
 // ====================================================================== Import
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 import CopyButton from '@/components/copy-button'
 import ArrowRightIcon from '@/components/icons/ArrowRight'
@@ -152,15 +152,16 @@ export default {
     }
   },
 
-  data () {
-    return {
-      index: 0
-    }
-  },
+  // data () {
+  //   return {
+  //     index: 0
+  //   }
+  // },
 
   computed: {
     ...mapGetters({
-      siteContent: 'global/siteContent'
+      siteContent: 'global/siteContent',
+      sliderIndex: 'global/sliderIndex'
     }),
     pageData () {
       return this.siteContent.explorer
@@ -169,17 +170,16 @@ export default {
       return this.pageData.modal.options
     },
     deal () {
-      return this.dataset[this.index]
+      return this.dataset[this.sliderIndex]
     },
     prevDeal () {
-      const index = this.index
+      const index = this.sliderIndex
       const dataset = this.dataset
-      console.log(dataset)
       if (index === 0) { return dataset[dataset.length - 1] }
       return dataset[index - 1]
     },
     nextDeal () {
-      const index = this.index
+      const index = this.sliderIndex
       const dataset = this.dataset
       if (index === dataset.length - 1) { return dataset[0] }
       return dataset[index + 1]
@@ -187,15 +187,18 @@ export default {
   },
 
   methods: {
+    ...mapActions({
+      setSliderIndex: 'global/setSliderIndex'
+    }),
     showDeal (direction) {
-      const index = this.index
+      const index = this.sliderIndex
       const len = this.dataset.length
       if (direction === 'next') {
-        if (index === len - 1) { this.index = 0; return }
-        this.index += 1
+        if (index === len - 1) { this.setSliderIndex(0); return }
+        this.setSliderIndex(index + 1)
       } else if (direction === 'prev') {
-        if (index === 0) { this.index = len - 1; return }
-        this.index -= 1
+        if (index === 0) { this.setSliderIndex(len - 1); return }
+        this.setSliderIndex(index - 1)
       }
     }
   }

@@ -89,7 +89,7 @@
           </tr>
 
           <tr
-            :key="`divider-${deal.rank}`"
+            :key="`divider-${payloadCid}`"
             class="divider" />
 
         </template>

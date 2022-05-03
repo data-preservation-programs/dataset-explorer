@@ -52,7 +52,8 @@ export default {
       modal: 'global/modal',
       deals: 'explorer/datasetList',
       datasetNames: 'explorer/datasetNames',
-      cids: 'explorer/datasetSingular'
+      cids: 'explorer/datasetSingular',
+      sliderIndex: 'global/sliderIndex'
     }),
     dataset () {
       return this.cids[this.payloadCid]
@@ -76,10 +77,12 @@ export default {
 
   methods: {
     ...mapActions({
-      setModal: 'global/setModal'
+      setModal: 'global/setModal',
+      setSliderIndex: 'global/setSliderIndex'
     }),
     closeModal () {
       if (this.modal) {
+        this.setSliderIndex(0)
         this.setModal(false)
       }
     },
