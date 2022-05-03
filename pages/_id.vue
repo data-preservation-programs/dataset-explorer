@@ -1,9 +1,11 @@
 <template>
   <div :class="`page page-${tag}`">
+
     <Stats
-      :datasetName="getProjectLabels($route.params.id)"
+      :dataset-name="getProjectLabels($route.params.id)"
       :stats="stats"
-      :statData="statData" />
+      :stat-data="statData" />
+
     <section id="deals-table">
       <div class="grid">
         <div class="col">

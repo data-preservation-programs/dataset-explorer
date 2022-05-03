@@ -17,15 +17,17 @@
       <!-- ============================================================ Body -->
       <tbody class="divider" />
       <tbody class="table-body">
+
         <Modal
           class="deal-modal"
-          :index="projectCID" />
-        <template v-for="(deal, index) in filtered">
+          :payload-cid="selectedPayloadCid" />
+
+        <template v-for="(deal, payloadCid) in filtered">
 
           <tr
-            :key="index"
+            :key="payloadCid"
             class="row row-body"
-            @click="openModal(index)">
+            @click="openModal(payloadCid)">
 
             <td
               v-for="cell in columns"
@@ -85,10 +87,13 @@
             </td>
 
           </tr>
+
           <tr
-            :key="`divider-${deal.rank}`"
+            :key="`divider-${payloadCid}`"
             class="divider" />
+
         </template>
+
       </tbody>
     </table>
 
@@ -124,7 +129,7 @@ export default {
     return {
       hovering: false,
       slideIndex: 0,
-      projectCID: ''
+      selectedPayloadCid: false
     }
   },
 
@@ -160,10 +165,8 @@ export default {
         return slug
       }
     },
-    openModal (index) {
-      const slides = document.getElementsByClassName('panel')
-      slides[0].style.display = 'block'
-      this.projectCID = index
+    openModal (selectedPayloadCid) {
+      this.selectedPayloadCid = selectedPayloadCid
       this.setModal(true)
     }
   }
