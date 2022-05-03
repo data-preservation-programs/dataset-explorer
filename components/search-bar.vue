@@ -1,34 +1,28 @@
 <template>
-  <div :class="['searchbar', { focused, empty }]">
+  <div class="grid">
+    <div class="col-5">
 
-    <button class="search-button">
-      <IconSearch :loading="loading" />
-    </button>
+      <div class="filter-wrapper">
+        <div :class="['searchbar', { focused, empty }]">
+          <div class="dashed-border">
+            
+            <button class="search-button">
+              <IconSearch :loading="loading" />
+            </button>
+            
+            <input
+              v-model="value"
+              :placeholder="placeholder"
+              type="text"
+              class="input"
+              @focus="focused = true"
+              @blur="focused = false">
 
-    <!-- <div
-      class="clear-button"
-      @click="clearValue()">
-      Clear
-    </div> -->
+          </div>
+        </div>
+      </div>
 
-    <input
-      v-model="value"
-      :placeholder="placeholder"
-      type="text"
-      class="input"
-      @focus="focused = true"
-      @blur="focused = false">
-
-    <div class="fill" />
-
-    <div class="border bright" />
-
-    <div class="border gradient" />
-
-    <div class="border solid" />
-
-    <div class="shadow" />
-
+    </div>
   </div>
 </template>
 
@@ -50,7 +44,7 @@ export default {
     placeholder: {
       type: String,
       required: false,
-      default: 'Enter a search term'
+      default: 'Filter by dataset, location'
     },
     loading: {
       type: Boolean,
@@ -112,87 +106,50 @@ $iconOffset: calc((#{$barHeight} - #{$iconHeight}) / 2);
   display: flex;
   flex-direction: row;
   position: relative;
-  width: 28.5rem;
-  height: $barHeight;
-  transition: 250ms ease-in-out;
-  // &:not(.empty):hover {
-  //   .clear-button {
-  //     transition: 150ms ease-in;
-  //     transform: translateX(0);
-  //   }
-  // }
-  &:hover {
-    .border {
-      &.solid {
-        opacity: 0;
-      }
-      &.gradient {
-        opacity: 1;
-      }
-    }
-    .fill {
-      opacity: 0.5;
-    }
-  }
-  &.focused,
-  &:not(.empty) {
-    .border {
-      &.solid,
-      &.gradient {
-        opacity: 0;
-      }
-      &.bright {
-        opacity: 1;
-      }
-    }
-    .fill {
-      opacity: 1;
-    }
-  }
-}
-
-.shadow {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: calc(100% - 1.5rem);
-  height: 100%;
-  background-color: black;
-  filter: blur(10px);
-  z-index: 0;
-}
-
-.fill {
-  position: absolute;
-  top: 2px;
-  left: 2px;
-  width: calc(100% - 4px);
-  height: calc(100% - 4px);
-  background-color: black;
-  border-radius: 8px;
-  z-index: 10;
+  width: 26.2rem;
+  height: 3.1rem;
   transition: 250ms ease-in-out;
 }
 
-.border {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 10px;
-  z-index: 5;
-  transition: 250ms ease-in-out;
-  &.solid {
-    background-color: $logCabin;
+.dashed-border {
+  display: inline-block;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect x='2' y='2' width='105%25' height='93%25' rx='5' fill='none' stroke='%23001FE6' stroke-width='2' stroke-dasharray='1.5%2c 10' stroke-dashoffset='10' stroke-linecap='round'/%3e%3c/svg%3e");
+  &:before {
+    content: '';
+    position: absolute;
+    background-image: url("data:image/svg+xml,%3Csvg width='8' height='8' xmlns='http://www.w3.org/2000/svg'%3E%3Cellipse ry='4' rx='4' cy='4' cx='4' fill='%23001FE6'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    transform: translateX(-50%);
+    width: 0.3125rem;
+    height: 0.3125rem;
+    left: 26.2rem;
   }
-  &.gradient {
-    background: linear-gradient(90deg, rgba(19, 25, 20, 1) 0%, rgba(33, 141, 101, 1) 99%);
-    opacity: 0;
+  &:after {
+    content: '';
+    position: absolute;
+    background-image: url("data:image/svg+xml,%3Csvg width='8' height='8' xmlns='http://www.w3.org/2000/svg'%3E%3Cellipse ry='4' rx='4' cy='4' cx='4' fill='%23001FE6'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    transform: translateX(50%);
+    width: 0.3125rem;
+    height: 0.3125rem;
+    bottom: 0;
+    right: 0;
   }
-  &.bright {
-    background-color: $eucalyptus;
-    opacity: 0;
+}
+
+.searchbar.focused {
+  .dashed-border {
+    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect x='2' y='2' width='105%25' height='93%25' rx='5' fill='none' stroke='%23001FE6' stroke-width='2' stroke-dasharray='1.5%2c 0' stroke-dashoffset='10' stroke-linecap='round'/%3e%3c/svg%3e");
+    &:before {
+      visibility: hidden;
+    }
+    &:after {
+      visibility: hidden;
+    }
   }
 }
 
@@ -202,51 +159,29 @@ $iconOffset: calc((#{$barHeight} - #{$iconHeight}) / 2);
   right: $iconOffset;
   width: $iconHeight;
   height: $iconHeight;
-  background-color: $logCabin;
+  background-color: $mystic;
   border-radius: 0.25rem;
   z-index: 15;
-  .icon-search {
-    width: 100%;
-    height: 100%;
-  }
 }
-
-// .clear-button {
-//   display: flex;
-//   flex-direction: row;
-//   align-items: center;
-//   position: absolute;
-//   top: 0;
-//   right: 0;
-//   height: 100%;
-//   font-size: 0.75rem;
-//   font-weight: 600;
-//   text-transform: uppercase;
-//   // background-color: $charadeDark;
-//   // border-left: 1px solid $shark;
-//   transform: translateX(100%);
-//   padding: 0 0.75rem;
-//   cursor: pointer;
-//   z-index: 10;
-//   transition: 150ms ease-out;
-//   &:hover {
-//     text-decoration: underline;
-//   }
-// }
 
 .input {
   flex: 1;
   position: relative;
   height: 100%;
-  padding-left: 0.75rem;
-  padding-right: calc(#{$iconHeight} + #{$iconOffset} * 2);
+  padding: 0.875rem 13.625rem 1.0625rem 1.9375rem;
   background-color: transparent;
   outline: 0;
   border: 0;
   appearance: none;
   z-index: 15;
   @include placeholder {
-    color: white;
+    color: $classicBlue;
   }
 }
+
+.filter-wrapper {
+  padding-top: 1rem;
+  padding-bottom: 5rem;
+}
+
 </style>

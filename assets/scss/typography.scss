@@ -1,8 +1,8 @@
 // ////////////////////////////////////////////////////////////////// Typography
 // =============================================================================
 // -------------------------------------------------------------------- Families
-$font_Primary: 'Urbanist';
-$font_Secondary: 'Space Mono';
+$font_Primary: 'Urbanist', helvetica, sans-serif;
+$font_Secondary: 'Space Mono', courier, monospace;
 
 // ------------------------------------------------------------------- Font Size
 // 12px / 16 = 0.75rem
@@ -30,7 +30,7 @@ $fontSize_Huge: 8.75rem;
 $fontWeight_Regular: 400;
 $fontWeight_Medium: 500;
 $fontWeight_Semibold: 600;
-$fontWeight_Extrabold: 800;
+$fontWeight_Extrabold: 900;
 
 @mixin fontWeight_Regular { font-weight: $fontWeight_Regular; }
 @mixin fontWeight_Medium { font-weight: $fontWeight_Medium; }
@@ -45,16 +45,15 @@ $fontWeight_Extrabold: 800;
 // leading_MediumLarge | 26pt
 // leading_ExtraLarge | 30pt
 // leading_Huge | 45pt
+$leading_Tiny: 0.8125;
+$leading_Small: 1;
+$leading_Regular: 1.2;
+$leading_Large: 2.2;
+$leading_Huge: 8;
 
-$leading_Small: 0.813rem;
-$leading_Medium: 0.875rem;
-$leading_Regular: 1.25rem;
-$leading_Large: 2.5rem;
-$leading_Huge: 8.438rem;
-
+@mixin leading_Tiny { line-height: $leading_Tiny }
 @mixin leading_Small { line-height: $leading_Small; }
 @mixin leading_Regular { line-height: $leading_Regular; }
-@mixin leading_Medium { line-height: $leading_Medium; }
 @mixin leading_Large { line-height: $leading_Large; }
 @mixin leading_Huge { line-height: $leading_Huge; }
 
@@ -67,15 +66,17 @@ $letterSpacing_Large: 0.063rem;
 // =============================================================================
 @mixin header {
   @include fontSize_Huge;
-  @include leading_Huge;
+  @include leading_Tiny;
   @include fontWeight_Extrabold;
+  text-transform: uppercase;
   letter-spacing: $letterSpacing_ExtraSmall;
 }
 
 @mixin subheading {
-  @include fontSize_Large;
+  @include fontSize_Medium;
   @include leading_Large;
   @include fontWeight_Semibold;
+  text-transform: uppercase;
   letter-spacing: $letterSpacing_Large;
 }
 
