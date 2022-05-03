@@ -62,59 +62,63 @@
 
     <!-- =================================================================== -->
     <section class="toggle-buttons">
-      <div class="place-holder">
-        <div
-          v-if="index != 0"
-          class="prev"
-          @click="showDeal('prev')">
-          <ArrowRightIcon class="arrow" /><span> Previous </span>
-          <div class="button-details">
-            <div>
-              SP
-              <span class="provider">
-                {{ prevDeal.miner_id }}
-              </span>
-              <span class="flag">
-                {{ $GetFlagIcon(prevDeal.location) }}
-              </span>
-            </div>
-            <div>
-              Deal ID
-              <span class="id">
-                {{ prevDeal.deal_id }}
-              </span>
+      <div class="grid">
+        <div class="col-4">
+          <div
+            v-if="index != 0"
+            class="prev"
+            @click="showDeal('prev')">
+            <div><ArrowRightIcon class="arrow" /><span> Previous </span></div>
+            <div class="button-details">
+              <div>
+                SP
+                <span class="provider">
+                  {{ prevDeal.miner_id }}
+                </span>
+                <span class="flag">
+                  {{ $GetFlagIcon(prevDeal.location) }}
+                </span>
+              </div>
+              <div>
+                Deal ID
+                <span class="id">
+                  {{ prevDeal.deal_id }}
+                </span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div
-        v-if="dataset.length > 1"
-        class="panel-numbers">
-        {{ index + 1 }} of {{ dataset.length }}
-      </div>
+        <div class="col-4">
+          <div
+            v-if="dataset.length > 1"
+            class="panel-numbers">
+            {{ index + 1 }} of {{ dataset.length }}
+          </div>
+        </div>
 
-      <div class="place-holder">
-        <div
-          v-if="index != (dataset.length - 1)"
-          class="next"
-          @click="showDeal('next')">
-          <span> Next </span><ArrowRightIcon class="arrow" />
-          <div class="button-details">
-            <div>
-              SP
-              <span class="provider">
-                {{ nextDeal.miner_id }}
-              </span>
-              <span class="flag">
-                {{ $GetFlagIcon(nextDeal.location) }}
-              </span>
-            </div>
-            <div>
-              Deal ID
-              <span class="id">
-                {{ nextDeal.deal_id }}
-              </span>
+        <div class="col-4">
+          <div
+            v-if="index != (dataset.length - 1)"
+            class="next"
+            @click="showDeal('next')">
+            <div><span> Next </span><ArrowRightIcon class="arrow" /></div>
+            <div class="button-details">
+              <div>
+                SP
+                <span class="provider">
+                  {{ nextDeal.miner_id }}
+                </span>
+                <span class="flag">
+                  {{ $GetFlagIcon(nextDeal.location) }}
+                </span>
+              </div>
+              <div>
+                Deal ID
+                <span class="id">
+                  {{ nextDeal.deal_id }}
+                </span>
+              </div>
             </div>
           </div>
         </div>
@@ -297,35 +301,19 @@ export default {
 
 // /////////////////////////////////////////////////////////////// Toggle Buttons
 .toggle-buttons {
-  padding: 0 3.875rem;
+  padding: 2rem 3.875rem 0 3.875rem;
   margin-bottom: 2.4375rem;
-  font-size: 0.9375;
-  @include small {
-    margin-top: -2rem;
-  }
-  @include tiny {
-    margin-top: -3rem;
-  }
-}
-
-.arrow {
-  width: 0.75rem;
-  transition: all 0.25s ease;
-}
-
-.toggle-buttons {
-  display: flex;
-  flex-direction: row;
-  align-content: center;
-  justify-content: space-between;
-  padding-top: 2rem;
+  // font-size: 0.9375;
   font-size: 1rem;
-  position: relative;
   z-index: 20;
   .prev, .next {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     cursor: pointer;
   }
   .prev {
+    align-items: flex-start;
     @include medium {
       padding-left: 1.75rem;
     }
@@ -341,6 +329,7 @@ export default {
     }
   }
   .next {
+    align-items: flex-end;
     @include medium {
       padding-right: 1.75rem;
     }
@@ -354,7 +343,19 @@ export default {
       }
     }
   }
+  @include small {
+    margin-top: -2rem;
+  }
+  @include tiny {
+    margin-top: -3rem;
+  }
 }
+
+.arrow {
+  width: 0.75rem;
+  transition: all 0.25s ease;
+}
+
 .provider, .id {
   @include fontWeight_Regular;
   font-family: $font_Secondary;
@@ -363,12 +364,14 @@ export default {
 .button-details {
   @include fontSize_Mini;
   flex-direction: column !important;
+  padding-top: 0.75rem;
 }
 
 .panel-numbers {
-  position: absolute;
-  bottom: 0;
-  left: 17rem;
+  padding-top: 3rem;
+  justify-content: center;
+  align-items: center;
+  display: flex;
 }
 
 </style>
