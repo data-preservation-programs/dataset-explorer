@@ -119,6 +119,10 @@ export default {
   },
 
   props: {
+    cids: {
+      type: Object,
+      required: true
+    },
     columns: {
       type: Array,
       required: true
@@ -137,11 +141,12 @@ export default {
     ...mapGetters({
       deals: 'explorer/datasetList',
       datasetNames: 'explorer/datasetNames',
-      cids: 'explorer/datasetSingular',
+      // cids: 'explorer/datasetSingular',
       modal: 'global/modal'
     }),
     filtered () {
       const deals = this.cids
+      console.log(deals.length)
       return Object.keys(deals).length > 0 ? deals : false
     }
   },

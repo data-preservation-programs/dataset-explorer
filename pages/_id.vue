@@ -9,10 +9,25 @@
     <section id="deals-table">
       <div class="grid">
         <div class="col">
-          <TableDatasetSingular :columns="tableColumns" />
+
+          <TableDatasetSingular
+            v-if="cids"
+            :cids="cids"
+            :columns="tableColumns" />
+
         </div>
       </div>
     </section>
+
+    <div v-if="loading" class="dataset-loading-placeholder">
+
+      <LoaderTripleDot theme="blue" />
+
+      <div class="loading-text">
+        {{ loadingText }}
+      </div>
+
+    </div>
 
   </div>
 </template>
@@ -23,6 +38,7 @@ import { mapGetters, mapActions } from 'vuex'
 
 import Stats from '@/components/stats'
 import TableDatasetSingular from '@/components/table-dataset-singular'
+import LoaderTripleDot from '@/components/spinners/triple-dot'
 import Page from '@/content/pages/explorer.json'
 import FileNames from '@/content/data/dataset-explorer-manifest.json'
 
@@ -32,7 +48,8 @@ export default {
 
   components: {
     Stats,
-    TableDatasetSingular
+    TableDatasetSingular,
+    LoaderTripleDot
   },
 
   data () {
@@ -123,6 +140,15 @@ export default {
 // /////////////////////////////////////////////////////////////// [Toolbar] Top
 
 // /////////////////////////////////////////////////////////////////////// Table
+.dataset-loading-placeholder {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  .loading-text {
+    padding-left: 2rem;
+  }
+}
 
 // //////////////////////////////////////////////////////////// [Toolbar] Bottom
 
