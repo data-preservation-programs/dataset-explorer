@@ -119,7 +119,7 @@ export default {
   transform: translateX(50%);
   width: 0.3125rem;
   height: 0.3125rem;
-  bottom: 0.325rem;
+  bottom: 0rem;
   left: 0.0625rem;
 }
 </style>
