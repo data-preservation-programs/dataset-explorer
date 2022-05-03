@@ -1,17 +1,19 @@
 <template>
   <div
+    v-if="dataset"
     id="modal"
     :class="{ active: modal }"
     @keyup.esc="closeModal">
 
     <section id="modal-deal">
+
       <div class="toolbar">
         <button class="close-button" @click="closeModal">
           X
         </button>
       </div>
-      <Slider
-        :dataset="dataset" />
+
+      <Slider :dataset="dataset" />
 
     </section>
 
@@ -23,6 +25,7 @@
 import { mapGetters, mapActions } from 'vuex'
 
 import Slider from '@/components/slider'
+
 // ====================================================================== Export
 export default {
   name: 'Modal',
@@ -32,16 +35,18 @@ export default {
   },
 
   props: {
-    index: {
-      type: String,
+    payloadCid: {
+      type: [Boolean, String],
       required: true
     }
   },
+
   data () {
     return {
       initialized: false
     }
   },
+
   computed: {
     ...mapGetters({
       modal: 'global/modal',
@@ -49,12 +54,8 @@ export default {
       datasetNames: 'explorer/datasetNames',
       cids: 'explorer/datasetSingular'
     }),
-    filtered () {
-      const deals = this.cids
-      return Object.keys(deals).length > 0 ? deals : false
-    },
     dataset () {
-      return this.filtered[this.index]
+      return this.cids[this.payloadCid]
     },
     action () {
       return this.modal.action
@@ -63,9 +64,7 @@ export default {
       return this.modal.url
     }
   },
-  created () {
-    console.log(this.index)
-  },
+
   mounted () {
     window.addEventListener('keydown', (e) => {
       const key = e.key || e.keyCode
@@ -74,6 +73,7 @@ export default {
       }
     })
   },
+
   methods: {
     ...mapActions({
       setModal: 'global/setModal'

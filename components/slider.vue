@@ -1,12 +1,9 @@
 <template>
   <div class="modal-slider">
     <!-- =================================================================== -->
-    <section
-      v-for="(deal, index) in dataset"
-      :key="`panel-${index}`"
-      ref="panel"
-      class="panel fade">
+    <section ref="panel" class="panel">
       <div class="inner-content">
+
         <div class="pannel-top">
           <div class="name">
             {{ deal.curated_dataset }}<span> {{ deal.rank }} </span>
@@ -15,6 +12,7 @@
             {{ deal.payload_cid }}
           </div>
         </div>
+
         <div class="storage-deal-id">
           <div class="storage-provider">
             <h5> Storage Provider </h5>
@@ -29,6 +27,7 @@
             </div>
           </div>
         </div>
+
         <div
           v-for="(option, optionIndex) in modal_options"
           :key="'option' + optionIndex"
@@ -49,52 +48,58 @@
             <div class="cid">
               {{ deal.payload_cid }}
             </div>
-            <div> {{ deal.filename }} </div>
+            <div>
+              {{ deal.filename }}
+            </div>
           </div>
         </div>
+
       </div>
     </section>
 
     <!-- =================================================================== -->
     <section class="toggle-buttons">
+
       <div
         class="prev"
-        @click="showSlides(slideIndex += -1)">
+        @click="showDeal('prev')">
         <ArrowRightIcon class="arrow" /><span> Previous </span>
         <div class="button-details">
           <div>
             SP
             <span class="provider">
-              {{ getNextDeal(dataset, (slideIndex -2)).miner_id }}
+              {{ prevDeal.miner_id }}
             </span>
           </div>
           <div>
             Deal ID
             <span class="id">
-              {{ getNextDeal(dataset, (slideIndex -2)).deal_id }}
+              {{ prevDeal.deal_id }}
             </span>
           </div>
         </div>
       </div>
+
       <div
         class="next"
-        @click="showSlides(slideIndex += 1)">
+        @click="showDeal('next')">
         <span> Next </span><ArrowRightIcon class="arrow" />
         <div class="button-details">
           <div>
             SP
             <span class="provider">
-              {{ getNextDeal(dataset, (slideIndex)).miner_id }}
+              {{ nextDeal.miner_id }}
             </span>
           </div>
           <div>
             Deal ID
             <span class="id">
-              {{ getNextDeal(dataset, (slideIndex)).deal_id }}
+              {{ nextDeal.deal_id }}
             </span>
           </div>
         </div>
       </div>
+
     </section>
 
   </div>
@@ -103,16 +108,17 @@
 <script>
 // ====================================================================== Import
 import { mapGetters } from 'vuex'
-import ArrowRightIcon from '@/components/icons/ArrowRight'
+
 import CopyButton from '@/components/copy-button'
+import ArrowRightIcon from '@/components/icons/ArrowRight'
 
 // ====================================================================== Export
 export default {
   name: 'Slider',
 
   components: {
-    ArrowRightIcon,
-    CopyButton
+    CopyButton,
+    ArrowRightIcon
   },
 
   props: {
@@ -124,10 +130,7 @@ export default {
 
   data () {
     return {
-      panel: 0,
-      modalHeight: '0px',
-      resize: false,
-      slideIndex: 1
+      index: 0
     }
   },
 
@@ -140,51 +143,35 @@ export default {
     },
     modal_options () {
       return this.pageData.modal.options
+    },
+    deal () {
+      return this.dataset[this.index]
+    },
+    prevDeal () {
+      const index = this.index
+      const dataset = this.dataset
+      if (index === 0) { return dataset[dataset.length - 1] }
+      return dataset[index - 1]
+    },
+    nextDeal () {
+      const index = this.index
+      const dataset = this.dataset
+      if (index === dataset.length - 1) { return dataset[0] }
+      return dataset[index + 1]
     }
-  },
-
-  watch: {
-    panel (index) {
-      this.setModalHeight(index)
-    }
-  },
-
-  beforeDestroy () {
-    if (this.resize) { window.removeEventListener('resize', this.resize) }
-  },
-
-  mounted () {
-    const resize = () => { this.setModalHeight() }; resize()
-    this.resize = this.$Throttle(resize, 1)
-    window.addEventListener('resize', this.resize)
   },
 
   methods: {
-    setModalHeight (index) {
-      const panel = this.$refs.panel[index || this.panel]
-      this.modalHeight = `${panel.clientHeight + 30}px`
-    },
-
-    showSlides (n) {
-      let i
-      const slides = document.getElementsByClassName('panel')
-      if (n > slides.length) { this.slideIndex = 1 }
-      if (n < 1) { this.slideIndex = slides.length }
-      for (i = 0; i < slides.length; i++) {
-        slides[i].style.display = 'none'
+    showDeal (direction) {
+      const index = this.index
+      const len = this.dataset.length
+      if (direction === 'next') {
+        if (index === len - 1) { this.index = 0; return }
+        this.index += 1
+      } else if (direction === 'prev') {
+        if (index === 0) { this.index = len - 1; return }
+        this.index -= 1
       }
-      slides[this.slideIndex - 1].style.display = 'block'
-    },
-
-    getNextDeal (data, index) {
-      console.log(index)
-      if (index === data.length) {
-        return data[0]
-      }
-      if (index === -1) {
-        return data[data.length - 1]
-      }
-      return data[index]
     }
   }
 }
@@ -205,7 +192,6 @@ export default {
 }
 
 .panel {
-  display: none;
   margin: 0 3.875rem;
 }
 
