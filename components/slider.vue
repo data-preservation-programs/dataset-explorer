@@ -152,12 +152,6 @@ export default {
     }
   },
 
-  // data () {
-  //   return {
-  //     index: 0
-  //   }
-  // },
-
   computed: {
     ...mapGetters({
       siteContent: 'global/siteContent',
