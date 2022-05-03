@@ -87,10 +87,6 @@
           "label": "Dataset Name"
         },
         {
-          "slug": "data_stored",
-          "label": "Current<br />Data Stored"
-        },
-        {
           "slug": "all_data_stored",
           "label": "Cumulative<br />Data Stored"
         },
