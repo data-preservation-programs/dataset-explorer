@@ -54,9 +54,7 @@
       { "slug": "file_format", "label": "Type" },
       { "slug": "data_size", "label": "Size" },
       { "slug": "deal_id", "label": "Deal ID" },
-      { "slug": "miner_id", "label": "Storage Providers" },
-      { "slug": "status", "label": "Status" },
-      { "slug": "deal_start_epoch", "label": "Available Until"}
+      { "slug": "miner_id", "label": "Storage Providers" }
     ],
     "resulter": {
       "label": {
