@@ -14,8 +14,8 @@
             </div>
             <div class="grid-equalHeight stat-list">
               <div
-                v-for="stat in stats"
-                :key="stat.key"
+                v-for="(stat, index) in stats"
+                :key="'stat-' + index"
                 class="col-5">
                 <div class="inner-content">
                   <span class="value">
