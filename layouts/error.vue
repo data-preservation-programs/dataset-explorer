@@ -39,15 +39,15 @@ export default {
     pageContent () {
       return this.siteContent.general
     },
-    content () {
-      return this.siteContent.general.page_404
-    },
-    code () {
-      return this.content.code
-    },
-    message () {
-      return this.content.message
-    },
+    // content () {
+    //   return this.siteContent.general.page_404
+    // },
+    // code () {
+    //   return this.content.code
+    // },
+    // message () {
+    //   return this.content.message
+    // },
     link () {
       return this.content.link
     }

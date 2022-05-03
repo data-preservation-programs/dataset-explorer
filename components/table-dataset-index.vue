@@ -167,7 +167,6 @@ export default {
 
 .table-head {
   position: relative;
-  filter: drop-shadow(0px 0px 20px rgba(0, 0, 0, 0.9));
   vertical-align: bottom;
   &:before,
   &:after {
@@ -409,7 +408,7 @@ tr.divider {
 .location-flags {
   display: flex;
   flex-wrap: wrap;
-  width: 5rem;
+  width: 6.5rem;
   transform: scale(1.5);
   padding-left: 0.75rem;
 }

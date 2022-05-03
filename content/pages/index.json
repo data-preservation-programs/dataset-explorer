@@ -10,15 +10,51 @@
     "image": ""
   },
   "page_content": {
+    "fold": {
+      "heading": "Dataset Explorer",
+      "subheading": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore"
+    },
     "stats": [
-      { "key": "total_deal_sum_data", "label": "Total data stored through Dataset Explorer", "type": "byte" },
-      { "key": "total_deal_count", "label": "Total deals made through Dataset Explorer", "type": "number" },
-      { "key": "total_cid_count_renewed", "label": "CIDs stored through Dataset Explorer", "type": "number" },
-      { "key": "total_cid_sum_data_renewed", "label": "Unique data stored", "type": "byte" },
-      { "key": "total_sp_count", "label": "Unique service providers", "type": "number" },
-      { "key": "total_cid_count_eligible", "label": "CIDs Eligible for Deal Proposals", "type": "number" },
-      { "key": "total_location_count_unique", "label": "Total number of countries", "type": "number" },
-      { "key": "total_data_stored_through_slingshot", "label": "Total data stored through Slingshot", "type": "byte" }
+      {
+        "key": "total_deal_sum_data",
+        "label": "Total data stored through Dataset Explorer",
+        "type": "byte"
+      },
+      {
+        "key": "total_deal_count",
+        "label": "Total deals made through Dataset Explorer",
+        "type": "number"
+      },
+      {
+        "key": "total_cid_count_renewed",
+        "label": "CIDs stored through Dataset Explorer",
+        "type": "number"
+      },
+      {
+        "key": "total_cid_sum_data_renewed",
+        "label": "Unique data stored",
+        "type": "byte"
+      },
+      {
+        "key": "total_sp_count",
+        "label": "Unique service providers",
+        "type": "number"
+      },
+      {
+        "key": "total_cid_count_eligible",
+        "label": "CIDs Eligible for Deal Proposals",
+        "type": "number"
+      },
+      {
+        "key": "total_location_count_unique",
+        "label": "Total number of countries",
+        "type": "number"
+      },
+      {
+        "key": "total_data_stored_through_slingshot",
+        "label": "Total data stored through Slingshot",
+        "type": "byte"
+      }
     ],
     "table": {
       "searchbar": {
@@ -28,20 +64,44 @@
       "sorter": {
         "label": "Sort by",
         "options": [
-          { "key": "date_added_desc", "label": "Date Added - Newest" },
-          { "key": "date_added_asc", "label": "Date Added - Oldest" }
+          {
+            "key": "date_added_desc",
+            "label": "Date Added - Newest"
+          },
+          {
+            "key": "date_added_asc",
+            "label": "Date Added - Oldest"
+          }
         ]
       },
       "filter": {
         "prioritize_file_name": "Prioritize File Name"
       },
       "columns": [
-        { "slug": "icon", "label": "Logo" },
-        { "slug": "dataset_name", "label": "Dataset Name" },
-        { "slug": "data_stored", "label": "Current<br />Data Stored" },
-        { "slug": "all_data_stored", "label": "Cumulative<br />Data Stored" },
-        { "slug": "storage_providers", "label": "No. of<br />Storage Providers" },
-        { "slug": "locations", "label": "Locations" }
+        {
+          "slug": "icon",
+          "label": "Logo"
+        },
+        {
+          "slug": "dataset_name",
+          "label": "Dataset Name"
+        },
+        {
+          "slug": "data_stored",
+          "label": "Current<br />Data Stored"
+        },
+        {
+          "slug": "all_data_stored",
+          "label": "Cumulative<br />Data Stored"
+        },
+        {
+          "slug": "storage_providers",
+          "label": "No. of<br />Storage Providers"
+        },
+        {
+          "slug": "locations",
+          "label": "Locations"
+        }
       ],
       "resulter": {
         "label": {

@@ -5,19 +5,21 @@
 
 $fontAssetPath: '~assets/fonts';
 
-// ------------------------------------------------------------------ Metropolis
+// ------------------------------------------------------------------ Urbanist
 @font-face {
   font-family: 'Urbanist';
   src: url('#{$fontAssetPath}/urbanist/Urbanist-VariableFont_wght.ttf') format('truetype');
-  font-weight: 400;
+  font-weight: 100 900;
   font-style: normal;
+  font-display: swap;
 }
 
-// ----------------------------------------------------------------- Inconsolata
+// ----------------------------------------------------------------- Space Mono
 @font-face {
   font-family: 'Space Mono';
   src: url('#{$fontAssetPath}/space-mono/SpaceMono-Regular.ttf') format('truetype');
   font-weight: 400;
+  font-display: swap;
 }
 
 // ///////////////////////////////////////////////////////////////////// General
@@ -137,8 +139,45 @@ h3, .h3 {
   @include h3;
 }
 
+// /////////////////////////////////////////////////////////////////////// Icons
+// -----------------------------------------------------------------------------
+
+i.chevron {
+  display: inline-block;
+  font-style: normal;
+  box-sizing: border-box;
+  position: relative;
+  display: block;
+  width: 1rem;
+  height: 1rem;
+
+  &:before, &:after {
+    content: "";
+    display: block;
+    box-sizing: border-box;
+    position: absolute;
+    width: 50%;
+    height: 0.175rem;
+    border-radius: 0.5rem 0.5rem 0;
+    background-color: black;
+  }
+
+   &:before {
+    transform: rotate(45deg);
+    left: 0;
+    top: 0;
+   }
+
+   &:after {
+    transform: rotate(-45deg);
+    left: calc(50% - 0.25rem);
+    top: 0;
+   }
+ }
+
 // ////////////////////////////////////////////////////////////////// Components
 // -----------------------------------------------------------------------------
+
 .video-wrapper {
   position: relative;
   padding-bottom: 56.25%; /* 16:9 */
