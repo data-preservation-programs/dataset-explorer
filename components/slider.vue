@@ -18,6 +18,9 @@
             <h5> Storage Provider </h5>
             <div>
               {{ deal.miner_id }}
+              <span class="flag">
+                {{ $GetFlagIcon(deal.location) }}
+              </span>
             </div>
           </div>
           <div class="deal-id">
@@ -59,43 +62,60 @@
 
     <!-- =================================================================== -->
     <section class="toggle-buttons">
-
-      <div
-        class="prev"
-        @click="showDeal('prev')">
-        <ArrowRightIcon class="arrow" /><span> Previous </span>
-        <div class="button-details">
-          <div>
-            SP
-            <span class="provider">
-              {{ prevDeal.miner_id }}
-            </span>
-          </div>
-          <div>
-            Deal ID
-            <span class="id">
-              {{ prevDeal.deal_id }}
-            </span>
+      <div class="place-holder">
+        <div
+          v-if="index != 0"
+          class="prev"
+          @click="showDeal('prev')">
+          <ArrowRightIcon class="arrow" /><span> Previous </span>
+          <div class="button-details">
+            <div>
+              SP
+              <span class="provider">
+                {{ prevDeal.miner_id }}
+              </span>
+              <span class="flag">
+                {{ $GetFlagIcon(prevDeal.location) }}
+              </span>
+            </div>
+            <div>
+              Deal ID
+              <span class="id">
+                {{ prevDeal.deal_id }}
+              </span>
+            </div>
           </div>
         </div>
       </div>
 
       <div
-        class="next"
-        @click="showDeal('next')">
-        <span> Next </span><ArrowRightIcon class="arrow" />
-        <div class="button-details">
-          <div>
-            SP
-            <span class="provider">
-              {{ nextDeal.miner_id }}
-            </span>
-          </div>
-          <div>
-            Deal ID
-            <span class="id">
-              {{ nextDeal.deal_id }}
-            </span>
+        v-if="dataset.length > 1"
+        class="panel-numbers">
+        {{ index + 1 }} of {{ dataset.length }}
+      </div>
+
+      <div class="place-holder">
+        <div
+          v-if="index != (dataset.length - 1)"
+          class="next"
+          @click="showDeal('next')">
+          <span> Next </span><ArrowRightIcon class="arrow" />
+          <div class="button-details">
+            <div>
+              SP
+              <span class="provider">
+                {{ nextDeal.miner_id }}
+              </span>
+              <span class="flag">
+                {{ $GetFlagIcon(nextDeal.location) }}
+              </span>
+            </div>
+            <div>
+              Deal ID
+              <span class="id">
+                {{ nextDeal.deal_id }}
+              </span>
+            </div>
           </div>
         </div>
       </div>
@@ -150,6 +170,7 @@ export default {
     prevDeal () {
       const index = this.index
       const dataset = this.dataset
+      console.log(dataset)
       if (index === 0) { return dataset[dataset.length - 1] }
       return dataset[index - 1]
     },
@@ -342,6 +363,12 @@ export default {
 .button-details {
   @include fontSize_Mini;
   flex-direction: column !important;
+}
+
+.panel-numbers {
+  position: absolute;
+  bottom: 0;
+  left: 17rem;
 }
 
 </style>
