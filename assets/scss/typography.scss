@@ -18,7 +18,7 @@ $fontSize_Tiny: 0.5rem;
 $fontSize_Mini: 0.875rem;
 $fontSize_Regular: 1.125rem;
 $fontSize_Medium: 1.25rem;
-$fontSize_Huge: 8.75rem;
+$fontSize_Huge: 8.375rem;
 
 @mixin fontSize_Tiny { font-size: $fontSize_Tiny; }
 @mixin fontSize_Mini { font-size: $fontSize_Mini; }
@@ -45,7 +45,7 @@ $fontWeight_Extrabold: 800;
 // leading_MediumLarge | 26pt
 // leading_ExtraLarge | 30pt
 // leading_Huge | 45pt
-$leading_Tiny: 0.8125;
+$leading_Tiny: 0.98; // this value matches design best
 $leading_Small: 1;
 $leading_Regular: 1.2;
 $leading_Large: 2.2;
@@ -74,7 +74,7 @@ $letterSpacing_Large: 0.063rem;
 
 @mixin subheading {
   @include fontSize_Medium;
-  @include leading_Large;
+  // @include leading_Large;
   @include fontWeight_Semibold;
   text-transform: uppercase;
   letter-spacing: $letterSpacing_Large;

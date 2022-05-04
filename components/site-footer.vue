@@ -97,12 +97,14 @@ export default {
 .inner-content {
   padding-top: 4rem;
   margin-left: 4.5rem;
+  padding-bottom: 1.18rem;
   @include medium {
     margin-left: 0;
   }
 }
 // ///////////////////////////////////////////////////////////////////// Sections
 .logo-block {
+ padding-top: 0.5rem;
  @include medium {
 
  }

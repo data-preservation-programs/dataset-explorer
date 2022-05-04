@@ -9,7 +9,7 @@
       <HeaderIndex
         :heading="heading"
         :subheading="subheading" />
-    </section> 
+    </section>
 
     <div class="grid">
       <div class="col-9">
@@ -145,15 +145,13 @@ export default {
 }
 
 .search-bar, .sort-button {
-  padding-top: 4.5rem;
-  padding-bottom: 3.5rem;
+  padding-top: 5.5rem;
+  padding-bottom: 3.4rem;
 }
-
 
 .pagination-controls, .pagination-dropdown {
   padding-bottom: 1rem;
 }
-
 
 .footer {
   padding-bottom: 4rem;

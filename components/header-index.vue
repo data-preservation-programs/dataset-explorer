@@ -72,14 +72,16 @@ export default {
 .heading {
   @include header;
   margin: 1rem;
-  padding-left: 2.1rem;
+  padding-left: 1.813rem;
+  padding-top: 0.563rem;
 }
 
 .subheading {
   @include subheading;
+  line-height: 2.438rem;
   margin: 1rem;
-  padding-left: 2.625rem;
-  padding-bottom: 2.3rem;
+  padding-left: 1.813rem;
+  padding-bottom: 2.188rem;
 }
 
 </style>

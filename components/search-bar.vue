@@ -101,7 +101,7 @@ $iconOffset: calc((#{$barHeight} - #{$iconHeight}) / 2);
   flex-direction: row;
   position: relative;
   width: 26.2rem;
-  height: 3.1rem;
+  height: 3.313rem;
   transition: 250ms ease-in-out;
 }
 
@@ -168,7 +168,12 @@ $iconOffset: calc((#{$barHeight} - #{$iconHeight}) / 2);
   border: 0;
   appearance: none;
   z-index: 15;
-  @include placeholder {
+  color: $classicBlue; // input placeholder not taking the color
+  @include fontSize_Mini;
+  // @include placeholder {
+  //   color: $classicBlue;
+  // }
+  &.placeholder {
     color: $classicBlue;
   }
 }
