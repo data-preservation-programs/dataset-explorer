@@ -69,10 +69,6 @@ export default {
     }
 }
 
-.header-wrapper {
-  padding-bottom: 5rem;
-}
-
 .heading {
   @include header;
   margin: 1rem;

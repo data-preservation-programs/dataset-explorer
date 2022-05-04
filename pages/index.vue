@@ -1,12 +1,29 @@
 <template>
   <div :class="`page page-${tag}`">
 
-    <Navigation />
-    <HeaderIndex
-      :heading="heading"
-      :subheading="subheading" />
-    <SearchBar />
-    <SortButton />
+    <section class="navigation">
+      <Navigation />
+    </section>
+
+    <section class="header">
+      <HeaderIndex
+        :heading="heading"
+        :subheading="subheading" />
+    </section> 
+
+    <div class="grid">
+      <div class="col-9">
+        <section class="search-bar">
+          <SearchBar />
+        </section>
+      </div>
+      <div class="col-3">
+        <section class="sort-button">
+          <SortButton />
+        </section>
+      </div>
+    </div>
+
     <section id="deals-table">
       <div class="grid">
         <div class="col">
@@ -14,10 +31,23 @@
         </div>
       </div>
     </section>
-    <SortButton />
 
-    <SiteFooter />
+    <div class="grid">
+      <div class="col-9">
+        <section class="pagination-controls">
+          <!-- Pagination Controls Component Here -->
+        </section>
+      </div>
+      <div class="col-3">
+        <section class="pagination-dropdown">
+          <PaginationDropdown />
+        </section>
+      </div>
+    </div>
 
+    <section class="footer">
+      <SiteFooter />
+    </section>
   </div>
 </template>
 
@@ -32,6 +62,7 @@ import TableDatasetIndex from '@/components/table-dataset-index'
 
 import FileNames from '@/content/data/dataset-explorer-manifest.json'
 import SortButton from '@/components/sort-button'
+import PaginationDropdown from '@/components/pagination-dropdown'
 import IndexPageData from '@/content/pages/index.json'
 
 import SearchBar from '@/components/search-bar'
@@ -46,7 +77,8 @@ export default {
     SearchBar,
     SortButton,
     TableDatasetIndex,
-    SiteFooter,
+    PaginationDropdown,
+    SiteFooter
   },
 
   data () {
@@ -106,11 +138,25 @@ export default {
 
 <style lang="scss" scoped>
 // ///////////////////////////////////////////////////////////////////// General
+.navigation {
+  padding-top: 2rem;
+  padding-left: 5rem;
+  padding-bottom: 4rem;
+}
 
-// /////////////////////////////////////////////////////////////// [Toolbar] Top
+.search-bar, .sort-button {
+  padding-top: 4.5rem;
+  padding-bottom: 3.5rem;
+}
 
-// /////////////////////////////////////////////////////////////////////// Table
 
-// //////////////////////////////////////////////////////////// [Toolbar] Bottom
+.pagination-controls, .pagination-dropdown {
+  padding-bottom: 1rem;
+}
+
+
+.footer {
+  padding-bottom: 4rem;
+}
 
 </style>

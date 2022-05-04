@@ -56,14 +56,10 @@ export default {
 
 <style lang="scss" scoped>
 // ///////////////////////////////////////////////////////////////////// General
-#site-footer {
-  margin-top: 6rem;
-}
 .dotted-border {
   position: relative;
   margin-left: 12%;
   margin-right: 18%;
-  margin-bottom: 5rem;
   border: 0 0 1rem 1rem;
   background-repeat: no-repeat;
   overflow: visible;
@@ -126,7 +122,7 @@ nav {
   @include fontWeight_Medium;
   @include fontSize_Medium;
   line-height: 2.1875rem;
-  padding-top: 1.25rem;
+  padding-top: 2.5rem;
   padding-left: 1rem;
 }
 

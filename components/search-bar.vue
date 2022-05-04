@@ -1,27 +1,21 @@
 <template>
-  <div class="grid">
-    <div class="col-5">
+  <div class="filter-wrapper">
+    <div :class="['searchbar', { focused, empty }]">
+      <div class="dashed-border">
+        
+        <button class="search-button">
+          <IconSearch :loading="loading" />
+        </button>
+        
+        <input
+          v-model="value"
+          :placeholder="placeholder"
+          type="text"
+          class="input"
+          @focus="focused = true"
+          @blur="focused = false">
 
-      <div class="filter-wrapper">
-        <div :class="['searchbar', { focused, empty }]">
-          <div class="dashed-border">
-            
-            <button class="search-button">
-              <IconSearch :loading="loading" />
-            </button>
-            
-            <input
-              v-model="value"
-              :placeholder="placeholder"
-              type="text"
-              class="input"
-              @focus="focused = true"
-              @blur="focused = false">
-
-          </div>
-        </div>
       </div>
-
     </div>
   </div>
 </template>
@@ -177,11 +171,6 @@ $iconOffset: calc((#{$barHeight} - #{$iconHeight}) / 2);
   @include placeholder {
     color: $classicBlue;
   }
-}
-
-.filter-wrapper {
-  padding-top: 1rem;
-  padding-bottom: 5rem;
 }
 
 </style>

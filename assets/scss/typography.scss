@@ -30,7 +30,7 @@ $fontSize_Huge: 8.75rem;
 $fontWeight_Regular: 400;
 $fontWeight_Medium: 500;
 $fontWeight_Semibold: 600;
-$fontWeight_Extrabold: 900;
+$fontWeight_Extrabold: 800;
 
 @mixin fontWeight_Regular { font-weight: $fontWeight_Regular; }
 @mixin fontWeight_Medium { font-weight: $fontWeight_Medium; }
