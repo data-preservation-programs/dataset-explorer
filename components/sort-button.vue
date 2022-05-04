@@ -1,14 +1,16 @@
 <template>
-  <div :class="['dropdown-wrapper dotted-border', { show: showDropdown }]">
-    <button ref="dropdownButton" @click="toggleDropdown">
-      Sort by <i class="chevron" />
-    </button>
-    <div ref="dropdownContent" class="dropdown-content">
-      <div class="dropdown-item">
-        Renew By - Latest
-      </div>
-      <div class="dropdown-item">
-        Renew By - Soonest
+  <div class="container">
+    <div :class="['dropdown-wrapper dotted-border', { show: showDropdown }]">
+      <button ref="dropdownButton" @click="toggleDropdown">
+        Sort by <i class="chevron" />
+      </button>
+      <div ref="dropdownContent" class="dropdown-content">
+        <div class="dropdown-item">
+          Renew By - Latest
+        </div>
+        <div class="dropdown-item">
+          Renew By - Soonest
+        </div>
       </div>
     </div>
   </div>
@@ -37,6 +39,10 @@ export default {
 
 <style lang="scss" scoped>
 // ///////////////////////////////////////////////////////////////////// General
+.container {
+  padding-top: 5.5rem; //padding values responsible for spacing on index page
+  padding-bottom: 3.4rem;
+}
 
 .dotted-border {
   position: relative;

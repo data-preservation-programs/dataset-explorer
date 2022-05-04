@@ -1,26 +1,16 @@
 <template>
   <div :class="`page page-${tag}`">
 
-    <section class="navigation">
-      <Navigation />
-    </section>
-
-    <section class="header">
-      <HeaderIndex
-        :heading="heading"
-        :subheading="subheading" />
-    </section>
+    <HeaderIndex
+      :heading="heading"
+      :subheading="subheading" />
 
     <div class="grid">
       <div class="col-9">
-        <section class="search-bar">
-          <SearchBar />
-        </section>
+        <SearchBar />
       </div>
       <div class="col-3">
-        <section class="sort-button">
-          <SortButton />
-        </section>
+        <SortButton />
       </div>
     </div>
 
@@ -35,28 +25,21 @@
     <div class="grid">
       <div class="col-9">
         <section class="pagination-controls">
-          <!-- Pagination Controls Component Here -->
+          <!-- Pagination Controls Component Here - class exists for spacing purposes -->
         </section>
       </div>
       <div class="col-3">
-        <section class="pagination-dropdown">
-          <PaginationDropdown />
-        </section>
+        <PaginationDropdown />
       </div>
     </div>
 
-    <section class="footer">
-      <SiteFooter />
-    </section>
   </div>
 </template>
 
 <script>
 // ===================================================================== Imports
 import { mapGetters, mapActions } from 'vuex'
-import SiteFooter from '@/components/site-footer'
 
-import Navigation from '@/components/navigation'
 import HeaderIndex from '@/components/header-index'
 import TableDatasetIndex from '@/components/table-dataset-index'
 
@@ -72,13 +55,11 @@ export default {
   name: 'IndexPage',
 
   components: {
-    Navigation,
     HeaderIndex,
     SearchBar,
     SortButton,
     TableDatasetIndex,
-    PaginationDropdown,
-    SiteFooter
+    PaginationDropdown
   },
 
   data () {
@@ -138,23 +119,8 @@ export default {
 
 <style lang="scss" scoped>
 // ///////////////////////////////////////////////////////////////////// General
-.navigation {
-  padding-top: 2rem;
-  padding-left: 5rem;
-  padding-bottom: 4rem;
-}
-
-.search-bar, .sort-button {
-  padding-top: 5.5rem;
-  padding-bottom: 3.4rem;
-}
-
-.pagination-controls, .pagination-dropdown {
-  padding-bottom: 1rem;
-}
-
-.footer {
-  padding-bottom: 4rem;
+.pagination-controls {
+  padding-bottom: 1rem; // this is to make space for future pagination controls if or when they are created
 }
 
 </style>

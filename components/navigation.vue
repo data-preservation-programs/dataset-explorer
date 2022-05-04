@@ -70,6 +70,9 @@ export default {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  padding-top: 2rem;
+  padding-left: 5rem;
+  padding-bottom: 4rem;
   @include mini {
     flex-direction: column;
   }

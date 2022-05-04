@@ -168,7 +168,7 @@ $iconOffset: calc((#{$barHeight} - #{$iconHeight}) / 2);
   border: 0;
   appearance: none;
   z-index: 15;
-  color: $classicBlue; // input placeholder not taking the color
+  color: $classicBlue; // input placeholder not taking the color - to fix
   @include fontSize_Mini;
   // @include placeholder {
   //   color: $classicBlue;
@@ -176,6 +176,11 @@ $iconOffset: calc((#{$barHeight} - #{$iconHeight}) / 2);
   &.placeholder {
     color: $classicBlue;
   }
+}
+
+.filter-wrapper { // responsible for spacing on index page
+  padding-top: 5.5rem;
+  padding-bottom: 3.4rem;
 }
 
 </style>

@@ -1,20 +1,22 @@
 <template>
-  <div :class="['dropdown-wrapper dotted-border', { show: showDropdown }]">
-    <button ref="dropdownButton" @click="toggleDropdown">
-      Show 10 Results <i class="chevron" />
-    </button>
-    <div ref="dropdownContent" class="dropdown-content">
-      <div class="dropdown-item">
-        Show 20 Results
-      </div>
-      <div class="dropdown-item">
-        Show 30 Results
-      </div>
-      <div class="dropdown-item">
-        Show 40 Results
-      </div>
-      <div class="dropdown-item">
-        Show 50 Results
+  <div class="container">
+    <div :class="['dropdown-wrapper dotted-border', { show: showDropdown }]">
+      <button ref="dropdownButton" @click="toggleDropdown">
+        Show 10 Results <i class="chevron" />
+      </button>
+      <div ref="dropdownContent" class="dropdown-content">
+        <div class="dropdown-item">
+          Show 20 Results
+        </div>
+        <div class="dropdown-item">
+          Show 30 Results
+        </div>
+        <div class="dropdown-item">
+          Show 40 Results
+        </div>
+        <div class="dropdown-item">
+          Show 50 Results
+        </div>
       </div>
     </div>
   </div>
@@ -43,6 +45,9 @@ export default {
 
 <style lang="scss" scoped>
 // ///////////////////////////////////////////////////////////////////// General
+.container {
+  padding-bottom: 0.188rem; //padding value responsible for spacing on index page
+}
 
 .dotted-border {
   position: relative;
@@ -89,6 +94,7 @@ export default {
     width: 100%;
     height: 100%;
     padding-right: 1rem;
+    font-size: $fontSize_Mini;
   }
 
   i.chevron {

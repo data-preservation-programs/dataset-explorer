@@ -56,6 +56,10 @@ export default {
 
 <style lang="scss" scoped>
 // ///////////////////////////////////////////////////////////////////// General
+#site-footer {
+  padding-bottom: 4rem;
+}
+
 .dotted-border {
   position: relative;
   margin-left: 12%;
