@@ -13,5 +13,7 @@ export default {
 
 <style lang="scss" scoped>
 // ///////////////////////////////////////////////////////////////////// General
-
+svg {
+  margin-top: 1rem;
+}
 </style>

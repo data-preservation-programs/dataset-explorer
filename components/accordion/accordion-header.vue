@@ -46,8 +46,7 @@ export default {
   flex-direction: row;
   align-content: center;
   justify-content: space-between;
-  padding-bottom: 1rem;
-  padding-top: 2rem;
+  padding-top: 1.3rem;
   @include mini {
     padding-bottom: 2rem;
   }
@@ -55,6 +54,8 @@ export default {
 
 .label {
   font-size: 1.625rem;
+  line-height: 2.375rem;
+  letter-spacing: $letterSpacing_Large;
 }
 
 .text-snippet {

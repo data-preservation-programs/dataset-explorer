@@ -62,6 +62,9 @@ export default {
   transition: height 150ms ease-in-out;
   width: 80%;
   margin-left: 5rem;
+  padding-top: 1.188rem;
+  font-weight: $fontWeight_Medium;
+  line-height: 2rem;
   font-size: 1.125rem;
 }
 </style>
