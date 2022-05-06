@@ -26,7 +26,7 @@
 
 <script>
 // ===================================================================== Imports
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters } from 'vuex'
 
 // ====================================================================== Export
 export default {
@@ -53,15 +53,15 @@ export default {
     // }
   },
 
-  mounted () {
-    this.setLoadingStatus(false)
-  },
+  // mounted () {
+  //   this.setLoadingStatus(false)
+  // },
 
-  methods: {
-    ...mapActions({
-      setLoadingStatus: 'deals/setLoadingStatus'
-    })
-  }
+  // methods: {
+  //   ...mapActions({
+  //     setLoadingStatus: 'deals/setLoadingStatus'
+  //   })
+  // }
 }
 </script>
 
