@@ -5,15 +5,25 @@
     <HeaderIndex
       :heading="heading"
       :subheading="subheading" />
-    <FilterBar
-      :filter-value="filterValue"
-      :placeholder="page_filterBarPlaceholder"
-      @setFilterValue="setFilterValue" />
-    <SortButton />
+    <section id="filter-bar">
+      <div class="grid">
+        <div class="col-9">
+          <FilterBar
+            :filter-value="filterValue"
+            :placeholder="page_filterBarPlaceholder"
+            @setFilterValue="setFilterValue" />
+        </div>
+        <div class="col-3">
+          <SortButton />
+        </div>
+      </div>
+    </section>
     <section id="deals-table">
       <div class="grid">
         <div class="col">
-          <TableDatasetIndex :columns="tableColumns" />
+          <TableDatasetIndex
+            :filter-value="filterValue"
+            :columns="tableColumns" />
         </div>
       </div>
     </section>
@@ -63,8 +73,7 @@ export default {
 
   data () {
     return {
-      tag: 'index',
-      filterValue: ''
+      tag: 'index'
     }
   },
 
@@ -82,7 +91,8 @@ export default {
   computed: {
     ...mapGetters({
       siteContent: 'global/siteContent',
-      datasetList: 'explorer/datasetList'
+      datasetList: 'explorer/datasetList',
+      filterValue: 'global/filterValue'
     }),
     pageData () {
       return this.siteContent[this.tag]
@@ -95,6 +105,9 @@ export default {
     },
     subheading () {
       return this.pageContent.fold.subheading
+    },
+    page_filterBarPlaceholder () {
+      return this.pageContent.table.searchbar.placeholder
     },
     tableColumns () {
       return this.pageContent.table.columns
@@ -111,6 +124,7 @@ export default {
   },
 
   mounted () {
+
   },
 
   beforeDestroy () {
@@ -118,10 +132,8 @@ export default {
 
   methods: {
     ...mapActions({
-    }),
-    setFilterValue (value) {
-      this.filterValue = value
-    }
+      setFilterValue: 'global/setFilterValue'
+    })
   }
 }
 </script>

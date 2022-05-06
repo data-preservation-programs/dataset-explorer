@@ -108,12 +108,29 @@ export default {
 
   computed: {
     ...mapGetters({
-      deals: 'explorer/datasetList',
+      cids: 'explorer/datasetList',
       datasetNames: 'explorer/datasetNames'
     }),
+    // filtered () {
+    //   const deals = this.deals
+    //   return deals.length > 0 ? deals : false
+    // }
     filtered () {
-      const deals = this.deals
-      return deals.length > 0 ? deals : false
+      const cids = Object.values(this.cids)
+      const filter = this.filterValue.toLowerCase()
+      const filteredByValue = cids.filter((group) => {
+        const filtered = group.filter((obj) => {
+          const filename = obj.filename.toLowerCase()
+          if (filename.includes(filter)) {
+            return obj
+          }
+          return false
+        })
+        if (filtered.length === 0) { return false }
+        return filtered
+      })
+      if (filteredByValue.length === 0) { return false }
+      return filteredByValue
     }
   },
 

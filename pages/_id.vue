@@ -6,10 +6,16 @@
       :stats="stats"
       :stat-data="statData" />
 
-    <FilterBar
-      :filter-value="filterValue"
-      :placeholder="page_filterBarPlaceholder"
-      action="store" />
+    <section id="filter-search">
+      <div class="grid">
+        <div class="col-9">
+          <FilterBar
+            :filter-value="filterValue"
+            :placeholder="page_filterBarPlaceholder"
+            action="store" />
+        </div>
+      </div>
+    </section>
 
     <section id="deals-table">
       <div class="grid">
@@ -133,7 +139,8 @@ export default {
 
   methods: {
     ...mapActions({
-      getExplorerData: 'explorer/getExplorerData'
+      getExplorerData: 'explorer/getExplorerData',
+      setFilterValue: 'global/setFilterValue'
     }),
     getProjectLabels (slug) {
       const labels = this.datasetNames.manifest

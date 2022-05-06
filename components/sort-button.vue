@@ -1,19 +1,14 @@
 <template>
-
-  <div class="grid-right">
-    <div class="col-3">
-      <div :class="['dropdown-wrapper dotted-border', { show: showDropdown }]">
-        <button ref="dropdownButton" @click="toggleDropdown">
-          Sort by <i class="chevron" />
-        </button>
-        <div ref="dropdownContent" class="dropdown-content">
-          <div class="dropdown-item">
-            Renew By - Latest
-          </div>
-          <div class="dropdown-item">
-            Renew By - Soonest
-          </div>
-        </div>
+  <div :class="['dropdown-wrapper dotted-border', { show: showDropdown }]">
+    <button ref="dropdownButton" @click="toggleDropdown">
+      Sort by <i class="chevron" />
+    </button>
+    <div ref="dropdownContent" class="dropdown-content">
+      <div class="dropdown-item">
+        Renew By - Latest
+      </div>
+      <div class="dropdown-item">
+        Renew By - Soonest
       </div>
     </div>
   </div>

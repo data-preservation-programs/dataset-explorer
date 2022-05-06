@@ -16,101 +16,103 @@
       </thead>
       <!-- ============================================================ Body -->
       <tbody class="divider" />
-      <tbody class="table-body">
 
-        <Modal
-          class="deal-modal"
-          :payload-cid="selectedPayloadCid" />
+      <Modal
+        class="deal-modal"
+        :payload-cid="selectedPayloadCid" />
 
-        <Paginate
-          v-if="filtered"
-          v-slot="{ paginated }"
-          :display="paginationDisplay"
-          :collection="filtered"
-          root-node="tbody"
-          class="table-body">
+      <Paginate
+        v-if="filtered"
+        v-slot="{ paginated }"
+        :display="paginationDisplay"
+        :collection="filtered"
+        root-node="tbody"
+        class="table-body">
 
-          <template v-for="(deal, payloadCid) in paginated">
+        <template v-for="(deal, payloadCid) in paginated">
 
-            <tr
-              :key="payloadCid"
-              class="row row-body"
-              @click="openModal(payloadCid)">
+          <tr
+            :key="'row-' + payloadCid"
+            class="row row-body"
+            @click="openModal(payloadCid)">
 
-              <td
-                v-for="cell in columns"
-                :key="cell.slug"
-                :class="['cell-parent', { hovering: deal.rank === hovering }]">
-                <div :class="['cell cell-body', cell.slug]">
+            <td
+              v-for="cell in columns"
+              :key="cell.slug"
+              :class="['cell-parent', { hovering: deal.rank === hovering }]">
+              <div :class="['cell cell-body', cell.slug]">
 
-                  <template v-if="cell.slug === 'curated_dataset'">
-                    <div
-                      class="file_name">
-                      {{ deal[0].curated_dataset }}
-                    </div>
-                    <div class="cid">
-                      {{ deal[0].payload_cid }}
-                    </div>
-                  </template>
-
-                  <div v-if="cell.slug === 'file_format'">
-                    {{ deal[0].file_format }}
+                <template v-if="cell.slug === 'curated_dataset'">
+                  <div
+                    class="file_name">
+                    {{ deal[0].curated_dataset }}
                   </div>
-
-                  <div v-if="cell.slug === 'data_size'">
-                    <span>{{ $FormatBytes(deal[0].data_size, '').value }}</span>
-                    <span class="data-unit">{{ $FormatBytes(deal[0].data_size, '').unit }}</span>
+                  <div class="cid">
+                    {{ deal[0].payload_cid }}
                   </div>
+                </template>
 
-                  <div v-if="cell.slug === 'deal_id'">
-                    <template v-for="dataset in deal">
-                      <div
-                        :key="dataset.rank">
-                        {{ dataset.deal_id }}
-                      </div>
-                    </template>
-                  </div>
-
-                  <div v-if="cell.slug === 'miner_id'">
-                    <template v-for="dataset in deal">
-                      <div
-                        :key="dataset.rank">
-                        <span class="miner">{{ dataset.miner_id }}</span><span class="flag">{{ $GetFlagIcon(dataset.location) }}</span>
-                      </div>
-                    </template>
-                  </div>
-
-                  <div v-if="cell.slug === 'status'">
-                    Active
-                  </div>
-
-                  <template v-if="cell.slug === 'deal_start_epoch'">
-                    {{ $EpochToDate(deal[0].deal_start_epoch) }}
-                    <div class="date_epoch">
-                      {{ deal[0].deal_start_epoch }}
-                    </div>
-                  </template>
-
+                <div v-if="cell.slug === 'file_format'">
+                  {{ deal[0].file_format }}
                 </div>
-              </td>
 
-            </tr>
+                <div v-if="cell.slug === 'data_size'">
+                  <span>{{ $FormatBytes(deal[0].data_size, '').value }}</span>
+                  <span class="data-unit">{{ $FormatBytes(deal[0].data_size, '').unit }}</span>
+                </div>
 
-            <tr
-              :key="`divider-${payloadCid}`"
-              class="divider" />
+                <div v-if="cell.slug === 'deal_id'">
+                  <template v-for="dataset in deal">
+                    <div
+                      :key="'deal_id-' + dataset.deal_id">
+                      {{ dataset.deal_id }}
+                    </div>
+                  </template>
+                </div>
 
-          </template>
-        </Paginate>
+                <div v-if="cell.slug === 'miner_id'">
+                  <template v-for="dataset in deal">
+                    <div
+                      :key="'miner_id-' + dataset.deal_id + dataset.miner_id">
+                      <span class="miner">{{ dataset.miner_id }}</span><span class="flag">{{ $GetFlagIcon(dataset.location) }}</span>
+                    </div>
+                  </template>
+                </div>
 
-      </tbody>
+                <div v-if="cell.slug === 'status'">
+                  Active
+                </div>
+
+                <template v-if="cell.slug === 'deal_start_epoch'">
+                  {{ $EpochToDate(deal[0].deal_start_epoch) }}
+                  <div class="date_epoch">
+                    {{ deal[0].deal_start_epoch }}
+                  </div>
+                </template>
+
+              </div>
+            </td>
+
+          </tr>
+
+          <tr
+            :key="`divider-${payloadCid}`"
+            class="divider" />
+
+        </template>
+      </Paginate>
+
     </table>
 
     <div v-if="!filtered" class="no-results-placeholder">
       <span>No results found</span>
     </div>
-      
-    <PaginationControls />
+
+    <div class="grid">
+      <div class="col-9">
+        <PaginationControls />
+      </div>
+    </div>
   </section>
 </template>
 
