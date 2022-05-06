@@ -1,12 +1,19 @@
 <template>
   <div :class="`page page-${tag}`">
 
-    <Navigation />
     <HeaderIndex
       :heading="heading"
       :subheading="subheading" />
-    <SearchBar />
-    <SortButton />
+
+    <div class="grid">
+      <div class="col-9">
+        <SearchBar />
+      </div>
+      <div class="col-3">
+        <SortButton />
+      </div>
+    </div>
+
     <section id="deals-table">
       <div class="grid">
         <div class="col">
@@ -14,9 +21,17 @@
         </div>
       </div>
     </section>
-    <SortButton />
 
-    <SiteFooter />
+    <div class="grid">
+      <div class="col-9">
+        <section class="pagination-controls">
+          <!-- Pagination Controls Component Here - class exists for spacing purposes -->
+        </section>
+      </div>
+      <div class="col-3">
+        <PaginationDropdown />
+      </div>
+    </div>
 
   </div>
 </template>
@@ -24,14 +39,13 @@
 <script>
 // ===================================================================== Imports
 import { mapGetters, mapActions } from 'vuex'
-import SiteFooter from '@/components/site-footer'
 
-import Navigation from '@/components/navigation'
 import HeaderIndex from '@/components/header-index'
 import TableDatasetIndex from '@/components/table-dataset-index'
 
 import FileNames from '@/content/data/dataset-explorer-manifest.json'
 import SortButton from '@/components/sort-button'
+import PaginationDropdown from '@/components/pagination-dropdown'
 import IndexPageData from '@/content/pages/index.json'
 
 import SearchBar from '@/components/search-bar'
@@ -41,11 +55,11 @@ export default {
   name: 'IndexPage',
 
   components: {
-    Navigation,
     HeaderIndex,
     SearchBar,
     SortButton,
     TableDatasetIndex,
+    PaginationDropdown,
     SiteFooter
   },
 
@@ -106,11 +120,7 @@ export default {
 
 <style lang="scss" scoped>
 // ///////////////////////////////////////////////////////////////////// General
-
-// /////////////////////////////////////////////////////////////// [Toolbar] Top
-
-// /////////////////////////////////////////////////////////////////////// Table
-
-// //////////////////////////////////////////////////////////// [Toolbar] Bottom
-
+.pagination-controls {
+  padding-bottom: 1rem; // this is to make space for future pagination controls if or when they are created
+}
 </style>
