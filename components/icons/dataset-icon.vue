@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="icon">
 
     <svg
       v-if="icon === 'archlinux'"

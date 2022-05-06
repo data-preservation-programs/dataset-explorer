@@ -7,6 +7,7 @@ import GeneralSiteData from '@/content/pages/general.json'
 const state = () => ({
   siteContent: {},
   modal: false,
+  sliderIndex: 0,
   copied: false
 })
 
@@ -15,6 +16,7 @@ const state = () => ({
 const getters = {
   siteContent: state => state.siteContent,
   modal: state => state.modal,
+  sliderIndex: state => state.sliderIndex,
   copied: state => state.copied
 }
 
@@ -41,6 +43,10 @@ const actions = {
   setModal ({ commit }, payload) {
     commit('SET_MODAL', payload)
   },
+  // ////////////////////////////////////////////////////////////////// setModal
+  setSliderIndex ({ commit }, payload) {
+    commit('SET_SLIDER_INDEX', payload)
+  },
   // ///////////////////////////////////////////////////////////// setCopiedText
   setCopiedText ({ commit }, text) {
     commit('SET_COPIED_TEXT', text)
@@ -55,6 +61,9 @@ const mutations = {
   },
   SET_MODAL (state, payload) {
     state.modal = payload
+  },
+  SET_SLIDER_INDEX (state, payload) {
+    state.sliderIndex = payload
   },
   SET_COPIED_TEXT (state, text) {
     state.copied = text

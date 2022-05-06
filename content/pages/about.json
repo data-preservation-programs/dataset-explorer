@@ -1,0 +1,16 @@
+{
+  "seo": {
+    "title": "About — Dataset Explorer",
+    "description": ""
+  },
+  "og": {
+    "site_name": "About — Dataset Explorer",
+    "url": "",
+    "type": "website",
+    "image": ""
+  },
+  "page_content": {
+    "heading": "About",
+    "featured_image": "/media/3d-cubes-with-connections.png"
+  }
+}
