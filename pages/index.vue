@@ -22,6 +22,8 @@
       </div>
     </section>
 
+    <SortButton />
+
     <div class="grid">
       <div class="col-9">
         <section class="pagination-controls">
@@ -59,8 +61,7 @@ export default {
     SearchBar,
     SortButton,
     TableDatasetIndex,
-    PaginationDropdown,
-    SiteFooter
+    PaginationDropdown
   },
 
   data () {

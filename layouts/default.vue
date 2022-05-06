@@ -7,21 +7,26 @@
 
     <SiteFooter />
 
+    <BackgroundShapes />
+
+
   </div>
 </template>
 
 <script>
 // ===================================================================== Imports
-
-import SiteFooter from '@/components/site-footer'
 import Navigation from '@/components/navigation'
+import SiteFooter from '@/components/site-footer'
+import BackgroundShapes from '@/components/background-shapes'
+
 // ====================================================================== Export
 export default {
   name: 'LayoutDefault',
 
   components: {
     Navigation,
-    SiteFooter
+    SiteFooter,
+    BackgroundShapes
   },
 
   async fetch ({ store, route, $content }) {
@@ -36,5 +41,7 @@ export default {
 
 <style lang="scss" scoped>
 // ///////////////////////////////////////////////////////////////////// General
-
+.main-container {
+  position: relative;
+}
 </style>

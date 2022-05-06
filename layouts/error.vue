@@ -51,7 +51,7 @@ export default {
     // link () {
     //   return this.content.link
     // }
-  },
+  }
 
   // mounted () {
   //   this.setLoadingStatus(false)
