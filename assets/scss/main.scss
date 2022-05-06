@@ -198,17 +198,31 @@ i.chevron {
 }
 
 .markdown {
-  h1, h2, h3, p, ul, ol {
+  h1 {
+    @include header;
+    padding-bottom: 1.75rem;
+    margin-top: 1.5rem;
+  }
+  h3 {
+    font-size: 1.625rem;
+    @include fontWeight_Semibold;
+    line-height: 2.5rem;
+    letter-spacing: 0.026rem;
+  }
+  h2, p, ul, ol {
     + h2, + h3 {
       margin-top: 3.75rem;
     }
   }
-  p, div, li {
+  p {
+    @include fontWeight_Medium;
+    @include fontSize_Regular;
+    line-height: 2rem;
+    letter-spacing: 0.026rem;
+  }
+  div, li {
     @include fontSize_Mini;
     @include leading_Large;
-  }
-  p {
-    @include textShadow;
   }
   h1, h2, h3 {
     &:not(:last-child) {
@@ -260,6 +274,9 @@ i.chevron {
         }
       }
     }
+  }
+  img {
+    width: 100%;
   }
   ol {
     padding-left: 1.375rem;
