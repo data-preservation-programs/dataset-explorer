@@ -1,16 +1,18 @@
 <template>
   <div :class="`page page-${tag}`">
     <div class="grid">
-      <div class="dotted-border">
-        <div class="col-10">
-          <h1 class="heading">
-            {{ heading }}
-          </h1>
-        </div>
-        <div class="col-10">
-          <AccordionBlock
-            :sections="accordionSections"
-            class="accordion" />
+      <div class="content">
+        <div class="dotted-border">
+          <div class="col-10">
+            <h1 class="heading">
+              {{ heading }}
+            </h1>
+          </div>
+          <div class="col-10">
+            <AccordionBlock
+              :sections="accordionSections"
+              class="accordion" />
+          </div>
         </div>
       </div>
     </div>
@@ -80,17 +82,21 @@ export default {
 .heading {
   @include header;
   padding-bottom: 3.6875rem;
-  margin-top: 1.5rem;
+  padding-top: 0.625rem;
   margin-left: 5.1875rem;
 }
+
 .accordion {
   margin-left: 5.1875rem;
 }
 
-.dotted-border {
-  position: relative;
+.content {
   margin-top: 5rem;
   margin-bottom: 5rem;
+}
+
+.dotted-border {
+  position: relative;
   margin-left: -5.1875rem;
   background-repeat: no-repeat;
   overflow: visible;
@@ -107,7 +113,7 @@ export default {
   width: 0.3125rem;
   height: 0.3125rem;
   left: .22rem;
-  top: -0.25rem;
+  top: 0rem;
 }
 
 .dotted-border::after {
@@ -119,7 +125,7 @@ export default {
   transform: translateX(50%);
   width: 0.3125rem;
   height: 0.3125rem;
-  bottom: 0rem;
+  bottom: 0.1rem;
   left: 0.0625rem;
 }
 </style>
