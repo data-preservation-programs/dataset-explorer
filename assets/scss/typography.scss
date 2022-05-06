@@ -18,12 +18,14 @@ $fontSize_Tiny: 0.5rem;
 $fontSize_Mini: 0.875rem;
 $fontSize_Regular: 1.125rem;
 $fontSize_Medium: 1.25rem;
+$fontSize_Large: 2rem;
 $fontSize_Huge: 8.75rem;
 
 @mixin fontSize_Tiny { font-size: $fontSize_Tiny; }
 @mixin fontSize_Mini { font-size: $fontSize_Mini; }
 @mixin fontSize_Regular { font-size: $fontSize_Regular; }
 @mixin fontSize_Medium { font-size: $fontSize_Medium; }
+@mixin fontSize_Large { font-size: $fontSize_Large; }
 @mixin fontSize_Huge { font-size: $fontSize_Huge; }
 
 // ----------------------------------------------------------------- Font Weight

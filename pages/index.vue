@@ -59,7 +59,8 @@ export default {
     SearchBar,
     SortButton,
     TableDatasetIndex,
-    PaginationDropdown
+    PaginationDropdown,
+    SiteFooter
   },
 
   data () {
@@ -122,5 +123,4 @@ export default {
 .pagination-controls {
   padding-bottom: 1rem; // this is to make space for future pagination controls if or when they are created
 }
-
 </style>
