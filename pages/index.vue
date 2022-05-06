@@ -46,7 +46,7 @@ export default {
     SearchBar,
     SortButton,
     TableDatasetIndex,
-    SiteFooter,
+    SiteFooter
   },
 
   data () {

@@ -44,12 +44,12 @@ export default {
   }
   &.theme-dark {
     .dot {
-      background-color: $codGray;
+      background-color: $gray600;
     }
   }
   &.theme-blue {
     .dot {
-      background-color: $blue;
+      background-color: $classicBlue;
     }
   }
 }
