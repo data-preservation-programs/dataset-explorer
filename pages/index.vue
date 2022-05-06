@@ -5,7 +5,10 @@
     <HeaderIndex
       :heading="heading"
       :subheading="subheading" />
-    <SearchBar />
+    <FilterBar
+      :filter-value="filterValue"
+      :placeholder="page_filterBarPlaceholder"
+      @setFilterValue="setFilterValue" />
     <SortButton />
     <section id="deals-table">
       <div class="grid">
@@ -34,7 +37,16 @@ import FileNames from '@/content/data/dataset-explorer-manifest.json'
 import SortButton from '@/components/sort-button'
 import IndexPageData from '@/content/pages/index.json'
 
-import SearchBar from '@/components/search-bar'
+import FilterBar from '@/components/FilterBar'
+
+// =================================================================== Functions
+const animateScroll = (instance, name) => {
+  if (name.includes('deals') || name.includes('documentation') || name.includes('retrievals')) {
+    instance.$scrollToElement(instance.$refs.navigation.$el, 500, -120, true)
+  } else {
+    instance.$scrollToElement(instance.$refs.info.$el, 500, -120, true)
+  }
+}
 
 // ====================================================================== Export
 export default {
@@ -43,7 +55,7 @@ export default {
   components: {
     Navigation,
     HeaderIndex,
-    SearchBar,
+    FilterBar,
     SortButton,
     TableDatasetIndex,
     SiteFooter
@@ -51,7 +63,8 @@ export default {
 
   data () {
     return {
-      tag: 'index'
+      tag: 'index',
+      filterValue: ''
     }
   },
 
@@ -89,6 +102,12 @@ export default {
   },
 
   watch: {
+    '$route' (route) {
+      this.$nextTick(() => {
+        animateScroll(this)
+        this.setFilterValue('')
+      })
+    }
   },
 
   mounted () {
@@ -99,7 +118,10 @@ export default {
 
   methods: {
     ...mapActions({
-    })
+    }),
+    setFilterValue (value) {
+      this.filterValue = value
+    }
   }
 }
 </script>

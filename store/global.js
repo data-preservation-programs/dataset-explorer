@@ -8,7 +8,8 @@ const state = () => ({
   siteContent: {},
   modal: false,
   sliderIndex: 0,
-  copied: false
+  copied: false,
+  filterValue: ''
 })
 
 // ///////////////////////////////////////////////////////////////////// Getters
@@ -17,7 +18,8 @@ const getters = {
   siteContent: state => state.siteContent,
   modal: state => state.modal,
   sliderIndex: state => state.sliderIndex,
-  copied: state => state.copied
+  copied: state => state.copied,
+  filterValue: state => state.filterValue
 }
 
 // ///////////////////////////////////////////////////////////////////// Actions
@@ -50,12 +52,19 @@ const actions = {
   // ///////////////////////////////////////////////////////////// setCopiedText
   setCopiedText ({ commit }, text) {
     commit('SET_COPIED_TEXT', text)
+  },
+  // ////////////////////////////////////////////////////////////// setFilterValue
+  setFilterValue ({ commit }, value) {
+    commit('SET_FILTER_VALUE', value)
   }
 }
 
 // /////////////////////////////////////////////////////////////////// Mutations
 // -----------------------------------------------------------------------------
 const mutations = {
+  CLEAR_STORE (state) {
+    state.filterValue = ''
+  },
   SET_SITE_CONTENT (state, payload) {
     state.siteContent[payload.key] = payload.data
   },
@@ -67,6 +76,9 @@ const mutations = {
   },
   SET_COPIED_TEXT (state, text) {
     state.copied = text
+  },
+  SET_FILTER_VALUE (state, value) {
+    state.filterValue = value
   }
 }
 

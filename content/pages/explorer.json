@@ -34,6 +34,7 @@
     {"label": "Dataset Size", "type": "byte", "key": "eligible_data_size"},
     {"label": "Amount stored on Slingshot", "type": "byte", "key": "eligible_data_size"}
   ],
+  "filter_bar_placeholder": "Search for a piece or payload CID, deal or SP",
   "table": {
     "searchbar": {
       "placeholder": "Search for a piece or payload CID, deal or SP"

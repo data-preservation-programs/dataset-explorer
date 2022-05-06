@@ -4,7 +4,7 @@
       <div class="col">
         <div class="inner-content">
 
-          <div class="code">
+          <!-- <div class="code">
             {{ code }}
           </div>
 
@@ -16,7 +16,7 @@
             :to="link.to"
             class="link-home link-hover">
             {{ link.text }}
-          </nuxt-link>
+          </nuxt-link> -->
 
         </div>
       </div>
@@ -48,9 +48,9 @@ export default {
     // message () {
     //   return this.content.message
     // },
-    link () {
-      return this.content.link
-    }
+    // link () {
+    //   return this.content.link
+    // }
   }
 
   // mounted () {

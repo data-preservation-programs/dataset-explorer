@@ -6,6 +6,11 @@
       :stats="stats"
       :stat-data="statData" />
 
+    <FilterBar
+      :filter-value="filterValue"
+      :placeholder="page_filterBarPlaceholder"
+      action="store" />
+
     <section id="deals-table">
       <div class="grid">
         <div class="col">
@@ -13,6 +18,7 @@
           <TableDatasetSingular
             v-if="cids"
             :cids="cids"
+            :filter-value="filterValue"
             :columns="tableColumns" />
 
         </div>
@@ -42,6 +48,8 @@ import LoaderTripleDot from '@/components/spinners/triple-dot'
 import Page from '@/content/pages/explorer.json'
 import FileNames from '@/content/data/dataset-explorer-manifest.json'
 
+import FilterBar from '@/components/FilterBar'
+
 // ====================================================================== Export
 export default {
   name: 'IndexPage',
@@ -49,7 +57,8 @@ export default {
   components: {
     Stats,
     TableDatasetSingular,
-    LoaderTripleDot
+    LoaderTripleDot,
+    FilterBar
   },
 
   data () {
@@ -78,7 +87,8 @@ export default {
       siteContent: 'global/siteContent',
       datasetNames: 'explorer/datasetNames',
       datasetList: 'explorer/datasetList',
-      cids: 'explorer/datasetSingular'
+      cids: 'explorer/datasetSingular',
+      filterValue: 'global/filterValue'
     }),
     dataNames () {
       return this.datasetNames
@@ -97,6 +107,9 @@ export default {
         return obj.slug === this.$route.params.id
       })
       return dataset[0]
+    },
+    page_filterBarPlaceholder () {
+      return this.pageData.filter_bar_placeholder
     },
     tableColumns () {
       return this.pageData.table.columns

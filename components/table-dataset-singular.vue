@@ -22,77 +22,86 @@
           class="deal-modal"
           :payload-cid="selectedPayloadCid" />
 
-        <template v-for="(deal, payloadCid) in filtered">
+        <Paginate
+          v-if="filtered"
+          v-slot="{ paginated }"
+          :display="paginationDisplay"
+          :collection="filtered"
+          root-node="tbody"
+          class="table-body">
 
-          <tr
-            :key="payloadCid"
-            class="row row-body"
-            @click="openModal(payloadCid)">
+          <template v-for="(deal, payloadCid) in paginated">
 
-            <td
-              v-for="cell in columns"
-              :key="cell.slug"
-              :class="['cell-parent', { hovering: deal.rank === hovering }]">
-              <div :class="['cell cell-body', cell.slug]">
+            <tr
+              :key="payloadCid"
+              class="row row-body"
+              @click="openModal(payloadCid)">
 
-                <template v-if="cell.slug === 'curated_dataset'">
-                  <div
-                    class="file_name">
-                    {{ deal[0].curated_dataset }}
-                  </div>
-                  <div class="cid">
-                    {{ deal[0].payload_cid }}
-                  </div>
-                </template>
+              <td
+                v-for="cell in columns"
+                :key="cell.slug"
+                :class="['cell-parent', { hovering: deal.rank === hovering }]">
+                <div :class="['cell cell-body', cell.slug]">
 
-                <div v-if="cell.slug === 'file_format'">
-                  {{ deal[0].file_format }}
-                </div>
-
-                <div v-if="cell.slug === 'data_size'">
-                  <span>{{ $FormatBytes(deal[0].data_size, '').value }}</span>
-                  <span class="data-unit">{{ $FormatBytes(deal[0].data_size, '').unit }}</span>
-                </div>
-
-                <div v-if="cell.slug === 'deal_id'">
-                  <template v-for="dataset in deal">
+                  <template v-if="cell.slug === 'curated_dataset'">
                     <div
-                      :key="dataset.rank">
-                      {{ dataset.deal_id }}
+                      class="file_name">
+                      {{ deal[0].curated_dataset }}
+                    </div>
+                    <div class="cid">
+                      {{ deal[0].payload_cid }}
                     </div>
                   </template>
-                </div>
 
-                <div v-if="cell.slug === 'miner_id'">
-                  <template v-for="dataset in deal">
-                    <div
-                      :key="dataset.rank">
-                      <span class="miner">{{ dataset.miner_id }}</span><span class="flag">{{ $GetFlagIcon(dataset.location) }}</span>
+                  <div v-if="cell.slug === 'file_format'">
+                    {{ deal[0].file_format }}
+                  </div>
+
+                  <div v-if="cell.slug === 'data_size'">
+                    <span>{{ $FormatBytes(deal[0].data_size, '').value }}</span>
+                    <span class="data-unit">{{ $FormatBytes(deal[0].data_size, '').unit }}</span>
+                  </div>
+
+                  <div v-if="cell.slug === 'deal_id'">
+                    <template v-for="dataset in deal">
+                      <div
+                        :key="dataset.rank">
+                        {{ dataset.deal_id }}
+                      </div>
+                    </template>
+                  </div>
+
+                  <div v-if="cell.slug === 'miner_id'">
+                    <template v-for="dataset in deal">
+                      <div
+                        :key="dataset.rank">
+                        <span class="miner">{{ dataset.miner_id }}</span><span class="flag">{{ $GetFlagIcon(dataset.location) }}</span>
+                      </div>
+                    </template>
+                  </div>
+
+                  <div v-if="cell.slug === 'status'">
+                    Active
+                  </div>
+
+                  <template v-if="cell.slug === 'deal_start_epoch'">
+                    {{ $EpochToDate(deal[0].deal_start_epoch) }}
+                    <div class="date_epoch">
+                      {{ deal[0].deal_start_epoch }}
                     </div>
                   </template>
+
                 </div>
+              </td>
 
-                <div v-if="cell.slug === 'status'">
-                  Active
-                </div>
+            </tr>
 
-                <template v-if="cell.slug === 'deal_start_epoch'">
-                  {{ $EpochToDate(deal[0].deal_start_epoch) }}
-                  <div class="date_epoch">
-                    {{ deal[0].deal_start_epoch }}
-                  </div>
-                </template>
+            <tr
+              :key="`divider-${payloadCid}`"
+              class="divider" />
 
-              </div>
-            </td>
-
-          </tr>
-
-          <tr
-            :key="`divider-${payloadCid}`"
-            class="divider" />
-
-        </template>
+          </template>
+        </Paginate>
 
       </tbody>
     </table>
@@ -100,7 +109,8 @@
     <div v-if="!filtered" class="no-results-placeholder">
       <span>No results found</span>
     </div>
-
+      
+    <PaginationControls />
   </section>
 </template>
 
@@ -109,13 +119,17 @@
 import { mapActions, mapGetters } from 'vuex'
 
 import Modal from '@/components/modal'
+import Paginate from '@/modules/Pagination/Components/Paginate'
+import PaginationControls from '@/modules/Pagination/Components/Controls'
 
 // ====================================================================== Export
 export default {
   name: 'TableDatasetSingular',
 
   components: {
-    Modal
+    Modal,
+    Paginate,
+    PaginationControls
   },
 
   props: {
@@ -126,6 +140,15 @@ export default {
     columns: {
       type: Array,
       required: true
+    },
+    filterValue: {
+      type: String,
+      required: true
+    },
+    paginationDisplay: {
+      type: Number,
+      required: false,
+      default: 20
     }
   },
 
@@ -145,9 +168,21 @@ export default {
       modal: 'global/modal'
     }),
     filtered () {
-      const deals = this.cids
-      console.log(deals.length)
-      return Object.keys(deals).length > 0 ? deals : false
+      const cids = Object.values(this.cids)
+      const filter = this.filterValue.toLowerCase()
+      const filteredByValue = cids.filter((group) => {
+        const filtered = group.filter((obj) => {
+          const filename = obj.filename.toLowerCase()
+          if (filename.includes(filter)) {
+            return obj
+          }
+          return false
+        })
+        if (filtered.length === 0) { return false }
+        return filtered
+      })
+      if (filteredByValue.length === 0) { return false }
+      return filteredByValue
     }
   },
 
