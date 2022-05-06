@@ -16,7 +16,7 @@
     "links": [
       { "type": "nuxt-link", "url": "/", "text": "Home", "class_names": "nav-link center" },
       { "type": "nuxt-link", "url": "/", "text": "About", "class_names": "nav-link center" },
-      { "type": "nuxt-link", "url": "/", "text": "FAQ", "class_names": "nav-link center" },
+      { "type": "nuxt-link", "url": "/faq", "text": "FAQ", "class_names": "nav-link center" },
       { "type": "nuxt-link", "url": "/", "text": "Resources", "class_names": "nav-link center" }
     ],
     "program_details": {

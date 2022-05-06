@@ -1,0 +1,45 @@
+{
+  "seo": {
+    "title": "Dataset Explorer",
+    "description": ""
+  },
+  "og": {
+    "site_name": "Dataset Explorer",
+    "url": "",
+    "type": "website",
+    "image": ""
+  },
+  "page_content": {
+    "heading": "FAQ",
+    "accordion_sections": [
+      {
+        "label": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium?",
+        "content": "Totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. "
+      },
+      {
+        "label": "Viverra ipsum nunc aliquet bibendum enim facilisis gravida neque convallis?",
+        "content": "Totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. "
+      },
+      {
+        "label": "Sit amet purus gravida quis blandit?",
+        "content": "Totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. "
+      },
+      {
+        "label": "Urna porttitor rhoncus dolor purus non enim. Fermentum iaculis eu non diam?",
+        "content": "Totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. "
+      },
+      {
+        "label": "Sed risus pretium quam vulputate dignissim?",
+        "content": "Totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. "
+      },
+      {
+        "label": "Proin libero nunc consequat interdum varius sit amet matti?",
+        "content": "Totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. "
+      },
+      {
+        "label": "Vel orci porta non pulvinar neque laoreet suspendisse interdum consectetur?",
+        "content": "Totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. "
+      }
+    ]
+  }
+}
