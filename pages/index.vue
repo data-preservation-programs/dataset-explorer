@@ -40,7 +40,6 @@ import HeaderIndex from '@/components/header-index'
 import TableDatasetIndex from '@/components/table-dataset-index'
 
 import FileNames from '@/content/data/dataset-explorer-manifest.json'
-import SortButton from '@/components/sort-button'
 import IndexPageData from '@/content/pages/index.json'
 
 import FilterBar from '@/components/FilterBar'
@@ -62,7 +61,6 @@ export default {
     Navigation,
     HeaderIndex,
     FilterBar,
-    SortButton,
     TableDatasetIndex,
     SiteFooter
   },

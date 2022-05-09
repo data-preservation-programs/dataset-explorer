@@ -174,7 +174,10 @@ export default {
       const filteredByValue = cids.filter((group) => {
         const filtered = group.filter((obj) => {
           const filename = obj.filename.toLowerCase()
-          if (filename.includes(filter)) {
+          const miner = obj.miner_id.toLowerCase()
+          const cid = obj.payload_cid
+          const deal = obj.deal_id
+          if (filename.includes(filter) || miner.includes(filter) || cid.includes(filter) || deal.includes(filter)) {
             return obj
           }
           return false
