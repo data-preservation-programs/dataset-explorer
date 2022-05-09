@@ -38,7 +38,7 @@ export default {
     }),
     pageContent () {
       return this.siteContent.general
-    },
+    }
     // content () {
     //   return this.siteContent.general.page_404
     // },

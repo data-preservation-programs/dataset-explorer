@@ -1,7 +1,6 @@
 <template>
   <div :class="`page page-${tag}`">
 
-    <Navigation />
     <HeaderIndex
       :heading="heading"
       :subheading="subheading" />
@@ -25,7 +24,16 @@
       </div>
     </section>
 
-    <SiteFooter />
+    <div class="grid">
+      <div class="col-9">
+        <section class="pagination-controls">
+          <!-- Pagination Controls Component Here - class exists for spacing purposes -->
+        </section>
+      </div>
+      <div class="col-3">
+        <PaginationDropdown />
+      </div>
+    </div>
 
   </div>
 </template>
@@ -33,9 +41,7 @@
 <script>
 // ===================================================================== Imports
 import { mapGetters, mapActions } from 'vuex'
-import SiteFooter from '@/components/site-footer'
 
-import Navigation from '@/components/navigation'
 import HeaderIndex from '@/components/header-index'
 import TableDatasetIndex from '@/components/table-dataset-index'
 
@@ -58,11 +64,9 @@ export default {
   name: 'IndexPage',
 
   components: {
-    Navigation,
     HeaderIndex,
     FilterBar,
-    TableDatasetIndex,
-    SiteFooter
+    TableDatasetIndex
   },
 
   data () {

@@ -1,27 +1,21 @@
 <template>
-  <div class="grid">
-    <div class="col-5">
+  <div class="filter-wrapper">
+    <div :class="['searchbar', { focused, empty }]">
+      <div class="dashed-border">
+        
+        <button class="search-button">
+          <IconSearch :loading="loading" />
+        </button>
+        
+        <input
+          v-model="value"
+          :placeholder="placeholder"
+          type="text"
+          class="input"
+          @focus="focused = true"
+          @blur="focused = false">
 
-      <div class="filter-wrapper">
-        <div :class="['searchbar', { focused, empty }]">
-          <div class="dashed-border">
-            
-            <button class="search-button">
-              <IconSearch :loading="loading" />
-            </button>
-            
-            <input
-              v-model="value"
-              :placeholder="placeholder"
-              type="text"
-              class="input"
-              @focus="focused = true"
-              @blur="focused = false">
-
-          </div>
-        </div>
       </div>
-
     </div>
   </div>
 </template>
@@ -107,7 +101,7 @@ $iconOffset: calc((#{$barHeight} - #{$iconHeight}) / 2);
   flex-direction: row;
   position: relative;
   width: 26.2rem;
-  height: 3.1rem;
+  height: 3.313rem;
   transition: 250ms ease-in-out;
 }
 
@@ -174,14 +168,19 @@ $iconOffset: calc((#{$barHeight} - #{$iconHeight}) / 2);
   border: 0;
   appearance: none;
   z-index: 15;
-  @include placeholder {
+  color: $classicBlue; // input placeholder not taking the color - to fix
+  @include fontSize_Mini;
+  // @include placeholder {
+  //   color: $classicBlue;
+  // }
+  &.placeholder {
     color: $classicBlue;
   }
 }
 
-.filter-wrapper {
-  padding-top: 1rem;
-  padding-bottom: 5rem;
+.filter-wrapper { // responsible for spacing on index page
+  padding-top: 5.5rem;
+  padding-bottom: 3.4rem;
 }
 
 </style>
