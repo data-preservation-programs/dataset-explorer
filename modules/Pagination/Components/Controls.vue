@@ -127,13 +127,14 @@ $dimension: 2.5rem;
   &:not(.current) {
     &:hover {
       text-decoration: none;
-      border: solid 1px $classicBlue;
-      border-radius: 10% 30% 50% 70%;
+      border-color: rgba(0, 31, 230, 1)
     }
   }
   &.display {
     display: flex;
-    border-radius: 10% 30% 50% 70%;
+    border-radius: 100% 55% 100% 55%;
+    border: solid 1px rgba(0, 31, 230, 0);
+    transition: border-color 0.35s ease-in-out;
   }
   &.current {
     cursor: default;
