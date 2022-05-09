@@ -54,7 +54,7 @@ import LoaderTripleDot from '@/components/spinners/triple-dot'
 import Page from '@/content/pages/explorer.json'
 import FileNames from '@/content/data/dataset-explorer-manifest.json'
 
-import FilterBar from '@/components/FilterBar'
+import FilterBar from '@/components/filter-bar-old'
 
 // ====================================================================== Export
 export default {
@@ -158,6 +158,9 @@ export default {
 // ///////////////////////////////////////////////////////////////////// General
 
 // /////////////////////////////////////////////////////////////// [Toolbar] Top
+#filter-search {
+  padding-bottom: 3.3125rem;
+}
 
 // /////////////////////////////////////////////////////////////////////// Table
 .dataset-loading-placeholder {

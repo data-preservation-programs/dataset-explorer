@@ -5,7 +5,7 @@
     <HeaderIndex
       :heading="heading"
       :subheading="subheading" />
-    <section id="filter-bar">
+    <section id="filter-search">
       <div class="grid">
         <div class="col-9">
           <FilterBar
@@ -42,7 +42,7 @@ import TableDatasetIndex from '@/components/table-dataset-index'
 import FileNames from '@/content/data/dataset-explorer-manifest.json'
 import IndexPageData from '@/content/pages/index.json'
 
-import FilterBar from '@/components/FilterBar'
+import FilterBar from '@/components/filter-bar-old'
 
 // =================================================================== Functions
 const animateScroll = (instance, name) => {
@@ -136,7 +136,9 @@ export default {
 // ///////////////////////////////////////////////////////////////////// General
 
 // /////////////////////////////////////////////////////////////// [Toolbar] Top
-
+.filter-search {
+  padding-bottom: 4.4375rem;
+}
 // /////////////////////////////////////////////////////////////////////// Table
 
 // //////////////////////////////////////////////////////////// [Toolbar] Bottom
