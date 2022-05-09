@@ -78,14 +78,13 @@ export default {
 // ///////////////////////////////////////////////////////////////////// General
 .heading {
   @include header;
-  padding-bottom: 3.125rem;
-  margin-top: 1.5rem;
+  padding-bottom: 2rem;
 }
 
 .dotted-border {
   position: relative;
   margin-top: 5rem;
-  margin-bottom: 5rem;
+  margin-bottom: 7rem;
   margin-left: -5.1875rem;
   background-repeat: no-repeat;
   overflow: visible;
@@ -127,13 +126,14 @@ export default {
   box-shadow: 0px 100px 70px rgba(169, 180, 203, 0.3), -3px -3px 0px #FFFFFF, 0px 3px 0px #D6DADF, inset 0px -20px 20px rgba(255, 255, 255, 0.2);
   img {
     filter: blur(1px);
-    border-radius: 1rem;
-    padding: 0.5rem;
+    border-radius: 1.188rem;
+    padding: 0.75rem;
   }
 }
 
 .markdown-wrapper {
-  padding-top: 3.125rem;
+  padding-top: 3rem;
+  letter-spacing: $letterSpacing_Regular;
 }
 
 </style>
