@@ -13,9 +13,6 @@
             :placeholder="page_filterBarPlaceholder"
             @setFilterValue="setFilterValue" />
         </div>
-        <div class="col-3">
-          <SortButton />
-        </div>
       </div>
     </section>
     <section id="deals-table">
@@ -27,7 +24,6 @@
         </div>
       </div>
     </section>
-    <SortButton />
 
     <SiteFooter />
 

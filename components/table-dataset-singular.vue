@@ -166,7 +166,6 @@ export default {
     ...mapGetters({
       deals: 'explorer/datasetList',
       datasetNames: 'explorer/datasetNames',
-      // cids: 'explorer/datasetSingular',
       modal: 'global/modal'
     }),
     filtered () {
