@@ -1,31 +1,36 @@
 <template>
   <section id="accordion">
     <div class="block accordion-block">
-      <Accordion v-slot="{ active }">
+      <Accordion
+        v-slot="{ active }"
+        :multiple="true">
         <AccordionSection
           v-for="(section, index) in sections"
           :key="index"
           :active="active">
 
           <AccordionHeader>
-            <div class="grid">
-              <div class="col-1">
-                <IconArrowDown class="icon" />
-              </div>
-              <div class="col-10">
-                <div class="label">
-                  {{ section.label }}
+            <div class="header-inner-wrapper">
+              <div class="grid">
+                <div class="col-1">
+                  <IconArrowDown class="icon" />
+                </div>
+                <div class="col-10">
+                  <div class="label">
+                    {{ section.label }}
+                  </div>
                 </div>
               </div>
             </div>
           </AccordionHeader>
 
           <AccordionContent>
-            <div clas="grid">
-              <div class="col-10_mi-12">
-                <div
-                  :class="['accordion-content-wrapper', 'description']"
-                  v-html="section.content">
+            <div class="content-inner-wrapper">
+              <div clas="grid">
+                <div class="col-10_mi-12">
+                  <div
+                    class="content"
+                    v-html="section.content" />
                 </div>
               </div>
             </div>
@@ -71,6 +76,7 @@ export default {
 #accordion {
   font: $font_Primary;
 }
+
 .accordion-section {
   &.open {
     .icon {
@@ -78,6 +84,16 @@ export default {
       transform: rotate(180deg);
     }
   }
+}
+
+.content-inner-wrapper {
+  width: 80%;
+  padding-left: 5rem;
+  padding-top: 1rem;
+  padding-bottom: 5rem;
+  font-weight: $fontWeight_Medium;
+  line-height: 2rem;
+  font-size: 1.125rem;
 }
 
 .icon {
