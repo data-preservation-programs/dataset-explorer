@@ -108,7 +108,7 @@
       <span>No results found</span>
     </div>
 
-    <div class="grid">
+    <div class="grid-center">
       <div class="col-9">
         <PaginationControls />
       </div>

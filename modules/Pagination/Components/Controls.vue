@@ -97,11 +97,15 @@ $dimension: 2.5rem;
 
 // ///////////////////////////////////////////////////////////////////// General
 .pagination-controls {
+  @include fontWeight_Semibold;
+  @include fontSize_Mini;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  margin-top: 3rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-family: $font_Primary;
 }
 
 // /////////////////////////////////////////////////////////// Buttons & Breaker
