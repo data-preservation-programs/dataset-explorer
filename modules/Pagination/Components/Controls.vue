@@ -113,34 +113,37 @@ $dimension: 2.5rem;
   width: $dimension;
   height: $dimension;
   color: $classicBlue;
+  opacity: 1 !important;
 }
 
 .breaker {
   display: flex;
   font-weight: 500;
-  color: $gray500;
-  opacity: 0.25;
+  color: $classicBlue;
 }
 
 .page-button {
   display: none;
   &:not(.current) {
     &:hover {
-      text-decoration: underline;
+      text-decoration: none;
+      border: solid 1px $classicBlue;
+      border-radius: 10% 30% 50% 70%;
     }
   }
   &.display {
     display: flex;
+    border-radius: 10% 30% 50% 70%;
   }
   &.current {
-    background-color: $classicBlue;
-    color: white;
     cursor: default;
   }
 }
 
 .control-button {
   color: $classicBlue;
+  opacity: 1 !important;
+  transition: all 250ms ease-in-out;
   &:hover {
     text-decoration: underline;
   }
@@ -151,13 +154,6 @@ $dimension: 2.5rem;
   &.next,
   &.last {
     margin-left: 1rem;
-  }
-  &.first,
-  &.last {
-    opacity: 0.5;
-    &:hover {
-      opacity: 1;
-    }
   }
 }
 </style>
