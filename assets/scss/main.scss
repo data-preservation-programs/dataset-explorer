@@ -227,6 +227,7 @@ i.chevron {
   h1, h2, h3 {
     &:not(:last-child) {
       margin-bottom: 2rem;
+      line-height: 2.5rem;
     }
     + ul, + ol {
       margin-top: 2rem;
@@ -234,6 +235,7 @@ i.chevron {
   }
   p {
     &:not(:last-child) {
+      line-height: 2rem;
       margin-bottom: 2rem;
     }
   }

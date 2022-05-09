@@ -110,7 +110,7 @@ export default {
     transform: translateX(50%);
     width: 0.3125rem;
     height: 0.3125rem;
-    bottom: 0.2rem;  // previously 0.325rem however the dotted line runs in to the pseudoelements due to responsiveness so this is a patch for now
+    bottom: 0rem;  // previously 0.325rem then 0.2 rem however the dotted line runs in to the pseudoelements due to responsiveness so this is a patch for now
     left: 0.0625rem;
   }
 }
