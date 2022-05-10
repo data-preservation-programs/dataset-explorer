@@ -58,7 +58,7 @@
     ],
     "table": {
       "searchbar": {
-        "placeholder": "Search for a piece or payload CID, deal or SP"
+        "placeholder": "Filter by dataset or location"
       },
       "loading_placeholder_text": "Loading data",
       "sorter": {

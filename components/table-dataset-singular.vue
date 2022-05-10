@@ -1,5 +1,12 @@
 <template>
   <section class="table-deals">
+
+    <div
+      v-if="filterValue !== ''"
+      class="filter-description">
+      Showing {{ filtered.length - 1 }} results for '{{ filterValue }}'
+    </div>
+
     <table v-if="filtered" class="table-container">
       <!-- ============================================================ Head -->
       <thead class="table-head">
@@ -312,7 +319,7 @@ tbody:not(.divider) {
     .cell-parent:nth-child(3) {
       &:before {
         transition: 100ms ease-in;
-        opacity: 0.5;
+        opacity: 1;
       }
     }
   }
@@ -358,6 +365,7 @@ tbody:not(.divider) {
     opacity: 0;
     z-index: 15;
     transition: 100ms ease-out;
+    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect x='2' y='2' width='99%25' height='92%25' rx='5' fill='none' stroke='%23001FE6' stroke-width='2' stroke-dasharray='1.5%2c 10' stroke-dashoffset='10' stroke-linecap='round'/%3e%3c/svg%3e");
   }
 }
 
@@ -439,6 +447,12 @@ tr.divider {
 // ////////////////////////////////////////////////////////////////////// Common
 
 // //////////////////////////////////////////////////////////////////// Specific
+.filter-description {
+  margin-top: -2.75rem;
+  padding-bottom: 2.5rem;
+  padding-left: 1.5rem;
+}
+
 .file_name {
   @include fontWeight_Semibold;
 }

@@ -1,6 +1,12 @@
 <template>
   <section class="table-deals">
 
+    <div
+      v-if="filterValue !== ''"
+      class="filter-description">
+      Showing {{ filtered.length - 1 }} results for '{{ filterValue }}'
+    </div>
+
     <table v-if="filtered" class="table-container">
       <!-- ============================================================ Head -->
       <thead class="table-head">
@@ -379,6 +385,12 @@ tr.divider {
 // ////////////////////////////////////////////////////////////////////// Common
 
 // //////////////////////////////////////////////////////////////////// Specific
+.filter-description {
+  margin-top: -2.75rem;
+  padding-bottom: 2.5rem;
+  padding-left: 1.5rem;
+}
+
 .filename,
 .renew-by-date {
   @include fontSize_Tiny;

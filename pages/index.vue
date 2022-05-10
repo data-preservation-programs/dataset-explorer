@@ -2,6 +2,7 @@
   <div :class="`page page-${tag}`">
 
     <HeaderIndex
+      class="header"
       :heading="heading"
       :subheading="subheading" />
     <section id="filter-search">
@@ -23,17 +24,6 @@
         </div>
       </div>
     </section>
-
-    <div class="grid">
-      <div class="col-9">
-        <section class="pagination-controls">
-          <!-- Pagination Controls Component Here - class exists for spacing purposes -->
-        </section>
-      </div>
-      <div class="col-3">
-        <PaginationDropdown />
-      </div>
-    </div>
 
   </div>
 </template>
@@ -138,10 +128,13 @@ export default {
 
 <style lang="scss" scoped>
 // ///////////////////////////////////////////////////////////////////// General
+.header {
+  margin-bottom: 4.25rem;
+}
 
 // /////////////////////////////////////////////////////////////// [Toolbar] Top
-.filter-search {
-  padding-bottom: 4.4375rem;
+#filter-search {
+  padding-bottom: 3rem;
 }
 // /////////////////////////////////////////////////////////////////////// Table
 

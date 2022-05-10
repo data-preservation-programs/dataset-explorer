@@ -187,7 +187,9 @@ $dimensions: 2.75rem;
 }
 
 .input {
-  @include fontSize_Tiny;
+  @include fontSize_Mini;
+  @include fontWeight_Medium;
+  color: $classicBlue;
   width: calc(100% - (#{$dimensions} - 2px));
   height: 100%;
   padding: 0;
@@ -202,4 +204,9 @@ $dimensions: 2.75rem;
     transition: 250ms ease-in;
   }
 }
+::placeholder {
+  @include fontWeight_Medium;
+  color: $classicBlue !important;
+}
+
 </style>
