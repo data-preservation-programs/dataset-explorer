@@ -41,7 +41,7 @@
           <tr
             :key="'row-' + payloadCid"
             class="row row-body"
-            @click="openModal(payloadCid)">
+            @click="openModal(deal[0].payload_cid)">
 
             <td
               v-for="cell in columns"
@@ -176,6 +176,7 @@ export default {
       modal: 'global/modal'
     }),
     filtered () {
+      console.log(this.cids)
       const cids = Object.values(this.cids)
       const filter = this.filterValue.toLowerCase()
       const filteredByValue = cids.filter((group) => {
