@@ -1,5 +1,9 @@
 <template>
   <div :class="`page page-${tag}`">
+    <HeaderIndex
+      class="header"
+      :heading="heading"
+      :subheading="subheading" />
 
     <Stats
       :dataset-name="getProjectLabels($route.params.id)"
@@ -48,6 +52,7 @@
 // ===================================================================== Imports
 import { mapGetters, mapActions } from 'vuex'
 
+import HeaderIndex from '@/components/header-index'
 import Stats from '@/components/stats'
 import TableDatasetSingular from '@/components/table-dataset-singular'
 import LoaderTripleDot from '@/components/spinners/triple-dot'
@@ -61,6 +66,7 @@ export default {
   name: 'IndexPage',
 
   components: {
+    HeaderIndex,
     Stats,
     TableDatasetSingular,
     LoaderTripleDot,
@@ -104,6 +110,12 @@ export default {
     },
     pageData () {
       return this.siteContent[this.tag]
+    },
+    heading () {
+      return this.pageData.fold.heading
+    },
+    subheading () {
+      return this.pageData.fold.subheading
     },
     stats () {
       return this.pageData.stats

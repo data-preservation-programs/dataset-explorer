@@ -176,7 +176,6 @@ export default {
       modal: 'global/modal'
     }),
     filtered () {
-      console.log(this.cids)
       const cids = Object.values(this.cids)
       const filter = this.filterValue.toLowerCase()
       const filteredByValue = cids.filter((group) => {

@@ -9,6 +9,10 @@
     "type": "website",
     "image": ""
   },
+  "fold": {
+    "heading": "Dataset Explorer",
+    "subheading": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore"
+  },
   "stats_block": {
     "infoblockHeading": "About",
     "resourcesHeading": "Resources",
