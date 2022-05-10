@@ -4,7 +4,7 @@
     <div
       v-if="filterValue !== ''"
       class="filter-description">
-      Showing {{ filtered.length - 1 }} results for '{{ filterValue }}'
+      Showing {{ filteredLength }} results for '{{ filterValue }}'
     </div>
 
     <table v-if="filtered" class="table-container">
@@ -194,6 +194,11 @@ export default {
       })
       if (filteredByValue.length === 0) { return false }
       return filteredByValue
+    },
+    filteredLength () {
+      const filterLength = this.filtered.length
+      if (filterLength > 0) { return filterLength }
+      return 0
     }
   },
 
@@ -400,7 +405,6 @@ tr.divider {
 }
 
 .no-results-placeholder {
-  margin-bottom: -3rem;
   padding: 1rem;
   filter: drop-shadow(0px 5px 3px rgba(0, 0, 0, 0.3));
   @include medium {
