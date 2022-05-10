@@ -4,7 +4,7 @@
     <div
       v-if="filterValue !== ''"
       class="filter-description">
-      Showing {{ filtered.length - 1 }} results for '{{ filterValue }}'
+      Showing {{ filteredLength }} results for '{{ filterValue }}'
     </div>
 
     <table v-if="filtered" class="table-container">
@@ -134,6 +134,11 @@ export default {
       })
       if (filteredByValue.length === 0) { return false }
       return filteredByValue
+    },
+    filteredLength () {
+      const filterLength = this.filtered.length
+      if (filterLength > 0) { return filterLength }
+      return 0
     }
   },
 
