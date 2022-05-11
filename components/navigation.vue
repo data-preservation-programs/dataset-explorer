@@ -24,6 +24,10 @@
             </component>
           </div>
 
+          <HamburgerNav
+            class="hamburger-nav"
+            :links="links" />
+
         </nav>
       </div>
     </div>
@@ -35,13 +39,15 @@
 import { mapGetters } from 'vuex'
 
 import Logo from '@/components/logo'
+import HamburgerNav from '@/components/hamburger-nav'
 
 // ====================================================================== Export
 export default {
   name: 'Navigation',
 
   components: {
-    Logo
+    Logo,
+    HamburgerNav
   },
 
   computed: {
@@ -73,8 +79,8 @@ export default {
   padding-top: 2rem;
   padding-left: 5rem;
   padding-bottom: 4rem;
-  @include mini {
-    flex-direction: column;
+  @include small {
+    padding-left: 1.5rem;
   }
   @include tiny {
     display: flex;
@@ -87,6 +93,7 @@ export default {
 .logo-link {
   display: flex;
   flex-direction: row;
+  padding-right: 2rem;
   transition: 250ms ease-out;
   @include mini {
     margin-bottom: 1rem;
@@ -110,9 +117,7 @@ export default {
   align-items: center;
   padding-top: 1rem;
   @include tiny {
-    justify-content: center;
-    width: 100%;
-    margin-top: 2rem;
+    display: none;
   }
 }
 
@@ -122,6 +127,9 @@ export default {
   @include fontSize_Regular;
   text-transform: uppercase;
   margin-right: 3rem;
+  @include mini {
+    margin-right: 2rem;
+  }
   .dashed-border {
     width: 100%;
     height: 0.25rem;
@@ -166,6 +174,13 @@ export default {
     .dashed-border {
       transform: scale(1);
     }
+  }
+}
+
+.hamburger-nav {
+  display: none;
+  @include tiny {
+    display: block;
   }
 }
 
