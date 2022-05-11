@@ -42,11 +42,6 @@ export default {
 <style lang="scss" scoped>
 // ///////////////////////////////////////////////////////////////////// General
 .accordion-header {
-  // display: flex;
-  // flex-direction: row;
-  // align-content: center;
-  // justify-content: space-between;
-  // padding-top: 1.3rem;
   @include mini {
     padding-bottom: 2rem;
   }

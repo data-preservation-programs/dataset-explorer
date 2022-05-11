@@ -11,6 +11,7 @@
   },
   "page_content": {
     "heading": "FAQ",
+    "expand_all_button_text": "Expand All",
     "accordion_sections": [
       {
         "label": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium?",

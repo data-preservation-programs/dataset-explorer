@@ -6,6 +6,9 @@
           <h1 class="heading">
             {{ heading }}
           </h1>
+          <ExpandAllButton
+            :text="buttonText"
+            class="expand-button" />
         </div>
         <div class="col-10">
           <AccordionBlock
@@ -23,6 +26,8 @@
 // ===================================================================== Imports
 import { mapGetters, mapActions } from 'vuex'
 
+import ExpandAllButton from '@/components/expand-all-button'
+
 import AccordionBlock from '@/components/accordion_block'
 
 import Page from '@/content/pages/faq.json'
@@ -32,6 +37,7 @@ export default {
   name: 'FaqPage',
 
   components: {
+    ExpandAllButton,
     AccordionBlock
   },
 
@@ -58,6 +64,9 @@ export default {
     },
     accordionSections () {
       return this.siteContent[this.tag].page_content.accordion_sections
+    },
+    buttonText () {
+      return this.siteContent[this.tag].page_content.expand_all_button_text
     }
   },
 
@@ -81,9 +90,13 @@ export default {
 // ///////////////////////////////////////////////////////////////////// General
 .heading {
   @include header;
-  padding-bottom: 3.6875rem;
+  padding-bottom: 1rem;
   padding-top: 0.625rem;
   margin-left: 5.1875rem;
+}
+
+.expand-button {
+  margin-left: 5.625rem;
 }
 
 .accordion {

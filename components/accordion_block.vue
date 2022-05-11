@@ -91,7 +91,7 @@ export default {
   flex-direction: row;
   align-content: center;
   justify-content: space-between;
-  padding-top: 1.3rem;
+  padding-top: 1rem;
   & .label {
     padding-left: 2rem;
   }
