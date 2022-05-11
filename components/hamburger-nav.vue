@@ -51,12 +51,10 @@ export default {
 }
 
 .navbar-container {
-  display: block;
   position: relative;
   height: 2rem;
   input[type="checkbox"] {
     position: absolute;
-    display: block;
     height: 2rem;
     width: 1.875rem;
     top: 1.25rem;
