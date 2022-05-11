@@ -22,8 +22,6 @@
       </div>
     </section>
 
-    <SortButton />
-
     <div class="grid">
       <div class="col-9">
         <section class="pagination-controls">
