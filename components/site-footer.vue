@@ -1,24 +1,28 @@
 <template>
   <footer id="site-footer">
-    <div class="dotted-border">
-      <div class="inner-content">
-        <div class="grid-center">
-          <div class="col-5_sm-12">
-            <LogoDatasetExplorer
-              class="logo-block" />
-          </div>
-          <div class="col-5_md-6_sm-12" data-push-left="off-2_md-1_sm-0">
-            <nav>
-              <nuxt-link
-                v-for="(link, index) in navLinks"
-                :key="index"
-                :to="link.url"
-                :class="'link'">
-                {{ link.text }}
-              </nuxt-link>
-            </nav>
-            <div class="info-text">
-              <p>{{ content.info_text }}</p>
+    <div class="grid">
+      <div class="col">
+        <div class="dotted-border">
+          <div class="inner-content">
+            <div class="grid-center">
+              <div class="col-5_sm-12">
+                <LogoDatasetExplorer
+                  class="logo-block" />
+              </div>
+              <div class="col-5_md-6_sm-12" data-push-left="off-2_md-1_sm-0">
+                <nav>
+                  <nuxt-link
+                    v-for="(link, index) in navLinks"
+                    :key="index"
+                    :to="link.url"
+                    :class="'link'">
+                    {{ link.text }}
+                  </nuxt-link>
+                </nav>
+                <div class="info-text">
+                  <p>{{ content.info_text }}</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -62,8 +66,7 @@ export default {
 
 .dotted-border {
   position: relative;
-  margin-left: 12%;
-  margin-right: 18%;
+  margin-left: -8.125%;
   border: 0 0 1rem 1rem;
   background-repeat: no-repeat;
   overflow: visible;
@@ -93,8 +96,13 @@ export default {
     right: -0.625rem;
   }
   @include medium {
-    margin-left: 8%;
-    margin-right: 8%;
+    margin-left: -1.5rem;
+  }
+  @include small {
+    margin-left: -2.5rem;
+  }
+  @include tiny {
+    margin-left: -1.5rem;
   }
 }
 
@@ -102,11 +110,8 @@ export default {
   padding-top: 4rem;
   margin-left: 4.5rem;
   padding-bottom: 1.18rem;
-  @include medium {
-    margin-left: 0;
-  }
-  @include mini {
-    margin-left: 0rem;
+  @include small {
+    margin-left: 2.5rem;
   }
   @include tiny {
     padding-top: 2.5rem;
