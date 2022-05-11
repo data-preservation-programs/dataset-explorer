@@ -7,7 +7,7 @@
             <LogoDatasetExplorer
               class="logo-block" />
           </div>
-          <div class="col-5_sm-12" data-push-left="off-2_sm-0">
+          <div class="col-5_md-6_sm-12" data-push-left="off-2_md-1_sm-0">
             <nav>
               <nuxt-link
                 v-for="(link, index) in navLinks"
@@ -105,13 +105,17 @@ export default {
   @include medium {
     margin-left: 0;
   }
+  @include mini {
+    margin-left: 0rem;
+  }
+  @include tiny {
+    padding-top: 2.5rem;
+    padding-bottom: 0.5rem;
+  }
 }
 // ///////////////////////////////////////////////////////////////////// Sections
 .logo-block {
  padding-top: 0.5rem;
- @include medium {
-
- }
 }
 nav {
   @include fontWeight_Semibold;
@@ -121,6 +125,17 @@ nav {
   flex-direction: row;
   .link {
     padding: 0 1rem;
+    @include small {
+      padding: 0 0.5rem;
+    }
+  }
+  @include small {
+    margin-left: -0.5rem;
+  }
+  @include tiny {
+    display: flex;
+    flex-direction: column;
+    padding-top: 1.25rem;
   }
 }
 
@@ -130,6 +145,12 @@ nav {
   line-height: 2.1875rem;
   padding-top: 2.5rem;
   padding-left: 1rem;
+  @include small {
+    margin-left: -1rem;
+  }
+  @include tiny {
+    padding-top: 1.75rem;
+  }
 }
 
 </style>
