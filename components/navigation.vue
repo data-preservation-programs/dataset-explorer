@@ -71,7 +71,7 @@ export default {
   justify-content: space-between;
   align-items: center;
   padding-top: 2rem;
-  padding-left: 5rem;
+  padding-left: 3rem;
   padding-bottom: 4rem;
   @include mini {
     flex-direction: column;

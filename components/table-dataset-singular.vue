@@ -1,5 +1,12 @@
 <template>
   <section class="table-deals">
+
+    <div
+      v-if="filterValue !== ''"
+      class="filter-description">
+      Showing {{ filteredLength }} results for '{{ filterValue }}'
+    </div>
+
     <table v-if="filtered" class="table-container">
       <!-- ============================================================ Head -->
       <thead class="table-head">
@@ -16,18 +23,25 @@
       </thead>
       <!-- ============================================================ Body -->
       <tbody class="divider" />
-      <tbody class="table-body">
 
-        <Modal
-          class="deal-modal"
-          :payload-cid="selectedPayloadCid" />
+      <Modal
+        class="deal-modal"
+        :payload-cid="selectedPayloadCid" />
 
-        <template v-for="(deal, payloadCid) in filtered">
+      <Paginate
+        v-if="filtered"
+        v-slot="{ paginated }"
+        :display="paginationDisplay"
+        :collection="filtered"
+        root-node="tbody"
+        class="table-body">
+
+        <template v-for="(deal, payloadCid) in paginated">
 
           <tr
-            :key="payloadCid"
+            :key="'row-' + payloadCid"
             class="row row-body"
-            @click="openModal(payloadCid)">
+            @click="openModal(deal[0].payload_cid)">
 
             <td
               v-for="cell in columns"
@@ -57,7 +71,7 @@
                 <div v-if="cell.slug === 'deal_id'">
                   <template v-for="dataset in deal">
                     <div
-                      :key="dataset.rank">
+                      :key="'deal_id-' + dataset.deal_id">
                       {{ dataset.deal_id }}
                     </div>
                   </template>
@@ -66,7 +80,7 @@
                 <div v-if="cell.slug === 'miner_id'">
                   <template v-for="dataset in deal">
                     <div
-                      :key="dataset.rank">
+                      :key="'miner_id-' + dataset.deal_id + dataset.miner_id">
                       <span class="miner">{{ dataset.miner_id }}</span><span class="flag">{{ $GetFlagIcon(dataset.location) }}</span>
                     </div>
                   </template>
@@ -93,14 +107,19 @@
             class="divider" />
 
         </template>
+      </Paginate>
 
-      </tbody>
     </table>
 
     <div v-if="!filtered" class="no-results-placeholder">
       <span>No results found</span>
     </div>
 
+    <div class="grid-center">
+      <div class="col-9">
+        <PaginationControls />
+      </div>
+    </div>
   </section>
 </template>
 
@@ -109,13 +128,17 @@
 import { mapActions, mapGetters } from 'vuex'
 
 import Modal from '@/components/modal'
+import Paginate from '@/modules/Pagination/Components/Paginate'
+import PaginationControls from '@/modules/Pagination/Components/Controls'
 
 // ====================================================================== Export
 export default {
   name: 'TableDatasetSingular',
 
   components: {
-    Modal
+    Modal,
+    Paginate,
+    PaginationControls
   },
 
   props: {
@@ -126,6 +149,15 @@ export default {
     columns: {
       type: Array,
       required: true
+    },
+    filterValue: {
+      type: String,
+      required: true
+    },
+    paginationDisplay: {
+      type: Number,
+      required: false,
+      default: 20
     }
   },
 
@@ -141,13 +173,32 @@ export default {
     ...mapGetters({
       deals: 'explorer/datasetList',
       datasetNames: 'explorer/datasetNames',
-      // cids: 'explorer/datasetSingular',
       modal: 'global/modal'
     }),
     filtered () {
-      const deals = this.cids
-      console.log(deals.length)
-      return Object.keys(deals).length > 0 ? deals : false
+      const cids = Object.values(this.cids)
+      const filter = this.filterValue.toLowerCase()
+      const filteredByValue = cids.filter((group) => {
+        const filtered = group.filter((obj) => {
+          const filename = obj.filename.toLowerCase()
+          const miner = obj.miner_id.toLowerCase()
+          const cid = obj.payload_cid
+          const deal = obj.deal_id
+          if (filename.includes(filter) || miner.includes(filter) || cid.includes(filter) || deal.includes(filter)) {
+            return obj
+          }
+          return false
+        })
+        if (filtered.length === 0) { return false }
+        return filtered
+      })
+      if (filteredByValue.length === 0) { return false }
+      return filteredByValue
+    },
+    filteredLength () {
+      const filterLength = this.filtered.length
+      if (filterLength > 0) { return filterLength }
+      return 0
     }
   },
 
@@ -273,7 +324,7 @@ tbody:not(.divider) {
     .cell-parent:nth-child(3) {
       &:before {
         transition: 100ms ease-in;
-        opacity: 0.5;
+        opacity: 1;
       }
     }
   }
@@ -319,6 +370,7 @@ tbody:not(.divider) {
     opacity: 0;
     z-index: 15;
     transition: 100ms ease-out;
+    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect x='2' y='2' width='99%25' height='92%25' rx='5' fill='none' stroke='%23001FE6' stroke-width='2' stroke-dasharray='1.5%2c 10' stroke-dashoffset='10' stroke-linecap='round'/%3e%3c/svg%3e");
   }
 }
 
@@ -400,6 +452,12 @@ tr.divider {
 // ////////////////////////////////////////////////////////////////////// Common
 
 // //////////////////////////////////////////////////////////////////// Specific
+.filter-description {
+  margin-top: -2.75rem;
+  padding-bottom: 2.5rem;
+  padding-left: 1.5rem;
+}
+
 .file_name {
   @include fontWeight_Semibold;
 }

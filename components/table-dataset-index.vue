@@ -1,6 +1,12 @@
 <template>
   <section class="table-deals">
 
+    <div
+      v-if="filterValue !== ''"
+      class="filter-description">
+      Showing {{ filteredLength }} results for '{{ filterValue }}'
+    </div>
+
     <table v-if="filtered" class="table-container">
       <!-- ============================================================ Head -->
       <thead class="table-head">
@@ -97,6 +103,10 @@ export default {
     columns: {
       type: Array,
       required: true
+    },
+    filterValue: {
+      type: String,
+      required: true
     }
   },
 
@@ -108,12 +118,27 @@ export default {
 
   computed: {
     ...mapGetters({
-      deals: 'explorer/datasetList',
+      datasets: 'explorer/datasetList',
       datasetNames: 'explorer/datasetNames'
     }),
     filtered () {
-      const deals = this.deals
-      return deals.length > 0 ? deals : false
+      const datasets = this.datasets
+      if (!datasets) { return false }
+      const filteredByValue = datasets.filter((obj) => {
+        const slug = obj.slug.toLowerCase()
+        const filter = this.filterValue.toLowerCase()
+        if (slug.includes(filter)) {
+          return obj
+        }
+        return false
+      })
+      if (filteredByValue.length === 0) { return false }
+      return filteredByValue
+    },
+    filteredLength () {
+      const filterLength = this.filtered.length
+      if (filterLength > 0) { return filterLength }
+      return 0
     }
   },
 
@@ -365,6 +390,12 @@ tr.divider {
 // ////////////////////////////////////////////////////////////////////// Common
 
 // //////////////////////////////////////////////////////////////////// Specific
+.filter-description {
+  margin-top: -2.75rem;
+  padding-bottom: 2.5rem;
+  padding-left: 1.5rem;
+}
+
 .filename,
 .renew-by-date {
   @include fontSize_Tiny;

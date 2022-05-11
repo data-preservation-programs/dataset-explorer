@@ -75,11 +75,12 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     // Doc: https://github.com/agency-undone/au-nuxt-module-zero
-    '@agency-undone/au-nuxt-module-zero'
+    '@agency-undone/au-nuxt-module-zero',
     // Doc: https://sitemap.nuxtjs.org
     // '@nuxtjs/sitemap',
     // Doc: https://content.nuxtjs.org
     // '@nuxt/content'
+    '~/modules/Pagination'
   ],
   // ///////////////////////////////////////////////////////////// [Module] Zero
   // ---------------------------------------------------------------------------

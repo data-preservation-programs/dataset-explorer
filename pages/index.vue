@@ -2,38 +2,28 @@
   <div :class="`page page-${tag}`">
 
     <HeaderIndex
+      class="header"
       :heading="heading"
       :subheading="subheading" />
-
-    <div class="grid">
-      <div class="col-9">
-        <SearchBar />
-      </div>
-      <div class="col-3">
-        <SortButton />
-      </div>
-    </div>
-
-    <section id="deals-table">
+    <section id="filter-search">
       <div class="grid">
-        <div class="col">
-          <TableDatasetIndex :columns="tableColumns" />
+        <div class="col-9">
+          <FilterBar
+            :filter-value="filterValue"
+            :placeholder="page_filterBarPlaceholder"
+            @setFilterValue="setFilterValue" />
         </div>
       </div>
     </section>
-
-    <SortButton />
-
-    <div class="grid">
-      <div class="col-9">
-        <section class="pagination-controls">
-          <!-- Pagination Controls Component Here - class exists for spacing purposes -->
-        </section>
+    <section id="deals-table">
+      <div class="grid">
+        <div class="col">
+          <TableDatasetIndex
+            :filter-value="filterValue"
+            :columns="tableColumns" />
+        </div>
       </div>
-      <div class="col-3">
-        <PaginationDropdown />
-      </div>
-    </div>
+    </section>
 
   </div>
 </template>
@@ -46,11 +36,18 @@ import HeaderIndex from '@/components/header-index'
 import TableDatasetIndex from '@/components/table-dataset-index'
 
 import FileNames from '@/content/data/dataset-explorer-manifest.json'
-import SortButton from '@/components/sort-button'
-import PaginationDropdown from '@/components/pagination-dropdown'
 import IndexPageData from '@/content/pages/index.json'
 
-import SearchBar from '@/components/search-bar'
+import FilterBar from '@/components/filter-bar-old'
+
+// =================================================================== Functions
+const animateScroll = (instance, name) => {
+  if (name.includes('deals') || name.includes('documentation') || name.includes('retrievals')) {
+    instance.$scrollToElement(instance.$refs.navigation.$el, 500, -120, true)
+  } else {
+    instance.$scrollToElement(instance.$refs.info.$el, 500, -120, true)
+  }
+}
 
 // ====================================================================== Export
 export default {
@@ -58,10 +55,8 @@ export default {
 
   components: {
     HeaderIndex,
-    SearchBar,
-    SortButton,
-    TableDatasetIndex,
-    PaginationDropdown
+    FilterBar,
+    TableDatasetIndex
   },
 
   data () {
@@ -84,7 +79,8 @@ export default {
   computed: {
     ...mapGetters({
       siteContent: 'global/siteContent',
-      datasetList: 'explorer/datasetList'
+      datasetList: 'explorer/datasetList',
+      filterValue: 'global/filterValue'
     }),
     pageData () {
       return this.siteContent[this.tag]
@@ -98,15 +94,25 @@ export default {
     subheading () {
       return this.pageContent.fold.subheading
     },
+    page_filterBarPlaceholder () {
+      return this.pageContent.table.searchbar.placeholder
+    },
     tableColumns () {
       return this.pageContent.table.columns
     }
   },
 
   watch: {
+    '$route' (route) {
+      this.$nextTick(() => {
+        animateScroll(this)
+        this.setFilterValue('')
+      })
+    }
   },
 
   mounted () {
+
   },
 
   beforeDestroy () {
@@ -114,6 +120,7 @@ export default {
 
   methods: {
     ...mapActions({
+      setFilterValue: 'global/setFilterValue'
     })
   }
 }
@@ -121,7 +128,16 @@ export default {
 
 <style lang="scss" scoped>
 // ///////////////////////////////////////////////////////////////////// General
-.pagination-controls {
-  padding-bottom: 1rem; // this is to make space for future pagination controls if or when they are created
+.header {
+  margin-bottom: 4.25rem;
 }
+
+// /////////////////////////////////////////////////////////////// [Toolbar] Top
+#filter-search {
+  padding-bottom: 3rem;
+}
+// /////////////////////////////////////////////////////////////////////// Table
+
+// //////////////////////////////////////////////////////////// [Toolbar] Bottom
+
 </style>

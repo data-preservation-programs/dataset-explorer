@@ -9,7 +9,6 @@
 
     <BackgroundShapes />
 
-
   </div>
 </template>
 
