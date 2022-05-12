@@ -25,6 +25,17 @@
       </div>
     </section>
 
+    <div class="grid">
+      <div class="col-9">
+        <section class="pagination-controls">
+          <!-- Pagination Controls Component Here - class exists for spacing purposes -->
+        </section>
+      </div>
+      <div class="col-3">
+        <PaginationDropdown />
+      </div>
+    </div>
+
   </div>
 </template>
 
@@ -140,7 +151,4 @@ export default {
 #deals-table {
   margin-bottom: 2.5rem;
 }
-
-// //////////////////////////////////////////////////////////// [Toolbar] Bottom
-
 </style>
