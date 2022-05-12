@@ -47,8 +47,11 @@
               v-for="cell in columns"
               :key="cell.slug"
               :class="['cell-parent', { hovering: deal.rank === hovering }]">
+              <div
+                class="mobile-cell-head"
+                v-html="cell.label">
+              </div>
               <div :class="['cell cell-body', cell.slug]">
-
                 <template v-if="cell.slug === 'curated_dataset'">
                   <div
                     class="file_name">
@@ -240,12 +243,14 @@ export default {
 .table-container {
   min-width: 100%;
   @include medium {
-    display: block;
-    margin-top: -3rem;
     margin-bottom: -5rem;
-    padding: 3rem calc(7% + 0.5rem);
     padding-bottom: 5rem;
     overflow-x: scroll;
+  }
+  @include mini {
+    padding: 0;
+    padding-bottom: 5rem;
+    margin-top: 0;
   }
 }
 
@@ -261,6 +266,9 @@ export default {
   position: relative;
   filter: drop-shadow(0px 0px 20px rgba(0, 0, 0, 0.9));
   vertical-align: bottom;
+  @include mini {
+    display: none;
+  }
   &:before,
   &:after {
     content: '';
@@ -320,9 +328,17 @@ tbody:not(.divider) {
 .row-body {
   position: relative;
   cursor: pointer;
+  @include mini {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding-left: 2rem;
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+  }
   &:hover {
     .cell-parent:nth-child(3) {
-      &:before {
+      &:after {
         transition: 100ms ease-in;
         opacity: 1;
       }
@@ -357,9 +373,26 @@ tbody:not(.divider) {
   }
 }
 
+.cell-parent:not(:first-child) {
+  @include mini {
+    margin-top: 1rem;
+    &:before {
+      content: '';
+      position: absolute;
+      z-index: 25;
+      left: -0.125rem;
+      background-color: $classicBlue;
+      opacity: 0.3;
+      height: 1px;
+      width: calc(100% + 0.125rem);
+      margin-top: -1.5rem;
+    }
+  }
+}
+
 .cell-parent:nth-child(3) {
   // HOVER Overlay gradient
-  &:before {
+  &:after {
     content: '';
     position: absolute;
     top: 1px;
@@ -375,6 +408,18 @@ tbody:not(.divider) {
 }
 
 .cell-parent {
+  @include mini {
+    display: flex;
+    flex-direction: row;
+    line-height: 1.5;
+    width: 100%;
+    padding-bottom: 1rem;
+    &:last-child {
+      .cell-body {
+        padding-bottom: 0;
+      }
+    }
+  }
   &.hovering {
     &:not(:nth-child(4)) {
       .cell-body {
@@ -396,6 +441,10 @@ tbody:not(.divider) {
 
 .cell-body {
   padding: 1.25rem;
+  @include mini {
+    padding-top: 0;
+    width: 65% !important;
+  }
 }
 
 tr.divider {
@@ -439,6 +488,17 @@ tr.divider {
   }
 }
 
+.mobile-cell-head {
+  display: none;
+  @include mini {
+    display: block;
+    position: relative;
+    z-index: 25;
+    width: 35%;
+    padding-right: 1rem;
+  }
+}
+
 // ///////////////////////////////////////////////////////////////////// General
 .cell-body {
   position: relative;
@@ -463,10 +523,13 @@ tr.divider {
 
 .cid {
   padding-top: 0.5rem;
+  @include mini {
+    width: 10rem;
+  }
 }
 
 .curated_dataset {
-  width: 10rem;
+  width: 13rem;
 }
 
 .miner_id>div>div {
@@ -485,6 +548,7 @@ tr.divider {
 
 .data_size, .cid, .deal_id, .miner_id, .date_epoch {
   font-family: $font_Secondary;
+  @include fontWeight_Regular;
 }
 
 .date_epoch {
@@ -492,7 +556,7 @@ tr.divider {
 }
 
 .data-unit {
-  padding-top: 0.125rem;
+  padding-top: 0.375rem;
 }
 
 .data_size>div {
