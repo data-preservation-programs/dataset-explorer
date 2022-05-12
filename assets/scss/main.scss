@@ -227,6 +227,12 @@ i.chevron {
   h1, h2, h3 {
     &:not(:last-child) {
       margin-bottom: 1rem;
+      @include tiny {
+        margin-bottom: 1.8125rem;
+      }
+      @include mini {
+        margin-bottom: 1.8125rem;
+      }
     }
     + ul, + ol {
       margin-top: 2rem;
@@ -234,7 +240,8 @@ i.chevron {
   }
   p {
     &:not(:last-child) {
-      margin-bottom: 1rem;
+      line-height: 2rem;
+      margin-bottom: 2rem;
     }
   }
   a {
@@ -274,9 +281,6 @@ i.chevron {
         }
       }
     }
-  }
-  img {
-    width: 100%;
   }
   ol {
     padding-left: 1.375rem;

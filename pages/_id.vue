@@ -1,10 +1,25 @@
 <template>
   <div :class="`page page-${tag}`">
+    <HeaderIndex
+      class="header"
+      :heading="heading"
+      :subheading="subheading" />
 
     <Stats
       :dataset-name="getProjectLabels($route.params.id)"
       :stats="stats"
       :stat-data="statData" />
+
+    <section id="filter-search">
+      <div class="grid">
+        <div class="col-9">
+          <FilterBar
+            :filter-value="filterValue"
+            :placeholder="page_filterBarPlaceholder"
+            action="store" />
+        </div>
+      </div>
+    </section>
 
     <section id="deals-table">
       <div class="grid">
@@ -13,6 +28,7 @@
           <TableDatasetSingular
             v-if="cids"
             :cids="cids"
+            :filter-value="filterValue"
             :columns="tableColumns" />
 
         </div>
@@ -36,20 +52,25 @@
 // ===================================================================== Imports
 import { mapGetters, mapActions } from 'vuex'
 
+import HeaderIndex from '@/components/header-index'
 import Stats from '@/components/stats'
 import TableDatasetSingular from '@/components/table-dataset-singular'
 import LoaderTripleDot from '@/components/spinners/triple-dot'
 import Page from '@/content/pages/explorer.json'
 import FileNames from '@/content/data/dataset-explorer-manifest.json'
 
+import FilterBar from '@/components/filter-bar-old'
+
 // ====================================================================== Export
 export default {
   name: 'IndexPage',
 
   components: {
+    HeaderIndex,
     Stats,
     TableDatasetSingular,
-    LoaderTripleDot
+    LoaderTripleDot,
+    FilterBar
   },
 
   data () {
@@ -78,7 +99,8 @@ export default {
       siteContent: 'global/siteContent',
       datasetNames: 'explorer/datasetNames',
       datasetList: 'explorer/datasetList',
-      cids: 'explorer/datasetSingular'
+      cids: 'explorer/datasetSingular',
+      filterValue: 'global/filterValue'
     }),
     dataNames () {
       return this.datasetNames
@@ -89,6 +111,12 @@ export default {
     pageData () {
       return this.siteContent[this.tag]
     },
+    heading () {
+      return this.pageData.fold.heading
+    },
+    subheading () {
+      return this.pageData.fold.subheading
+    },
     stats () {
       return this.pageData.stats
     },
@@ -97,6 +125,9 @@ export default {
         return obj.slug === this.$route.params.id
       })
       return dataset[0]
+    },
+    page_filterBarPlaceholder () {
+      return this.pageData.filter_bar_placeholder
     },
     tableColumns () {
       return this.pageData.table.columns
@@ -120,7 +151,8 @@ export default {
 
   methods: {
     ...mapActions({
-      getExplorerData: 'explorer/getExplorerData'
+      getExplorerData: 'explorer/getExplorerData',
+      setFilterValue: 'global/setFilterValue'
     }),
     getProjectLabels (slug) {
       const labels = this.datasetNames.manifest
@@ -138,6 +170,9 @@ export default {
 // ///////////////////////////////////////////////////////////////////// General
 
 // /////////////////////////////////////////////////////////////// [Toolbar] Top
+#filter-search {
+  padding-bottom: 3.3125rem;
+}
 
 // /////////////////////////////////////////////////////////////////////// Table
 .dataset-loading-placeholder {
