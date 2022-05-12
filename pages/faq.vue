@@ -4,14 +4,14 @@
       <div class="grid">
 
         <!-- ======================================================= Heading -->
-        <div class="col-10">
+        <div class="col-10_sm-12">
           <h1 class="heading">
             {{ heading }}
           </h1>
         </div>
 
         <!-- ===================================================== Accordion -->
-        <div class="col-10">
+        <div class="col-10_sm-12">
 
           <div class="grid">
             <div class="col" data-push-left="off-1">
@@ -138,14 +138,41 @@ export default {
   padding-bottom: 1rem;
   padding-top: 0.625rem;
   margin-left: 5.1875rem;
+  @include small {
+    margin-left: 4.1875rem;
+  }
+  @include mini {
+    font-size: 5.75rem;
+    padding-bottom: 1rem;
+    padding-top: 0;
+    margin-left: 1rem;
+  }
+  @include tiny {
+    font-size: 3.179rem;
+    line-height: 3.063rem;
+    letter-spacing: 0.5px;
+    padding-bottom: 3.125rem;
+    padding-top: 0;
+    padding-bottom: 1rem;
+    margin-left: 1.5rem;
+  }
 }
 
 .expand-button {
   margin-left: 5.625rem;
+  @include mini {
+    margin-left: -2rem;
+  }
 }
 
 .accordion {
   margin-left: 5.1875rem;
+  @include mini {
+    margin-left: 1.5rem;
+  }
+  @include tiny {
+    margin-left: 0.5rem;
+  }
 }
 
 .content {
@@ -170,9 +197,10 @@ export default {
   align-content: center;
   justify-content: space-between;
   padding-top: 1rem;
-  & .label {
-    padding-left: 2rem;
-  }
+}
+ 
+.label {
+  padding-left: 2rem;
 }
 
 .content-inner-wrapper {
@@ -182,6 +210,14 @@ export default {
   font-weight: $fontWeight_Medium;
   line-height: 2rem;
   font-size: 1.125rem;
+  @include small {
+    padding-left: 4.188rem;
+  }
+  @include mini {
+    padding-left: 3.688rem;
+    padding-bottom: 8rem;
+    margin-top: -1.5rem;
+  }
 }
 
 .icon {
@@ -195,13 +231,21 @@ export default {
   letter-spacing: $letterSpacing_Large;
   text-transform: uppercase;
   line-height: 2.5rem;
+  margin-top: -1rem;
+  @include mini {
+    margin-left: -1.5rem;
+  }
+  @include tiny {
+    margin-left: -0.7rem;
+    font-size: 1rem;
+  }
 }
 
 // /////////////////////////////////////////////////////////////// Dotted Border
 .dotted-border {
   position: absolute;
   top: 0;
-  width: 8px;
+  width: 0.5rem;
   height: 100%;
   background-repeat: no-repeat;
   overflow: visible;
@@ -217,6 +261,9 @@ export default {
     height: 0.3125rem;
     left: 0.22rem;
     top: 0rem;
+    @include tiny {
+      top: -3px;
+    }
   }
   &:after {
     content: '';
@@ -229,6 +276,15 @@ export default {
     height: 0.3125rem;
     bottom: 0.1px;
     left: 0.0625rem;
+    @include tiny {
+      bottom: -0.25rem;
+    }
+  }
+  @include mini {
+    left: 1rem;
+  }
+  @include tiny {
+    left: 1rem;
   }
 }
 </style>

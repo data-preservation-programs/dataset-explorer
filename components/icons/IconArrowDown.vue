@@ -16,5 +16,8 @@ export default {
 svg {
   margin-top: 1rem;
   height: 0.5rem;
+  @include tiny {
+    margin-left: 0.5rem;
+  }
 }
 </style>
