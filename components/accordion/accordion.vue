@@ -10,6 +10,7 @@
 // ====================================================================== Export
 export default {
   name: 'Accordion',
+
   props: {
     multiple: {
       type: Boolean,
@@ -31,12 +32,14 @@ export default {
       default: false
     }
   },
+
   data () {
     return {
       active: this.multiple ? [] : false,
-      childCount: 0
+      children: []
     }
   },
+
   created () {
     this.$on('toggle', (id) => {
       if (this.multiple) {
@@ -55,11 +58,27 @@ export default {
         }
       }
     })
+    this.$on('expand-all', () => {
+      if (this.multiple) {
+        const active = this.active
+        const children = this.children
+        if (active.length === children.length) {
+          this.active = []
+        } else {
+          this.children.forEach((id) => {
+            if (!active.includes(id)) {
+              this.active.push(id)
+            }
+          })
+        }
+      }
+    })
   },
-  mounted () {
-    this.childCount = this.$children.length
-  },
+
   methods: {
+    compileChildren (id) {
+      this.children.push(id)
+    },
     setSelected (id) {
       if (this.multiple) {
         this.active.push(id)

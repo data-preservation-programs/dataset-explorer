@@ -12,6 +12,7 @@ import Throttle from 'lodash/throttle'
 // ====================================================================== Export
 export default {
   name: 'AccordionContent',
+  
   data () {
     return {
       content: false,
@@ -19,6 +20,7 @@ export default {
       resize: false
     }
   },
+  
   mounted () {
     this.$nextTick(() => {
       this.content = this.$slots.default[0].elm
@@ -40,9 +42,11 @@ export default {
       }
     })
   },
+  
   beforeDestroy () {
     if (this.resize) { window.removeEventListener('resize', this.resize) }
   },
+  
   methods: {
     toggleOpen () {
       const height = this.height

@@ -13,10 +13,11 @@
 // ====================================================================== Export
 export default {
   name: 'AccordionHeader',
+
   mounted () {
     this.$nextTick(() => {
       const parent = this.$parent.$parent
-      const count = parent.childCount
+      const count = parent.children.length
       const newCount = parent.$children.length
       if (parent.toggleOnLoad) {
         this.toggle()
@@ -31,6 +32,7 @@ export default {
       }
     })
   },
+
   methods: {
     toggle () {
       this.$parent.$parent.$emit('toggle', this.$parent._uid)
@@ -42,11 +44,6 @@ export default {
 <style lang="scss" scoped>
 // ///////////////////////////////////////////////////////////////////// General
 .accordion-header {
-  // display: flex;
-  // flex-direction: row;
-  // align-content: center;
-  // justify-content: space-between;
-  // padding-top: 1.3rem;
   @include mini {
     padding-bottom: 2rem;
   }
