@@ -243,10 +243,7 @@ export default {
 .table-container {
   min-width: 100%;
   @include medium {
-    display: block;
-    // margin-top: -3rem;
     margin-bottom: -5rem;
-    // padding: 3rem calc(7% + 0.5rem);
     padding-bottom: 5rem;
     overflow-x: scroll;
   }
@@ -334,12 +331,14 @@ tbody:not(.divider) {
   @include mini {
     display: flex;
     flex-direction: column;
+    align-items: stretch;
     padding-left: 2rem;
     padding-top: 2rem;
+    padding-bottom: 1rem;
   }
   &:hover {
     .cell-parent:nth-child(3) {
-      &:before {
+      &:after {
         transition: 100ms ease-in;
         opacity: 1;
       }
@@ -374,9 +373,26 @@ tbody:not(.divider) {
   }
 }
 
+.cell-parent:not(:first-child) {
+  @include mini {
+    margin-top: 1rem;
+    &:before {
+      content: '';
+      position: absolute;
+      z-index: 25;
+      left: -0.125rem;
+      background-color: $classicBlue;
+      opacity: 0.3;
+      height: 1px;
+      width: calc(100% + 0.125rem);
+      margin-top: -1.5rem;
+    }
+  }
+}
+
 .cell-parent:nth-child(3) {
   // HOVER Overlay gradient
-  &:before {
+  &:after {
     content: '';
     position: absolute;
     top: 1px;
@@ -396,8 +412,13 @@ tbody:not(.divider) {
     display: flex;
     flex-direction: row;
     line-height: 1.5;
-    padding-bottom: 2rem;
     width: 100%;
+    padding-bottom: 1rem;
+    &:last-child {
+      .cell-body {
+        padding-bottom: 0;
+      }
+    }
   }
   &.hovering {
     &:not(:nth-child(4)) {
@@ -509,7 +530,7 @@ tr.divider {
 }
 
 .curated_dataset {
-  width: 10rem;
+  width: 13rem;
 }
 
 .miner_id>div>div {

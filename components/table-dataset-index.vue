@@ -177,10 +177,6 @@ export default {
 .table-container {
   min-width: 100%;
   @include medium {
-    display: block;
-    // margin-top: -3rem;
-    margin-bottom: -5rem;
-    // padding: 3rem calc(7% + 0.5rem);
     padding-bottom: 5rem;
     overflow-x: scroll;
   }
@@ -308,11 +304,11 @@ tbody:not(.divider) {
       content: '';
       position: absolute;
       z-index: 25;
-      left: -2rem;
+      left: -0.125rem;
       background-color: $classicBlue;
       opacity: 0.3;
       height: 1px;
-      width: calc(100% + 4rem);
+      width: calc(100% + 0.125rem);
       margin-top: -1.5rem;
     }
   }
