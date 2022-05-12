@@ -31,6 +31,10 @@
               v-for="cell in columns"
               :key="cell.slug"
               :class="['cell-parent', { hovering: deal.rank === hovering }]">
+              <div
+                class="mobile-cell-head"
+                v-html="cell.label">
+              </div>
               <div :class="['cell cell-body', cell.slug]">
 
                 <template v-if="cell.slug === 'icon'">
@@ -174,9 +178,9 @@ export default {
   min-width: 100%;
   @include medium {
     display: block;
-    margin-top: -3rem;
+    // margin-top: -3rem;
     margin-bottom: -5rem;
-    padding: 3rem calc(7% + 0.5rem);
+    // padding: 3rem calc(7% + 0.5rem);
     padding-bottom: 5rem;
     overflow-x: scroll;
   }
@@ -193,6 +197,9 @@ export default {
 .table-head {
   position: relative;
   vertical-align: bottom;
+  @include mini {
+    display: none;
+  }
   &:before,
   &:after {
     content: '';
@@ -251,6 +258,12 @@ tbody:not(.divider) {
 
 .row-body {
   position: relative;
+  @include mini {
+    display: flex;
+    flex-direction: column;
+    padding-left: 2rem;
+    padding-top: 2rem;
+  }
   &:hover {
     .cell-parent:nth-child(3) {
       &:before {
@@ -306,6 +319,13 @@ tbody:not(.divider) {
 }
 
 .cell-parent {
+  @include mini {
+    display: flex;
+    flex-direction: row;
+    line-height: 1.5;
+    padding-bottom: 2rem;
+    width: 100%;
+  }
   &.hovering {
     &:not(:nth-child(4)) {
       .cell-body {
@@ -327,6 +347,10 @@ tbody:not(.divider) {
 
 .cell-body {
   padding: 1.25rem;
+  @include mini {
+    padding-top: 0;
+    width: 65% !important;
+  }
 }
 
 tr.divider {
@@ -371,7 +395,6 @@ tr.divider {
   }
 }
 
-// ///////////////////////////////////////////////////////////////////// General
 .cell-body {
   position: relative;
   z-index: 25;
@@ -384,6 +407,17 @@ tr.divider {
   img {
     width: 2.8125rem;
     height: auto;
+  }
+}
+
+.mobile-cell-head {
+  display: none;
+  @include mini {
+    display: block;
+    position: relative;
+    z-index: 25;
+    width: 35%;
+    padding-right: 1rem;
   }
 }
 
@@ -419,10 +453,12 @@ tr.divider {
 
 .data_stored, .all_data_stored, .storage_providers {
   font-family: $font_Secondary;
+  @include fontWeight_Regular;
+  font-size: 0.875rem;
   div {
     display: flex;
     .data-unit {
-      padding-top: 0.125rem;
+      padding-top: 0.375rem;
     }
   }
 
