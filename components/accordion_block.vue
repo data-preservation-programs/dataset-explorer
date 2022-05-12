@@ -1,31 +1,37 @@
 <template>
   <section id="accordion">
     <div class="block accordion-block">
-      <Accordion v-slot="{ active }">
+      <Accordion
+        v-slot="{ active }"
+        :multiple="true">
         <AccordionSection
           v-for="(section, index) in sections"
           :key="index"
           :active="active">
 
           <AccordionHeader>
-            <div class="grid">
-              <div class="col-1">
-                <IconArrowDown class="icon" />
-              </div>
-              <div class="col-10">
-                <div class="label">
-                  {{ section.label }}
+            <div class="header-inner-wrapper">
+              <div class="grid">
+                <div class="col-1">
+                  <IconArrowDown class="icon" />
+                </div>
+                <div class="col-11">
+                  <div class="label">
+                    {{ section.label }}
+                  </div>
                 </div>
               </div>
             </div>
           </AccordionHeader>
 
           <AccordionContent>
-            <div clas="grid">
-              <div class="col-10_mi-12">
-                <div
-                  :class="['accordion-content-wrapper', 'description']"
-                  v-html="section.content">
+            <div class="content-inner-wrapper">
+              <div clas="grid">
+                <div class="col-11_mi-12">
+                  <div
+                    class="content"
+                    v-html="section.content">
+                  </div>
                 </div>
               </div>
             </div>
@@ -78,6 +84,26 @@ export default {
       transform: rotate(180deg);
     }
   }
+}
+
+.header-inner-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: space-between;
+  padding-top: 1.3rem;
+  & .label {
+    padding-left: 2rem;
+  }
+}
+
+.content-inner-wrapper {
+  padding-left: 5.688rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  font-weight: $fontWeight_Medium;
+  line-height: 2rem;
+  font-size: 1.125rem;
 }
 
 .icon {
