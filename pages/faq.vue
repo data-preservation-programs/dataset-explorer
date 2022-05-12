@@ -2,18 +2,69 @@
   <div :class="`page page-${tag}`">
     <div class="content">
       <div class="grid">
+
+        <!-- ======================================================= Heading -->
         <div class="col-10_ti-12">
           <h1 class="heading">
             {{ heading }}
           </h1>
         </div>
+
+        <!-- ===================================================== Accordion -->
         <div class="col-10_ti-12">
-          <AccordionBlock
-            :sections="accordionSections"
-            class="accordion" />
+
+          <div class="grid">
+            <div class="col" data-push-left="off-1">
+              <button
+                class="expand-all-button"
+                @click="expandAllAccordionSections">
+                {{ expandAllButtonText }}
+              </button>
+            </div>
+          </div>
+
+          <Accordion
+            ref="accordion"
+            v-slot="{ active }"
+            :multiple="true">
+            <AccordionSection
+              v-for="(section, index) in accordionSections"
+              :key="index"
+              :active="active">
+
+              <AccordionHeader>
+                <div class="header-inner-wrapper">
+                  <div class="grid">
+                    <div class="col-1">
+                      <IconArrowDown class="icon" />
+                    </div>
+                    <div class="col-11">
+                      <div class="label">
+                        {{ section.label }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </AccordionHeader>
+
+              <AccordionContent>
+                <div class="content-inner-wrapper">
+                  <div clas="grid">
+                    <div class="col-11_mi-12">
+                      <div v-html="section.content" />
+                    </div>
+                  </div>
+                </div>
+              </AccordionContent>
+
+            </AccordionSection>
+          </Accordion>
+
         </div>
 
+        <!-- ================================================= Dotted Border -->
         <div class="dotted-border" />
+
       </div>
     </div>
   </div>
@@ -21,9 +72,13 @@
 
 <script>
 // ===================================================================== Imports
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters } from 'vuex'
 
-import AccordionBlock from '@/components/accordion_block'
+import Accordion from '@/components/accordion/accordion'
+import AccordionHeader from '@/components/accordion/accordion-header'
+import AccordionContent from '@/components/accordion/accordion-content'
+import AccordionSection from '@/components/accordion/accordion-section'
+import IconArrowDown from '@/components/icons/IconArrowDown'
 
 import Page from '@/content/pages/faq.json'
 
@@ -32,7 +87,11 @@ export default {
   name: 'FaqPage',
 
   components: {
-    AccordionBlock
+    Accordion,
+    AccordionHeader,
+    AccordionContent,
+    AccordionSection,
+    IconArrowDown
   },
 
   data () {
@@ -58,21 +117,16 @@ export default {
     },
     accordionSections () {
       return this.siteContent[this.tag].page_content.accordion_sections
+    },
+    expandAllButtonText () {
+      return this.siteContent[this.tag].page_content.expand_all_button_text
     }
   },
 
-  watch: {
-  },
-
-  mounted () {
-  },
-
-  beforeDestroy () {
-  },
-
   methods: {
-    ...mapActions({
-    })
+    expandAllAccordionSections () {
+      this.$refs.accordion.$emit('expand-all')
+    }
   }
 }
 </script>
@@ -81,7 +135,7 @@ export default {
 // ///////////////////////////////////////////////////////////////////// General
 .heading {
   @include header;
-  padding-bottom: 3.6875rem;
+  padding-bottom: 1rem;
   padding-top: 0.625rem;
   margin-left: 5.1875rem;
   @include mini {
@@ -101,6 +155,10 @@ export default {
   }
 }
 
+.expand-button {
+  margin-left: 5.625rem;
+}
+
 .accordion {
   margin-left: 5.1875rem;
 }
@@ -111,6 +169,50 @@ export default {
   margin-bottom: 5rem;
 }
 
+// /////////////////////////////////////////////////////////////////// Accordion
+.accordion-section {
+  &.open {
+    .icon {
+      transition: 0.25s ease-in;
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.header-inner-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: space-between;
+  padding-top: 1rem;
+  &.label {
+    padding-left: 2rem;
+  }
+}
+
+.content-inner-wrapper {
+  padding-left: 5.688rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  font-weight: $fontWeight_Medium;
+  line-height: 2rem;
+  font-size: 1.125rem;
+}
+
+.icon {
+  transition: 0.25s ease-out;
+}
+
+.expand-all-button {
+  @include fontWeight_Semibold;
+  @include fontSize_Regular;
+  margin-left: 1rem;
+  letter-spacing: $letterSpacing_Large;
+  text-transform: uppercase;
+  line-height: 2.5rem;
+}
+
+// /////////////////////////////////////////////////////////////// Dotted Border
 .dotted-border {
   position: absolute;
   top: 0;
@@ -156,5 +258,4 @@ export default {
     left: 1rem;
   }
 }
-
 </style>

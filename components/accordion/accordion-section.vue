@@ -10,6 +10,7 @@
 // ====================================================================== Export
 export default {
   name: 'AccordionSection',
+
   props: {
     active: {
       type: [Boolean, Number, Array],
@@ -20,11 +21,13 @@ export default {
       default: false
     }
   },
+
   data () {
     return {
       id: this._uid
     }
   },
+
   computed: {
     open () {
       if (Array.isArray(this.active)) {
@@ -33,13 +36,16 @@ export default {
       return this.active === this.id
     }
   },
+
   watch: {
     open () {
       this.$children[1].toggleOpen()
     }
   },
+
   mounted () {
     this.$nextTick(() => {
+      this.$parent.compileChildren(this.id)
       if (this.selected) {
         this.$parent.setSelected(this.id)
       }

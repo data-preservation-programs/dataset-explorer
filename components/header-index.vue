@@ -18,11 +18,13 @@
       </div>
     </div>
   </header>
-
 </template>
 
 <script>
+// ====================================================================== Export
 export default {
+  name: 'HeaderIndex',
+
   props: {
     heading: {
       type: String,
@@ -33,11 +35,12 @@ export default {
       required: true
     }
   }
+
 }
 </script>
 
 <style lang="scss" scoped>
-
+//////////////////////////////////////////////////////////////////////// General
 .dotted-border {
   position: relative;
   border: 0 0 1rem 1rem;
