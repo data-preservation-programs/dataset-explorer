@@ -153,5 +153,9 @@ export default {
   box-shadow: 0px 30px 70px rgba(169, 180, 203, 0.3), -3px -3px 0px #FFFFFF, 0px 3px 0px #D6DADF, inset 0px -20px 20px rgba(255, 255, 255, 0.2);
   border-radius: 0.3125rem;
   width: 50%;
+  @include medium {
+    margin-top: 4rem;
+    width: 80%;
+  }
 }
 </style>
