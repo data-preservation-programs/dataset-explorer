@@ -266,7 +266,7 @@ tbody:not(.divider) {
   }
   &:hover {
     .cell-parent:nth-child(3) {
-      &:before {
+      &:after {
         transition: 100ms ease-in;
         opacity: 1;
       }
@@ -301,9 +301,26 @@ tbody:not(.divider) {
   }
 }
 
+.cell-parent:not(:first-child) {
+  @include mini {
+    margin-top: 1rem;
+    &:before {
+      content: '';
+      position: absolute;
+      z-index: 25;
+      left: -2rem;
+      background-color: $classicBlue;
+      opacity: 0.3;
+      height: 1px;
+      width: calc(100% + 4rem);
+      margin-top: -1.5rem;
+    }
+  }
+}
+
 .cell-parent:nth-child(3) {
   // HOVER Overlay gradient and Dashed SVG
-  &:before {
+  &:after {
     content: '';
     position: absolute;
     top: 1px;
@@ -323,7 +340,7 @@ tbody:not(.divider) {
     display: flex;
     flex-direction: row;
     line-height: 1.5;
-    padding-bottom: 2rem;
+    padding-bottom: 1rem;
     width: 100%;
   }
   &.hovering {
@@ -349,6 +366,7 @@ tbody:not(.divider) {
   padding: 1.25rem;
   @include mini {
     padding-top: 0;
+    padding-bottom: 0;
     width: 65% !important;
   }
 }
@@ -479,5 +497,13 @@ tr.divider {
   width: 6.5rem;
   transform: scale(1.5);
   padding-left: 0.75rem;
+  padding-right: 0.5rem;
+  @include mini {
+    width: 75%;
+    margin-left: 1.75rem;
+  }
+  @include tiny {
+    margin-left: 0.5rem;
+  }
 }
 </style>
