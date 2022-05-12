@@ -75,6 +75,10 @@ export default {
 .heading {
   @include header;
   padding-bottom: 2rem;
+  @include mini {
+    font-size: 3.75rem;
+    padding-bottom: 3rem;
+  }
   @include tiny {
     font-size: 3.125rem;
     padding-bottom: 2.5rem;
@@ -101,8 +105,11 @@ export default {
     height: 0.3125rem;
     left: .22rem;
     top: 0;
+    @include mini {
+      top: 0.25rem;
+    }
     @include tiny {
-      top: 0.2rem;
+      top: 0;
     }
   }
   &:after {
@@ -116,8 +123,14 @@ export default {
     height: 0.3125rem;
     bottom: 0;
     left: 0.0625rem;
+    @include tiny {
+      bottom: 0.125rem;
+    }
   }
   @include tiny {
+    margin-left: -2rem;
+  }
+  @include mini {
     margin-left: -2rem;
   }
 }
@@ -128,8 +141,12 @@ export default {
   margin-right: 5.34375rem;
   margin-bottom: 7.125rem;
   margin-left: 5.34375rem;
-  // margin: 3rem 5.34375rem 7.125rem 5.34375rem;
   @include tiny {
+    margin-bottom: 2.125rem;
+    margin-right: 0;
+    margin-left: 2.34375rem;
+  }
+  @include small {
     margin-bottom: 2.125rem;
     margin-right: 0;
   }
@@ -146,7 +163,11 @@ export default {
     width: 100%;
     @include tiny {
       padding: 0.2rem;
-      border-radius: 0.5rem
+      border-radius: 0.5rem;
+    }
+    @include mini {
+      padding: 0.2rem;
+      border-radius: 0.5rem;
     }
   }
 }
@@ -154,7 +175,11 @@ export default {
 .markdown-wrapper {
   padding-top: 3.125rem;
   @include tiny {
-    padding-top: 2rem;
+    padding-top: 1.75rem;
+    padding-bottom: 4rem;
+  }
+  @include mini {
+    padding-top: 2.5rem;
     padding-bottom: 4rem;
   }
 }

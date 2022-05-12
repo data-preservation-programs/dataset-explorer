@@ -230,6 +230,9 @@ i.chevron {
       @include tiny {
         margin-bottom: 1.813rem;
       }
+      @include mini {
+        margin-bottom: 1.813rem;
+      }
     }
     + ul, + ol {
       margin-top: 2rem;
