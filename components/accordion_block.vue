@@ -76,6 +76,12 @@ export default {
 // ///////////////////////////////////////////////////////////////////// General
 #accordion {
   font: $font_Primary;
+  @include mini {
+    margin-left: 1.5rem;
+  }
+  @include tiny {
+    margin-left: 0.5rem;
+  }
 }
 .accordion-section {
   &.open {
@@ -94,6 +100,7 @@ export default {
   padding-top: 1.3rem;
   & .label {
     padding-left: 2rem;
+    margin-bottom: -0.625rem;
   }
 }
 
@@ -104,6 +111,14 @@ export default {
   font-weight: $fontWeight_Medium;
   line-height: 2rem;
   font-size: 1.125rem;
+  @include mini {
+    padding-left: 4.188rem;
+  }
+  @include tiny {
+    padding-left: 3.688rem;
+    padding-bottom: 8.5rem;
+    margin-top: -1.5rem;
+  }
 }
 
 .icon {

@@ -2,12 +2,12 @@
   <div :class="`page page-${tag}`">
     <div class="content">
       <div class="grid">
-        <div class="col-10">
+        <div class="col-10_ti-12">
           <h1 class="heading">
             {{ heading }}
           </h1>
         </div>
-        <div class="col-10">
+        <div class="col-10_ti-12">
           <AccordionBlock
             :sections="accordionSections"
             class="accordion" />
@@ -84,6 +84,21 @@ export default {
   padding-bottom: 3.6875rem;
   padding-top: 0.625rem;
   margin-left: 5.1875rem;
+  @include mini {
+    font-size: 5.75rem;
+    padding-bottom: 1rem;
+    padding-top: 0;
+    margin-left: 1rem;
+  }
+  @include tiny {
+    font-size: 3.179rem;
+    line-height: 3.063rem;
+    letter-spacing: 0.5px;
+    padding-bottom: 3.125rem;
+    padding-top: 0;
+    padding-bottom: 1rem;
+    margin-left: 1.5rem;
+  }
 }
 
 .accordion {
@@ -99,7 +114,7 @@ export default {
 .dotted-border {
   position: absolute;
   top: 0;
-  width: 8px;
+  width: 0.5rem;
   height: 100%;
   background-repeat: no-repeat;
   overflow: visible;
@@ -115,6 +130,9 @@ export default {
     height: 0.3125rem;
     left: 0.22rem;
     top: 0rem;
+    @include tiny {
+      top: 3px;
+    }
   }
   &:after {
     content: '';
@@ -127,6 +145,15 @@ export default {
     height: 0.3125rem;
     bottom: 0.1px;
     left: 0.0625rem;
+    @include tiny {
+      bottom: -0.25rem;
+    }
+  }
+  @include mini {
+    left: 1rem;
+  }
+  @include tiny {
+    left: 1rem;
   }
 }
 
