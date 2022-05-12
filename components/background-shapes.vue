@@ -83,32 +83,32 @@ export default {
   &.d {
     top: 0;
     right: 50%;
-    transform: translate(52rem, 70rem);
+    transform: translate(52rem, 65rem);
   }
   &.e {
     top: 0;
     left: 50%;
-    transform: translate(-43rem, 70rem);
+    transform: translate(-42rem, 66rem);
   }
   &.f {
-    top: 0;
+    bottom: 0;
     right: 50%;
-    transform: translate(43rem, 115rem);
+    transform: translate(42rem, -25rem);
   }
   &.g {
-    top: 0;
+    bottom: 0;
     right: 50%;
-    transform: translate(43rem, 90rem);
+    transform: translate(43rem, -42rem);
   }
   &.h {
     bottom: 0;
     left: 50%;
-    transform: translate(3rem, 16rem);
+    transform: translate(6rem, 20rem);
   }
   &.i {
     bottom: 0;
     left: 50%;
-    transform: translate(-55rem, 15rem);
+    transform: translate(-55rem, 12rem);
   }
   &.j {
     bottom: 0;
@@ -133,17 +133,17 @@ export default {
   &.b {
     top: 0;
     left: 50%;
-    transform: translate(-62rem, 40rem);
+    transform: translate(-62rem, 36rem);
   }
   &.c {
-    top: 0;
+    bottom: 0;
     right: 50%;
-    transform: translate(54rem, 96rem);
+    transform: translate(54rem, -33rem);
   }
   &.d {
     bottom: 0;
     left: 50%;
-    transform: translate(-50rem, -8rem);
+    transform: translate(-50rem, -13rem);
   }
 }
 

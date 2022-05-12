@@ -1,7 +1,7 @@
 <template>
   <header id="header-index">
     <div class="grid">
-      <div class="col-9">
+      <div class="col-9_mi-12_sm-10">
         
         <div class="header-wrapper">
           <div class="dotted-border">
@@ -54,6 +54,9 @@ export default {
       width: 0.3125rem;
       height: 0.3125rem;
       left: .22rem;
+      @include tiny {
+        top: 0.25rem;
+      }
     }
     &:after {
       content: '';
@@ -66,22 +69,51 @@ export default {
       height: 0.3125rem;
       bottom: 0;
       right: 0;
+      @include tiny {
+        right: 0.25rem;
+      }
     }
 }
 
 .heading {
   @include header;
   margin: 1rem;
-  padding-left: 1.563rem;
+  padding-left: 3rem;
   padding-top: 0.563rem;
+  @include medium {
+    font-size: 7.75rem;
+  }
+  @include small {
+    font-size: 7rem;
+    padding-left: 2rem;
+  }
+  @include mini {
+    font-size: 6rem;
+    padding-left: 2rem;
+  }
+  @include tiny {
+    font-size: 3.123rem;
+    padding-left: 2rem;
+    padding-top: 0;
+  }
 }
 
 .subheading {
   @include subheading;
   line-height: 2.438rem;
   margin: 1rem;
-  padding-left: 1.563rem;
-  padding-bottom: 2.188rem;
+  padding-left: 3.75rem;
+  padding-bottom: 2.2rem;
+  @include small {
+    padding-left: 2.375rem;
+  }
+  @include mini {
+    padding-left: 2.375rem;
+  }
+  @include tiny {
+    font-size: 1.25rem;
+    padding-left: 2.375rem;
+  }
 }
 
 </style>

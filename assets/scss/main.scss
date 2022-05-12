@@ -228,10 +228,10 @@ i.chevron {
     &:not(:last-child) {
       margin-bottom: 1rem;
       @include tiny {
-        margin-bottom: 1.813rem;
+        margin-bottom: 1.8125rem;
       }
       @include mini {
-        margin-bottom: 1.813rem;
+        margin-bottom: 1.8125rem;
       }
     }
     + ul, + ol {
@@ -240,7 +240,8 @@ i.chevron {
   }
   p {
     &:not(:last-child) {
-      margin-bottom: 1rem;
+      line-height: 2rem;
+      margin-bottom: 2rem;
     }
   }
   a {

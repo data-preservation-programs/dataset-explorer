@@ -9,6 +9,10 @@
     "type": "website",
     "image": ""
   },
+  "fold": {
+    "heading": "Dataset Explorer",
+    "subheading": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore"
+  },
   "stats_block": {
     "infoblockHeading": "About",
     "resourcesHeading": "Resources",
@@ -34,6 +38,7 @@
     {"label": "Dataset Size", "type": "byte", "key": "eligible_data_size"},
     {"label": "Amount stored on Slingshot", "type": "byte", "key": "eligible_data_size"}
   ],
+  "filter_bar_placeholder": "Search by dataset, miner, deal ID or CID",
   "table": {
     "searchbar": {
       "placeholder": "Search for a piece or payload CID, deal or SP"

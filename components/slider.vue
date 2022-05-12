@@ -63,7 +63,7 @@
     <!-- =================================================================== -->
     <section class="toggle-buttons">
       <div class="grid">
-        <div class="col-4">
+        <div class="col-4_mi-5">
           <div
             v-if="sliderIndex != 0"
             class="prev"
@@ -89,7 +89,7 @@
           </div>
         </div>
 
-        <div class="col-4">
+        <div class="col-4_mi-2 mi-hidden">
           <div
             v-if="dataset.length > 1"
             class="panel-numbers">
@@ -97,7 +97,7 @@
           </div>
         </div>
 
-        <div class="col-4">
+        <div class="col-4_mi-5">
           <div
             v-if="sliderIndex != (dataset.length - 1)"
             class="next"
@@ -120,6 +120,14 @@
                 </span>
               </div>
             </div>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <div
+            v-if="dataset.length > 1"
+            class="mobile-panel-numbers">
+            {{ sliderIndex + 1 }} of {{ dataset.length }}
           </div>
         </div>
       </div>
@@ -205,7 +213,8 @@ export default {
 .modal-slider {
   position: relative;
   @include mini {
-    padding-top: 3rem;
+    overflow-y: scroll;
+    padding-top: 1.5rem;
   }
 }
 
@@ -215,6 +224,9 @@ export default {
 
 .panel {
   margin: 0 3.875rem;
+  @include mini {
+    margin: 0 2rem;
+  }
 }
 
 .fade {
@@ -232,11 +244,20 @@ export default {
   border-bottom: 2px solid white;
   padding-bottom: 1.9875rem;
   margin-bottom: 2.125rem;
+  @include mini {
+    margin-bottom: 1.5rem;
+  }
+  @include tiny {
+    margin-bottom: 1rem;
+  }
 }
 .name {
   @include fontWeight_Semibold;
   @include fontSize_Regular;
   padding-bottom: 0.5rem;
+  @include tiny {
+    padding-bottom: 0.25rem;
+  }
 }
 .cid {
   @include fontWeight_Regular;
@@ -252,11 +273,18 @@ export default {
   font-family: $font_Secondary;
   display: flex;
   flex-direction: row;
+  @include mini {
+    flex-direction: column;
+    font-size: 0.8125rem;
+  }
   h5 {
     @include fontWeight_Semibold;
     font-family: $font_Primary;
     font-size: 0.9375rem;
     padding-bottom: 0.5rem;
+    @include mini {
+      padding-bottom: 0rem;
+    }
   }
 }
 .storage-provider, .deal-id {
@@ -266,6 +294,10 @@ export default {
 
 .deal-id {
   padding-left: 3.25rem;
+  @include mini {
+    padding-left: 0;
+    padding-top: 1rem;
+  }
 }
 
 // //////////////////////////////////////////////////////////////// Options
@@ -278,6 +310,7 @@ export default {
 }
 .helper-text {
   @include fontWeight_Regular;
+  line-height: 1.3;
 }
 .code-snippet {
   @include fontSize_Mini;
@@ -303,6 +336,10 @@ export default {
   // font-size: 0.9375;
   font-size: 1rem;
   z-index: 20;
+  @include mini {
+    padding: 2rem 2rem 0 2rem;
+    margin-top: 0;
+  }
   .prev, .next {
     display: flex;
     flex-direction: column;
@@ -311,9 +348,6 @@ export default {
   }
   .prev {
     align-items: flex-start;
-    @include medium {
-      padding-left: 1.75rem;
-    }
     .arrow {
       position: relative;
       left: -0.5rem;
@@ -330,6 +364,10 @@ export default {
     @include medium {
       padding-right: 1.75rem;
     }
+    @include mini {
+      padding-right: 0;
+      margin-right: -3rem;
+    }
     .arrow {
       position: relative;
       right: -0.5rem;
@@ -339,12 +377,6 @@ export default {
         right: -1rem;
       }
     }
-  }
-  @include small {
-    margin-top: -2rem;
-  }
-  @include tiny {
-    margin-top: -3rem;
   }
 }
 
@@ -362,6 +394,9 @@ export default {
   @include fontSize_Mini;
   flex-direction: column !important;
   padding-top: 0.75rem;
+  @include mini {
+    display: none;
+  }
 }
 
 .panel-numbers {
@@ -369,6 +404,18 @@ export default {
   justify-content: center;
   align-items: center;
   display: flex;
+  @include mini {
+    padding-top: 0;
+  }
+}
+
+.mobile-panel-numbers {
+  display: none;
+  @include mini {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+  }
 }
 
 </style>

@@ -115,14 +115,14 @@ export default {
   &:after {
     content: '';
     position: absolute;
+    bottom: 0;
+    left: 0.0625rem;
+    width: 0.3125rem;
+    height: 0.3125rem;
     background-image: url("data:image/svg+xml,%3Csvg width='8' height='8' xmlns='http://www.w3.org/2000/svg'%3E%3Cellipse ry='4' rx='4' cy='4' cx='4' fill='blue'/%3E%3C/svg%3E");
     background-size: contain;
     background-repeat: no-repeat;
     transform: translateX(50%);
-    width: 0.3125rem;
-    height: 0.3125rem;
-    bottom: 0;
-    left: 0.0625rem;
     @include tiny {
       bottom: 0.125rem;
     }
@@ -183,5 +183,4 @@ export default {
     padding-bottom: 4rem;
   }
 }
-
 </style>
