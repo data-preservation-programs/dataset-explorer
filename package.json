@@ -11,7 +11,7 @@
     "dev": "node_modules/.bin/nuxt",
     "start": "node_modules/.bin/nuxt start",
     "build": "node_modules/.bin/nuxt build",
-    "launch": "node_modules/.bin/nuxt build && pm2 restart dataset-explorer",
+    "launch": "node_modules/.bin/nuxt build && pm2 restart dataset-explorer-fe",
     "generate": "node_modules/.bin/nuxt generate --fail-on-error"
   },
   "engines": {
