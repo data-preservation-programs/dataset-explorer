@@ -192,6 +192,13 @@ export default {
       }
     }
   }
+  &:last-child {
+    .content-inner-wrapper {
+      @include mini {
+        padding-bottom: 0;
+      }
+    }
+  }
 }
 
 i.chevron {
