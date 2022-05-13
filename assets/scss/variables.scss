@@ -77,13 +77,13 @@ $gradient_SilverGrey: linear-gradient(131deg, $aquaHaze, $mystic);
 // }
 
 @mixin selection_Dark {
-  ::-moz-selection { background: white; color: black; }
-  ::selection { background: white; color: black; }
+  ::-moz-selection { background: white; color: $classicBlue; }
+  ::selection { background: white; color: $classicBlue; }
 }
 
 @mixin selection_Light {
-  ::-moz-selection { background: black; color: white; }
-  ::selection { background: black; color: white; }
+  ::-moz-selection { background: $classicBlue; color: white; }
+  ::selection { background: $classicBlue; color: white; }
 }
 
 @mixin selection_Invisible {
