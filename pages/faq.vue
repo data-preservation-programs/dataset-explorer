@@ -36,12 +36,12 @@
                 <div class="header-inner-wrapper">
                   <div class="grid">
                     <div class="col-1">
-                      <IconArrowDown class="icon" />
+                      <i class="chevron" />
                     </div>
                     <div class="col-11">
-                      <div class="label">
+                      <h2 class="label">
                         {{ section.label }}
-                      </div>
+                      </h2>
                     </div>
                   </div>
                 </div>
@@ -78,7 +78,6 @@ import Accordion from '@/components/accordion/accordion'
 import AccordionHeader from '@/components/accordion/accordion-header'
 import AccordionContent from '@/components/accordion/accordion-content'
 import AccordionSection from '@/components/accordion/accordion-section'
-import IconArrowDown from '@/components/icons/IconArrowDown'
 
 import Page from '@/content/pages/faq.json'
 
@@ -90,8 +89,7 @@ export default {
     Accordion,
     AccordionHeader,
     AccordionContent,
-    AccordionSection,
-    IconArrowDown
+    AccordionSection
   },
 
   data () {
@@ -159,6 +157,7 @@ export default {
 }
 
 .expand-button {
+  cursor: pointer;
   margin-left: 5.625rem;
   @include mini {
     margin-left: -2rem;
@@ -192,6 +191,7 @@ export default {
 }
 
 .header-inner-wrapper {
+  cursor: pointer;
   display: flex;
   flex-direction: row;
   align-content: center;
@@ -220,8 +220,17 @@ export default {
   }
 }
 
-.icon {
-  transition: 0.25s ease-out;
+i.chevron {
+  display: inline-block;
+  transition: all $transitionDuration linear;
+  margin-top: 1rem;
+  &:before, &:after {
+    background-color: $classicBlue;
+    transition: all $transitionDuration linear;
+  }
+  @include small {
+    margin-left: 1.5rem;
+  }
 }
 
 .expand-all-button {
