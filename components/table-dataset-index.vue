@@ -31,6 +31,10 @@
               v-for="cell in columns"
               :key="cell.slug"
               :class="['cell-parent', { hovering: deal.rank === hovering }]">
+              <div
+                class="mobile-cell-head"
+                v-html="cell.label">
+              </div>
               <div :class="['cell cell-body', cell.slug]">
 
                 <template v-if="cell.slug === 'icon'">
@@ -173,10 +177,6 @@ export default {
 .table-container {
   min-width: 100%;
   @include medium {
-    display: block;
-    margin-top: -3rem;
-    margin-bottom: -5rem;
-    padding: 3rem calc(7% + 0.5rem);
     padding-bottom: 5rem;
     overflow-x: scroll;
   }
@@ -193,6 +193,9 @@ export default {
 .table-head {
   position: relative;
   vertical-align: bottom;
+  @include mini {
+    display: none;
+  }
   &:before,
   &:after {
     content: '';
@@ -251,9 +254,15 @@ tbody:not(.divider) {
 
 .row-body {
   position: relative;
+  @include mini {
+    display: flex;
+    flex-direction: column;
+    padding-left: 2rem;
+    padding-top: 2rem;
+  }
   &:hover {
     .cell-parent:nth-child(3) {
-      &:before {
+      &:after {
         transition: 100ms ease-in;
         opacity: 1;
       }
@@ -288,9 +297,26 @@ tbody:not(.divider) {
   }
 }
 
+.cell-parent:not(:first-child) {
+  @include mini {
+    margin-top: 1rem;
+    &:before {
+      content: '';
+      position: absolute;
+      z-index: 25;
+      left: -0.125rem;
+      background-color: $classicBlue;
+      opacity: 0.3;
+      height: 1px;
+      width: calc(100% + 0.125rem);
+      margin-top: -1.5rem;
+    }
+  }
+}
+
 .cell-parent:nth-child(3) {
   // HOVER Overlay gradient and Dashed SVG
-  &:before {
+  &:after {
     content: '';
     position: absolute;
     top: 1px;
@@ -306,6 +332,13 @@ tbody:not(.divider) {
 }
 
 .cell-parent {
+  @include mini {
+    display: flex;
+    flex-direction: row;
+    line-height: 1.5;
+    padding-bottom: 1rem;
+    width: 100%;
+  }
   &.hovering {
     &:not(:nth-child(4)) {
       .cell-body {
@@ -327,6 +360,11 @@ tbody:not(.divider) {
 
 .cell-body {
   padding: 1.25rem;
+  @include mini {
+    padding-top: 0;
+    padding-bottom: 0;
+    width: 65% !important;
+  }
 }
 
 tr.divider {
@@ -370,7 +408,6 @@ tr.divider {
   }
 }
 
-// ///////////////////////////////////////////////////////////////////// General
 .cell-body {
   position: relative;
   z-index: 25;
@@ -383,6 +420,17 @@ tr.divider {
   img {
     width: 2.8125rem;
     height: auto;
+  }
+}
+
+.mobile-cell-head {
+  display: none;
+  @include mini {
+    display: block;
+    position: relative;
+    z-index: 25;
+    width: 35%;
+    padding-right: 1rem;
   }
 }
 
@@ -418,10 +466,12 @@ tr.divider {
 
 .data_stored, .all_data_stored, .storage_providers {
   font-family: $font_Secondary;
+  @include fontWeight_Regular;
+  font-size: 0.875rem;
   div {
     display: flex;
     .data-unit {
-      padding-top: 0.125rem;
+      padding-top: 0.375rem;
     }
   }
 
@@ -442,5 +492,13 @@ tr.divider {
   width: 6.5rem;
   transform: scale(1.5);
   padding-left: 0.75rem;
+  padding-right: 0.5rem;
+  @include mini {
+    width: 75%;
+    margin-left: 1.75rem;
+  }
+  @include tiny {
+    margin-left: 0.5rem;
+  }
 }
 </style>
