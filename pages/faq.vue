@@ -183,10 +183,26 @@ export default {
 // /////////////////////////////////////////////////////////////////// Accordion
 .accordion-section {
   &.open {
-    .icon {
-      transition: 0.25s ease-in;
-      transform: rotate(180deg);
+    .chevron {
+      &:before {
+        transform: rotate(135deg);
+      }
+      &:after {
+        transform: rotate(45deg);
+      }
     }
+  }
+}
+
+i.chevron {
+  display: inline-block;
+  margin-top: 1rem;
+  &:before, &:after {
+    background-color: $classicBlue;
+    transition: all $transitionDurationShort ease-in;
+  }
+  @include small {
+    margin-left: 1.5rem;
   }
 }
 
@@ -217,19 +233,6 @@ export default {
     padding-left: 3.688rem;
     padding-bottom: 8rem;
     margin-top: -1.5rem;
-  }
-}
-
-i.chevron {
-  display: inline-block;
-  transition: all $transitionDuration linear;
-  margin-top: 1rem;
-  &:before, &:after {
-    background-color: $classicBlue;
-    transition: all $transitionDuration linear;
-  }
-  @include small {
-    margin-left: 1.5rem;
   }
 }
 
