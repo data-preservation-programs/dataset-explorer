@@ -50,8 +50,9 @@ export default {
 }
 
 .label {
-  font-size: 1.625rem;
+  font-size: 1.5rem;
   line-height: 2.375rem;
+  padding-bottom: 1.875rem;
   letter-spacing: $letterSpacing_Large;
 }
 
