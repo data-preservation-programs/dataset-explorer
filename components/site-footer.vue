@@ -62,15 +62,15 @@ export default {
 // ///////////////////////////////////////////////////////////////////// General
 #site-footer {
   padding-bottom: 4rem;
+  margin-left: -0.5rem;
 }
 
 .dotted-border {
   position: relative;
-  margin-left: -8.125%;
   border: 0 0 1rem 1rem;
   background-repeat: no-repeat;
   overflow: visible;
-  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='105%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect x='6' y='5' width='102.5%25' height='105.5%25' fill='none' stroke='blue' stroke-width='2' stroke-dasharray='1.5%2c 10' stroke-dashoffset='2 0' stroke-linecap='round'/%3e%3c/svg%3e");
+  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='105%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect x='6' y='5' width='102%25' height='105.5%25' fill='none' stroke='blue' stroke-width='2' stroke-dasharray='1.5%2c 10' stroke-dashoffset='2 0' stroke-linecap='round'/%3e%3c/svg%3e");
   &::before {
     content: '';
     position: absolute;
@@ -93,7 +93,7 @@ export default {
     width: 0.3125rem;
     height: 0.3125rem;
     top: 0.125rem;
-    right: -0.625rem;
+    right: 0.125rem;
   }
   @include medium {
     margin-left: -1.5rem;

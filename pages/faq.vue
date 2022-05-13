@@ -178,7 +178,7 @@ export default {
   position: relative;
   margin-top: 5rem;
   margin-bottom: 5rem;
-  margin-left: -2rem;
+  margin-left: 0.75rem;
 }
 
 // /////////////////////////////////////////////////////////////////// Accordion

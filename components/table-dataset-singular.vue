@@ -298,12 +298,12 @@ export default {
 
 .cell-head {
   @include fontSize_Mini;
-  padding: 0rem 1.25rem;
+  padding: 0.5rem 1.25rem !important;
   text-align: left;
 }
 @-moz-document url-prefix() {
   .cell-head {
-    padding-bottom: 0.625rem !important;
+    padding-bottom: 1rem !important;
   }
 }
 
@@ -324,7 +324,7 @@ tbody:not(.divider) {
     left: 0;
     width: calc(100% - 10px);
     height: calc(100% - 4px);
-    background: $gray400;
+    background: #A9B4CB;
     opacity: 0.6;
     filter: blur(20px);
   }

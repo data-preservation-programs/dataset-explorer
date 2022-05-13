@@ -140,7 +140,7 @@ export default {
 <style lang="scss" scoped>
 // ///////////////////////////////////////////////////////////////////// General
 .header {
-  margin-bottom: 4.25rem;
+  margin-bottom: 3.5rem;
   @include small {
     margin-bottom: 3rem;
   }
@@ -151,7 +151,7 @@ export default {
 
 // /////////////////////////////////////////////////////////////// [Toolbar] Top
 #filter-search {
-  padding-bottom: 3rem;
+  padding-bottom: 2.5rem;
   @include small {
     padding-bottom: 1.5rem;
   }
