@@ -95,7 +95,7 @@ $dimensions: 2.75rem;
     max-width: none;
   }
   .input {
-    padding: 0.66rem;
+    padding: 1rem;
     -webkit-appearance: none
   }
   &:hover {
@@ -207,6 +207,7 @@ $dimensions: 2.75rem;
 ::placeholder {
   @include fontWeight_Medium;
   color: $classicBlue !important;
+  padding-left: 1rem;
 }
 
 </style>

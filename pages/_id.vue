@@ -172,7 +172,7 @@ export default {
 // /////////////////////////////////////////////////////////////// [Toolbar] Top
 #filter-search {
   padding-top: 1.25rem;
-  padding-bottom: 3.3125rem;
+  padding-bottom: 2.8125;
   @include small {
     padding-bottom: 1.75rem;
   }

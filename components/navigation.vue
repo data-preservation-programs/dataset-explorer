@@ -78,7 +78,7 @@ export default {
   align-items: center;
   padding-top: 2rem;
   padding-left: 1.75rem;
-  padding-bottom: 4rem;
+  padding-bottom: 3rem;
   @include small {
     padding-left: 1.5rem;
   }
@@ -108,7 +108,7 @@ export default {
 }
 
 .logo {
-  width: 5.9375rem;
+  width: 5rem;
 }
 
 .links {
