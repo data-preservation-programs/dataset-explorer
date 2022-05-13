@@ -77,7 +77,7 @@ export default {
   justify-content: space-between;
   align-items: center;
   padding-top: 2rem;
-  padding-left: 3rem;
+  padding-left: 1.75rem;
   padding-bottom: 4rem;
   @include small {
     padding-left: 1.5rem;
