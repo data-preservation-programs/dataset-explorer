@@ -1,18 +1,18 @@
 {
   "seo": {
-    "title": "Dataset Explorer",
-    "description": ""
+    "title": "Dataset Explorer - Filecoin",
+    "description": "The Filecoin Dataset Explorer provides a unified view to discover the hundreds of public, large-scale open-access datasets stored on the Filecoin network."
   },
   "og": {
     "site_name": "Dataset Explorer",
-    "url": "",
+    "url": "https://datasets.filecoin.io",
     "type": "website",
     "image": ""
   },
   "page_content": {
     "fold": {
       "heading": "Dataset Explorer",
-      "subheading": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore"
+      "subheading": "Discover and explore open-access datasets stored around the world on the Filecoin network"
     },
     "stats": [
       {

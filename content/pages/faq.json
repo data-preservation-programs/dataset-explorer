@@ -1,11 +1,11 @@
 {
   "seo": {
-    "title": "Dataset Explorer",
-    "description": ""
+    "title": "FAQ - Dataset Explorer",
+    "description": "Frequently asked questions about the Filecoin Dataset Explorer, which provides a unified view for datasets stored on the Filecoin network."
   },
   "og": {
     "site_name": "Dataset Explorer",
-    "url": "",
+    "url": "https://datasets.filecoin.io",
     "type": "website",
     "image": ""
   },
