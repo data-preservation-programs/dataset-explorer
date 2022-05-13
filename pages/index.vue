@@ -141,11 +141,20 @@ export default {
 // ///////////////////////////////////////////////////////////////////// General
 .header {
   margin-bottom: 4.25rem;
+  @include small {
+    margin-bottom: 3rem;
+  }
+  @include mini {
+    margin-bottom: 2rem;
+  }
 }
 
 // /////////////////////////////////////////////////////////////// [Toolbar] Top
 #filter-search {
   padding-bottom: 3rem;
+  @include small {
+    padding-bottom: 1.5rem;
+  }
 }
 // /////////////////////////////////////////////////////////////////////// Table
 #deals-table {

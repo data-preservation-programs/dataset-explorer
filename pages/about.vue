@@ -140,7 +140,7 @@ export default {
   margin-top: 3rem;
   margin-right: 5.34375rem;
   margin-bottom: 7.125rem;
-  margin-left: 5.34375rem;
+  margin-left: 13.34375rem;
   @include tiny {
     margin-bottom: 2.125rem;
     margin-right: 0;

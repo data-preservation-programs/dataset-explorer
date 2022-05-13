@@ -4,14 +4,14 @@
       <div class="grid">
 
         <!-- ======================================================= Heading -->
-        <div class="col-10_sm-12">
+        <div class="col-11_sm-12">
           <h1 class="heading">
             {{ heading }}
           </h1>
         </div>
 
         <!-- ===================================================== Accordion -->
-        <div class="col-10_sm-12">
+        <div class="col-11_sm-12">
 
           <div class="grid">
             <div class="col" data-push-left="off-1">
@@ -178,6 +178,7 @@ export default {
   position: relative;
   margin-top: 5rem;
   margin-bottom: 5rem;
+  margin-left: -2rem;
 }
 
 // /////////////////////////////////////////////////////////////////// Accordion

@@ -171,7 +171,14 @@ export default {
 
 // /////////////////////////////////////////////////////////////// [Toolbar] Top
 #filter-search {
+  padding-top: 1.25rem;
   padding-bottom: 3.3125rem;
+  @include small {
+    padding-bottom: 1.75rem;
+  }
+  @include mini {
+    padding-bottom: 0.75rem;
+  }
 }
 
 // /////////////////////////////////////////////////////////////////////// Table

@@ -301,6 +301,11 @@ export default {
   padding: 0rem 1.25rem;
   text-align: left;
 }
+@-moz-document url-prefix() {
+  .cell-head {
+    padding-bottom: 0.625rem !important;
+  }
+}
 
 .table-body {
   vertical-align: top;
@@ -404,6 +409,9 @@ tbody:not(.divider) {
     z-index: 15;
     transition: 100ms ease-out;
     background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect x='2' y='2' width='99%25' height='92%25' rx='5' fill='none' stroke='%23001FE6' stroke-width='2' stroke-dasharray='1.5%2c 10' stroke-dashoffset='10' stroke-linecap='round'/%3e%3c/svg%3e");
+    @include mini {
+      background-image: url("data:image/svg+xml,%3csvg width='100%25' height='102%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect x='2' y='2' width='98%25' height='98%25' rx='5' fill='none' stroke='%23001FE6' stroke-width='2' stroke-dasharray='1.5%2c 10' stroke-dashoffset='10' stroke-linecap='round'/%3e%3c/svg%3e");
+    }
   }
 }
 
