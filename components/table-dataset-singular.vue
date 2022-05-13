@@ -301,6 +301,11 @@ export default {
   padding: 0rem 1.25rem;
   text-align: left;
 }
+@-moz-document url-prefix() {
+  .cell-head {
+    padding-bottom: 0.625rem !important;
+  }
+}
 
 .table-body {
   vertical-align: top;
