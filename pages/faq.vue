@@ -182,28 +182,28 @@ export default {
 
 // /////////////////////////////////////////////////////////////////// Accordion
 .accordion-section {
+  i.chevron {
+    display: inline-block;
+    margin-top: 1rem;
+    &:before, &:after {
+      background-color: $classicBlue;
+      transition: all $transitionDurationShort ease-in;
+    }
+  }
   &.open {
-    .chevron {
+    i.chevron {
       &:before {
-        transform: rotate(135deg);
+        transform: rotate(-45deg);
       }
       &:after {
+        transform: rotate(-90deg);
         transform: rotate(45deg);
       }
     }
   }
-}
-
-i.chevron {
-  display: inline-block;
-  margin-top: 1rem;
-  &:before, &:after {
-    background-color: $classicBlue;
-    transition: all $transitionDurationShort ease-in;
-  }
-  @include small {
-    margin-left: 1.5rem;
-  }
+    @include small {
+      margin-left: 1.5rem;
+    }
 }
 
 .header-inner-wrapper {
