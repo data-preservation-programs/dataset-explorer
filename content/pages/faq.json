@@ -7,7 +7,7 @@
     "site_name": "Dataset Explorer",
     "url": "https://datasets.filecoin.io",
     "type": "website",
-    "image": ""
+    "image": "https://datasets.filecoin.io/open-graph.png"
   },
   "page_content": {
     "heading": "FAQ",
