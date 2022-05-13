@@ -106,6 +106,9 @@ $dimension: 2.5rem;
   margin-top: 2rem;
   margin-bottom: 1rem;
   font-family: $font_Primary;
+  @include medium {
+    margin-top: 6rem;
+  }
 }
 
 // /////////////////////////////////////////////////////////// Buttons & Breaker
