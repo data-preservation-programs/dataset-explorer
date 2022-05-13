@@ -27,6 +27,7 @@ $gray800: #424242;
 $gray900: #212121;
 
 $classicBlue: #001FE6; // classic bright blue
+$casper: #A9B4CB; // light grey with a hint of blue
 $mischka: #D6DADF; // pale blue-grey - used for shadow
 $fog: #D1D8E3;
 $aquaHaze: #F7F9FA; // pale blue almost white - used in gradient background for table boxes/ marble fill
@@ -77,13 +78,13 @@ $gradient_SilverGrey: linear-gradient(131deg, $aquaHaze, $mystic);
 // }
 
 @mixin selection_Dark {
-  ::-moz-selection { background: white; color: $classicBlue; }
-  ::selection { background: white; color: $classicBlue; }
+  ::-moz-selection { background: $casper; color: $classicBlue; }
+  ::selection { background: $casper; color: $classicBlue; }
 }
 
 @mixin selection_Light {
-  ::-moz-selection { background: $classicBlue; color: white; }
-  ::selection { background: $classicBlue; color: white; }
+  ::-moz-selection { background: $classicBlue; color: $casper; }
+  ::selection { background: $classicBlue; color: $casper; }
 }
 
 @mixin selection_Invisible {

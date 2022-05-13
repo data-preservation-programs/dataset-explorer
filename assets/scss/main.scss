@@ -35,8 +35,8 @@ html, body {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   scroll-behavior: smooth;
-  ::-moz-selection { background: $classicBlue; color: white; }
-  ::selection { background: $classicBlue; color: white; }
+  ::-moz-selection { background: $classicBlue; color: $casper; }
+  ::selection { background: $classicBlue; color: $casper; }
   @include mini {
     line-height: 1.875rem; // 30pt
   }
