@@ -94,7 +94,8 @@ export default {
 
   data () {
     return {
-      tag: 'faq'
+      tag: 'faq',
+      accordionExpanded: false
     }
   },
 
@@ -117,13 +118,20 @@ export default {
       return this.siteContent[this.tag].page_content.accordion_sections
     },
     expandAllButtonText () {
+      if (this.accordionExpanded) { return this.siteContent[this.tag].page_content.collapse_all_button_text }
       return this.siteContent[this.tag].page_content.expand_all_button_text
     }
   },
 
   methods: {
     expandAllAccordionSections () {
-      this.$refs.accordion.$emit('expand-all')
+      if (this.accordionExpanded === true) {
+        this.$refs.accordion.$emit('expand-all')
+        this.accordionExpanded = false
+      } else {
+        this.$refs.accordion.$emit('expand-all')
+        this.accordionExpanded = true
+      }
     }
   }
 }
