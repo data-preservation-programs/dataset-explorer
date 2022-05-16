@@ -44,6 +44,7 @@ export default {
 .header-wrapper {
   margin-left: -0.5rem;
 }
+
 .dotted-border {
   position: relative;
   border: 0 0 1rem 1rem;
