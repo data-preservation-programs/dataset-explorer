@@ -1,5 +1,5 @@
 <template>
-  <svg width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'>
+  <svg class="dotted-border-svg" width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'>
     <rect x='6' y='-5' 
     width='102.5%' 
     height='100.5%' 

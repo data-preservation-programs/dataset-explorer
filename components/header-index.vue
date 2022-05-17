@@ -4,7 +4,7 @@
       <div class="col-9_mi-12_sm-10">
         
         <div class="header-wrapper">
-          <div class="dotted-border">
+          <div class="dotted-border"> 
             <h1 class="heading">
               {{ heading }}
             </h1>
