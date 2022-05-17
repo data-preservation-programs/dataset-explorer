@@ -259,29 +259,28 @@ i.chevron {
     }
   }
   ul, ol {
+    @include fontWeight_Medium;
+    @include fontSize_Regular;
+    line-height: 2rem;
+    letter-spacing: 0.026rem;
+    margin-left: 1rem;
     li {
+      @include fontWeight_Medium;
+      @include fontSize_Regular;
+      line-height: 2rem;
+      letter-spacing: 0.026rem;
       margin-bottom: 1rem;
+      margin-left: 1rem;
     }
     ul, ol {
       margin-top: 1rem;
+      margin-left: 1rem;
     }
   }
   ul {
     li {
-      list-style: none;
-      padding-left: 1.75rem;
+      padding-left: 0.5rem;
       margin-bottom: 1rem;
-      &:before {
-        content: '';
-        display: inline-block;
-        position: relative;
-        left: calc(-1.75rem + 2px + 9px);
-        width: 7px;
-        height: 7px;
-        margin-left: -9px;
-        border-radius: 50%;
-        background-color: $classicBlue;
-      }
       li {
         &:before {
           background-color: transparent;
