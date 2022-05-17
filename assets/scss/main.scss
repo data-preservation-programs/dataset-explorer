@@ -245,9 +245,17 @@ i.chevron {
     }
   }
   a {
-    color: $classicBlue;
+    // border-bottom: 1px dashed $classicBlue;
+    position: relative;
+    transition: all 0.25s ease-in-out;
+    width: 100%;
+    background-repeat: no-repeat;
+    overflow: visible;
+    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect x='-1' y='1' width='105.5%25' height='105.5%25' fill='none' stroke='blue' stroke-width='2' stroke-dasharray='1.5%2c 10' stroke-dashoffset='2 0' stroke-linecap='round'/%3e%3c/svg%3e");
     &:hover {
-      text-decoration: underline;
+      text-decoration: none;
+      border-bottom: 1px solid $classicBlue;
+      transition: all 0.25s ease-in-out;
     }
   }
   ul, ol {
