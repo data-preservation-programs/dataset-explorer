@@ -126,16 +126,14 @@ export default {
 
   methods: {
     accordionToggleStateChanged (toggleState) {
-      console.log(toggleState)
+      if (toggleState.open === 5) {
+        this.accordionExpanded = true
+      } else {
+        this.accordionExpanded = false
+      }
     },
     expandAllAccordionSections () {
-      if (this.accordionExpanded === true) {
-        this.$refs.accordion.$emit('expand-all')
-        // this.accordionExpanded = false
-      } else {
-        this.$refs.accordion.$emit('expand-all')
-        // this.accordionExpanded = true
-      }
+      this.$refs.accordion.$emit('expand-all')
     }
   }
 }
