@@ -26,7 +26,8 @@
           <Accordion
             ref="accordion"
             v-slot="{ active }"
-            :multiple="true">
+            :multiple="true"
+            @toggleStateChanged="accordionToggleStateChanged">
             <AccordionSection
               v-for="(section, index) in accordionSections"
               :key="index"
@@ -124,13 +125,16 @@ export default {
   },
 
   methods: {
+    accordionToggleStateChanged (toggleState) {
+      console.log(toggleState)
+    },
     expandAllAccordionSections () {
       if (this.accordionExpanded === true) {
         this.$refs.accordion.$emit('expand-all')
-        this.accordionExpanded = false
+        // this.accordionExpanded = false
       } else {
         this.$refs.accordion.$emit('expand-all')
-        this.accordionExpanded = true
+        // this.accordionExpanded = true
       }
     }
   }
@@ -239,9 +243,9 @@ i.chevron {
   justify-content: space-between;
   padding-top: 1rem;
 }
- 
+
 .label {
-  padding-left: 2rem;
+  padding-left: 1.5rem;
 }
 
 .content-inner-wrapper {
