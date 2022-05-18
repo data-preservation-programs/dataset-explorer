@@ -26,7 +26,8 @@
           <Accordion
             ref="accordion"
             v-slot="{ active }"
-            :multiple="true">
+            :multiple="true"
+            @toggleStateChanged="accordionToggleStateChanged">
             <AccordionSection
               v-for="(section, index) in accordionSections"
               :key="index"
@@ -94,7 +95,8 @@ export default {
 
   data () {
     return {
-      tag: 'faq'
+      tag: 'faq',
+      accordionExpanded: false
     }
   },
 
@@ -117,11 +119,19 @@ export default {
       return this.siteContent[this.tag].page_content.accordion_sections
     },
     expandAllButtonText () {
+      if (this.accordionExpanded) { return this.siteContent[this.tag].page_content.collapse_all_button_text }
       return this.siteContent[this.tag].page_content.expand_all_button_text
     }
   },
 
   methods: {
+    accordionToggleStateChanged (toggleState) {
+      if (toggleState.open === 5) {
+        this.accordionExpanded = true
+      } else {
+        this.accordionExpanded = false
+      }
+    },
     expandAllAccordionSections () {
       this.$refs.accordion.$emit('expand-all')
     }
@@ -231,9 +241,9 @@ i.chevron {
   justify-content: space-between;
   padding-top: 1rem;
 }
- 
+
 .label {
-  padding-left: 2rem;
+  padding-left: 1.5rem;
 }
 
 .content-inner-wrapper {
