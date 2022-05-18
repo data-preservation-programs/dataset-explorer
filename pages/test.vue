@@ -4,11 +4,11 @@
       <div class="col-9_mi-12_sm-10">
         <div class="header-wrapper">
           <h1 class="heading">
-            I am job
+            Heading
           </h1>
 
           <h2 class="subheading">
-            I'm sorry the position has been filled
+            Subheading Subheading Subheading Subheading
           </h2>
           <DottedLine />
         </div>
@@ -31,15 +31,38 @@ export default {
 
 <style lang="scss" scoped>
 
-.dotted-border-svg {
+.dot {
+  &:before {
+    content: '';
+    position: absolute;
+    display: inline-block;
+    background-color: $classicBlue;
+    border-radius: 50%;
+    width: 0.3125rem;
+    height: 0.3125rem;
+    transform: translate(50%);
+    left: 22.5rem;
+  }
+  &:after {
+    content: '';
+    position: absolute;
+    display: inline-block;
+    background-color: $classicBlue;
+    border-radius: 50%;
+    width: 0.3125rem;
+    height: 0.3125rem;
+    right: 37.3rem;
+    top: 37.6rem;
+  }
+}
+
+::v-deep .rect {
   width: 102.5%;
   height: 100.5%;
   stroke-dasharray: 1.5, 10;
-  stroke-dashoffset: 2, 0;
-  .rect {
-    x: 6;
-    y: -5;
-  }
+  stroke-dashoffset: 2;
+  x: 6;
+  y: -5;
 }
 
 .heading {
