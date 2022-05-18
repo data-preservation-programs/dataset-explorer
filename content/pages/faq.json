@@ -23,7 +23,7 @@
       },
       {
         "label": "How do I retrieve a file or a dataset?",
-        "content": "At the moment, retrievals must be done via Filecoin lotus or other Filecoin tooling like Powergate. Once you've found a file you'd like to download, click the code icon to generate a lotus command for its retrieval. Additionally, we're currently working on other retrieval methods that will require less tooling and overhead."
+        "content": "At the moment, retrievals must be done via [lotus](https://lotus.filecoin.io/) or other Filecoin tools like Powergate. Once you've found a file you'd like to download, click the code icon to generate a lotus command for its retrieval. Additionally, we're currently working on other retrieval methods that will require less tooling and overhead."
       },
       {
         "label": "Where can I find a specific file from a dataset?",
