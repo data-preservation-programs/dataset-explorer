@@ -10,7 +10,7 @@
           <h2 class="subheading">
             Subheading Subheading Subheading Subheading
           </h2>
-          <DottedLine />
+          <DottedBorder />
         </div>
       </div>
     </div>
@@ -18,39 +18,25 @@
 </template>
 
 <script>
-import DottedLine from '@/components/dotted-line.vue'
+import DottedBorder from '@/components/dotted-border.vue'
 
 export default {
   name: 'TestPage',
 
   components: {
-    DottedLine
+    DottedBorder
   }
 }
 </script>
 
 <style lang="scss" scoped>
 
-.dot {
+.dotted-border {
   &:before {
-    content: '';
-    position: absolute;
-    display: inline-block;
-    background-color: $classicBlue;
-    border-radius: 50%;
-    width: 0.3125rem;
-    height: 0.3125rem;
     transform: translate(50%);
     left: 22.5rem;
   }
   &:after {
-    content: '';
-    position: absolute;
-    display: inline-block;
-    background-color: $classicBlue;
-    border-radius: 50%;
-    width: 0.3125rem;
-    height: 0.3125rem;
     right: 37.3rem;
     top: 37.6rem;
   }
