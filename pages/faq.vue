@@ -52,7 +52,8 @@
                 <div class="content-inner-wrapper">
                   <div clas="grid">
                     <div class="col-11_mi-12">
-                      <div v-html="section.content" />
+                      <MarkdownParser
+                        :markdown="markdown" />
                     </div>
                   </div>
                 </div>
@@ -80,7 +81,10 @@ import AccordionHeader from '@/components/accordion/accordion-header'
 import AccordionContent from '@/components/accordion/accordion-content'
 import AccordionSection from '@/components/accordion/accordion-section'
 
+import MarkdownParser from '@/components/markdown-parser'
+
 import Page from '@/content/pages/faq.json'
+import FAQPageContent from '@/content/markdown/faq.md'
 
 // ====================================================================== Export
 export default {
@@ -90,7 +94,8 @@ export default {
     Accordion,
     AccordionHeader,
     AccordionContent,
-    AccordionSection
+    AccordionSection,
+    MarkdownParser
   },
 
   data () {
@@ -121,6 +126,9 @@ export default {
     expandAllButtonText () {
       if (this.accordionExpanded) { return this.siteContent[this.tag].page_content.collapse_all_button_text }
       return this.siteContent[this.tag].page_content.expand_all_button_text
+    },
+    markdown () {
+      return FAQPageContent
     }
   },
 
