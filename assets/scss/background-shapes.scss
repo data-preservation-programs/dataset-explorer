@@ -1,0 +1,78 @@
+// //////////////////////////////////////////////////////////////////// Hexagons
+#hexagon-shadow {
+  filter: drop-shadow(2px 4px 1px rgba(169, 180, 203, 0.3)) drop-shadow(-2px -2px 0px #FFFFFF);
+}
+#hexagon {
+  position: relative;
+  top: -5rem;
+  left: 20rem;
+  z-index: 99;
+  background: $gradient_SilverGrey;
+  clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
+  &.small {
+    width: 7.5625rem;
+    height: 7.5625rem;
+  }
+  &.medium {
+    width: 14.3125rem;
+    height: 14.3125rem;
+  }
+  &.large {
+    width: 21.875rem;
+    height: 21.875rem;
+  }
+  &.huge {
+    width: 40.9375rem;
+    height: 40.9375rem;
+  }
+}
+
+// /////////////////////////////////////////////////////////////////////// Rings
+#large-ring {
+  display: inline-block;
+  width: 32.25rem;
+  height: 32.25rem;
+  box-shadow: 0px 70px 60px rgba(169, 180, 203, 0.3), -2px -2px 0px #FFFFFF, 0px 3px 0px #D6DADF, inset 0px -20px 20px rgba(255, 255, 255, 0.2);
+  position: relative;
+  left: 10rem;
+  border-radius: 100%;
+  z-index: 99;
+  background: $gradient_SilverGrey;
+  &:after {
+    content: '';
+    position: absolute;
+    z-index: 100;
+    top: calc(40%/2);
+    left: calc(40%/2);
+    height: 60%;
+    width: 60%;
+    border-radius: 100%;
+    background-color: $mystic;
+    box-shadow: inset 0px 5px 20px rgba(169, 180, 203, 0.3), -1px -2px 0px #D6DADF, 1px 3px 0px #FFFFFF, inset 0px -2px 2px rgba(255, 255, 255, 0.2);
+  }
+}
+
+#small-ring {
+  display: inline-block;
+  width: 18.625rem;
+  height: 18.625rem;
+  box-shadow: 0px 70px 60px rgba(169, 180, 203, 0.3), -2px -2px 0px #FFFFFF, 0px 3px 0px #D6DADF, inset 0px -20px 20px rgba(255, 255, 255, 0.2);
+  position: relative;
+  left: 30rem;
+  border-radius: 100%;
+  z-index: 99;
+  background: $gradient_SilverGrey;
+  &:after {
+    content: '';
+    position: absolute;
+    z-index: 100;
+    top: calc(40%/2);
+    left: calc(40%/2);
+    height: 60%;
+    width: 60%;
+    border-radius: 100%;
+    background-color: $mystic;
+    box-shadow: inset 0px 0px 10px rgba(169, 180, 203, 0.3), -1px -2px 0px #D6DADF, 1px 3px 0px #FFFFFF, inset 0px -2px 2px rgba(255, 255, 255, 0.2);
+  }
+}
+

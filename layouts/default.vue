@@ -1,5 +1,6 @@
 <template>
   <div class="main-container">
+    <TopBackgroundShapes />
 
     <Navigation />
 
@@ -7,7 +8,7 @@
 
     <SiteFooter />
 
-    <BackgroundShapes />
+    <BottomBackgroundShapes />
 
   </div>
 </template>
@@ -16,7 +17,8 @@
 // ===================================================================== Imports
 import Navigation from '@/components/navigation'
 import SiteFooter from '@/components/site-footer'
-import BackgroundShapes from '@/components/background-shapes'
+import BottomBackgroundShapes from '@/components/background-shapes-bottom'
+import TopBackgroundShapes from '@/components/background-shapes-top'
 
 // ====================================================================== Export
 export default {
@@ -25,7 +27,8 @@ export default {
   components: {
     Navigation,
     SiteFooter,
-    BackgroundShapes
+    BottomBackgroundShapes,
+    TopBackgroundShapes
   },
 
   async fetch ({ store, route, $content }) {
