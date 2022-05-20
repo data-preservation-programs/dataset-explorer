@@ -245,11 +245,14 @@ i.chevron {
     }
   }
   a {
+    transition: all $transitionDurationShort linear;
     position: relative;
-    border-bottom: 2px dashed $classicBlue;
+    border-bottom: 0.0625rem solid $casper;
+    padding-bottom: 0.25rem;
     &:hover {
-      border-bottom: 2px solid $classicBlue;
-      transition: all 5s ease-in-out;
+      border-bottom-style: dashed;
+      border-bottom-color: $classicBlue;
+      padding-bottom: 0.125rem;
     }
   }
   ul, ol {
