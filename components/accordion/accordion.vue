@@ -40,6 +40,15 @@ export default {
     }
   },
 
+  computed: {
+    toggleState () {
+      return {
+        open: this.active.length,
+        total: this.children.length
+      }
+    }
+  },
+
   created () {
     this.$on('toggle', (id) => {
       if (this.multiple) {
@@ -49,6 +58,7 @@ export default {
         } else {
           this.active.push(id)
         }
+        this.$emit('toggleStateChanged', this.toggleState)
       } else {
         // Open single panel
         if (this.active === id) {
@@ -71,6 +81,7 @@ export default {
             }
           })
         }
+        this.$emit('toggleStateChanged', this.toggleState)
       }
     })
   },

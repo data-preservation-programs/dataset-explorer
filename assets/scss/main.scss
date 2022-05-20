@@ -245,35 +245,60 @@ i.chevron {
     }
   }
   a {
-    color: $classicBlue;
+    transition: all $transitionDurationShort linear;
+    position: relative;
+    border-bottom: 0.0625rem solid $casper;
+    padding-bottom: 0.25rem;
     &:hover {
-      text-decoration: underline;
+      border-bottom-style: dashed;
+      border-bottom-color: $classicBlue;
+      padding-bottom: 0.125rem;
     }
   }
   ul, ol {
+    @include fontWeight_Medium;
+    @include fontSize_Regular;
+    line-height: 2rem;
+    letter-spacing: 0.026rem;
+    margin-left: 1rem;
     li {
+      @include fontWeight_Medium;
+      @include fontSize_Regular;
+      line-height: 2rem;
+      letter-spacing: 0.025rem;
       margin-bottom: 1rem;
+      margin-left: 1rem;
+      margin-bottom: 2rem;
+      ul, ol {
+        li {
+          &:first-child {
+            margin-top: 0.5rem
+          }
+          &:last-child {
+            margin-bottom: 2.5rem;
+          }
+          ul, ol {
+            li {
+              &:first-child {
+                margin-top: 0.5rem
+              }
+              &:last-child {
+                margin-bottom: 2.5rem;
+              }
+            }
+          }
+        }
+      }
     }
-    ul, ol {
-      margin-top: 1rem;
-    }
+  }
+  ul, ol {
+    margin-top: 1rem;
+    margin-left: 1rem;
   }
   ul {
     li {
-      list-style: none;
-      padding-left: 1.75rem;
+      padding-left: 0.5rem;
       margin-bottom: 1rem;
-      &:before {
-        content: '';
-        display: inline-block;
-        position: relative;
-        left: calc(-1.75rem + 2px + 9px);
-        width: 7px;
-        height: 7px;
-        margin-left: -9px;
-        border-radius: 50%;
-        background-color: $classicBlue;
-      }
       li {
         &:before {
           background-color: transparent;
