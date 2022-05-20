@@ -25,7 +25,10 @@
       <tbody class="divider" />
       <tbody class="table-body">
         <template v-for="deal in filtered">
-          <tr :key="deal.rank" class="row row-body">
+          <tr
+            :key="deal.rank"
+            class="row row-body"
+            @click="navigateToDataset($event, deal.slug)">
 
             <td
               v-for="cell in columns"
@@ -161,6 +164,11 @@ export default {
       } else {
         return slug
       }
+    },
+    navigateToDataset (e, slug) {
+      if (e.target.nodeName !== 'A') {
+        this.$router.push({ path: `${slug}` })
+      }
     }
   }
 }
@@ -258,6 +266,7 @@ tbody:not(.divider) {
 }
 
 .row-body {
+  cursor: pointer;
   position: relative;
   @include mini {
     display: flex;

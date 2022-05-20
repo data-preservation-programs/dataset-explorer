@@ -12,6 +12,7 @@
   "page_content": {
     "heading": "FAQ",
     "expand_all_button_text": "Expand All",
+    "collapse_all_button_text": "Collapse All",
     "accordion_sections": [
       {
         "label": "What types of datasets are stored here?",
