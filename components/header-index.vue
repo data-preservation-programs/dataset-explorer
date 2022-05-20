@@ -2,15 +2,21 @@
   <header id="header-index">
     <div class="grid">
       <div class="col-9_mi-12_sm-10">
+
         <div class="header-wrapper">
+
           <h1 class="heading">
             {{ heading }}
           </h1>
+
           <h2 class="subheading">
             {{ subheading }}
           </h2>
+
+          <DottedBorder />
+
         </div>
-        <DottedBorder />
+
       </div>
     </div>
   </header>
@@ -46,28 +52,21 @@ export default {
 <style lang="scss" scoped>
 //////////////////////////////////////////////////////////////////////// General
 .header-wrapper {
-  margin-left: -0.5rem;
+  position: relative;
 }
 
 ::v-deep .dotted-border {
   &:before {
-    transform: translateY(50%);
-    left: 0.56rem;
-    top: -27.5rem;
+    top: -1px;
+    left: -1px;
   }
   &:after {
-    right: 37.3rem;
-    top: 37.6rem;
+    bottom: 0;
+    right: -1px;
   }
-  svg {
-    top: -19rem;
-  }
-  .rect {
-    width: 110%;
-    height: 100%;
-    stroke-dasharray: 1.5, 10;
-    stroke-dashoffset: 2;
-    transform: translate(0.688rem, -0.75rem);
+  rect {
+    transform: scale(0.999) translate(2px, -2px);
+    // transform: scale(0.999, 0.99) translate(2px, 2px);
   }
 }
 
