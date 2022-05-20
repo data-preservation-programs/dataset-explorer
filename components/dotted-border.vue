@@ -22,12 +22,6 @@ export default {
 
 <style lang="scss" scoped>
 // ///////////////////////////////////////////////////////////////////// General
-svg {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
 .dotted-border {
   width: 100%;
   height: 100%;
@@ -50,4 +44,9 @@ svg {
   }
 }
 
+svg {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
 </style>

@@ -49,19 +49,7 @@ export default {
   margin-left: -0.5rem;
 }
 
-::v-deep .rect {
-  width: 110%;
-  height: 100%;
-  stroke-dasharray: 1.5, 10;
-  stroke-dashoffset: 2;
-  transform: translate(0.688rem, -0.75rem);
-}
-
-::v-deep svg {
-  top: -19rem;
-}
-
-.dotted-border {
+::v-deep .dotted-border {
   &:before {
     transform: translateY(50%);
     left: 0.56rem;
@@ -70,6 +58,16 @@ export default {
   &:after {
     right: 37.3rem;
     top: 37.6rem;
+  }
+  svg {
+    top: -19rem;
+  }
+  .rect {
+    width: 110%;
+    height: 100%;
+    stroke-dasharray: 1.5, 10;
+    stroke-dashoffset: 2;
+    transform: translate(0.688rem, -0.75rem);
   }
 }
 
