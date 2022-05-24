@@ -14,9 +14,8 @@
             <MarkdownParser
               :markdown="markdown" />
           </div>
-
+          <DottedBorder />
         </div>
-        <div class="dotted-border" />
       </div>
     </div>
   </div>
@@ -30,12 +29,15 @@ import MarkdownParser from '@/components/markdown-parser'
 
 import AboutPageContent from '@/content/markdown/about.md'
 import AboutPageData from '@/content/pages/about.json'
+
+import DottedBorder from '@/components/dotted-border'
 // ====================================================================== Export
 export default {
   name: 'AboutPage',
 
   components: {
-    MarkdownParser
+    MarkdownParser,
+    DottedBorder
   },
 
   data () {
@@ -72,69 +74,6 @@ export default {
 
 <style lang="scss" scoped>
 // ///////////////////////////////////////////////////////////////////// General
-.heading {
-  @include header;
-  padding-bottom: 2rem;
-  @include mini {
-    font-size: 3.75rem;
-    padding-bottom: 3rem;
-  }
-  @include tiny {
-    font-size: 3.125rem;
-    padding-bottom: 2.5rem;
-  }
-}
-
-.dotted-border {
-  position: absolute;
-  height: 100%;
-  top: 0;
-  width: 0.5rem;
-  margin-left: -5rem;
-  background-repeat: no-repeat;
-  overflow: visible;
-  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect x='6' y='-1.5' width='102.5%25' height='100.5%25' fill='none' stroke='blue' stroke-width='2' stroke-dasharray='1.5%2c 10' stroke-dashoffset='2 0' stroke-linecap='round'/%3e%3c/svg%3e");
-  &:before {
-    content: '';
-    position: absolute;
-    background-image: url("data:image/svg+xml,%3Csvg width='8' height='8' xmlns='http://www.w3.org/2000/svg'%3E%3Cellipse ry='4' rx='4' cy='4' cx='4' fill='blue'/%3E%3C/svg%3E");
-    background-size: contain;
-    background-repeat: no-repeat;
-    transform: translateY(-50%);
-    width: 0.3125rem;
-    height: 0.3125rem;
-    left: .22rem;
-    top: 0;
-    @include mini {
-      top: 0.25rem;
-    }
-    @include tiny {
-      top: 0;
-    }
-  }
-  &:after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0.0625rem;
-    width: 0.3125rem;
-    height: 0.3125rem;
-    background-image: url("data:image/svg+xml,%3Csvg width='8' height='8' xmlns='http://www.w3.org/2000/svg'%3E%3Cellipse ry='4' rx='4' cy='4' cx='4' fill='blue'/%3E%3C/svg%3E");
-    background-size: contain;
-    background-repeat: no-repeat;
-    transform: translateX(50%);
-    @include tiny {
-      bottom: 0.125rem;
-    }
-  }
-  @include tiny {
-    margin-left: -2rem;
-  }
-  @include mini {
-    margin-left: -2rem;
-  }
-}
-
 .content-wrapper {
   position: relative;
   margin-top: 3rem;
@@ -149,6 +88,19 @@ export default {
   @include small {
     margin-bottom: 2.125rem;
     margin-right: 0;
+  }
+}
+
+.heading {
+  @include header;
+  padding-bottom: 2rem;
+  @include mini {
+    font-size: 3.75rem;
+    padding-bottom: 3rem;
+  }
+  @include tiny {
+    font-size: 3.125rem;
+    padding-bottom: 2.5rem;
   }
 }
 
@@ -181,6 +133,20 @@ export default {
   @include mini {
     padding-top: 2.5rem;
     padding-bottom: 4rem;
+  }
+}
+
+::v-deep .dotted-border {
+  &:before {
+    top: 0px;
+    left: -1px;
+  }
+  &:after {
+    bottom: 0;
+    right: -1px;
+  }
+  rect {
+    transform: scale(0.999) translate(2px, -2px);
   }
 }
 </style>

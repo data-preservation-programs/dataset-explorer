@@ -66,7 +66,6 @@ export default {
   }
   rect {
     transform: scale(0.999) translate(2px, -2px);
-    // transform: scale(0.999, 0.99) translate(2px, 2px);
   }
 }
 

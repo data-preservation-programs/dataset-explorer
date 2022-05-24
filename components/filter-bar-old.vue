@@ -1,23 +1,21 @@
 <template>
   <div :class="['filter-bar', { focused }]">
 
-    <div class="dotted-border">
+    <input
+      :value="filterValue"
+      :placeholder="placeholder"
+      type="text"
+      class="input"
+      @input="handleInput"
+      @focus="focused = true"
+      @blur="focused = false">
 
-      <input
-        :value="filterValue"
-        :placeholder="placeholder"
-        type="text"
-        class="input"
-        @input="handleInput"
-        @focus="focused = true"
-        @blur="focused = false">
-
-      <div class="icon-container">
-        <IconSearch />
-      </div>
-
+    <div class="icon-container">
+      <IconSearch />
     </div>
-    
+
+    <DottedBorder />
+
   </div>
 </template>
 
@@ -27,12 +25,15 @@ import { mapActions } from 'vuex'
 
 import IconSearch from '@/components/icons/search'
 
+import DottedBorder from '@/components/dotted-border'
+
 // ====================================================================== Export
 export default {
   name: 'FilterBar',
 
   components: {
-    IconSearch
+    IconSearch,
+    DottedBorder
   },
 
   props: {
@@ -82,8 +83,9 @@ export default {
 <style lang="scss" scoped>
 $dimensions: 2.75rem;
 
-// ///////////////////////////////////////////////////////////////////// General
+//////////////////////////////////////////////////////////////////////// General
 .filter-bar {
+  position: relative;
   width: 26.4375rem;
   height: calc(#{$dimensions} - 2px);
   margin-right: 1rem;
@@ -120,51 +122,35 @@ $dimensions: 2.75rem;
       border: none;
       padding: 0.66rem 0.75rem;
     }
-    .dotted-border {
-      background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect x='2' y='2' width='105%25' height='93%25' rx='5' fill='none' stroke='%23001FE6' stroke-width='2' stroke-dasharray='1.5%2c 0' stroke-dashoffset='10' stroke-linecap='round'/%3e%3c/svg%3e");
+    ::v-deep .dotted-border {
       &:before {
-        visibility: hidden;
+        width: 0;
       }
       &:after {
-        visibility: hidden;
+        width: 0;
+      }
+      rect {
+        stroke-dasharray: 0;
+        rx: 5;
       }
     }
   }
 }
 
-.dotted-border {
-  position: relative;
-  padding-right: 0.5rem;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  flex: 1;
-  background-repeat: no-repeat;
-  overflow: hidden;
-  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect x='2' y='2' width='100%25' height='93%25' rx='5' fill='none' stroke='%23001FE6' stroke-width='2' stroke-dasharray='1.5%2c 10' stroke-dashoffset='10' stroke-linecap='round'/%3e%3c/svg%3e");
+::v-deep .dotted-border {
   &:before {
-    content: '';
-    position: absolute;
-    background-image: url("data:image/svg+xml,%3Csvg width='8' height='8' xmlns='http://www.w3.org/2000/svg'%3E%3Cellipse ry='4' rx='4' cy='4' cx='4' fill='%23001FE6'/%3E%3C/svg%3E");
-    background-size: contain;
-    background-repeat: no-repeat;
-    transform: translateX(-50%);
-    width: 0.3125rem;
-    height: 0.3125rem;
-    right: -0.125rem;
-    top: 0;
+    top: -3px;
+    left: 100%;
+    transition: width 0.5s;
   }
   &:after {
-    content: '';
-    position: absolute;
-    background-image: url("data:image/svg+xml,%3Csvg width='8' height='8' xmlns='http://www.w3.org/2000/svg'%3E%3Cellipse ry='4' rx='4' cy='4' cx='4' fill='%23001FE6'/%3E%3C/svg%3E");
-    background-size: contain;
-    background-repeat: no-repeat;
-    transform: translateX(50%);
-    width: 0.3125rem;
-    height: 0.3125rem;
-    bottom: -0.0625rem;
-    right: 0.125rem;
+    bottom: -2px;
+    left: 100%;
+    transition: width 0.5s;
+  }
+  rect {
+    transform: scale(0.999, 0.999) translate(2px, 0.2px);
+    transition: stroke-dasharray 1s;
   }
 }
 
