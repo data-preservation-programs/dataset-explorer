@@ -69,6 +69,7 @@ export default {
 }
 
 ::v-deep .dotted-border {
+  left: 0;
   &:before {
     bottom: -1px;
     left: -1px;

@@ -20,7 +20,7 @@
               :target="link.target"
               :class="link.class_names">
               {{ link.text }}
-              <div class="dashed-border"></div>
+              <DottedBorder />
             </component>
           </div>
 
@@ -41,13 +41,16 @@ import { mapGetters } from 'vuex'
 import Logo from '@/components/logo'
 import HamburgerNav from '@/components/hamburger-nav'
 
+import DottedBorder from '@/components/dotted-border'
+
 // ====================================================================== Export
 export default {
   name: 'Navigation',
 
   components: {
     Logo,
-    HamburgerNav
+    HamburgerNav,
+    DottedBorder
   },
 
   computed: {
@@ -126,42 +129,26 @@ export default {
   @include fontWeight_Semibold;
   @include fontSize_Regular;
   text-transform: uppercase;
+  position: relative;
   margin-right: 3rem;
   @include mini {
     margin-right: 2rem;
   }
-  .dashed-border {
-    width: 100%;
-    height: 0.25rem;
+  ::v-deep .dotted-border {
     transition: all 0.25s ease-in-out;
     transform: scale(0);
-    position: relative;
-    background-repeat: no-repeat;
-    overflow: visible;
-    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect x='-1' y='1' width='105.5%25' height='105.5%25' fill='none' stroke='blue' stroke-width='2' stroke-dasharray='1.5%2c 10' stroke-dashoffset='2 0' stroke-linecap='round'/%3e%3c/svg%3e");
-    &::before {
-      content: '';
-      position: absolute;
-      background-image: url("data:image/svg+xml,%3Csvg width='8' height='8' xmlns='http://www.w3.org/2000/svg'%3E%3Cellipse ry='4' rx='4' cy='4' cx='4' fill='blue'/%3E%3C/svg%3E");
-      background-size: contain;
-      background-repeat: no-repeat;
-      transform: translateY(-50%);
-      width: 0.3125rem;
-      height: 0.3125rem;
-      left: -0.1875rem;
-      bottom: -0.125rem;
-    }
-    &::after {
-      content: '';
-      position: absolute;
-      background-image: url("data:image/svg+xml,%3Csvg width='8' height='8' xmlns='http://www.w3.org/2000/svg'%3E%3Cellipse ry='4' rx='4' cy='4' cx='4' fill='blue'/%3E%3C/svg%3E");
-      background-size: contain;
-      background-repeat: no-repeat;
-      transform: translateX(50%);
-      width: 0.3125rem;
-      height: 0.3125rem;
+    &:hover {
+      rect {
+        transform: scale(1.2, 1.5) translate(-3px, 24.5px);
+      }
+      &:before {
       bottom: 0;
-      right: -0.25rem;
+      left: -1px;
+      }
+      &:after {
+      top: 0;
+      right: -1px;
+      }
     }
   }
   @include tiny {
@@ -170,12 +157,9 @@ export default {
       margin-right: 3rem;
     }
   }
-  &:hover {
-    .dashed-border {
-      transform: scale(1);
-    }
-  }
 }
+
+////////////////////////////////////////////////////////////////// Hamburger Nav
 
 .hamburger-nav {
   display: none;

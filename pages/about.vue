@@ -141,8 +141,15 @@ export default {
   }
 }
 
+// /////////////////////////////////////////////////////////////// Dotted Border
 ::v-deep .dotted-border {
   margin-left: -5rem;
+  @include mini {
+    margin-left: -2rem;
+  }
+  rect {
+    transform: scale(1.2, 1.5) translate(2px, -3px);
+  }
   &:before {
     top: 0px;
     left: -1px;
@@ -150,15 +157,6 @@ export default {
   &:after {
     bottom: 0;
     left: -1px;
-  }
-  rect {
-    transform: scale(1.2, 1.5) translate(2px, -3px);
-  }
-  @include tiny {
-    margin-left: -2rem;
-  }
-  @include mini {
-    margin-left: -2rem;
   }
 }
 </style>
