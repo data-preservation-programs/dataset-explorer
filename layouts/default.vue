@@ -7,7 +7,7 @@
 
     <SiteFooter />
 
-    <BackgroundShapes />
+    <!-- <BackgroundShapes /> -->
 
   </div>
 </template>

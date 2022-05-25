@@ -85,6 +85,7 @@ $dimensions: 2.75rem;
 
 //////////////////////////////////////////////////////////////////////// General
 .filter-bar {
+  display: flex;
   position: relative;
   width: 26.4375rem;
   height: calc(#{$dimensions} - 2px);
@@ -123,15 +124,8 @@ $dimensions: 2.75rem;
       padding: 0.66rem 0.75rem;
     }
     ::v-deep .dotted-border {
-      &:before {
-        width: 0;
-      }
-      &:after {
-        width: 0;
-      }
       rect {
         stroke-dasharray: 0;
-        rx: 5;
       }
     }
   }
@@ -139,17 +133,15 @@ $dimensions: 2.75rem;
 
 ::v-deep .dotted-border {
   &:before {
-    top: -3px;
-    left: 100%;
-    transition: width 0.5s;
+    top: -2px;
+    left: 99%;
   }
   &:after {
-    bottom: -2px;
-    left: 100%;
-    transition: width 0.5s;
+    bottom: 0.5px;
+    left: 99%;
   }
   rect {
-    transform: scale(0.999, 0.999) translate(2px, 0.2px);
+    transform: scale(0.999, 0.9) translate(3px, 1px);
     transition: stroke-dasharray 1s;
   }
 }

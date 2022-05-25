@@ -5,6 +5,7 @@
       <rect
         x="0"
         y="0"
+        rx="5"
         width="100%"
         height="100%" />
 
@@ -51,5 +52,6 @@ rect {
   stroke-linecap: round;
   stroke-dasharray: 1.5, 10;
   stroke-dashoffset: 5;
+  stroke-linejoin: round;
 }
 </style>

@@ -3,18 +3,20 @@
     <div class="content-wrapper">
       <div class="grid">
         <div class="col-10_ti-12">
-          <h1 class="heading">
-            {{ heading }}
-          </h1>
-          <div class="featured-image-wrapper">
-            <img :src="featuredImage" />
-          </div>
+          <div class="inner-content">
+            <h1 class="heading">
+              {{ heading }}
+            </h1>
+            <div class="featured-image-wrapper">
+              <img :src="featuredImage" />
+            </div>
 
-          <div class="markdown-wrapper">
-            <MarkdownParser
-              :markdown="markdown" />
+            <div class="markdown-wrapper">
+              <MarkdownParser
+                :markdown="markdown" />
+            </div>
+            <DottedBorder />
           </div>
-          <DottedBorder />
         </div>
       </div>
     </div>
@@ -75,7 +77,6 @@ export default {
 <style lang="scss" scoped>
 // ///////////////////////////////////////////////////////////////////// General
 .content-wrapper {
-  position: relative;
   margin-top: 3rem;
   margin-right: 5.34375rem;
   margin-bottom: 7.125rem;
@@ -89,6 +90,10 @@ export default {
     margin-bottom: 2.125rem;
     margin-right: 0;
   }
+}
+
+.inner-content {
+  position: relative;
 }
 
 .heading {
