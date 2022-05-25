@@ -142,16 +142,23 @@ export default {
 }
 
 ::v-deep .dotted-border {
+  margin-left: -5rem;
   &:before {
     top: 0px;
     left: -1px;
   }
   &:after {
     bottom: 0;
-    right: -1px;
+    left: -1px;
   }
   rect {
-    transform: scale(0.999) translate(2px, -2px);
+    transform: scale(1.2, 1.5) translate(2px, -3px);
+  }
+  @include tiny {
+    margin-left: -2rem;
+  }
+  @include mini {
+    margin-left: -2rem;
   }
 }
 </style>
