@@ -29,7 +29,7 @@
             :key="deal.rank"
             class="row row-body"
             @click="navigateToDataset($event, deal.slug)">
-
+            
             <td
               v-for="cell in columns"
               :key="cell.slug"
@@ -516,6 +516,16 @@ tr.divider {
   }
   @include tiny {
     margin-left: 0.5rem;
+  }
+}
+
+////////////////////////////////////////////////////////////////// Dotted Border
+::v-deep .dotted-border {
+  &:before &:after {
+    height: 0;
+  }
+  rect {
+    transform: scale(0.999) translate(2px, -2px);
   }
 }
 </style>
