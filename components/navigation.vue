@@ -135,20 +135,23 @@ export default {
     margin-right: 2rem;
   }
   ::v-deep .dotted-border {
-    transition: all 0.25s ease-in-out;
     transform: scale(0);
-    &:hover {
-      rect {
-        transform: scale(1.2, 1.5) translate(-3px, 24.5px);
-      }
-      &:before {
+    transition: all 0.25s ease-in-out;
+    rect {
+      transform: scale(1.2, 1.5) translate(-3px, 24.5px);
+    }
+    &:before {
       bottom: 0;
       left: -1px;
-      }
-      &:after {
-      top: 0;
+    }
+    &:after {
+      bottom: 0;
       right: -1px;
-      }
+    }
+  }
+  &:hover {
+    ::v-deep .dotted-border {
+      transform: scale(1);
     }
   }
   @include tiny {
