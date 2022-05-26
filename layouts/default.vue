@@ -1,6 +1,7 @@
 <template>
   <div class="main-container">
-    <TopBackgroundShapes />
+    <TopBackgroundShapes
+      :blur-change-top="blurChangeTop" />
 
     <Navigation />
 
@@ -8,7 +9,8 @@
 
     <SiteFooter />
 
-    <BottomBackgroundShapes />
+    <BottomBackgroundShapes
+      :blur-change-bottom="blurChangeBottom" />
 
   </div>
 </template>
@@ -31,12 +33,47 @@ export default {
     TopBackgroundShapes
   },
 
+  data () {
+    return {
+      tag: 'index',
+      scroll: false,
+      blurChangeTop: false,
+      blurChangeBottom: false
+    }
+  },
+
   async fetch ({ store, route, $content }) {
     await store.dispatch('global/getBaseData', 'general')
   },
 
   created () {
     this.$store.dispatch('global/getBaseData', 'general')
+  },
+
+  mounted () {
+    this.scroll = () => {
+      const topElement = document.getElementById('blur-trigger')
+      const footer = document.getElementById('site-footer')
+      if (topElement) {
+        const rect = topElement.getBoundingClientRect()
+        const elementIsInViewport = ((rect.top + 40) <= window.innerHeight)
+        if (elementIsInViewport && !this.blurChange) {
+          this.blurChangeTop = true
+        } else if (!elementIsInViewport) {
+          this.blurChangeTop = false
+        }
+      }
+      if (footer) {
+        const footerRect = footer.getBoundingClientRect()
+        const footerIsInViewport = ((footerRect.top + 40) <= window.innerHeight)
+        if (footerIsInViewport && !this.blurChange) {
+          this.blurChangeBottom = true
+        } else if (!footerIsInViewport) {
+          this.blurChangeBottom = false
+        }
+      }
+    }
+    window.addEventListener('scroll', this.scroll)
   }
 }
 </script>

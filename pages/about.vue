@@ -10,7 +10,9 @@
             <img :src="featuredImage" />
           </div>
 
-          <div class="markdown-wrapper">
+          <div
+            id="blur-trigger"
+            class="markdown-wrapper">
             <MarkdownParser
               :markdown="markdown" />
           </div>

@@ -27,6 +27,7 @@
 
           <TableDatasetSingular
             v-if="cids"
+            id="blur-trigger"
             :cids="cids"
             :filter-value="filterValue"
             :columns="tableColumns" />

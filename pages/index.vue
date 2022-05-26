@@ -19,22 +19,12 @@
       <div class="grid">
         <div class="col">
           <TableDatasetIndex
+            id="blur-trigger"
             :filter-value="filterValue"
             :columns="tableColumns" />
         </div>
       </div>
     </section>
-
-    <div class="grid">
-      <div class="col-9">
-        <section class="pagination-controls">
-          <!-- Pagination Controls Component Here - class exists for spacing purposes -->
-        </section>
-      </div>
-      <div class="col-3">
-        <PaginationDropdown />
-      </div>
-    </div>
 
   </div>
 </template>
@@ -123,7 +113,20 @@ export default {
   },
 
   mounted () {
-
+    this.scroll = () => {
+      // const element = this.$refs.trigger
+      const element = document.getElementById('trigger')
+      if (element) {
+        const rect = element.getBoundingClientRect()
+        console.log(rect.top)
+        console.log(window.innerHeight)
+        const elementIsInViewport = (rect.top <= window.innerHeight)
+        if (elementIsInViewport && !this.blurClassToAdd) {
+          this.blurClassToAdd = true
+        }
+      }
+    }
+    window.addEventListener('scroll', this.scroll)
   },
 
   beforeDestroy () {
