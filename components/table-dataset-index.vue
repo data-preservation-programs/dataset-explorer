@@ -345,7 +345,7 @@ tbody:not(.divider) {
     z-index: 10;
     transition: 100ms ease-out;
     rect {
-      transform: scale(0.99, 0.9) translate(3px, 4px);
+      transform: scale(0.99, 0.9) translate(0.188rem, 0.25rem);
     }
     &:before,
     &:after {
