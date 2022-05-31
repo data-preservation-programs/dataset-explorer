@@ -9,7 +9,7 @@
 
       <div class="toolbar">
         <button class="close-button" @click="closeModal">
-          X
+          <CloseIcon />
         </button>
       </div>
 
@@ -25,13 +25,15 @@
 import { mapGetters, mapActions } from 'vuex'
 
 import Slider from '@/components/slider'
+import CloseIcon from '@/components/icons/x'
 
 // ====================================================================== Export
 export default {
   name: 'Modal',
 
   components: {
-    Slider
+    Slider,
+    CloseIcon
   },
 
   props: {
@@ -70,6 +72,16 @@ export default {
     window.addEventListener('keydown', (e) => {
       const key = e.key || e.keyCode
       if (key === 'Escape' || key === 'Esc' || key === 27) {
+        this.closeModal()
+      }
+    })
+
+    window.addEventListener('click', (e) => {
+      const isOutside = !e.target.closest('#modal-deal')
+      const modalOuter = document.getElementById('modal')
+      const isActive = modalOuter.classList.contains('active')
+      if (isActive && isOutside) {
+        console.log('yolo')
         this.closeModal()
       }
     })
