@@ -189,7 +189,7 @@ export default {
 
 // /////////////////////////////////////////////////////////////////////// Table
 #dataset-dot-loader {
-  margin-top: 2rem;
+  margin-top: 1rem;
   margin-bottom: 3rem;
 }
 .dataset-loading-placeholder {
