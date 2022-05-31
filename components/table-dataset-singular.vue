@@ -520,7 +520,6 @@ tr.divider {
 
 // //////////////////////////////////////////////////////////////////// Specific
 .filter-description {
-  margin-top: -2.75rem;
   padding-bottom: 2.5rem;
   padding-left: 1.5rem;
 }
