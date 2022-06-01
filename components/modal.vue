@@ -3,7 +3,8 @@
     v-if="dataset"
     id="modal"
     :class="{ active: modal }"
-    @keyup.esc="closeModal">
+    @keyup.esc="closeModal"
+    @click.self="closeModal">
 
     <section id="modal-deal">
 
@@ -72,16 +73,6 @@ export default {
     window.addEventListener('keydown', (e) => {
       const key = e.key || e.keyCode
       if (key === 'Escape' || key === 'Esc' || key === 27) {
-        this.closeModal()
-      }
-    })
-
-    window.addEventListener('click', (e) => {
-      const isOutside = !e.target.closest('#modal-deal')
-      const modalOuter = document.getElementById('modal')
-      const isActive = modalOuter.classList.contains('active')
-      if (isActive && isOutside) {
-        console.log('yolo')
         this.closeModal()
       }
     })
