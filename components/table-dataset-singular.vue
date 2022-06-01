@@ -233,6 +233,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+/*
+  Most of the table styles below are not supported by Safari. Therefore, table
+  styles are reset at the end of this <style> tag and safar-specific styles are
+  applied.
+*/
+
 // ///////////////////////////////////////////////////////////////////// General
 .table-deals {
   @include fontSize_Mini;
@@ -574,5 +580,32 @@ tr.divider {
 .dataset {
   @include fontSize_Tiny;
   @include leading_Large;
+}
+
+// ////////////////////////////////////////////////////////////// Safari Browser
+@include Safari7Plus ('tbody:not(.divider):before') {
+  display: none;
+}
+
+@include Safari7Plus ('.cell-parent:first-child:before') {
+  display: none;
+}
+
+@include Safari7Plus ('.cell-parent:first-child:after') {
+  display: none;
+}
+
+@include Safari7Plus ('.cell-parent:nth-child(3):after') {
+  display: none;
+}
+
+@include Safari7Plus ('.row-body') {
+  background-color: $aquaHaze;
+  transition: 100ms ease-out;
+}
+
+@include Safari7Plus ('.row-body:hover') {
+  background-color: $mystic;
+  transition: 100ms ease-in;
 }
 </style>
