@@ -210,26 +210,6 @@ export default {
   @include mini {
     display: none;
   }
-  &:before,
-  &:after {
-    content: '';
-    position: absolute;
-    border-radius: 5px;
-  }
-  &:before {
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-  }
-  &:after {
-    top: 1px;
-    left: 1px;
-    width: calc(100% - 2px);
-    height: calc(100% - 2px);
-    z-index: 5;
-  }
 }
 
 .row-head {
@@ -397,6 +377,7 @@ tr.divider {
 }
 
 .no-results-placeholder {
+  position: relative;
   padding: 1rem;
   filter: drop-shadow(0px 5px 3px rgba(0, 0, 0, 0.3));
   @include medium {
