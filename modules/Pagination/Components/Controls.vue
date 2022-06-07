@@ -134,7 +134,7 @@ $dimension: 2.5rem;
   &:not(.current) {
     &:hover {
       text-decoration: none;
-      border-color: rgba(0, 31, 230, 1)
+      border-color: $classicBlue;
     }
   }
   &.display {
@@ -145,6 +145,10 @@ $dimension: 2.5rem;
   }
   &.current {
     cursor: default;
+    border-radius: 100% 55% 100% 55%;
+    border-color: $classicBlue;
+    border: solid 1px;
+    transition: border-color 0.35s ease-in-out;
   }
 }
 
