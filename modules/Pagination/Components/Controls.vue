@@ -141,7 +141,7 @@ $dimension: 2.5rem;
     display: flex;
     border-radius: 100% 55% 100% 55%;
     border: solid 1px rgba(0, 31, 230, 0);
-    transition: border-color 0.35s ease-in-out;
+    transition: border-color $transitionDuration ease;
   }
   &.current {
     cursor: default;
