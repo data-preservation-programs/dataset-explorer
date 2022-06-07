@@ -52,7 +52,8 @@
                 <div class="content-inner-wrapper">
                   <div clas="grid">
                     <div class="col-11_mi-12">
-                      <div v-html="section.content" />
+                      <MarkdownParser
+                        :markdown="section.content" />
                     </div>
                   </div>
                 </div>
@@ -81,6 +82,7 @@ import AccordionContent from '@/components/accordion/accordion-content'
 import AccordionSection from '@/components/accordion/accordion-section'
 
 import DottedBorder from '@/components/dotted-border'
+import MarkdownParser from '@/components/markdown-parser'
 
 import Page from '@/content/pages/faq.json'
 
@@ -93,7 +95,8 @@ export default {
     AccordionHeader,
     AccordionContent,
     AccordionSection,
-    DottedBorder
+    DottedBorder,
+    MarkdownParser
   },
 
   data () {

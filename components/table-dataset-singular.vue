@@ -239,6 +239,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+/*
+  Most of the table styles below are not supported by Safari. Therefore, table
+  styles are reset at the end of this <style> tag and safar-specific styles are
+  applied.
+*/
+
 // ///////////////////////////////////////////////////////////////////// General
 .table-deals {
   @include fontSize_Mini;
@@ -274,26 +280,6 @@ export default {
   vertical-align: bottom;
   @include mini {
     display: none;
-  }
-  &:before,
-  &:after {
-    content: '';
-    position: absolute;
-    border-radius: 5px;
-  }
-  &:before {
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-  }
-  &:after {
-    top: 1px;
-    left: 1px;
-    width: calc(100% - 2px);
-    height: calc(100% - 2px);
-    z-index: 5;
   }
 }
 
@@ -468,6 +454,7 @@ tr.divider {
 }
 
 .no-results-placeholder {
+  position: relative;
   padding: 1rem;
   filter: drop-shadow(0px 5px 3px rgba(0, 0, 0, 0.3));
   @include medium {
@@ -580,5 +567,32 @@ tr.divider {
 .dataset {
   @include fontSize_Tiny;
   @include leading_Large;
+}
+
+// ////////////////////////////////////////////////////////////// Safari Browser
+@include Safari7Plus ('tbody:not(.divider):before') {
+  display: none;
+}
+
+@include Safari7Plus ('.cell-parent:first-child:before') {
+  display: none;
+}
+
+@include Safari7Plus ('.cell-parent:first-child:after') {
+  display: none;
+}
+
+@include Safari7Plus ('.cell-parent:nth-child(3):after') {
+  display: none;
+}
+
+@include Safari7Plus ('.row-body') {
+  background-color: $aquaHaze;
+  transition: 100ms ease-out;
+}
+
+@include Safari7Plus ('.row-body:hover') {
+  background-color: $mystic;
+  transition: 100ms ease-in;
 }
 </style>
