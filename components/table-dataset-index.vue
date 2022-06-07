@@ -29,11 +29,14 @@
             :key="deal.rank"
             class="row row-body"
             @click="navigateToDataset($event, deal.slug)">
-
+            
             <td
               v-for="cell in columns"
               :key="cell.slug"
               :class="['cell-parent', { hovering: deal.rank === hovering }]">
+
+              <DottedBorder v-if="cell.slug === 'all_data_stored'" />
+
               <div
                 class="mobile-cell-head"
                 v-html="cell.label">
@@ -61,15 +64,15 @@
                   </nuxt-link>
                 </template>
 
-                <div v-if="cell.slug === 'data_stored'">
+                <template v-if="cell.slug === 'data_stored'">
                   <span>{{ $FormatBytes(deal.eligible_data_size, '').value }}</span>
                   <span class="data-unit">{{ $FormatBytes(deal.eligible_data_size, '').unit }}</span>
-                </div>
+                </template>
 
-                <div v-if="cell.slug === 'all_data_stored'">
+                <template v-if="cell.slug === 'all_data_stored'">
                   <span>{{ $FormatBytes(deal.eligible_data_size, '').value }}</span>
                   <span class="data-unit">{{ $FormatBytes(deal.eligible_data_size, '').unit }}</span>
-                </div>
+                </template>
 
                 <template v-if="cell.slug === 'storage_providers'">
                   {{ deal.miner_list.length }}
@@ -98,12 +101,15 @@
 import { mapGetters } from 'vuex'
 import DatasetIcon from '@/components/icons/dataset-icon'
 
+import DottedBorder from '@/components/dotted-border'
+
 // ====================================================================== Export
 export default {
   name: 'TableDatasetIndex',
 
   components: {
-    DatasetIcon
+    DatasetIcon,
+    DottedBorder
   },
 
   props: {
@@ -175,6 +181,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+/*
+  Most of the table styles below are not supported by Safari. Therefore, table
+  styles are reset at the end of this <style> tag and safar-specific styles are
+  applied.
+*/
+
 // ///////////////////////////////////////////////////////////////////// General
 .table-deals {
   @include fontSize_Mini;
@@ -203,26 +215,6 @@ export default {
   vertical-align: bottom;
   @include mini {
     display: none;
-  }
-  &:before,
-  &:after {
-    content: '';
-    position: absolute;
-    border-radius: 5px;
-  }
-  &:before {
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-  }
-  &:after {
-    top: 1px;
-    left: 1px;
-    width: calc(100% - 2px);
-    height: calc(100% - 2px);
-    z-index: 5;
   }
 }
 
@@ -276,7 +268,7 @@ tbody:not(.divider) {
   }
   &:hover {
     .cell-parent:nth-child(3) {
-      &:after {
+      .dotted-border {
         transition: 100ms ease-in;
         opacity: 1;
       }
@@ -328,22 +320,22 @@ tbody:not(.divider) {
   }
 }
 
-.cell-parent:nth-child(3) {
-  // HOVER Overlay gradient and Dashed SVG
-  &:after {
-    content: '';
+::v-deep .cell-parent:nth-child(3) {
+  .dotted-border {
     position: absolute;
-    top: 1px;
-    left: 1px;
-    width: calc(100% - 2px);
-    height: calc(100% - 2px);
-    border-radius: 5px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     opacity: 0;
-    z-index: 15;
+    z-index: 10;
     transition: 100ms ease-out;
-    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect x='2' y='2' width='99%25' height='92%25' rx='5' fill='none' stroke='%23001FE6' stroke-width='2' stroke-dasharray='1.5%2c 10' stroke-dashoffset='10' stroke-linecap='round'/%3e%3c/svg%3e");
-    @include mini {
-      background-image: url("data:image/svg+xml,%3csvg width='100%25' height='102%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect x='2' y='2' width='98%25' height='98%25' rx='5' fill='none' stroke='%23001FE6' stroke-width='2' stroke-dasharray='1.5%2c 10' stroke-dashoffset='10' stroke-linecap='round'/%3e%3c/svg%3e");
+    rect {
+      transform: scale(0.99, 0.9) translate(0.188rem, 0.25rem);
+    }
+    &:before,
+    &:after {
+      display: none;
     }
   }
 }
@@ -391,6 +383,7 @@ tr.divider {
 }
 
 .no-results-placeholder {
+  position: relative;
   padding: 1rem;
   filter: drop-shadow(0px 5px 3px rgba(0, 0, 0, 0.3));
   @include medium {
@@ -450,8 +443,6 @@ tr.divider {
     padding-right: 1rem;
   }
 }
-
-// ////////////////////////////////////////////////////////////////////// Common
 
 // //////////////////////////////////////////////////////////////////// Specific
 .filter-description {
@@ -517,5 +508,32 @@ tr.divider {
   @include tiny {
     margin-left: 0.5rem;
   }
+}
+
+// ////////////////////////////////////////////////////////////// Safari Browser
+@include Safari7Plus ('tbody:not(.divider):before') {
+  display: none;
+}
+
+@include Safari7Plus ('.cell-parent:first-child:before') {
+  display: none;
+}
+
+@include Safari7Plus ('.cell-parent:first-child:after') {
+  display: none;
+}
+
+@include Safari7Plus ('.cell-parent:nth-child(3):after') {
+  display: none;
+}
+
+@include Safari7Plus ('.row-body') {
+  background-color: $aquaHaze;
+  transition: 100ms ease-out;
+}
+
+@include Safari7Plus ('.row-body:hover') {
+  background-color: $mystic;
+  transition: 100ms ease-in;
 }
 </style>
