@@ -134,11 +134,11 @@ $dimensions: 2.75rem;
 ::v-deep .dotted-border {
   &:before {
     top: -2px;
-    left: 99%;
+    left: 100%;
   }
   &:after {
     bottom: 0.5px;
-    left: 99%;
+    left: 100%;
   }
   rect {
     transform: scale(0.999, 0.9) translate(3px, 1px);
