@@ -44,6 +44,7 @@
       "placeholder": "Search for a piece or payload CID, deal or SP"
     },
     "loading_placeholder_text": "Loading data",
+    "loading_text_secondary": "Loading Dataset. Please standby, large datasets may take longer to load.",
     "sorter": {
       "label": "Sort by",
       "options": [

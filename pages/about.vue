@@ -3,20 +3,21 @@
     <div class="content-wrapper">
       <div class="grid">
         <div class="col-10_ti-12">
-          <h1 class="heading">
-            {{ heading }}
-          </h1>
-          <div class="featured-image-wrapper">
-            <img :src="featuredImage" />
-          </div>
+          <div class="inner-content">
+            <h1 class="heading">
+              {{ heading }}
+            </h1>
+            <div class="featured-image-wrapper">
+              <img :src="featuredImage" />
+            </div>
 
-          <div class="markdown-wrapper">
-            <MarkdownParser
-              :markdown="markdown" />
+            <div class="markdown-wrapper">
+              <MarkdownParser
+                :markdown="markdown" />
+            </div>
+            <DottedBorder />
           </div>
-
         </div>
-        <div class="dotted-border" />
       </div>
     </div>
   </div>
@@ -30,12 +31,15 @@ import MarkdownParser from '@/components/markdown-parser'
 
 import AboutPageContent from '@/content/markdown/about.md'
 import AboutPageData from '@/content/pages/about.json'
+
+import DottedBorder from '@/components/dotted-border'
 // ====================================================================== Export
 export default {
   name: 'AboutPage',
 
   components: {
-    MarkdownParser
+    MarkdownParser,
+    DottedBorder
   },
 
   data () {
@@ -136,7 +140,6 @@ export default {
 }
 
 .content-wrapper {
-  position: relative;
   margin-top: 3rem;
   margin-right: 5.34375rem;
   margin-bottom: 7.125rem;
@@ -150,6 +153,23 @@ export default {
     margin-bottom: 2.125rem;
     margin-right: 0;
     margin-left: 2.34375rem;
+  }
+}
+
+.inner-content {
+  position: relative;
+}
+
+.heading {
+  @include header;
+  padding-bottom: 2rem;
+  @include mini {
+    font-size: 3.75rem;
+    padding-bottom: 3rem;
+  }
+  @include tiny {
+    font-size: 3.125rem;
+    padding-bottom: 2.5rem;
   }
 }
 
@@ -182,6 +202,25 @@ export default {
   @include tiny {
     padding-top: 1.75rem;
     padding-bottom: 4rem;
+  }
+}
+
+// /////////////////////////////////////////////////////////////// Dotted Border
+::v-deep .dotted-border {
+  margin-left: -5rem;
+  @include mini {
+    margin-left: -2rem;
+  }
+  rect {
+    transform: scale(1.2, 1.5) translate(2px, -3px);
+  }
+  &:before {
+    top: 0px;
+    left: -1px;
+  }
+  &:after {
+    bottom: 0;
+    left: -1px;
   }
 }
 </style>
