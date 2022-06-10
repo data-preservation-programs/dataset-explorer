@@ -2,74 +2,57 @@
   <header id="header-index">
     <div class="grid">
       <div class="col-9_mi-12_sm-10">
-
         <div class="header-wrapper">
-
           <h1 class="heading">
-            {{ heading }}
+            Heading
           </h1>
 
           <h2 class="subheading">
-            {{ subheading }}
+            Subheading Subheading Subheading Subheading
           </h2>
-
           <DottedBorder />
-
         </div>
-
       </div>
     </div>
   </header>
 </template>
 
 <script>
-// ===================================================================== Imports
+import DottedBorder from '@/components/dotted-border.vue'
 
-import DottedBorder from '@/components/dotted-border'
-
-// ====================================================================== Export
 export default {
-  name: 'HeaderIndex',
+  name: 'TestPage',
 
   components: {
     DottedBorder
-  },
-
-  props: {
-    heading: {
-      type: String,
-      required: true
-    },
-    subheading: {
-      type: String,
-      required: true
-    }
   }
-
 }
 </script>
 
 <style lang="scss" scoped>
-//////////////////////////////////////////////////////////////////////// General
-.header-wrapper {
-  position: relative;
-}
 
-::v-deep .dotted-border {
+.dotted-border {
   &:before {
-    top: -1px;
-    left: -1px;
+    transform: translate(50%);
+    left: 22.5rem;
   }
   &:after {
-    bottom: 0;
-    right: -1px;
+    right: 37.3rem;
+    top: 37.6rem;
   }
-  rect {
-    transform: scale(0.999) translate(2px, -2px);
-  }
+}
+
+::v-deep .rect {
+  width: 102.5%;
+  height: 100.5%;
+  stroke-dasharray: 1.5, 10;
+  stroke-dashoffset: 2;
+  x: 6;
+  y: -5;
 }
 
 .heading {
+  position: relative;
   @include header;
   margin: 1rem;
   padding-left: 3rem;

@@ -35,14 +35,20 @@
       </div>
     </section>
 
-    <div v-if="loading" class="dataset-loading-placeholder">
+    <div
+      v-if="loading"
+      id="dataset-dot-loader"
+      class="grid">
+      <div class="col">
 
-      <LoaderTripleDot theme="blue" />
+        <div class="dataset-loading-placeholder">
+          <LoaderTripleDot theme="blue" />
+          <div class="loading-text">
+            {{ loadingText }}
+          </div>
+        </div>
 
-      <div class="loading-text">
-        {{ loadingText }}
       </div>
-
     </div>
 
   </div>
@@ -142,7 +148,7 @@ export default {
     const id = this.$route.params.id
     this.loading = true
     const timeout = setTimeout(() => {
-      this.loadingText = this.pageData.loading_text_secondary
+      this.loadingText = this.pageData.table.loading_text_secondary
     }, 5000)
     await this.getExplorerData({ tag: 'singular', file: `${id}.json` })
     clearTimeout(timeout)
@@ -182,11 +188,23 @@ export default {
 }
 
 // /////////////////////////////////////////////////////////////////////// Table
+#dataset-dot-loader {
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+}
 .dataset-loading-placeholder {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  margin: 1rem 0;
+  padding: 0.5rem 3rem;
+  width: calc(100% - 2px);
+  height: calc(100% - 2px);
+  border-radius: 0.3125rem;
+  background: $gradient_SilverGrey;
+  z-index: 5;
+  box-shadow: 0px 30px 70px rgba(169, 180, 203, 0.3), -2px -2px 0px $white, 0px 3px 5px $mischka, inset 0px -20px 20px rgba(255, 255, 255, 0.2);
   .loading-text {
     padding-left: 2rem;
   }
