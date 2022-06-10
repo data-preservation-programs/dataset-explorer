@@ -156,17 +156,18 @@ export default {
 .featured-image-wrapper {
   background: linear-gradient(131.13deg, #F7F9FA 8.78%, #E2E8EF 94.22%);
   border-radius: 0.313rem;
+  margin-right: 2rem;
   box-shadow: 0px 100px 70px rgba(169, 180, 203, 0.3), -3px -3px 0px #FFFFFF, 0px 3px 0px #D6DADF, inset 0px -20px 20px rgba(255, 255, 255, 0.2);
   img {
     filter: blur(1px);
     border-radius: 1rem;
     padding: 0.5rem;
     width: 100%;
-    @include tiny {
+    @include mini {
       padding: 0.2rem;
       border-radius: 0.5rem;
     }
-    @include mini {
+    @include tiny {
       padding: 0.2rem;
       border-radius: 0.5rem;
     }
