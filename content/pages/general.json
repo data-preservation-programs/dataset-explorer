@@ -34,12 +34,12 @@
         {
           "type": "nuxt-link",
           "text": "About",
-          "url": "/"
+          "url": "/about"
         },
         {
           "type": "nuxt-link",
           "text": "FAQ",
-          "url": "/"
+          "url": "/faq"
         },
         {
           "type": "nuxt-link",
