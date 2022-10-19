@@ -7,7 +7,7 @@ export default {
     serverEnv: process.env.SERVER_ENV,
     backendUrl: (function () {
       const env = process.env.SERVER_ENV
-      let uri = 'https://localhost:11000' // development
+      let uri = 'https://localhost:13000' // development
       switch (env) {
         case 'stable': uri = 'https://stable.slingshot.filecoin.io/api'; break
         case 'production': uri = 'https://slingshot.filecoin.io/api'; break
