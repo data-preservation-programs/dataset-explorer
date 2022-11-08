@@ -29,7 +29,7 @@
             :key="deal.rank"
             class="row row-body"
             @click="navigateToDataset($event, deal.slug)">
-            
+
             <td
               v-for="cell in columns"
               :key="cell.slug"
@@ -136,11 +136,12 @@ export default {
     }),
     filtered () {
       const datasets = this.datasets
+      const source = Object.keys(this.datasetNames.manifest)
       if (!datasets) { return false }
       const filteredByValue = datasets.filter((obj) => {
         const slug = obj.slug.toLowerCase()
         const filter = this.filterValue.toLowerCase()
-        if (slug.includes(filter)) {
+        if (slug.includes(filter) && source.includes(obj.slug)) {
           return obj
         }
         return false

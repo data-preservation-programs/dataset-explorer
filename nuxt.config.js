@@ -5,9 +5,10 @@ export default {
   publicRuntimeConfig: {
     nodeEnv: process.env.NODE_ENV,
     serverEnv: process.env.SERVER_ENV,
+    frontendUrl: 'https://v2.slingshot.filecoin.io',
     backendUrl: (function () {
       const env = process.env.SERVER_ENV
-      let uri = 'https://localhost:11000' // development
+      let uri = 'https://localhost:13000' // development
       switch (env) {
         case 'stable': uri = 'https://stable.slingshot.filecoin.io/api'; break
         case 'production': uri = 'https://slingshot.filecoin.io/api'; break

@@ -3,13 +3,14 @@
     v-if="dataset"
     id="modal"
     :class="{ active: modal }"
-    @keyup.esc="closeModal">
+    @keyup.esc="closeModal"
+    @click.self="closeModal">
 
     <section id="modal-deal">
 
       <div class="toolbar">
         <button class="close-button" @click="closeModal">
-          X
+          <CloseIcon />
         </button>
       </div>
 
@@ -25,13 +26,15 @@
 import { mapGetters, mapActions } from 'vuex'
 
 import Slider from '@/components/slider'
+import CloseIcon from '@/components/icons/x'
 
 // ====================================================================== Export
 export default {
   name: 'Modal',
 
   components: {
-    Slider
+    Slider,
+    CloseIcon
   },
 
   props: {
