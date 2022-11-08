@@ -93,7 +93,7 @@ export default {
   position: absolute;
   height: 100%;
   top: 0;
-  width: 0.5rem;
+  width: 0.3125rem;
   margin-left: -5rem;
   background-repeat: no-repeat;
   overflow: visible;
