@@ -23,7 +23,7 @@ const actions = {
   // /////////////////////////////////////////////////////////// getExplorerData
   async getExplorerData ({ commit }, payload) {
     try {
-      const response = await this.$axios.get(`${this.$config.frontendUrl}/data/dataset-explorer/${payload.file}`)
+      const response = await this.$axios.get(`${this.$config.dataUrl}/data/dataset-explorer/${payload.file}`)
       const file = response.data
       if (payload.tag === 'index') {
         commit('SET_DATASET_LIST', file)
