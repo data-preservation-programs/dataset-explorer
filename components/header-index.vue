@@ -2,17 +2,19 @@
   <header id="header-index">
     <div class="grid">
       <div class="col-9_mi-12_sm-10">
-        
-        <div class="header-wrapper">
-          <div class="dotted-border">
-            <h1 class="heading">
-              {{ heading }}
-            </h1>
 
-            <h2 class="subheading">
-              {{ subheading }}
-            </h2>
-          </div>
+        <div class="header-wrapper">
+
+          <h1 class="heading">
+            {{ heading }}
+          </h1>
+
+          <h2 class="subheading">
+            {{ subheading }}
+          </h2>
+
+          <DottedBorder />
+
         </div>
 
       </div>
@@ -21,9 +23,17 @@
 </template>
 
 <script>
+// ===================================================================== Imports
+
+import DottedBorder from '@/components/dotted-border'
+
 // ====================================================================== Export
 export default {
   name: 'HeaderIndex',
+
+  components: {
+    DottedBorder
+  },
 
   props: {
     heading: {
@@ -42,43 +52,21 @@ export default {
 <style lang="scss" scoped>
 //////////////////////////////////////////////////////////////////////// General
 .header-wrapper {
-  margin-left: -0.5rem;
-}
-.dotted-border {
   position: relative;
-  border: 0 0 1rem 1rem;
-  background-repeat: no-repeat;
-  overflow: visible;
-  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect x='6' y='-5' width='102.5%25' height='100.5%25' fill='none' stroke='%23001FE6' stroke-width='2' stroke-dasharray='1.5%2c 10' stroke-dashoffset='2 0' stroke-linecap='round'/%3e%3c/svg%3e");
-    &:before {
-      content: '';
-      position: absolute;
-      background-image: url("data:image/svg+xml,%3Csvg width='8' height='8' xmlns='http://www.w3.org/2000/svg'%3E%3Cellipse ry='4' rx='4' cy='4' cx='4' fill='%23001FE6'/%3E%3C/svg%3E");
-      background-size: contain;
-      background-repeat: no-repeat;
-      transform: translateY(-50%);
-      width: 0.3125rem;
-      height: 0.3125rem;
-      left: .22rem;
-      @include tiny {
-        top: 0.25rem;
-      }
-    }
-    &:after {
-      content: '';
-      position: absolute;
-      background-image: url("data:image/svg+xml,%3Csvg width='8' height='8' xmlns='http://www.w3.org/2000/svg'%3E%3Cellipse ry='4' rx='4' cy='4' cx='4' fill='%23001FE6'/%3E%3C/svg%3E");
-      background-size: contain;
-      background-repeat: no-repeat;
-      transform: translateX(50%);
-      width: 0.3125rem;
-      height: 0.3125rem;
-      bottom: 0;
-      right: 0;
-      @include tiny {
-        right: 0.25rem;
-      }
-    }
+}
+
+::v-deep .dotted-border {
+  &:before {
+    top: -1px;
+    left: -1px;
+  }
+  &:after {
+    bottom: 0;
+    right: -1px;
+  }
+  rect {
+    transform: scale(0.999) translate(2px, -2px);
+  }
 }
 
 .heading {

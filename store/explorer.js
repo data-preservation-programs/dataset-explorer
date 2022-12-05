@@ -23,10 +23,8 @@ const actions = {
   // /////////////////////////////////////////////////////////// getExplorerData
   async getExplorerData ({ commit }, payload) {
     try {
-      const response = await this.$AxiosAuth.get('/get-explorer-data', {
-        params: { file: payload.file, format: 'json' }
-      })
-      const file = response.data.payload
+      const response = await this.$axios.get(`${this.$config.dataUrl}/data/dataset-explorer/${payload.file}`)
+      const file = response.data
       if (payload.tag === 'index') {
         commit('SET_DATASET_LIST', file)
       } else {

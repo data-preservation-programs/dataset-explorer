@@ -5,14 +5,8 @@ export default {
   publicRuntimeConfig: {
     nodeEnv: process.env.NODE_ENV,
     serverEnv: process.env.SERVER_ENV,
-    backendUrl: (function () {
-      const env = process.env.SERVER_ENV
-      let uri = 'https://localhost:11000' // development
-      switch (env) {
-        case 'stable': uri = 'https://stable.slingshot.filecoin.io/api'; break
-        case 'production': uri = 'https://slingshot.filecoin.io/api'; break
-      } return uri
-    }()),
+    frontendUrl: 'https://datasets.filecoin.io/',
+    dataUrl: 'https://v2.slingshot.filecoin.io',
     seo: {
       siteName: 'Dataset Explorer',
       siteUrl: ''
@@ -23,7 +17,7 @@ export default {
   // /////////////////////////////////////////////////////////// Server & Render
   // ---------------------------------------------------------------------------
   server: {
-    port: 28000,
+    port: 10030,
     host: process.env.NODE_ENV !== 'development' ? '0.0.0.0' : 'localhost'
   },
   render: {
@@ -46,8 +40,8 @@ export default {
   // ////////////////////////////////////////// Customize the progress-bar color
   // ---------------------------------------------------------------------------
   loading: {
-    color: '#FFFFFF',
-    height: '4px'
+    color: '#001FE6',
+    height: '7px'
   },
   // /////////////////////////////////////////////////////////// Global CSS/SCSS
   // ---------------------------------------------------------------------------

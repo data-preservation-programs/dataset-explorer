@@ -7,17 +7,6 @@ import GetFlagEmoji from 'country-code-emoji'
 
 // /////////////////////////////////////////////////////////////////// Functions
 // -----------------------------------------------------------------------------
-// //////////////////////////////////////////////////// CreateAxiosAuthTransport
-const CreateAxiosAuthTransport = (baseURL) => {
-  return Axios.create({
-    withCredentials: true,
-    baseURL,
-    httpsAgent: new Agent({
-      rejectUnauthorized: false
-    })
-  })
-}
-
 // ////////////////////////////////////// Convert bytes to human-readable format
 // ----------------------------- Ex: 257831078666960800 bytes outputs as 229 PiB
 const FormatBytes = (bytes, format = 'string') => {
@@ -91,7 +80,6 @@ const Throttle = (func, wait, options) => {
 // ////////////////////////////////////////////////////////////////////// Export
 // -----------------------------------------------------------------------------
 export default ({ app, store, $config }, inject) => {
-  inject('AxiosAuth', CreateAxiosAuthTransport($config.backendUrl))
   inject('FormatBytes', FormatBytes)
   inject('GetFlagIcon', GetFlagIcon)
   inject('EpochToDate', EpochToDate(app))
