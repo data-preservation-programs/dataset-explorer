@@ -17,6 +17,12 @@
             </div>
             <DottedBorder />
           </div>
+          <div
+            id="blur-trigger"
+            class="markdown-wrapper">
+            <MarkdownParser
+              :markdown="markdown" />
+          </div>
         </div>
       </div>
     </div>
