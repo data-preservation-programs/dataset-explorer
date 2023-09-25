@@ -5,6 +5,8 @@
 
     <Navigation />
 
+    <Banner />
+
     <nuxt />
 
     <SiteFooter />
@@ -17,6 +19,7 @@
 
 <script>
 // ===================================================================== Imports
+import Banner from '@/components/banner'
 import Navigation from '@/components/navigation'
 import SiteFooter from '@/components/site-footer'
 import BottomBackgroundShapes from '@/components/background-shapes-bottom'
@@ -27,6 +30,7 @@ export default {
   name: 'LayoutDefault',
 
   components: {
+    Banner,
     Navigation,
     SiteFooter,
     BottomBackgroundShapes,
