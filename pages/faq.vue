@@ -16,6 +16,7 @@
           <div class="grid">
             <div class="col" data-push-left="off-1">
               <button
+                id="blur-trigger"
                 class="expand-all-button"
                 @click="expandAllAccordionSections">
                 {{ expandAllButtonText }}
