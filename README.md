@@ -1,7 +1,7 @@
-![Dataset Explorer graph image](static/open-graph.png)
-
 # Dataset Explorer
 ### [datasets.filecoin.io](https://datasets.filecoin.io)
+
+![Dataset Explorer graph image](static/open-graph.png)
 
 ## Overview
 
