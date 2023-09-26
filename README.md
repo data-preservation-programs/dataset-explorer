@@ -1,4 +1,4 @@
-![Dataset Explorer graph image](static/images/open-graph.png)
+![Dataset Explorer graph image](static/open-graph.png)
 
 # Dataset Explorer
 ### [datasets.filecoin.io](https://datasets.filecoin.io)
